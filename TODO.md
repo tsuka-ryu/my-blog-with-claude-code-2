@@ -20,7 +20,7 @@
 ```
 my-blog-with-claude-code/
 ├── apps/
-│   └── blog/              # Next.js 14+ メインアプリ
+│   └── blog/              # Next.js 15+ メインアプリ
 ├── packages/
 │   ├── ui/                # 共有UIコンポーネント
 │   ├── utils/             # 共有ユーティリティ
