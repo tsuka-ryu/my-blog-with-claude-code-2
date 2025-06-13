@@ -12,7 +12,7 @@
 
 - **パッケージマネージャー**: pnpm 10.12.1
 - **モノレポツール**: TurboRepo 2.5.4
-- **ターゲットフレームワーク**: Next.js 14+ with App Router（予定）
+- **ターゲットフレームワーク**: Next.js 15+ with App Router（予定）
 
 ### 共通コマンド
 
@@ -49,7 +49,7 @@ my-blog-with-claude-code/
 ```
 my-blog-with-claude-code/
 ├── apps/
-│   └── blog/             # Next.js 14+ メインブログアプリケーション
+│   └── blog/             # Next.js 15+ メインブログアプリケーション
 ├── packages/
 │   ├── ui/               # 共有UIコンポーネント
 │   ├── utils/            # 共有ユーティリティ
@@ -73,7 +73,7 @@ my-blog-with-claude-code/
 4. **1.1.6** commitlint設定 (コミットメッセージ規約)
 
 ### フェーズ1.2の主要タスク
-- **1.2.1** apps/blog ディレクトリ作成 (Next.js 14 App Router)
+- **1.2.1** apps/blog ディレクトリ作成 (Next.js 15 App Router)
 - **1.2.2-1.2.5** packages (ui/utils/config/docs) パッケージ作成
 - **1.2.6** 各パッケージ間の依存関係設定
 
@@ -96,7 +96,7 @@ my-blog-with-claude-code/
 - 自動OGP生成でのSEO最適化
 - 包括的なアクセシビリティ対応 (WCAG AA準拠、スクリーンリーダー対応、キーボードナビゲーション)
 - コメントシステム連携 (giscus)
-- Next.js 14機能でのパフォーマンス最適化
+- Next.js 15機能でのパフォーマンス最適化
 - 多言語対応 (next-intl)
 
 ### 開発・品質保証機能

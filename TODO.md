@@ -29,7 +29,7 @@ my-blog-with-claude-code/
 └── tools/                 # 開発ツール
 ```
 
-- [ ] **1.2.1** apps/blog ディレクトリ作成（Next.js 14 App Router）
+- [ ] **1.2.1** apps/blog ディレクトリ作成（Next.js 15 App Router）
 - [ ] **1.2.2** packages/ui パッケージ作成
 - [ ] **1.2.3** packages/utils パッケージ作成  
 - [ ] **1.2.4** packages/config パッケージ作成

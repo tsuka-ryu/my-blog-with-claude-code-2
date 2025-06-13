@@ -10,7 +10,7 @@
 
 - **モノレポ**: TurboRepo 2.5.4
 - **パッケージマネージャー**: pnpm 10.12.1
-- **フレームワーク**: Next.js 14+ (App Router) - 予定
+- **フレームワーク**: Next.js 15+ (App Router) - 予定
 - **スタイリング**: Tailwind CSS
 - **コンテンツ**: MDX
 - **多言語**: next-intl
