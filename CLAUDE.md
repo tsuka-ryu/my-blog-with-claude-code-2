@@ -1,108 +1,121 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+このファイルは、このリポジトリでコードを操作する際にClaude Code (claude.ai/code) にガイダンスを提供します。
 
-## Project Overview
+## プロジェクト概要
 
-This is a technical blog project built as a **monorepo using TurboRepo and pnpm**. The blog targets Japanese-speaking developers with planned English support, featuring a terminal/console-style design theme.
+これは**TurboRepoとpnpmを使用したモノレポ**として構築された技術ブログプロジェクトです。このブログは日本語圏の開発者をターゲットとし、英語サポートも予定しており、ターミナル/コンソール風デザインテーマを特徴としています。
 
-**Current Status**: Phase 1 - Project Foundation (basic monorepo structure established)
+**現在のステータス**: フェーズ1 - プロジェクト基盤構築（基本的なモノレポ構造を確立）
 
-## Package Manager & Build System
+## パッケージマネージャー & ビルドシステム
 
-- **Package Manager**: pnpm 10.12.1
-- **Monorepo Tool**: TurboRepo 2.5.4
-- **Target Framework**: Next.js 14+ with App Router (planned)
+- **パッケージマネージャー**: pnpm 10.12.1
+- **モノレポツール**: TurboRepo 2.5.4
+- **ターゲットフレームワーク**: Next.js 14+ with App Router（予定）
 
-### Common Commands
+### 共通コマンド
 
-Currently available:
+現在利用可能:
 ```bash
-# Check pnpm version
+# pnpmバージョン確認
 pnpm --version
 
-# Install dependencies (when packages are added)
+# 依存関係のインストール（パッケージ追加時）
 pnpm install
 
-# Future TurboRepo commands (once packages are created):
-# pnpm turbo build    # Build all packages
-# pnpm turbo lint     # Lint all packages  
-# pnpm turbo dev      # Start development servers
+# 将来のTurboRepoコマンド（パッケージ作成後）:
+# pnpm turbo build    # 全パッケージをビルド
+# pnpm turbo lint     # 全パッケージをリント
+# pnpm turbo dev      # 開発サーバーを起動
 ```
 
-**Note**: Most development commands are not yet available as the actual application packages haven't been created yet.
+**注意**: 実際のアプリケーションパッケージがまだ作成されていないため、ほとんどの開発コマンドはまだ利用できません。
 
-## Architecture & Structure
+## アーキテクチャ & 構造
 
-### Current Structure
+### 現在の構造
 ```
 my-blog-with-claude-code/
-├── package.json           # Root package configuration
-├── turbo.json            # TurboRepo pipeline configuration
-├── pnpm-workspace.yaml   # Workspace package definitions
-├── TODO.md               # Comprehensive 8-phase development roadmap
+├── package.json           # ルートパッケージ設定
+├── turbo.json            # TurboRepoパイプライン設定
+├── pnpm-workspace.yaml   # ワークスペースパッケージ定義
+├── TODO.md               # 8段階の包括的開発ロードマップ
 └── memo/
-    └── setup-decisions.md # Setup decision documentation
+    └── setup-decisions.md # セットアップ決定ドキュメント
 ```
 
-### Planned Structure (Phase 1.2)
+### 計画された構造 (フェーズ 1.2)
 ```
 my-blog-with-claude-code/
 ├── apps/
-│   └── blog/             # Next.js 14+ main blog application
+│   └── blog/             # Next.js 14+ メインブログアプリケーション
 ├── packages/
-│   ├── ui/               # Shared UI components
-│   ├── utils/            # Shared utilities
-│   ├── config/           # Shared configuration & type definitions
-│   └── docs/             # Documentation package
-└── tools/                # Development tools
+│   ├── ui/               # 共有UIコンポーネント
+│   ├── utils/            # 共有ユーティリティ
+│   ├── config/           # 共有設定 & 型定義
+│   └── docs/             # ドキュメントパッケージ
+└── tools/                # 開発ツール
 ```
 
-## Development Workflow
+## 開発ワークフロー
 
-### Pipeline Configuration (turbo.json)
-- **build**: Dependent builds with Next.js output caching (`.next/**` excluding cache)
-- **lint**: Cascading lint execution across packages
-- **dev**: Non-cached persistent development servers
-- **globalDependencies**: Environment files (`**/.env.*local`)
+### パイプライン設定 (turbo.json)
+- **build**: Next.js出力キャッシュを伴う依存ビルド (`.next/**` キャッシュを除く)
+- **lint**: パッケージ間でのカスケードlint実行
+- **dev**: キャッシュなしの永続開発サーバー
+- **globalDependencies**: 環境ファイル (`**/.env.*local`)
 
-### Next Immediate Tasks (Phase 1.1)
-1. TypeScript configuration (strict mode)
-2. Linting setup (oxlint + ESLint + Prettier)
-3. Git hooks (lefthook + commitlint)
-4. Create actual package directories
+### 次の直近タスク (フェーズ 1.1)
+1. **1.1.3** TypeScript設定 (ストリクトモード)
+2. **1.1.4** Oxlint + ESLint + Prettier設定
+3. **1.1.5** lefthook設定
+4. **1.1.6** commitlint設定 (コミットメッセージ規約)
 
-## Key Features (Planned)
+### フェーズ1.2の主要タスク
+- **1.2.1** apps/blog ディレクトリ作成 (Next.js 14 App Router)
+- **1.2.2-1.2.5** packages (ui/utils/config/docs) パッケージ作成
+- **1.2.6** 各パッケージ間の依存関係設定
 
-### Design System
-- Terminal/console-style theme with dark mode support
-- Tailwind CSS with custom color palette
-- Monospace font (等幅フォント)
-- Responsive design with custom breakpoints
+## 主要機能 (予定)
 
-### Content Management
-- MDX-based content with syntax highlighting
-- Automatic table of contents generation
-- Tag and category system
-- Search functionality using fuse.js
-- Multilingual support (Japanese/English)
+### デザインシステム
+- ダークモード対応のターミナル/コンソール風テーマ
+- カスタムカラーパレットを伴うTailwind CSS
+- 等幅フォント
+- カスタムブレークポイントでのレスポンシブデザイン
 
-### Technical Features
-- SEO optimization with automatic OGP generation
-- Accessibility compliance (Web Content Accessibility Guidelines AA)
-- Comments system integration
-- Performance optimization with Next.js 14 features
+### コンテンツ管理
+- シンタックスハイライト付きMDXベースコンテンツ
+- 自動目次生成
+- タグ・カテゴリシステム
+- fuse.jsを使用した検索機能
+- 多言語対応 (日本語/英語)
 
-## Documentation References
+### 技術的機能
+- 自動OGP生成でのSEO最適化
+- 包括的なアクセシビリティ対応 (WCAG AA準拠、スクリーンリーダー対応、キーボードナビゲーション)
+- コメントシステム連携 (giscus)
+- Next.js 14機能でのパフォーマンス最適化
+- 多言語対応 (next-intl)
 
-- **TODO.md**: Complete 8-phase development roadmap with 200+ specific tasks
-- **memo/setup-decisions.md**: Detailed setup decisions with rationale
-- **TECHNICAL_BLOG_REQUIREMENTS.md**: Archived (consolidated into TODO.md)
+### 開発・品質保証機能
+- **MCPサーバー**: デザインシステム管理・自動生成
+- **包括的テスト**: Vitest + Testing Library, Playwright E2E, Visual Regression
+- **開発ツール**: Storybook による UI コンポーネントドキュメント
+- **CI/CD**: GitHub Actions + Vercel デプロイメント
+- **監視**: Sentry エラー監視、Google Analytics 4
 
-## Development Notes
+## ドキュメント参照
 
-- The project uses **strict development practices** with comprehensive linting, formatting, and commit message conventions
-- All major decisions are documented in the memo/ directory
-- The TODO.md file serves as the primary development roadmap and should be consulted for task prioritization
-- **Before committing**: Always update completed TODOs in TODO.md by marking them as `[x]` to track progress
-- Package structure follows modern monorepo best practices with clear separation of concerns
+- **TODO.md**: 約120の具体タスクを含む8段階の完全な開発ロードマップ
+- **memo/setup-decisions.md**: 理由付きの詳細なセットアップ決定事項
+- **TECHNICAL_BLOG_REQUIREMENTS.md**: アーカイブ済み (TODO.mdに統合)
+
+## 開発ノート
+
+- このプロジェクトは包括的なリント、フォーマット、コミットメッセージ規約を伴う**厳格な開発プラクティス**を使用します
+- 主要な決定はすべてmemo/ディレクトリにドキュメント化されています
+- TODO.mdファイルが主要な開発ロードマップとして機能し、タスクの優先順位付けに参照すべきです
+- **コミット前**: 進捗を追跡するため、TODO.mdで完了したTODOを`[x]`でマークして常に更新してください
+- パッケージ構造は明確な関心の分離を伴う現代的なモノレポベストプラクティスに従います
