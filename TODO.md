@@ -25,15 +25,15 @@ my-blog-with-claude-code/
 │   ├── ui/                # 共有UIコンポーネント
 │   ├── utils/             # 共有ユーティリティ
 │   ├── config/            # 共有設定・型定義
-│   └── docs/              # ドキュメント
+│   └── docs/              # Docusaurus ドキュメント
 └── tools/                 # 開発ツール
 ```
 
-- [ ] **1.2.1** apps/blog ディレクトリ作成（Next.js 14 App Router）
-- [ ] **1.2.2** packages/ui パッケージ作成
-- [ ] **1.2.3** packages/utils パッケージ作成  
-- [ ] **1.2.4** packages/config パッケージ作成
-- [ ] **1.2.5** packages/docs パッケージ作成
+- [x] **1.2.1** apps/blog ディレクトリ作成（Next.js 14 App Router）
+- [x] **1.2.2** packages/ui パッケージ作成
+- [x] **1.2.3** packages/utils パッケージ作成  
+- [x] **1.2.4** packages/config パッケージ作成
+- [x] **1.2.5** packages/docs パッケージ作成（Docusaurus）
 - [ ] **1.2.6** 各パッケージ間の依存関係設定
 
 ## 🎨 Phase 2: デザインシステム・UI基盤
@@ -211,7 +211,7 @@ my-blog-with-claude-code/
 ## 🎯 技術スタック詳細
 
 ### 確定技術
-- **Framework**: Next.js 14+ (App Router)
+- **Framework**: Next.js 15+ (App Router)
 - **Monorepo**: Turborepo + pnpm
 - **Language**: TypeScript (strict)
 - **Type Utilities**: type-fest
@@ -226,7 +226,7 @@ my-blog-with-claude-code/
 - **Search**: fuse.js（あいまい検索）
 - **State**: React Context
 - **Testing**: Vitest + Playwright
-- **Documentation**: Storybook
+- **Documentation**: Storybook + Docusaurus
 - **Syntax Highlighting**: Shiki
 
 ### 検討中技術
