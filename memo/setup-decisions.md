@@ -109,3 +109,53 @@ test-results/
 - **改行コード統一**: テキストファイルをLFに統一
 - **バイナリファイル指定**: 画像・フォントファイルの適切な処理
 - **言語検出**: .mdxをMarkdownとして認識、CSSをvendoredから除外
+
+## 1.1.3 TypeScript 設定（strict mode）
+
+### 決定内容
+- tsconfig.json ファイル作成
+- strict mode 有効化
+- Next.js App Router 対応設定
+- モノレポ対応のパス解決設定
+
+### 意図・理由
+- **型安全性の確保**: strict mode により実行時エラーを開発時に検出
+- **開発体験向上**: 型推論とインテリセンスによる効率的な開発
+- **品質保証**: TypeScriptの全ての厳密なチェックを有効化
+- **Next.js最適化**: App Router対応とインクリメンタルコンパイル
+
+### 設定内容
+
+#### 主要な厳密設定
+```json
+{
+  "strict": true,           // 全ての厳密型チェックを有効化
+  "noEmit": true,          // コンパイル出力を生成しない（Next.jsが担当）
+  "isolatedModules": true   // 単一ファイルでの型チェック強制
+}
+```
+
+#### モノレポ対応設定
+```json
+{
+  "baseUrl": ".",
+  "paths": {
+    "@/*": ["./apps/blog/*"],      // メインアプリケーション
+    "@ui/*": ["./packages/ui/*"],   // 共有UIコンポーネント
+    "@utils/*": ["./packages/utils/*"], // 共有ユーティリティ
+    "@config/*": ["./packages/config/*"] // 共有設定・型定義
+  },
+  "references": [
+    {"path": "./apps/blog"},
+    {"path": "./packages/ui"},
+    {"path": "./packages/utils"},
+    {"path": "./packages/config"}
+  ]
+}
+```
+
+### 設定の意図
+- **strictモード**: null/undefined安全性、型推論の強化、未使用変数検出
+- **パス解決**: モノレポ内の相互参照を簡潔に記述可能
+- **プロジェクト参照**: 各パッケージの独立したコンパイルとキャッシュ効率化
+- **Next.js統合**: App Router、インクリメンタルコンパイル、型生成サポート
