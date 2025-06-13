@@ -3,7 +3,7 @@
 ## 1.1.1 pnpm インストール・設定
 
 ### 決定内容
-- pnpm 9.6.0 が既にインストール済みであることを確認
+- pnpm 10.12.1 が既にインストール済みであることを確認
 - `pnpm init` でプロジェクトを初期化
 - package.json を作成
 
@@ -14,7 +14,7 @@
 
 ### 実行内容
 ```bash
-pnpm --version  # 9.6.0 確認
+pnpm --version  # 10.12.1 確認
 pnpm init       # package.json 初期化
 ```
 
