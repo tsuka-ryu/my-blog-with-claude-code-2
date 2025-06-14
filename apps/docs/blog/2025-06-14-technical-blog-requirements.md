@@ -1,11 +1,7 @@
 ---
 slug: technical-blog-requirements
 title: 技術ブログ プロジェクト要件定義書
-authors:
-  - name: tsuka-ryu
-    title: Project Creator
-    url: https://github.com/tsuka-ryu
-    image_url: https://github.com/tsuka-ryu.png
+authors: [tsuka-ryu]
 tags: [project, requirements, blog, planning]
 ---
 
