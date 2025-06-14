@@ -35,7 +35,7 @@ my-blog-with-claude-code/
 - [x] **1.2.1** apps/blog ディレクトリ作成（Next.js 15 App Router）
 - [x] **1.2.2** packages/ui パッケージ作成（Storybook v9導入済み）
 - [x] **1.2.3** packages/utils パッケージ作成
-- [ ] **1.2.4** packages/config パッケージ作成
+- [x] **1.2.4** packages/config パッケージ作成
 - [ ] **1.2.5** packages/docs パッケージ作成（Docusaurus）
 - [ ] **1.2.6** 各パッケージ間の依存関係設定
 - [ ] **1.2.7** pnpm catalog機能の導入（依存関係のバージョン統一管理）
