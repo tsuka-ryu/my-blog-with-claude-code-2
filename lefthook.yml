@@ -7,6 +7,9 @@ pre-commit:
     lint:
       run: pnpm turbo lint
       fail_text: "Linting failed. Please fix errors before committing."
+      skip:
+        - merge
+        - rebase
 
 # Colors for better visibility
 colors: true

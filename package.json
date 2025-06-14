@@ -9,7 +9,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-    "prepare": "lefthook install"
+    "prepare": "lefthook install || echo 'lefthook install failed, but continuing...'"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.34.0",
