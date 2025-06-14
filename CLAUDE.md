@@ -98,3 +98,4 @@ my-blog-with-claude-code/
 
 - **作者名**: ブログ記事のauthorsフィールドでは必ず`tsuka-ryu`を使用すること（`tsukaryu`ではない）
 - **参照**: apps/docs/blog/authors.ymlで定義されている正確な作者IDを確認すること
+- **truncate**: 全てのブログ記事には必ず`<!-- truncate -->`コメントを含めること（フロントマッターの後、本文の適切な位置に配置）
