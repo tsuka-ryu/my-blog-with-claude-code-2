@@ -1,0 +1,18 @@
+# lefthook configuration
+# Git hooks management for the my-blog-with-claude-code project
+
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      run: pnpm turbo lint
+      fail_text: "Linting failed. Please fix errors before committing."
+      skip:
+        - merge
+        - rebase
+
+# Colors for better visibility
+colors: true
+
+# Skip lefthook execution in CI/CD environments
+skip_in_ci: true
