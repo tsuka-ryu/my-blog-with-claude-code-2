@@ -1,5 +1,5 @@
 {
-  "name": "@my-blog/utils",
+  "name": "@repo/utils",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -22,6 +22,7 @@
     "config:build": "eslint-config-inspector build"
   },
   "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "tsup": "^8.0.0",
     "typescript": "^5.0.0",
