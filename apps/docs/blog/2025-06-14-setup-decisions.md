@@ -2,10 +2,10 @@
 slug: setup-decisions
 title: プロジェクトセットアップ決定事項
 authors:
-  - name: tsukaryu
+  - name: tsuka-ryu
     title: Project Creator
-    url: https://github.com/tsukaryu
-    image_url: https://github.com/tsukaryu.png
+    url: https://github.com/tsuka-ryu
+    image_url: https://github.com/tsuka-ryu.png
 tags: [setup, monorepo, pnpm, turborepo, typescript]
 ---
 

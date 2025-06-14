@@ -2,10 +2,10 @@
 slug: turbo-task-dependencies
 title: TurboRepo タスク依存関係と循環問題
 authors:
-  - name: tsukaryu
+  - name: tsuka-ryu
     title: Project Creator
-    url: https://github.com/tsukaryu
-    image_url: https://github.com/tsukaryu.png
+    url: https://github.com/tsuka-ryu
+    image_url: https://github.com/tsuka-ryu.png
 tags: [turborepo, monorepo, tasks, dependencies, troubleshooting]
 ---
 

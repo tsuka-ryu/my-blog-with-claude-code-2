@@ -2,10 +2,10 @@
 slug: packages-utils-setup
 title: packages/utils パッケージセットアップ
 authors:
-  - name: tsukaryu
+  - name: tsuka-ryu
     title: Project Creator
-    url: https://github.com/tsukaryu
-    image_url: https://github.com/tsukaryu.png
+    url: https://github.com/tsuka-ryu
+    image_url: https://github.com/tsuka-ryu.png
 tags: [packages, utils, monorepo, typescript, setup]
 ---
 
