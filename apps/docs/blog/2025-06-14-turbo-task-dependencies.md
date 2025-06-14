@@ -68,7 +68,7 @@ TurboRepoでタスクの依存関係を設定する際に発生する循環（�
 ### 2. 実行結果
 
 - **Next.js** (port 3000)
-- **Docusaurus** (port 4000)  
+- **Docusaurus** (port 4000)
 - **Storybook** (port 6006)
 
 すべてが並行起動される。

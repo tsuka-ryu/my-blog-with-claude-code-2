@@ -68,8 +68,9 @@ pnpm turbo config:build --filter=@repo/ui
 ```
 
 各パッケージのConfig Inspectorは以下のポートで起動されます：
+
 - eslint-config: http://localhost:7771
-- utils: http://localhost:7772  
+- utils: http://localhost:7772
 - ui: http://localhost:7773
 - web: http://localhost:7774
 - docs: http://localhost:7775
