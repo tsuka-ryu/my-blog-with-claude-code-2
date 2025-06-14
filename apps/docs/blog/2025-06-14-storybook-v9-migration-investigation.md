@@ -1,7 +1,7 @@
 ---
 slug: storybook-v9-migration-investigation
 title: Storybook v9マイグレーション調査結果
-authors: [tsukaryu]
+authors: [tsuka-ryu]
 tags: [storybook, migration, frontend-tooling]
 ---
 
