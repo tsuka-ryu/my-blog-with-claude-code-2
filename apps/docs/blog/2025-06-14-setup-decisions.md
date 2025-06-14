@@ -1,4 +1,15 @@
-# セットアップ決定事項メモ
+---
+slug: setup-decisions
+title: プロジェクトセットアップ決定事項
+authors: [tsuka-ryu]
+tags: [setup, monorepo, pnpm, turborepo, typescript]
+---
+
+# プロジェクトセットアップ決定事項
+
+モノレポ技術ブログプロジェクトの初期セットアップで行った決定事項とその理由をまとめています。pnpm、TurboRepo、TypeScriptの設定について詳しく解説します。
+
+<!--truncate-->
 
 ## 1.1.1 pnpm インストール・設定
 

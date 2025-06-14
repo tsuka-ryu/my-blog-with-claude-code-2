@@ -1,12 +1,15 @@
+---
+slug: packages-utils-setup
+title: packages/utils パッケージセットアップ
+authors: [tsuka-ryu]
+tags: [packages, utils, monorepo, typescript, setup]
+---
+
 # packages/utils パッケージセットアップ
 
-## 概要
+`packages/utils` パッケージの初期セットアップと設定の詳細を記録します。TypeScript設定の修正やESModule対応など、実際の開発で遭遇した問題と解決策をまとめています。
 
-`packages/utils` パッケージの初期セットアップと設定の詳細を記録します。
-
-## 作成日時
-
-2025-06-14
+<!--truncate-->
 
 ## パッケージ構成
 

@@ -37,6 +37,10 @@
     "config:build": {
       "inputs": ["eslint.config.mjs", "eslint.config.js", "eslint.config.ts"],
       "outputs": [".eslint-config-inspector/**"]
+    },
+    "doc": {
+      "cache": false,
+      "persistent": true
     }
   }
 }

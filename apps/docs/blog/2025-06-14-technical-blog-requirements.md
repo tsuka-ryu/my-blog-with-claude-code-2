@@ -1,7 +1,15 @@
-# 📁 [ARCHIVED] 技術ブログ プロジェクト要件定義書
+---
+slug: technical-blog-requirements
+title: 技術ブログ プロジェクト要件定義書
+authors: [tsuka-ryu]
+tags: [project, requirements, blog, planning]
+---
 
-> ⚠️ **このファイルはアーカイブ済みです**  
-> 要件は TODO.md に統合されました。今後の参照・更新は TODO.md をご利用ください。
+# 技術ブログ プロジェクト要件定義書
+
+モノレポ技術ブログプロジェクトの初期要件定義とヒアリング結果をまとめたドキュメントです。
+
+<!--truncate-->
 
 ## 📋 確定済み決定事項
 

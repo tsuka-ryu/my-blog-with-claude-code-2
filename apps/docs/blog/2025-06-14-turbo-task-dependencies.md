@@ -1,8 +1,15 @@
+---
+slug: turbo-task-dependencies
+title: TurboRepo タスク依存関係と循環問題
+authors: [tsuka-ryu]
+tags: [turborepo, monorepo, tasks, dependencies, troubleshooting]
+---
+
 # TurboRepo タスク依存関係と循環問題
 
-## 概要
+TurboRepoでタスクの依存関係を設定する際に発生する循環（デッドロック）問題と解決策について。実際の開発で遭遇した問題と修正方法を詳しく解説します。
 
-TurboRepoでタスクの依存関係を設定する際に発生する循環（デッドロック）問題と解決策について。
+<!--truncate-->
 
 ## 問題のあるパターン
 
