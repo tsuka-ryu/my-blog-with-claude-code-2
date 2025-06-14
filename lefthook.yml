@@ -11,6 +11,12 @@ pre-commit:
         - merge
         - rebase
 
+commit-msg:
+  commands:
+    commitlint:
+      run: npx commitlint --edit $1
+      fail_text: "Commit message format is invalid. Please follow conventional commit format."
+
 # Colors for better visibility
 colors: true
 

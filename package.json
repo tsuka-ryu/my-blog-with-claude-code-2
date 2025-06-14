@@ -13,6 +13,8 @@
     "prepare": "lefthook install || echo 'lefthook install failed, but continuing...'"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@typescript-eslint/eslint-plugin": "^8.34.0",
     "@typescript-eslint/parser": "^8.34.0",
     "eslint": "^9.28.0",
