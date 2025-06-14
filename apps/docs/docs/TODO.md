@@ -39,7 +39,7 @@ my-blog-with-claude-code/
 - [x] **1.2.4** packages/eslint-config・typescript-config パッケージ作成
 - [x] **1.2.5** apps/docs ドキュメントサイト整理（Docusaurus、不要チュートリアル削除済み）
 - [x] **1.2.6** 各パッケージ間の依存関係設定
-- [ ] **1.2.7** pnpm catalog機能の導入（依存関係のバージョン統一管理）
+- [x] **1.2.7** pnpm catalog機能の導入（依存関係のバージョン統一管理）
 - [ ] **1.2.8** Storybook v9へのマイグレーション（現在v8.6.14）
 - [x] **1.2.9** ESLint設定の厳密化（@typescript-eslint/strictルール追加、import/export順序、未使用変数検出強化）
 
