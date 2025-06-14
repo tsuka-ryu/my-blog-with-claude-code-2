@@ -48,7 +48,8 @@ export const WithCustomClass: Story = {
 export const LongContent: Story = {
   args: {
     title: 'Deploy',
-    children: 'Instantly deploy your Next.js site to a shareable URL with Vercel. Get started with our free tier and scale as you grow.',
+    children:
+      'Instantly deploy your Next.js site to a shareable URL with Vercel. Get started with our free tier and scale as you grow.',
     href: 'https://vercel.com/new',
   },
 };
