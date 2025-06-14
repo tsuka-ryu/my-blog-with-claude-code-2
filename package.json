@@ -1,5 +1,6 @@
 {
   "name": "my-blog-with-claude-code",
+  "version": "1.1.6",
   "private": true,
   "scripts": {
     "build": "turbo run build",
