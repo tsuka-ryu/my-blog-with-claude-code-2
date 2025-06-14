@@ -1,10 +1,10 @@
-import js from "@eslint/js";
-import eslintConfigPrettier from "eslint-config-prettier";
-import { importX } from "eslint-plugin-import-x";
-import turboPlugin from "eslint-plugin-turbo";
-import unusedImports from "eslint-plugin-unused-imports";
-import tseslint from "typescript-eslint";
-import onlyWarn from "eslint-plugin-only-warn";
+import js from '@eslint/js';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import { importX } from 'eslint-plugin-import-x';
+import turboPlugin from 'eslint-plugin-turbo';
+import unusedImports from 'eslint-plugin-unused-imports';
+import tseslint from 'typescript-eslint';
+import onlyWarn from 'eslint-plugin-only-warn';
 
 /**
  * A shared ESLint configuration for the repository.
@@ -20,58 +20,55 @@ export const config = [
   {
     plugins: {
       turbo: turboPlugin,
-      "unused-imports": unusedImports,
+      'unused-imports': unusedImports,
     },
     rules: {
-      "turbo/no-undeclared-env-vars": "warn",
-      
+      'turbo/no-undeclared-env-vars': 'warn',
+
       // Import/Export ordering (import-x rules)
-      "import-x/order": [
-        "error",
+      'import-x/order': [
+        'error',
         {
           groups: [
-            "builtin",
-            "external",
-            "internal",
-            "parent",
-            "sibling",
-            "index",
-            "object",
-            "type"
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+            'object',
+            'type',
           ],
-          "newlines-between": "always",
+          'newlines-between': 'always',
           alphabetize: {
-            order: "asc",
-            caseInsensitive: true
-          }
-        }
+            order: 'asc',
+            caseInsensitive: true,
+          },
+        },
       ],
-      "import-x/newline-after-import": "error",
-      "import-x/no-duplicates": "error",
-      "import-x/no-unresolved": "off", // TypeScript handles this
-      "import-x/namespace": "off", // TypeScript handles this
-      "import-x/named": "off", // TypeScript handles this
-      
+      'import-x/newline-after-import': 'error',
+      'import-x/no-duplicates': 'error',
+      'import-x/no-unresolved': 'off', // TypeScript handles this
+      'import-x/namespace': 'off', // TypeScript handles this
+      'import-x/named': 'off', // TypeScript handles this
+
       // Unused imports detection
-      "@typescript-eslint/no-unused-vars": "off",
-      "unused-imports/no-unused-imports": "error",
-      "unused-imports/no-unused-vars": [
-        "warn",
+      '@typescript-eslint/no-unused-vars': 'off',
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': [
+        'warn',
         {
-          vars: "all",
-          varsIgnorePattern: "^_",
-          args: "after-used",
-          argsIgnorePattern: "^_"
-        }
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_',
+        },
       ],
-      
+
       // Additional strict TypeScript rules (non-type-aware)
-      "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/no-non-null-assertion": "error",
-      "@typescript-eslint/consistent-type-imports": [
-        "error",
-        { prefer: "type-imports" }
-      ]
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/no-non-null-assertion': 'error',
+      '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
     },
   },
   {
@@ -80,6 +77,6 @@ export const config = [
     },
   },
   {
-    ignores: ["dist/**"],
+    ignores: ['dist/**'],
   },
 ];

@@ -1,4 +1,4 @@
-import { config as baseConfig } from "./base.js";
+import { config as baseConfig } from './base.js';
 
 /**
  * ESLint configuration with TypeScript type-aware rules.
@@ -11,12 +11,12 @@ export const config = [
   {
     rules: {
       // Type-aware TypeScript rules
-      "@typescript-eslint/prefer-optional-chain": "error",
-      "@typescript-eslint/prefer-nullish-coalescing": "error",
-      "@typescript-eslint/no-unnecessary-condition": "error",
-      "@typescript-eslint/prefer-includes": "error",
-      "@typescript-eslint/prefer-string-starts-ends-with": "error",
-      "@typescript-eslint/switch-exhaustiveness-check": "error",
+      '@typescript-eslint/prefer-optional-chain': 'error',
+      '@typescript-eslint/prefer-nullish-coalescing': 'error',
+      '@typescript-eslint/no-unnecessary-condition': 'error',
+      '@typescript-eslint/prefer-includes': 'error',
+      '@typescript-eslint/prefer-string-starts-ends-with': 'error',
+      '@typescript-eslint/switch-exhaustiveness-check': 'error',
     },
   },
 ];

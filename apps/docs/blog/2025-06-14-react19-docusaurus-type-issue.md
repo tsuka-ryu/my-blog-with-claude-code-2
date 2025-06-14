@@ -26,11 +26,15 @@ React 19の型定義では、コンポーネントの戻り値として`Promise<
 `@ts-expect-error`コメントを使用して型エラーを無視しています：
 
 ```tsx
-{/* TODO: React 19とDocusaurusの型定義の互換性問題を修正する */}
-{/* @ts-expect-error: DocusaurusのLinkコンポーネントの型互換性問題 */}
+{
+  /* TODO: React 19とDocusaurusの型定義の互換性問題を修正する */
+}
+{
+  /* @ts-expect-error: DocusaurusのLinkコンポーネントの型互換性問題 */
+}
 <Link className='button button--secondary button--lg' to='/docs/TODO'>
   プロジェクトTODO 📋
-</Link>
+</Link>;
 ```
 
 ## 今後の対応
