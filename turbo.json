@@ -9,7 +9,7 @@
     },
     "lint": {
       "dependsOn": ["^lint"],
-      "inputs": ["$TURBO_DEFAULT$", "eslint.config.mjs", "oxlint.json", ".prettierrc"]
+      "inputs": ["$TURBO_DEFAULT$", "eslint.config.mjs", "oxlint.json", ".prettierrc", ".prettierignore"]
     },
     "format": {
       "dependsOn": ["^format"],

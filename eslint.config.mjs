@@ -47,10 +47,7 @@ export default [
       '**/coverage/**',
       '**/.docusaurus/**',
       '**/packages/eslint-config/**',
-      'apps/docs/src/components/HomepageFeatures/index.tsx',
-      'packages/ui/src/**',
-      'apps/web/eslint.config.js',
-      'packages/ui/eslint.config.mjs',
+      '**/.env*',
     ],
   },
 ];
