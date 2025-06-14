@@ -1,4 +1,4 @@
-# Claude Codeで技術ブログをVibe coding
+# Claude Codeで技術ブログをVibe codingしてみる
 
 TurboRepoとpnpmを使用したモノレポ構成の技術ブログプラットフォームです。
 日本語圏の開発者をターゲットとし、ターミナル/コンソール風のデザインテーマを特徴としています。
