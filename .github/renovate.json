@@ -1,0 +1,132 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":separateMajorReleases",
+    ":combinePatchMinorReleases"
+  ],
+  "schedule": ["before 9am on monday"],
+  "timezone": "Asia/Tokyo",
+  "labels": ["dependencies"],
+  "commitMessagePrefix": "chore(deps):",
+  "commitMessageAction": "update",
+  "commitMessageTopic": "{{depName}}",
+  "commitMessageExtra": "to {{newVersion}}",
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 3,
+  "updateNotScheduled": false,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 6am on monday"]
+  },
+  "packageRules": [
+    {
+      "description": "pnpm catalog dependencies",
+      "matchFileNames": ["pnpm-workspace.yaml"],
+      "commitMessagePrefix": "chore(deps): update catalog -",
+      "groupName": "pnpm catalog",
+      "schedule": ["before 9am on monday"],
+      "reviewers": [],
+      "assignees": []
+    },
+    {
+      "description": "Group TypeScript related packages",
+      "matchPackageNames": [
+        "typescript",
+        "@types/node",
+        "@types/react",
+        "@types/react-dom",
+        "@typescript-eslint/eslint-plugin",
+        "@typescript-eslint/parser",
+        "typescript-eslint"
+      ],
+      "groupName": "TypeScript packages",
+      "schedule": ["before 9am on monday"]
+    },
+    {
+      "description": "Group ESLint related packages",
+      "matchPackageNames": [
+        "eslint",
+        "@eslint/js",
+        "@eslint/config-inspector",
+        "eslint-config-prettier",
+        "eslint-plugin-prettier",
+        "eslint-plugin-import-x",
+        "eslint-plugin-react",
+        "eslint-plugin-react-hooks",
+        "eslint-plugin-turbo",
+        "eslint-plugin-unused-imports"
+      ],
+      "groupName": "ESLint packages",
+      "schedule": ["before 9am on monday"]
+    },
+    {
+      "description": "Group Storybook packages",
+      "matchPackageNames": [
+        "storybook",
+        "@storybook/addon-essentials",
+        "@storybook/addon-interactions",
+        "@storybook/addon-links",
+        "@storybook/addon-onboarding",
+        "@storybook/blocks",
+        "@storybook/react",
+        "@storybook/react-vite",
+        "@storybook/test"
+      ],
+      "groupName": "Storybook packages",
+      "schedule": ["before 9am on monday"]
+    },
+    {
+      "description": "Group Docusaurus packages",
+      "matchPackageNames": [
+        "@docusaurus/core",
+        "@docusaurus/preset-classic",
+        "@docusaurus/module-type-aliases",
+        "@docusaurus/tsconfig",
+        "@docusaurus/types"
+      ],
+      "groupName": "Docusaurus packages",
+      "schedule": ["before 9am on monday"]
+    },
+    {
+      "description": "Security updates - auto merge patches",
+      "matchDatasources": ["npm"],
+      "matchUpdateTypes": ["patch"],
+      "matchPackagePatterns": ["^eslint", "^@typescript-eslint"],
+      "automerge": true
+    },
+    {
+      "description": "Major updates require manual review",
+      "matchUpdateTypes": ["major"],
+      "addLabels": ["major-update"],
+      "reviewers": [],
+      "assignees": []
+    },
+    {
+      "description": "Pin exact versions for critical packages",
+      "matchPackageNames": ["typescript", "next", "react", "react-dom"],
+      "rangeStrategy": "pin"
+    },
+    {
+      "description": "Development tools - allow auto-merge for minor updates", 
+      "matchPackageNames": [
+        "prettier",
+        "turbo",
+        "tsup",
+        "vite",
+        "@vitejs/plugin-react",
+        "lefthook",
+        "oxlint"
+      ],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "schedule": ["at any time"]
+  },
+  "osvVulnerabilityAlerts": true
+}
