@@ -3,5 +3,91 @@
     {
       "mode": "auto"
     }
-  ]
+  ],
+  "cSpell.language": "en,ja",
+  "cSpell.enabledFileTypes": [
+    "markdown",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "yaml",
+    "html",
+    "css",
+    "scss"
+  ],
+  "cSpell.words": [
+    "turbo",
+    "turborepo",
+    "pnpm",
+    "monorepo",
+    "tsuka",
+    "ryu",
+    "tsukaryu",
+    "vitest",
+    "oxlint",
+    "commitlint",
+    "husky",
+    "precommit",
+    "docusaurus",
+    "nextjs",
+    "esbenp"
+  ],
+  "cSpell.ignorePaths": [
+    "node_modules",
+    "pnpm-lock.yaml",
+    ".git",
+    ".turbo",
+    ".next",
+    "dist",
+    "build",
+    "coverage"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
