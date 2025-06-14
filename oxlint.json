@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/schemas/oxlint.json",
+  "rules": {
+    "typescript": "warn",
+    "correctness": "warn",
+    "suspicious": "warn",
+    "pedantic": "warn",
+    "style": "warn",
+    "complexity": "warn",
+    "perf": "warn",
+    "restriction": "warn"
+  },
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.next/**",
+    "**/.turbo/**",
+    "**/coverage/**"
+  ]
+}
