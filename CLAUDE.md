@@ -40,16 +40,19 @@ my-blog-with-claude-code/
 ├── package.json           # ルートパッケージ設定
 ├── turbo.json            # TurboRepoパイプライン設定
 ├── pnpm-workspace.yaml   # ワークスペースパッケージ定義
-├── TODO.md               # 8段階の包括的開発ロードマップ
-└── memo/
-    └── setup-decisions.md # セットアップ決定ドキュメント
+├── apps/
+│   ├── docs/             # Docusaurus ドキュメントサイト (現在)
+│   └── web/              # Next.js ウェブアプリ (現在)
+└── packages/             # 共有パッケージディレクトリ (空)
 ```
 
 ### 計画された構造 (フェーズ 1.2)
 ```
 my-blog-with-claude-code/
 ├── apps/
-│   └── blog/             # Next.js 15+ メインブログアプリケーション
+│   ├── blog/             # Next.js 15+ メインブログアプリケーション (予定)
+│   ├── docs/             # Docusaurus ドキュメントサイト (既存)
+│   └── web/              # Next.js ウェブアプリ (既存)
 ├── packages/
 │   ├── ui/               # 共有UIコンポーネント
 │   ├── utils/            # 共有ユーティリティ
@@ -67,7 +70,7 @@ my-blog-with-claude-code/
 - **globalDependencies**: 環境ファイル (`**/.env.*local`)
 
 ### 次の直近タスク (フェーズ 1.1)
-1. **1.1.3** TypeScript設定 (ストリクトモード)
+1. **1.1.3** ✅ TypeScript設定 (ストリクトモード) - 完了
 2. **1.1.4** Oxlint + ESLint + Prettier設定
 3. **1.1.5** lefthook設定
 4. **1.1.6** commitlint設定 (コミットメッセージ規約)
@@ -108,14 +111,14 @@ my-blog-with-claude-code/
 
 ## ドキュメント参照
 
-- **TODO.md**: 約120の具体タスクを含む8段階の完全な開発ロードマップ
-- **memo/setup-decisions.md**: 理由付きの詳細なセットアップ決定事項
-- **TECHNICAL_BLOG_REQUIREMENTS.md**: アーカイブ済み (TODO.mdに統合)
+- **apps/docs/docs/TODO.md**: 約120の具体タスクを含む8段階の完全な開発ロードマップ
+- **apps/docs/docs/setup-decisions.md**: 理由付きの詳細なセットアップ決定事項
+- **apps/docs/docs/TECHNICAL_BLOG_REQUIREMENTS.md**: 技術ブログ要件ドキュメント
 
 ## 開発ノート
 
 - このプロジェクトは包括的なリント、フォーマット、コミットメッセージ規約を伴う**厳格な開発プラクティス**を使用します
-- 主要な決定はすべてmemo/ディレクトリにドキュメント化されています
-- TODO.mdファイルが主要な開発ロードマップとして機能し、タスクの優先順位付けに参照すべきです
-- **コミット前**: 進捗を追跡するため、TODO.mdで完了したTODOを`[x]`でマークして常に更新してください
+- 主要な決定はすべてapps/docs/docs/ディレクトリにドキュメント化されています
+- apps/docs/docs/TODO.mdファイルが主要な開発ロードマップとして機能し、タスクの優先順位付けに参照すべきです
+- **コミット前**: 進捗を追跡するため、apps/docs/docs/TODO.mdで完了したTODOを`[x]`でマークして常に更新してください
 - パッケージ構造は明確な関心の分離を伴う現代的なモノレポベストプラクティスに従います
