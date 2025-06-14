@@ -18,8 +18,6 @@ function HomepageHeader() {
         </Heading>
         <p className='hero__subtitle'>{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          {/* TODO: React 19とDocusaurusの型定義の互換性問題を修正する */}
-          {/* @ts-expect-error: DocusaurusのLinkコンポーネントの型互換性問題 */}
           <Link className='button button--secondary button--lg' to='/docs/TODO'>
             プロジェクトTODO 📋
           </Link>
