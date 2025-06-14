@@ -40,7 +40,7 @@ my-blog-with-claude-code/
 - [ ] **1.2.6** 各パッケージ間の依存関係設定
 - [ ] **1.2.7** pnpm catalog機能の導入（依存関係のバージョン統一管理）
 - [ ] **1.2.8** Storybook v9へのマイグレーション（現在v8.6.14）
-- [ ] **1.2.9** ESLint設定の厳密化（@typescript-eslint/strictルール追加、import/export順序、未使用変数検出強化）
+- [x] **1.2.9** ESLint設定の厳密化（@typescript-eslint/strictルール追加、import/export順序、未使用変数検出強化）
 
 ## 🎨 Phase 2: デザインシステム・UI基盤
 
