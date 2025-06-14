@@ -9,6 +9,8 @@ tags: [pnpm, monorepo, dependency-management, renovate, automation]
 
 pnpm + TurboRepoのモノレポ環境で、依存関係を効率的に管理する5つの戦略を比較検討します。
 
+<!-- truncate -->
+
 ## 1. 🤖 Renovate Bot（推奨）
 
 **最も高機能で自動化に優れた選択肢**
