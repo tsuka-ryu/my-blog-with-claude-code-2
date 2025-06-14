@@ -1,5 +1,5 @@
 {
-  "name": "apps-docs",
+  "name": "@my-blog/docs",
   "version": "0.0.0",
   "private": true,
   "scripts": {

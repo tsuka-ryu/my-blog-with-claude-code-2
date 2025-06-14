@@ -23,20 +23,20 @@
 ```
 my-blog-with-claude-code/
 ├── apps/
-│   └── blog/              # Next.js 15+ メインアプリ
+│   ├── web/               # Next.js 15+ メインアプリ
+│   └── docs/              # Docusaurus ドキュメント
 ├── packages/
 │   ├── ui/                # 共有UIコンポーネント
 │   ├── utils/             # 共有ユーティリティ
-│   ├── config/            # 共有設定・型定義
-│   └── docs/              # Docusaurus ドキュメント
+│   └── config/            # 共有設定・型定義
 └── tools/                 # 開発ツール
 ```
 
-- [x] **1.2.1** apps/blog ディレクトリ作成（Next.js 15 App Router）
+- [x] **1.2.1** apps/web ディレクトリ作成（Next.js 15 App Router）
 - [x] **1.2.2** packages/ui パッケージ作成（Storybook v9導入済み）
 - [x] **1.2.3** packages/utils パッケージ作成
 - [x] **1.2.4** packages/config パッケージ作成
-- [ ] **1.2.5** packages/docs パッケージ作成（Docusaurus）
+- [x] **1.2.5** apps/docs ドキュメントサイト整理（Docusaurus、不要チュートリアル削除済み）
 - [ ] **1.2.6** 各パッケージ間の依存関係設定
 - [ ] **1.2.7** pnpm catalog機能の導入（依存関係のバージョン統一管理）
 - [ ] **1.2.8** Storybook v9へのマイグレーション（現在v8.6.14）

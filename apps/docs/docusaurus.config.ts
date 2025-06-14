@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'TechBlog Development Docs',
+  tagline: 'モノレポ技術ブログプロジェクト開発ドキュメント',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -15,15 +15,15 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://tsukaryu.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/my-blog-with-claude-code/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'tsukaryu', // Usually your GitHub org/user name.
+  projectName: 'my-blog-with-claude-code', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -32,8 +32,8 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'ja',
+    locales: ['ja'],
   },
 
   presets: [
@@ -45,7 +45,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/tsukaryu/my-blog-with-claude-code/tree/main/apps/docs/',
         },
         blog: {
           showReadingTime: true,
@@ -56,7 +56,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/tsukaryu/my-blog-with-claude-code/tree/main/apps/docs/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -73,9 +73,9 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
+      title: 'TechBlog Docs',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'TechBlog Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -83,11 +83,11 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'ドキュメント',
         },
-        { to: '/blog', label: 'Blog', position: 'left' },
+        { to: '/blog', label: 'ブログ', position: 'left' },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/tsukaryu/my-blog-with-claude-code',
           label: 'GitHub',
           position: 'right',
         },
@@ -97,46 +97,46 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'ドキュメント',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'プロジェクト概要',
+              to: '/docs/project-configuration-overview',
+            },
+            {
+              label: 'TODO',
+              to: '/docs/TODO',
             },
           ],
         },
         {
-          title: 'Community',
+          title: '開発',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'GitHub',
+              href: 'https://github.com/tsukaryu/my-blog-with-claude-code',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: 'パッケージ構成',
+              to: '/docs/packages-utils-setup',
             },
           ],
         },
         {
-          title: 'More',
+          title: 'その他',
           items: [
             {
-              label: 'Blog',
+              label: 'ブログ',
               to: '/blog',
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: '技術要件',
+              to: '/docs/TECHNICAL_BLOG_REQUIREMENTS',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} TechBlog Project. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
