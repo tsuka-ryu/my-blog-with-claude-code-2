@@ -9,6 +9,8 @@ tags: [react, docusaurus, typescript, bug]
 
 Renovateによる依存関係更新後、DocusaurusのLinkコンポーネントでTypeScriptの型エラーが発生しました。
 
+<!-- truncate -->
+
 ## エラー内容
 
 ```

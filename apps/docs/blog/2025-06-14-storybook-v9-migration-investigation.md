@@ -11,6 +11,8 @@ tags: [storybook, migration, frontend-tooling]
 
 Storybook v8.6.14からv9.0.9へのマイグレーションを試行した結果、現時点では安定版への移行が困難であることが判明。
 
+<!-- truncate -->
+
 ## マイグレーション試行内容
 
 ### 実行コマンド
