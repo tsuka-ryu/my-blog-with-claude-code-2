@@ -14,7 +14,7 @@
 - [x] **1.1.2** Turborepo モノレポ初期化
 - [x] **1.1.3** TypeScript 設定（strict mode）
 - [x] **1.1.4** Oxlint + ESLint + Prettier 設定
-- [ ] **1.1.5** lefthook 設定
+- [x] **1.1.5** lefthook 設定
 - [ ] **1.1.6** commitlint 設定（コミットメッセージ規約）
 - [ ] **1.1.7** .gitignore と .gitattributes 設定
 
