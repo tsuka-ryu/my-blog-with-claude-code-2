@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "config:inspect": "eslint-config-inspector --port 7774",
+    "config:build": "eslint-config-inspector build"
   },
   "dependencies": {
     "@repo/ui": "workspace:*",

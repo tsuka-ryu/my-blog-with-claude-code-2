@@ -10,7 +10,9 @@
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "config:inspect": "eslint-config-inspector --port 7773",
+    "config:build": "eslint-config-inspector build"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",

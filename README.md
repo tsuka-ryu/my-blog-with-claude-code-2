@@ -51,6 +51,29 @@ pnpm turbo build
 pnpm turbo lint
 ```
 
+### ESLint設定の確認
+
+ESLint設定を視覚的に確認するためのツールが利用できます：
+
+```bash
+# 全パッケージのConfig Inspectorを同時起動（各ポートでアクセス可能）
+pnpm config:inspect
+
+# 特定のパッケージのみ実行
+pnpm turbo config:inspect --filter=@repo/ui
+
+# 静的HTML版を生成
+pnpm config:build
+pnpm turbo config:build --filter=@repo/ui
+```
+
+各パッケージのConfig Inspectorは以下のポートで起動されます：
+- eslint-config: http://localhost:7771
+- utils: http://localhost:7772  
+- ui: http://localhost:7773
+- web: http://localhost:7774
+- docs: http://localhost:7775
+
 ## 開発ワークフロー
 
 ### ブランチ戦略

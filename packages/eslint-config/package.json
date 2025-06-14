@@ -5,16 +5,23 @@
   "private": true,
   "exports": {
     "./base": "./base.js",
+    "./typed": "./typed.js",
     "./next-js": "./next.js",
     "./react-internal": "./react-internal.js"
+  },
+  "scripts": {
+    "config:inspect": "eslint-config-inspector --port 7771",
+    "config:build": "eslint-config-inspector build"
   },
   "devDependencies": {
     "@eslint/js": "^9.28.0",
     "@next/eslint-plugin-next": "^15.3.0",
     "eslint": "^9.28.0",
     "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-import-x": "^4.6.1",
     "eslint-plugin-only-warn": "^1.1.0",
     "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-turbo": "^2.5.0",
     "globals": "^16.2.0",
