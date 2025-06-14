@@ -14,6 +14,7 @@ Storybook v8.6.14からv9.0.9へのマイグレーションを試行した結果
 ## マイグレーション試行内容
 
 ### 実行コマンド
+
 ```bash
 npx storybook@9 upgrade
 ```
@@ -21,15 +22,17 @@ npx storybook@9 upgrade
 ### 発生した問題
 
 1. **パッケージ依存関係の不整合**
+
    - `@storybook/test@^9.0.9`が存在しない
    - `@storybook/blocks@^9.0.9`が存在しない
    - 一部のアドオンパッケージがv9に対応していない
 
 2. **バージョン確認結果**
+
    ```bash
    npm view storybook version
    # => 9.0.9 (安定版)
-   
+
    npm view @storybook/addon-essentials version
    # => 8.6.14 (最新版)
    ```
@@ -37,17 +40,21 @@ npx storybook@9 upgrade
 ### Storybook v9の主要変更点
 
 #### パッケージ統合
+
 - 複数のパッケージがメインの`storybook`パッケージに統合
 - バンドルサイズが半分以下に削減
 
 #### テスト機能の変更
+
 - `@storybook/test`パッケージが廃止
 - テスト機能は`storybook/test`モジュールから直接インポート
+
 ```typescript
 import { expect, fn, userEvent } from 'storybook/test';
 ```
 
 #### 新機能
+
 - **Storybook Test**: Vitest + Playwright統合
 - **Story Generation**: UIからのストーリー作成・編集
 - **Enhanced Testing**: インタラクション、a11y、ビジュアルテスト
