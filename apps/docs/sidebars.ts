@@ -17,10 +17,6 @@ const sidebars: SidebarsConfig = {
   tutorialSidebar: [
     'project-configuration-overview',
     'TODO',
-    'TECHNICAL_BLOG_REQUIREMENTS',
-    'setup-decisions',
-    'packages-utils-setup',
-    'turbo-task-dependencies',
   ],
 };
 

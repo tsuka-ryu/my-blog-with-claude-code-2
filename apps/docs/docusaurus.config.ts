@@ -117,21 +117,8 @@ const config: Config = {
               href: 'https://github.com/tsukaryu/my-blog-with-claude-code',
             },
             {
-              label: 'パッケージ構成',
-              to: '/docs/packages-utils-setup',
-            },
-          ],
-        },
-        {
-          title: 'その他',
-          items: [
-            {
               label: 'ブログ',
               to: '/blog',
-            },
-            {
-              label: '技術要件',
-              to: '/docs/TECHNICAL_BLOG_REQUIREMENTS',
             },
           ],
         },
