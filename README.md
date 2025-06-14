@@ -81,7 +81,6 @@ Turborepoの詳細については以下を参照してください：
 
 - [タスク](https://turborepo.com/docs/crafting-your-repository/running-tasks)
 - [キャッシング](https://turborepo.com/docs/crafting-your-repository/caching)
-- [リモートキャッシング](https://turborepo.com/docs/core-concepts/remote-caching)
 - [フィルタリング](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
 - [設定オプション](https://turborepo.com/docs/reference/configuration)
 - [CLI使用方法](https://turborepo.com/docs/reference/command-line-reference)
