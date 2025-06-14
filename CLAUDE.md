@@ -93,3 +93,8 @@ my-blog-with-claude-code/
 - **進捗管理**: apps/docs/docs/TODO.mdが主要ロードマップ - 必ず参照・更新すること
 - **コミット時**: 変更内容に応じてTODOファイルを更新し、Claude Codeにも自動的にTODO更新を指示すること
 - **ドキュメント**: 主要決定はapps/docs/docs/ディレクトリに記録
+
+## ブログ作成時の注意事項
+
+- **作者名**: ブログ記事のauthorsフィールドでは必ず`tsuka-ryu`を使用すること（`tsukaryu`ではない）
+- **参照**: apps/docs/blog/authors.ymlで定義されている正確な作者IDを確認すること
