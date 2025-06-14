@@ -110,7 +110,7 @@
       "rangeStrategy": "pin"
     },
     {
-      "description": "Development tools - allow auto-merge for minor updates", 
+      "description": "Development tools - allow auto-merge for minor updates",
       "matchPackageNames": [
         "prettier",
         "turbo",

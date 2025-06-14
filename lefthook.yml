@@ -6,13 +6,13 @@ pre-commit:
   commands:
     lint:
       run: pnpm turbo lint
-      fail_text: "Linting failed. Please fix errors before committing."
+      fail_text: 'Linting failed. Please fix errors before committing.'
       skip:
         - merge
         - rebase
     check-types:
       run: pnpm turbo check-types
-      fail_text: "Type checking failed. Please fix type errors before committing."
+      fail_text: 'Type checking failed. Please fix type errors before committing.'
       skip:
         - merge
         - rebase
@@ -21,7 +21,7 @@ commit-msg:
   commands:
     commitlint:
       run: npx commitlint --edit $1
-      fail_text: "Commit message format is invalid. Please follow conventional commit format."
+      fail_text: 'Commit message format is invalid. Please follow conventional commit format.'
 
 # Colors for better visibility
 colors: true
