@@ -17,6 +17,7 @@
 ### 共通コマンド
 
 現在利用可能:
+
 ```bash
 # pnpmバージョン確認
 pnpm --version
@@ -35,6 +36,7 @@ pnpm install
 ## アーキテクチャ & 構造
 
 ### 現在の構造
+
 ```
 my-blog-with-claude-code/
 ├── package.json           # ルートパッケージ設定
@@ -47,6 +49,7 @@ my-blog-with-claude-code/
 ```
 
 ### 計画された構造 (フェーズ 1.2)
+
 ```
 my-blog-with-claude-code/
 ├── apps/
@@ -64,18 +67,21 @@ my-blog-with-claude-code/
 ## 開発ワークフロー
 
 ### パイプライン設定 (turbo.json)
+
 - **build**: Next.js出力キャッシュを伴う依存ビルド (`.next/**` キャッシュを除く)
 - **lint**: パッケージ間でのカスケードlint実行
 - **dev**: キャッシュなしの永続開発サーバー
 - **globalDependencies**: 環境ファイル (`**/.env.*local`)
 
 ### 次の直近タスク (フェーズ 1.1)
+
 1. **1.1.3** ✅ TypeScript設定 (ストリクトモード) - 完了
 2. **1.1.4** Oxlint + ESLint + Prettier設定
 3. **1.1.5** lefthook設定
 4. **1.1.6** commitlint設定 (コミットメッセージ規約)
 
 ### フェーズ1.2の主要タスク
+
 - **1.2.1** apps/blog ディレクトリ作成 (Next.js 15 App Router)
 - **1.2.2-1.2.5** packages (ui/utils/config/docs) パッケージ作成
 - **1.2.6** 各パッケージ間の依存関係設定
@@ -83,12 +89,14 @@ my-blog-with-claude-code/
 ## 主要機能 (予定)
 
 ### デザインシステム
+
 - ダークモード対応のターミナル/コンソール風テーマ
 - カスタムカラーパレットを伴うTailwind CSS
 - 等幅フォント
 - カスタムブレークポイントでのレスポンシブデザイン
 
 ### コンテンツ管理
+
 - シンタックスハイライト付きMDXベースコンテンツ
 - 自動目次生成
 - タグ・カテゴリシステム
@@ -96,6 +104,7 @@ my-blog-with-claude-code/
 - 多言語対応 (日本語/英語)
 
 ### 技術的機能
+
 - 自動OGP生成でのSEO最適化
 - 包括的なアクセシビリティ対応 (WCAG AA準拠、スクリーンリーダー対応、キーボードナビゲーション)
 - コメントシステム連携 (giscus)
@@ -103,6 +112,7 @@ my-blog-with-claude-code/
 - 多言語対応 (next-intl)
 
 ### 開発・品質保証機能
+
 - **MCPサーバー**: デザインシステム管理・自動生成
 - **包括的テスト**: Vitest + Testing Library, Playwright E2E, Visual Regression
 - **開発ツール**: Storybook による UI コンポーネントドキュメント
