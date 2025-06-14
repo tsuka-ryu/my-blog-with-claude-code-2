@@ -38,7 +38,8 @@
     "Monospace",
     "Shiki",
     "WCAG",
-    "giscus"
+    "giscus",
+    "autodocs"
   ],
   "cSpell.ignorePaths": [
     "node_modules",

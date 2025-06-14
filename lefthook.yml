@@ -10,6 +10,12 @@ pre-commit:
       skip:
         - merge
         - rebase
+    check-types:
+      run: pnpm turbo check-types
+      fail_text: "Type checking failed. Please fix type errors before committing."
+      skip:
+        - merge
+        - rebase
 
 commit-msg:
   commands:
