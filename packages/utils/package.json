@@ -16,12 +16,15 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
-    "typecheck": "tsc --noEmit"
+    "format": "prettier --write .",
+    "check-types": "tsc --noEmit"
   },
   "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
     "tsup": "^8.0.0",
     "typescript": "^5.0.0",
-    "eslint": "^9.0.0"
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0"
   },
   "dependencies": {
     "type-fest": "^4.0.0"

@@ -5,7 +5,7 @@
  */
 
 // 型定義のエクスポート
-export type * from './types';
+export type * from './types.js';
 
 // ユーティリティ関数のエクスポート（将来実装予定）
 // export * from './string';
