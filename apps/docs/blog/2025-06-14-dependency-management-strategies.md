@@ -1,7 +1,7 @@
 ---
 slug: dependency-management-strategies
 title: モノレポでの依存関係管理戦略：5つのアプローチ比較
-authors: [tsukaryu]
+authors: [tsuka-ryu]
 tags: [pnpm, monorepo, dependency-management, renovate, automation]
 ---
 
