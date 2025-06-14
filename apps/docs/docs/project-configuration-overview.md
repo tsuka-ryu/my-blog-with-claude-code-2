@@ -61,6 +61,7 @@
 ```
 
 **解決策**: `--parallel` オプションで並行実行
+
 ```bash
 turbo run dev storybook --parallel
 ```
@@ -175,7 +176,7 @@ pnpm turbo dev --parallel
 ### Git設定
 
 - **改行コード**: LF統一 (.gitattributes)
-- **除外ファイル**: node_modules, .next, .turbo, .env* (.gitignore)
+- **除外ファイル**: node_modules, .next, .turbo, .env\* (.gitignore)
 
 ### 型安全性
 

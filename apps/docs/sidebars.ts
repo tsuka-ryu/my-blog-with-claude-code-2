@@ -14,10 +14,7 @@ import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
  */
 const sidebars: SidebarsConfig = {
   // TechBlog プロジェクトドキュメント構成
-  tutorialSidebar: [
-    'project-configuration-overview',
-    'TODO',
-  ],
+  tutorialSidebar: ['project-configuration-overview', 'TODO'],
 };
 
 export default sidebars;

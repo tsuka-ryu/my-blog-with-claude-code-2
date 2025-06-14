@@ -40,6 +40,7 @@ packages/utils/
 **問題**: 初期設定で存在しないルートtsconfig.jsonを参照していた
 
 **修正内容**:
+
 ```json
 {
   "extends": "@repo/typescript-config/base.json",
@@ -47,7 +48,7 @@ packages/utils/
     "outDir": "dist",
     "rootDir": "src",
     "composite": true,
-    "incremental": true  // composite: true には必須
+    "incremental": true // composite: true には必須
   }
 }
 ```
@@ -57,17 +58,19 @@ packages/utils/
 **問題**: NodeNext module resolution で相対importに拡張子が必要
 
 **修正内容**:
+
 ```typescript
 // 修正前
 export type * from './types';
 
-// 修正後  
+// 修正後
 export type * from './types.js';
 ```
 
 #### 3. スクリプトコマンドの統一
 
 turbo.json のタスク名と統一:
+
 - `typecheck` → `check-types`
 - `format` スクリプトを追加
 - prettier を devDependencies に追加
@@ -84,7 +87,7 @@ turbo.json のタスク名と統一:
 ## 今後の拡張予定
 
 - 文字列処理ユーティリティ
-- 日付処理ユーティリティ  
+- 日付処理ユーティリティ
 - URL処理ユーティリティ
 - Markdown処理ユーティリティ
 
