@@ -1,4 +1,4 @@
-# Claude Codeで技術ブログをVibe coding
+# Claude Codeで技術ブログをVibe codingしてみる
 
 TurboRepoとpnpmを使用したモノレポ構成の技術ブログプラットフォームです。
 日本語圏の開発者をターゲットとし、ターミナル/コンソール風のデザインテーマを特徴としています。
@@ -75,32 +75,12 @@ pnpm turbo lint
 
 詳細な開発計画については `apps/docs/docs/TODO.md` を参照してください。
 
-## リモートキャッシング
-
-> [!TIP]
-> Vercel Remote Cacheは全プランで無料です。[vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache)で今すぐ始められます。
-
-Turborepoは[リモートキャッシング](https://turborepo.com/docs/core-concepts/remote-caching)を使用してマシン間でキャッシュアーティファクトを共有し、チームやCI/CDパイプラインでビルドキャッシュを共有することができます。
-
-デフォルトでは、Turborepoはローカルにキャッシュします。リモートキャッシングを有効にするには、Vercelアカウントが必要です。アカウントをお持ちでない場合は[作成](https://vercel.com/signup?utm_source=turborepo-examples)してから、以下のコマンドを実行してください：
-
-```bash
-npx turbo login
-```
-
-次に、以下のコマンドでTurborepoをリモートキャッシュにリンクします：
-
-```bash
-npx turbo link
-```
-
 ## 参考リンク
 
 Turborepoの詳細については以下を参照してください：
 
 - [タスク](https://turborepo.com/docs/crafting-your-repository/running-tasks)
 - [キャッシング](https://turborepo.com/docs/crafting-your-repository/caching)
-- [リモートキャッシング](https://turborepo.com/docs/core-concepts/remote-caching)
 - [フィルタリング](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
 - [設定オプション](https://turborepo.com/docs/reference/configuration)
 - [CLI使用方法](https://turborepo.com/docs/reference/command-line-reference)
