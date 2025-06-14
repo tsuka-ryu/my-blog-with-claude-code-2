@@ -27,7 +27,7 @@ const post: BlogPost = {
   publishedAt: new Date(),
   tags: ['typescript', 'next.js'],
   published: true,
-  content: '記事本文...'
+  content: '記事本文...',
 };
 ```
 
