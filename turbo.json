@@ -29,6 +29,14 @@
     "build-storybook": {
       "dependsOn": ["^build"],
       "outputs": ["storybook-static/**"]
+    },
+    "config:inspect": {
+      "cache": false,
+      "persistent": true
+    },
+    "config:build": {
+      "inputs": ["eslint.config.mjs", "eslint.config.js", "eslint.config.ts"],
+      "outputs": [".eslint-config-inspector/**"]
     }
   }
 }

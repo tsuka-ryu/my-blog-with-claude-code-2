@@ -17,7 +17,9 @@
     "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "config:inspect": "eslint-config-inspector --port 7772",
+    "config:build": "eslint-config-inspector build"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
