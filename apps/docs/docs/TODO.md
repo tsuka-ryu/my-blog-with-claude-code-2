@@ -38,6 +38,9 @@ my-blog-with-claude-code/
 - [ ] **1.2.4** packages/config パッケージ作成
 - [ ] **1.2.5** packages/docs パッケージ作成（Docusaurus）
 - [ ] **1.2.6** 各パッケージ間の依存関係設定
+- [ ] **1.2.7** pnpm catalog機能の導入（依存関係のバージョン統一管理）
+- [ ] **1.2.8** Storybook v9へのマイグレーション（現在v8.6.14）
+- [ ] **1.2.9** ESLint設定の厳密化（@typescript-eslint/strictルール追加、import/export順序、未使用変数検出強化）
 
 ## 🎨 Phase 2: デザインシステム・UI基盤
 
@@ -283,5 +286,7 @@ my-blog-with-claude-code/
 ## 📋 更新履歴
 
 - **2025/6/14**: CLAUDE.mdにコミット時のTODO更新指示を追加
+- **2025/6/14**: pnpm catalog機能とStorybook v9マイグレーションのTODOを追加
+- **2025/6/14**: ESLint設定厳密化のTODOを追加
 
 _最終更新: 2025/6/14_
