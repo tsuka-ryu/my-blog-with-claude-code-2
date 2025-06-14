@@ -1,84 +1,106 @@
-# Turborepo starter
+# 技術ブログプロジェクト
 
-This Turborepo starter is maintained by the Turborepo core team.
+TurboRepoとpnpmを使用したモノレポ構成の技術ブログプラットフォームです。
+日本語圏の開発者をターゲットとし、ターミナル/コンソール風のデザインテーマを特徴としています。
 
-## Using this example
+## プロジェクト構成
 
-Run the following command:
+このモノレポには以下のアプリケーションとパッケージが含まれています：
 
-```sh
-npx create-turbo@latest
+### アプリケーション
+
+- `docs`: [Docusaurus](https://docusaurus.io/)を使用したドキュメントサイト
+- `web`: [Next.js 15+](https://nextjs.org/) App Routerを使用したメインブログサイト
+- `packages/`: 共有パッケージ（将来実装予定）
+
+全てのパッケージ/アプリは100% [TypeScript](https://www.typescriptlang.org/)で開発されています。
+
+### 開発ツール
+
+このプロジェクトには以下の開発ツールが設定済みです：
+
+- [TypeScript](https://www.typescriptlang.org/) - 静的型チェック
+- [ESLint](https://eslint.org/) - コードリント
+- [Prettier](https://prettier.io) - コードフォーマット
+- [commitlint](https://commitlint.js.org/) - コミットメッセージ規約
+- [lefthook](https://github.com/evilmartians/lefthook) - Git フック管理
+
+## 開発環境のセットアップ
+
+### 依存関係のインストール
+
+```bash
+pnpm install
 ```
 
-## What's inside?
+### 開発サーバーの起動
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```bash
+pnpm turbo dev
 ```
 
-### Develop
+### ビルド
 
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
+```bash
+pnpm turbo build
 ```
 
-### Remote Caching
+### リント
+
+```bash
+pnpm turbo lint
+```
+
+## 開発ワークフロー
+
+### ブランチ戦略
+
+- フィーチャーブランチ: `feature/task-description`
+- メインブランチ: `main`
+
+### コミット規約
+
+- **言語**: 日本語で記述
+- **形式**: conventional commitsに準拠
+- **例**: `feat: 新機能の追加`, `fix: バグ修正`
+
+### 進捗管理
+
+- `apps/docs/docs/TODO.md` - 開発ロードマップ（約120タスク）
+- 完了したタスクは `[x]` でマーク
+
+## 現在のステータス
+
+**フェーズ1: プロジェクト基盤構築** - 進行中
+
+詳細な開発計画については `apps/docs/docs/TODO.md` を参照してください。
+
+## リモートキャッシング
 
 > [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+> Vercel Remote Cacheは全プランで無料です。[vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache)で今すぐ始められます。
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+Turborepoは[リモートキャッシング](https://turborepo.com/docs/core-concepts/remote-caching)を使用してマシン間でキャッシュアーティファクトを共有し、チームやCI/CDパイプラインでビルドキャッシュを共有することができます。
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+デフォルトでは、Turborepoはローカルにキャッシュします。リモートキャッシングを有効にするには、Vercelアカウントが必要です。アカウントをお持ちでない場合は[作成](https://vercel.com/signup?utm_source=turborepo-examples)してから、以下のコマンドを実行してください：
 
-```
-cd my-turborepo
+```bash
 npx turbo login
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+次に、以下のコマンドでTurborepoをリモートキャッシュにリンクします：
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
+```bash
 npx turbo link
 ```
 
-## Useful Links
+## 参考リンク
 
-Learn more about the power of Turborepo:
+Turborepoの詳細については以下を参照してください：
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+- [タスク](https://turborepo.com/docs/crafting-your-repository/running-tasks)
+- [キャッシング](https://turborepo.com/docs/crafting-your-repository/caching)
+- [リモートキャッシング](https://turborepo.com/docs/core-concepts/remote-caching)
+- [フィルタリング](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
+- [設定オプション](https://turborepo.com/docs/reference/configuration)
+- [CLI使用方法](https://turborepo.com/docs/reference/command-line-reference)
