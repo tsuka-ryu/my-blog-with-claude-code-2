@@ -32,7 +32,12 @@
     "precommit",
     "docusaurus",
     "nextjs",
-    "esbenp"
+    "esbenp",
+    "lefthook",
+    "Monospace",
+    "Shiki",
+    "WCAG",
+    "giscus"
   ],
   "cSpell.ignorePaths": [
     "node_modules",
