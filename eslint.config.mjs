@@ -4,9 +4,11 @@ import typescriptParser from '@typescript-eslint/parser';
 import prettier from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
 import globals from 'globals';
+import oxlint from 'eslint-plugin-oxlint';
 
 export default [
   js.configs.recommended,
+  ...oxlint.buildFromOxlintConfigFile('./oxlint.json'),
   {
     files: ['**/*.{js,mjs,cjs,ts,tsx}'],
     plugins: {

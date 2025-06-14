@@ -13,7 +13,7 @@
     },
     "format": {
       "dependsOn": ["^format"],
-      "inputs": ["$TURBO_DEFAULT$", ".prettierrc"]
+      "inputs": ["$TURBO_DEFAULT$", ".prettierrc", ".prettierignore"]
     },
     "check-types": {
       "dependsOn": ["^check-types"]

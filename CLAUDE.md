@@ -30,11 +30,13 @@ pnpm turbo dev      # 開発サーバーを起動
 ## コアファイルとユーティリティ
 
 ### 重要なファイル
+
 - `turbo.json` - TurboRepoパイプライン設定
 - `pnpm-workspace.yaml` - ワークスペース定義
 - `apps/docs/docs/TODO.md` - 開発ロードマップ（約120タスク）
 
 ### 現在の構造
+
 ```
 my-blog-with-claude-code/
 ├── package.json           # ルートパッケージ設定
@@ -55,6 +57,7 @@ my-blog-with-claude-code/
 ## テスト手順
 
 現在設定中：
+
 - **単体テスト**: Vitest + Testing Library（予定）
 - **E2Eテスト**: Playwright（予定）
 - **Visual Regression**: 設定予定
@@ -62,14 +65,17 @@ my-blog-with-claude-code/
 ## リポジトリエチケット
 
 ### ブランチ命名
+
 - フィーチャーブランチ: `feature/task-description`
 
 ### コミット規約
+
 - **言語**: 日本語で記述すること
 - **形式**: conventional commitsに準拠（予定）
 - **コミット前**: TODO.mdで完了タスクを`[x]`でマーク
 
 ### PR作成
+
 - **説明**: ブランチ内での変更を日本語で簡潔に記述
 - **レビュー**: 設定予定
 
