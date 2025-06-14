@@ -28,16 +28,17 @@ my-blog-with-claude-code/
 ├── packages/
 │   ├── ui/                # 共有UIコンポーネント
 │   ├── utils/             # 共有ユーティリティ
-│   └── config/            # 共有設定・型定義
-└── tools/                 # 開発ツール
+│   ├── eslint-config/     # ESLint共有設定
+│   └── typescript-config/ # TypeScript共有設定
+└── tools/                 # 開発ツール（予定）
 ```
 
 - [x] **1.2.1** apps/web ディレクトリ作成（Next.js 15 App Router）
 - [x] **1.2.2** packages/ui パッケージ作成（Storybook v9導入済み）
 - [x] **1.2.3** packages/utils パッケージ作成
-- [x] **1.2.4** packages/config パッケージ作成
+- [x] **1.2.4** packages/eslint-config・typescript-config パッケージ作成
 - [x] **1.2.5** apps/docs ドキュメントサイト整理（Docusaurus、不要チュートリアル削除済み）
-- [ ] **1.2.6** 各パッケージ間の依存関係設定
+- [x] **1.2.6** 各パッケージ間の依存関係設定
 - [ ] **1.2.7** pnpm catalog機能の導入（依存関係のバージョン統一管理）
 - [ ] **1.2.8** Storybook v9へのマイグレーション（現在v8.6.14）
 - [x] **1.2.9** ESLint設定の厳密化（@typescript-eslint/strictルール追加、import/export順序、未使用変数検出強化）
