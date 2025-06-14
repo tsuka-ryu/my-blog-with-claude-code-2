@@ -5,18 +5,18 @@
     }
   ],
   "cSpell.language": "en,ja",
-  "cSpell.enabledFileTypes": [
-    "markdown",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "json",
-    "yaml",
-    "html",
-    "css",
-    "scss"
-  ],
+  "cSpell.enabledFileTypes": {
+    "markdown": true,
+    "javascript": true,
+    "javascriptreact": true,
+    "typescript": true,
+    "typescriptreact": true,
+    "json": true,
+    "yaml": true,
+    "html": true,
+    "css": true,
+    "scss": true
+  },
   "cSpell.words": [
     "turbo",
     "turborepo",
