@@ -13,7 +13,7 @@
 - [x] **1.1.1** pnpm インストール・設定
 - [x] **1.1.2** Turborepo モノレポ初期化
 - [x] **1.1.3** TypeScript 設定（strict mode）
-- [ ] **1.1.4** Oxlint + ESLint + Prettier 設定
+- [x] **1.1.4** Oxlint + ESLint + Prettier 設定
 - [ ] **1.1.5** lefthook 設定
 - [ ] **1.1.6** commitlint 設定（コミットメッセージ規約）
 - [ ] **1.1.7** .gitignore と .gitattributes 設定
@@ -261,5 +261,11 @@ my-blog-with-claude-code/
 - **Monitoring**: Sentry + Vercel Analytics
 
 ---
+
+---
+
+## 📋 更新履歴
+
+- **2025/6/14**: CLAUDE.mdにコミット時のTODO更新指示を追加
 
 _最終更新: 2025/6/14_
