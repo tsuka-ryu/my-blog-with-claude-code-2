@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import type { ComponentProps } from 'react';
 
 interface ColorSwatchProps {
@@ -6,8 +8,16 @@ interface ColorSwatchProps {
 }
 
 function ColorSwatch({ name, value }: ColorSwatchProps) {
-  const handleClick = () => {
-    navigator.clipboard.writeText(value);
+  const [copied, setCopied] = useState(false);
+
+  const handleClick = async () => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Copy failed:', err);
+    }
   };
 
   return (
@@ -24,10 +34,12 @@ function ColorSwatch({ name, value }: ColorSwatchProps) {
       </div>
       <button
         onClick={handleClick}
-        className='mt-1 px-2 py-1 text-xs bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors'
-        title={`${value}をクリップボードにコピー`}
+        className={`mt-1 px-2 py-1 text-xs text-white rounded transition-all duration-200 ${
+          copied ? 'bg-green-500 hover:bg-green-600' : 'bg-blue-500 hover:bg-blue-600'
+        }`}
+        title={copied ? 'コピーしました！' : `${value}をクリップボードにコピー`}
       >
-        Copy
+        {copied ? '✓ Copied!' : 'Copy'}
       </button>
     </div>
   );
@@ -42,13 +54,7 @@ function ColorPaletteSection({ title, colors }: ColorPaletteSectionProps) {
   return (
     <div className='mb-8'>
       <h3 className='text-lg font-semibold mb-4 font-mono text-gray-700'>{title}</h3>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
-          gap: '24px',
-        }}
-      >
+      <div className='grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-6'>
         {colors.map((color, index) => (
           <ColorSwatch key={index} {...color} />
         ))}
