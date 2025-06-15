@@ -86,5 +86,5 @@ export function createTailwindConfig(contentPaths: string[]): Config {
   return {
     content: contentPaths,
     ...baseConfig,
-  };
+  } as Config;
 }
