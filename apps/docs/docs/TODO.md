@@ -47,7 +47,7 @@ my-blog-with-claude-code/
 
 ### 2.1 デザインシステム構築
 
-- [ ] **2.1.1** Tailwind CSS セットアップ
+- [x] **2.1.1** Tailwind CSS セットアップ
 - [ ] **2.1.2** ターミナル風カラーパレット定義
 - [ ] **2.1.3** 等幅フォント設定（Monaspace優先）
 - [ ] **2.1.4** ダークモード対応（system/dark/light）

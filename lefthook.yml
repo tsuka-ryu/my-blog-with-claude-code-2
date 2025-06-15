@@ -2,8 +2,15 @@
 # Git hooks management for the my-blog-with-claude-code project
 
 pre-commit:
-  parallel: true
+  parallel: false
   commands:
+    format:
+      run: pnpm run format
+      stage_fixed: true
+      fail_text: 'Formatting files...'
+      skip:
+        - merge
+        - rebase
     lint:
       run: pnpm turbo lint
       fail_text: 'Linting failed. Please fix errors before committing.'
