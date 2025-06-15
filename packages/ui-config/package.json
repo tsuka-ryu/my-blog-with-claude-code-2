@@ -1,0 +1,24 @@
+{
+  "name": "@repo/ui-config",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./base": "./src/base.ts",
+    "./tailwind": "./src/tailwind.config.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "tailwindcss": "catalog:"
+  }
+}
