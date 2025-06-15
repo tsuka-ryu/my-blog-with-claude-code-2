@@ -1,0 +1,56 @@
+:root {
+  /* ターミナル風カラーパレット */
+  /* 背景色 */
+  --terminal-bg-primary: #0c0c0c;
+  --terminal-bg-secondary: #1a1a1a;
+  --terminal-bg-elevated: #252525;
+  --terminal-bg-hover: #2a2a2a;
+  
+  /* テキスト色 */
+  --terminal-text-primary: #f4f4f4;
+  --terminal-text-secondary: #a8a8a8;
+  --terminal-text-muted: #6b6b6b;
+  --terminal-text-bright: #ffffff;
+  
+  /* アクセントカラー（ANSIカラーに基づく） */
+  --terminal-accent-red: #ff5f56;
+  --terminal-accent-green: #5af78e;
+  --terminal-accent-yellow: #f3f99d;
+  --terminal-accent-blue: #57c7ff;
+  --terminal-accent-magenta: #ff6ac1;
+  --terminal-accent-cyan: #9aedfe;
+  --terminal-accent-orange: #ffb86c;
+  
+  /* アクセントカラー（暗めのバリアント） */
+  --terminal-accent-red-dark: #cc4b47;
+  --terminal-accent-green-dark: #4bc775;
+  --terminal-accent-yellow-dark: #d6d57e;
+  --terminal-accent-blue-dark: #4ba6cc;
+  --terminal-accent-magenta-dark: #cc539a;
+  --terminal-accent-cyan-dark: #7bc5d3;
+  --terminal-accent-orange-dark: #cc9256;
+  
+  /* シンタックスハイライト用 */
+  --terminal-syntax-keyword: #ff6ac1;
+  --terminal-syntax-string: #f3f99d;
+  --terminal-syntax-comment: #6b6b6b;
+  --terminal-syntax-function: #57c7ff;
+  --terminal-syntax-variable: #9aedfe;
+  --terminal-syntax-constant: #ff6ac1;
+  --terminal-syntax-operator: #ff5f56;
+  --terminal-syntax-punctuation: #a8a8a8;
+  
+  /* UI要素用 */
+  --terminal-ui-border: #333333;
+  --terminal-ui-border-hover: #444444;
+  --terminal-ui-border-focus: #57c7ff;
+  --terminal-ui-divider: #2a2a2a;
+  --terminal-ui-selection: rgba(87, 199, 255, 0.2);
+  --terminal-ui-cursor: #f4f4f4;
+  --terminal-ui-cursor-bg: rgba(244, 244, 244, 0.2);
+  
+  /* プロンプト記号用 */
+  --terminal-prompt-user: #5af78e;
+  --terminal-prompt-root: #ff5f56;
+  --terminal-prompt-path: #57c7ff;
+}

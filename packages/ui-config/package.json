@@ -1,0 +1,23 @@
+{
+  "name": "@repo/ui-config",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./base": "./src/base.ts",
+    "./tailwind": "./src/tailwind.config.ts",
+    "./colors.css": "./src/colors.css"
+  },
+  "scripts": {
+    "lint": "echo 'No linting configured for ui-config'",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "catalog:",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "tailwindcss": "catalog:"
+  }
+}
