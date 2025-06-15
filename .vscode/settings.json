@@ -39,7 +39,8 @@
     "Shiki",
     "WCAG",
     "giscus",
-    "autodocs"
+    "autodocs",
+    "markuplint"
   ],
   "cSpell.ignorePaths": [
     "node_modules",
