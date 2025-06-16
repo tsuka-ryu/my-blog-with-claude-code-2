@@ -112,3 +112,28 @@ frontend-tooling:
   label: フロントエンドツール
   permalink: /frontend-tooling
   description: フロントエンド開発ツールに関する記事
+
+fonts:
+  label: フォント
+  permalink: /fonts
+  description: フォント設定やタイポグラフィに関する記事
+
+design-system:
+  label: デザインシステム
+  permalink: /design-system
+  description: デザインシステム構築に関する記事
+
+jetbrains-mono:
+  label: JetBrains Mono
+  permalink: /jetbrains-mono
+  description: JetBrains Monoフォントに関する記事
+
+noto-sans-jp:
+  label: Noto Sans JP
+  permalink: /noto-sans-jp
+  description: Noto Sans JPフォントに関する記事
+
+next.js:
+  label: Next.js
+  permalink: /nextjs
+  description: Next.jsフレームワークに関する記事
