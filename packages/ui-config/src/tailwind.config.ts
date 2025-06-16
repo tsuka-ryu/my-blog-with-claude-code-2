@@ -3,6 +3,10 @@ import type { Config } from 'tailwindcss';
 export const baseConfig: Partial<Config> = {
   theme: {
     extend: {
+      fontFamily: {
+        mono: ['var(--font-jetbrains-mono)', 'var(--font-noto-sans-jp)', 'monospace'],
+        sans: ['var(--font-noto-sans-jp)', 'sans-serif'],
+      },
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',

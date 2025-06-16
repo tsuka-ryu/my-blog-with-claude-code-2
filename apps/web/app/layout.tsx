@@ -1,15 +1,19 @@
-import localFont from 'next/font/local';
+import { JetBrains_Mono, Noto_Sans_JP } from 'next/font/google';
 
 import type { Metadata } from 'next';
 import './globals.css';
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
 });
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
+
+const notoSansJP = Noto_Sans_JP({
+  subsets: ['latin'],
+  variable: '--font-noto-sans-jp',
+  display: 'swap',
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -23,8 +27,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>
+    <html lang='ja'>
+      <body className={`${jetbrainsMono.variable} ${notoSansJP.variable} font-mono`}>
+        {children}
+      </body>
     </html>
   );
 }
