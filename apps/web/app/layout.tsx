@@ -28,7 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ja'>
-      <body className={`${jetbrainsMono.variable} ${notoSansJP.variable} font-mono`}>
+      <body
+        className={`${jetbrainsMono.variable} ${notoSansJP.variable}`}
+        style={{ fontFamily: 'var(--font-jetbrains-mono), var(--font-noto-sans-jp), monospace' }}
+      >
         {children}
       </body>
     </html>
