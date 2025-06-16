@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@repo/ui';
 import { JetBrains_Mono, Noto_Sans_JP } from 'next/font/google';
 
 import type { Metadata } from 'next';
@@ -29,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang='ja'>
       <body className={`${jetbrainsMono.variable} ${notoSansJP.variable} font-mono`}>
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

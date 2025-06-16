@@ -22,8 +22,8 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--terminal-text-primary);
+  background: var(--terminal-bg-primary);
 }
 
 * {
