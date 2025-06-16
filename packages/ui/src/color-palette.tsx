@@ -38,10 +38,10 @@ function ColorSwatch({ name, value }: ColorSwatchProps) {
       </div>
       <button
         onClick={handleClick}
-        className={`mt-1 px-2 py-1 text-xs text-white rounded transition-all duration-200 ${
+        className={`mt-1 px-2 py-1 text-xs font-medium rounded transition-all duration-200 ${
           copied
-            ? 'bg-green-500 hover:bg-green-600'
-            : 'bg-blue-500 hover:bg-blue-600 dark:bg-terminal-accent-blue dark:hover:bg-blue-500'
+            ? 'bg-green-500 hover:bg-green-600 text-white'
+            : 'bg-blue-500 hover:bg-blue-600 text-white dark:bg-blue-600 dark:hover:bg-blue-700'
         }`}
         title={copied ? 'コピーしました！' : `${value}をクリップボードにコピー`}
       >

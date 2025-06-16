@@ -1,5 +1,5 @@
+@import '@repo/ui-config/colors.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import '@repo/ui-config/src/colors.css';
