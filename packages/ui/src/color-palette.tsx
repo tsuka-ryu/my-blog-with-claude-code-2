@@ -23,21 +23,25 @@ function ColorSwatch({ name, value }: ColorSwatchProps) {
   };
 
   return (
-    <div className='group relative flex flex-col items-center p-4 m-2 rounded-lg transition-colors'>
+    <div className='group relative flex flex-col items-center p-4 m-2 rounded-lg transition-colors bg-white dark:bg-terminal-bg-secondary border border-gray-200 dark:border-gray-700 hover:shadow-md dark:hover:shadow-lg'>
       <div
-        className='w-16 h-16 rounded-lg border-2 border-gray-200 shadow-sm transition-all'
+        className='w-16 h-16 rounded-lg border-2 border-gray-200 dark:border-gray-600 shadow-sm transition-all'
         style={{ backgroundColor: value, minHeight: '4rem', minWidth: '4rem' }}
       />
       <div className='mt-2 text-center'>
-        <div className='font-mono text-xs font-medium text-gray-800 truncate max-w-[80px]'>
+        <div className='font-mono text-xs font-medium text-gray-800 dark:text-terminal-text-primary truncate max-w-[80px]'>
           {name.replace('terminal-', '').replace('-', ' ')}
         </div>
-        <div className='font-mono text-xs text-gray-500 mt-1'>{value}</div>
+        <div className='font-mono text-xs text-gray-500 dark:text-terminal-text-secondary mt-1'>
+          {value}
+        </div>
       </div>
       <button
         onClick={handleClick}
         className={`mt-1 px-2 py-1 text-xs text-white rounded transition-all duration-200 ${
-          copied ? 'bg-green-500 hover:bg-green-600' : 'bg-blue-500 hover:bg-blue-600'
+          copied
+            ? 'bg-green-500 hover:bg-green-600'
+            : 'bg-blue-500 hover:bg-blue-600 dark:bg-terminal-accent-blue dark:hover:bg-blue-500'
         }`}
         title={copied ? 'コピーしました！' : `${value}をクリップボードにコピー`}
       >
@@ -55,7 +59,9 @@ interface ColorPaletteSectionProps {
 function ColorPaletteSection({ title, colors }: ColorPaletteSectionProps) {
   return (
     <div className='mb-8'>
-      <h3 className='text-lg font-semibold mb-4 font-mono text-gray-700'>{title}</h3>
+      <h3 className='text-lg font-semibold mb-4 font-mono text-gray-700 dark:text-terminal-text-primary'>
+        {title}
+      </h3>
       <div className='grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-6'>
         {colors.map((color, index) => (
           <ColorSwatch key={index} {...color} />
@@ -75,6 +81,10 @@ export function ColorPalette({ className, ...props }: ColorPaletteProps) {
     { name: 'terminal-bg-secondary', value: '#1a1a1a' },
     { name: 'terminal-bg-elevated', value: '#252525' },
     { name: 'terminal-bg-hover', value: '#2a2a2a' },
+    { name: 'light-bg-primary', value: '#ffffff' },
+    { name: 'light-bg-secondary', value: '#f8f9fa' },
+    { name: 'light-bg-elevated', value: '#f1f3f4' },
+    { name: 'light-bg-hover', value: '#e8eaed' },
   ];
 
   const textColors: ColorSwatchProps[] = [
@@ -82,6 +92,10 @@ export function ColorPalette({ className, ...props }: ColorPaletteProps) {
     { name: 'terminal-text-secondary', value: '#a8a8a8' },
     { name: 'terminal-text-muted', value: '#6b6b6b' },
     { name: 'terminal-text-bright', value: '#ffffff' },
+    { name: 'light-text-primary', value: '#1f2937' },
+    { name: 'light-text-secondary', value: '#6b7280' },
+    { name: 'light-text-muted', value: '#9ca3af' },
+    { name: 'light-text-bright', value: '#111827' },
   ];
 
   const accentColors: ColorSwatchProps[] = [
@@ -106,10 +120,15 @@ export function ColorPalette({ className, ...props }: ColorPaletteProps) {
   ];
 
   return (
-    <div className={`max-w-4xl mx-auto p-6 ${className}`} {...props}>
+    <div
+      className={`max-w-4xl mx-auto p-6 bg-white dark:bg-terminal-bg-primary transition-colors ${className}`}
+      {...props}
+    >
       <div className='mb-8'>
-        <h1 className='text-2xl font-bold text-gray-900 mb-2'>Terminal Color Palette</h1>
-        <p className='text-gray-600 text-sm'>
+        <h1 className='text-2xl font-bold text-gray-900 dark:text-terminal-text-bright mb-2'>
+          Terminal Color Palette
+        </h1>
+        <p className='text-gray-600 dark:text-terminal-text-secondary text-sm'>
           技術ブログのターミナル風デザインで使用するカラーシステム
         </p>
       </div>
