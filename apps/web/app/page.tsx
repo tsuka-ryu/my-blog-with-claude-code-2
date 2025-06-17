@@ -1,4 +1,4 @@
-import { Button } from '@repo/ui/button';
+import { Button, ThemeToggle } from '@repo/ui';
 import Image, { type ImageProps } from 'next/image';
 
 import styles from './page.module.css';
@@ -65,9 +65,12 @@ export default function Home() {
             Read our docs
           </a>
         </div>
-        <Button appName='web' className={styles.secondary}>
-          Open alert
-        </Button>
+        <div className='flex gap-4 items-center'>
+          <Button appName='web' className={styles.secondary}>
+            Open alert
+          </Button>
+          <ThemeToggle />
+        </div>
       </main>
       <footer className={styles.footer}>
         <a

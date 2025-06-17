@@ -1,20 +1,20 @@
+import { themes } from '@storybook/theming';
+
+import customTheme from './theme';
+
 import type { Preview } from '@storybook/react';
+
 import '../src/styles/globals.css';
 
 const preview: Preview = {
   decorators: [
     Story => (
-      <>
-        <link rel='preconnect' href='https://fonts.googleapis.com' />
-        <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
-        <link
-          href='https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap'
-          rel='stylesheet'
-        />
-        <div style={{ fontFamily: "'JetBrains Mono', 'Noto Sans JP', monospace" }}>
-          <Story />
-        </div>
-      </>
+      <div
+        style={{ fontFamily: "'JetBrains Mono', 'Noto Sans JP', monospace" }}
+        className='min-h-screen'
+      >
+        <Story />
+      </div>
     ),
   ],
   parameters: {
@@ -26,21 +26,32 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      default: 'light',
+      default: 'dark',
       values: [
         {
           name: 'light',
-          value: '#ffffff',
+          value: '#fafafa',
         },
         {
           name: 'dark',
-          value: '#1a1a1a',
+          value: '#0c0c0c',
         },
         {
           name: 'terminal',
-          value: '#0c0c0c',
+          value: '#000000',
         },
       ],
+    },
+    docs: {
+      theme: customTheme,
+    },
+    darkMode: {
+      // Override the default dark theme
+      dark: { ...customTheme, appBg: '#0c0c0c' },
+      // Override the default light theme
+      light: { ...themes.light, appBg: '#fafafa' },
+      current: 'dark',
+      stylePreview: true,
     },
   },
 };
