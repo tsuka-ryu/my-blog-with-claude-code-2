@@ -66,7 +66,7 @@ export default function Home() {
           </a>
         </div>
         <div className='flex gap-4 items-center'>
-          <Button appName='web' className={styles.secondary}>
+          <Button variant='secondary' className={styles.secondary}>
             Open alert
           </Button>
           <ThemeToggle />
