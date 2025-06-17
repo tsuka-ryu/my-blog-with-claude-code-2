@@ -1,20 +1,34 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import type { ComponentProps } from 'react';
 
 interface ColorSwatchProps {
   name: string;
   value: string;
+  cssVar?: string; // CSS変数名
 }
 
-function ColorSwatch({ name, value }: ColorSwatchProps) {
+function ColorSwatch({ name, value, cssVar }: ColorSwatchProps) {
   const [copied, setCopied] = useState(false);
+  const [computedValue, setComputedValue] = useState(value);
+
+  useEffect(() => {
+    if (cssVar && typeof window !== 'undefined') {
+      // CSS変数の実際の値を取得
+      const element = document.documentElement;
+      const computedStyle = getComputedStyle(element);
+      const cssValue = computedStyle.getPropertyValue(cssVar).trim();
+      if (cssValue) {
+        setComputedValue(cssValue);
+      }
+    }
+  }, [cssVar]);
 
   const handleClick = async () => {
     try {
-      await navigator.clipboard.writeText(value);
+      await navigator.clipboard.writeText(computedValue);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
@@ -26,14 +40,21 @@ function ColorSwatch({ name, value }: ColorSwatchProps) {
     <div className='group relative flex flex-col items-center p-4 m-2 rounded-lg transition-colors bg-white dark:bg-terminal-bg-secondary border border-gray-200 dark:border-gray-700 hover:shadow-md dark:hover:shadow-lg'>
       <div
         className='w-16 h-16 rounded-lg border-2 border-gray-200 dark:border-gray-600 shadow-sm transition-all'
-        style={{ backgroundColor: value, minHeight: '4rem', minWidth: '4rem' }}
+        style={{
+          backgroundColor: cssVar ? `var(${cssVar})` : computedValue,
+          minHeight: '4rem',
+          minWidth: '4rem',
+        }}
       />
       <div className='mt-2 text-center'>
         <div className='font-mono text-xs font-medium text-gray-800 dark:text-terminal-text-primary truncate max-w-[80px]'>
-          {name.replace('terminal-', '').replace('-', ' ')}
+          {name.replace('terminal-', '').replace('light-', '').replace(/-/g, ' ')}
         </div>
         <div className='font-mono text-xs text-gray-500 dark:text-terminal-text-secondary mt-1'>
-          {value}
+          {cssVar ? cssVar : computedValue}
+        </div>
+        <div className='font-mono text-xs text-gray-400 dark:text-terminal-text-muted mt-1'>
+          {computedValue}
         </div>
       </div>
       <button
@@ -43,7 +64,7 @@ function ColorSwatch({ name, value }: ColorSwatchProps) {
             ? 'bg-green-500 hover:bg-green-600 text-white'
             : 'bg-blue-500 hover:bg-blue-600 text-white dark:bg-blue-600 dark:hover:bg-blue-700'
         }`}
-        title={copied ? 'コピーしました！' : `${value}をクリップボードにコピー`}
+        title={copied ? 'コピーしました！' : `${computedValue}をクリップボードにコピー`}
       >
         {copied ? '✓ Copied!' : 'Copy'}
       </button>
@@ -77,46 +98,49 @@ export interface ColorPaletteProps extends ComponentProps<'div'> {
 
 export function ColorPalette({ className, ...props }: ColorPaletteProps) {
   const backgroundColors: ColorSwatchProps[] = [
-    { name: 'terminal-bg-primary', value: '#0c0c0c' },
-    { name: 'terminal-bg-secondary', value: '#1a1a1a' },
-    { name: 'terminal-bg-elevated', value: '#252525' },
-    { name: 'terminal-bg-hover', value: '#2a2a2a' },
-    { name: 'light-bg-primary', value: '#ffffff' },
-    { name: 'light-bg-secondary', value: '#f8f9fa' },
-    { name: 'light-bg-elevated', value: '#f1f3f4' },
-    { name: 'light-bg-hover', value: '#e8eaed' },
+    { name: 'terminal-bg-primary', value: '#0c0c0c', cssVar: '--terminal-bg-primary' },
+    { name: 'terminal-bg-secondary', value: '#1a1a1a', cssVar: '--terminal-bg-secondary' },
+    { name: 'terminal-bg-elevated', value: '#252525', cssVar: '--terminal-bg-elevated' },
+    { name: 'terminal-bg-hover', value: '#2a2a2a', cssVar: '--terminal-bg-hover' },
   ];
 
   const textColors: ColorSwatchProps[] = [
-    { name: 'terminal-text-primary', value: '#f4f4f4' },
-    { name: 'terminal-text-secondary', value: '#a8a8a8' },
-    { name: 'terminal-text-muted', value: '#6b6b6b' },
-    { name: 'terminal-text-bright', value: '#ffffff' },
-    { name: 'light-text-primary', value: '#1f2937' },
-    { name: 'light-text-secondary', value: '#6b7280' },
-    { name: 'light-text-muted', value: '#9ca3af' },
-    { name: 'light-text-bright', value: '#111827' },
+    { name: 'terminal-text-primary', value: '#f4f4f4', cssVar: '--terminal-text-primary' },
+    { name: 'terminal-text-secondary', value: '#a8a8a8', cssVar: '--terminal-text-secondary' },
+    { name: 'terminal-text-muted', value: '#6b6b6b', cssVar: '--terminal-text-muted' },
+    { name: 'terminal-text-bright', value: '#ffffff', cssVar: '--terminal-text-bright' },
   ];
 
   const accentColors: ColorSwatchProps[] = [
-    { name: 'terminal-accent-red', value: '#ff5f56' },
-    { name: 'terminal-accent-green', value: '#5af78e' },
-    { name: 'terminal-accent-yellow', value: '#f3f99d' },
-    { name: 'terminal-accent-blue', value: '#57c7ff' },
-    { name: 'terminal-accent-magenta', value: '#ff6ac1' },
-    { name: 'terminal-accent-cyan', value: '#9aedfe' },
-    { name: 'terminal-accent-orange', value: '#ffb86c' },
+    { name: 'terminal-accent-red', value: '#ff5f56', cssVar: '--terminal-accent-red' },
+    { name: 'terminal-accent-green', value: '#5af78e', cssVar: '--terminal-accent-green' },
+    { name: 'terminal-accent-yellow', value: '#f3f99d', cssVar: '--terminal-accent-yellow' },
+    { name: 'terminal-accent-blue', value: '#57c7ff', cssVar: '--terminal-accent-blue' },
+    { name: 'terminal-accent-magenta', value: '#ff6ac1', cssVar: '--terminal-accent-magenta' },
+    { name: 'terminal-accent-cyan', value: '#9aedfe', cssVar: '--terminal-accent-cyan' },
+    { name: 'terminal-accent-orange', value: '#ffb86c', cssVar: '--terminal-accent-orange' },
   ];
 
   const syntaxColors: ColorSwatchProps[] = [
-    { name: 'terminal-syntax-keyword', value: '#ff6ac1' },
-    { name: 'terminal-syntax-string', value: '#f3f99d' },
-    { name: 'terminal-syntax-comment', value: '#6b6b6b' },
-    { name: 'terminal-syntax-function', value: '#57c7ff' },
-    { name: 'terminal-syntax-variable', value: '#9aedfe' },
-    { name: 'terminal-syntax-constant', value: '#ff6ac1' },
-    { name: 'terminal-syntax-operator', value: '#ff5f56' },
-    { name: 'terminal-syntax-punctuation', value: '#a8a8a8' },
+    { name: 'terminal-syntax-keyword', value: '#ff6ac1', cssVar: '--terminal-syntax-keyword' },
+    { name: 'terminal-syntax-string', value: '#f3f99d', cssVar: '--terminal-syntax-string' },
+    { name: 'terminal-syntax-comment', value: '#6b6b6b', cssVar: '--terminal-syntax-comment' },
+    { name: 'terminal-syntax-function', value: '#57c7ff', cssVar: '--terminal-syntax-function' },
+    { name: 'terminal-syntax-variable', value: '#9aedfe', cssVar: '--terminal-syntax-variable' },
+    { name: 'terminal-syntax-constant', value: '#ff6ac1', cssVar: '--terminal-syntax-constant' },
+    { name: 'terminal-syntax-operator', value: '#ff5f56', cssVar: '--terminal-syntax-operator' },
+    {
+      name: 'terminal-syntax-punctuation',
+      value: '#a8a8a8',
+      cssVar: '--terminal-syntax-punctuation',
+    },
+  ];
+
+  const uiColors: ColorSwatchProps[] = [
+    { name: 'terminal-ui-border', value: '#333333', cssVar: '--terminal-ui-border' },
+    { name: 'terminal-ui-border-hover', value: '#444444', cssVar: '--terminal-ui-border-hover' },
+    { name: 'terminal-ui-border-focus', value: '#57c7ff', cssVar: '--terminal-ui-border-focus' },
+    { name: 'terminal-ui-divider', value: '#2a2a2a', cssVar: '--terminal-ui-divider' },
   ];
 
   return (
@@ -138,6 +162,7 @@ export function ColorPalette({ className, ...props }: ColorPaletteProps) {
         <ColorPaletteSection title='Text Colors' colors={textColors} />
         <ColorPaletteSection title='Accent Colors' colors={accentColors} />
         <ColorPaletteSection title='Syntax Highlighting' colors={syntaxColors} />
+        <ColorPaletteSection title='UI Elements' colors={uiColors} />
       </div>
     </div>
   );
