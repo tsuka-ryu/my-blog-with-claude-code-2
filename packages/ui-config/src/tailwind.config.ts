@@ -4,6 +4,21 @@ export const baseConfig: Partial<Config> = {
   darkMode: 'class',
   theme: {
     extend: {
+      screens: {
+        // モバイルファースト設計のカスタムブレークポイント
+        // ターミナル風デザインに適した幅設定
+        xs: '475px', // 超小型デバイス
+        sm: '640px', // 小型デバイス（デフォルト維持）
+        md: '768px', // タブレット（デフォルト維持）
+        lg: '1024px', // デスクトップ（デフォルト維持）
+        xl: '1280px', // 大型デスクトップ（デフォルト維持）
+        '2xl': '1536px', // 超大型デスクトップ（デフォルト維持）
+        // ターミナル固有のブレークポイント
+        'terminal-sm': '80ch', // 標準ターミナル幅（80文字）
+        'terminal-md': '100ch', // 中型ターミナル幅（100文字）
+        'terminal-lg': '120ch', // 大型ターミナル幅（120文字）
+        'terminal-xl': '160ch', // 超大型ターミナル幅（160文字）
+      },
       fontFamily: {
         mono: ['var(--font-jetbrains-mono)', 'var(--font-noto-sans-jp)', 'monospace'],
         sans: ['var(--font-noto-sans-jp)', 'sans-serif'],
@@ -81,6 +96,37 @@ export const baseConfig: Partial<Config> = {
             path: 'var(--terminal-prompt-path)',
           },
         },
+      },
+      container: {
+        // コンテナの中央寄せをデフォルトで有効化
+        center: true,
+        // パディングをレスポンシブに設定
+        padding: {
+          DEFAULT: '1rem',
+          xs: '1rem',
+          sm: '2rem',
+          md: '3rem',
+          lg: '4rem',
+          xl: '5rem',
+          '2xl': '6rem',
+        },
+        // ブレークポイントごとの最大幅
+        screens: {
+          xs: '100%',
+          sm: '640px',
+          md: '768px',
+          lg: '1024px',
+          xl: '1280px',
+          '2xl': '1536px',
+        },
+      },
+      spacing: {
+        // ターミナル風の文字ベースのスペーシング
+        ch: '1ch', // 1文字分
+        '2ch': '2ch', // 2文字分
+        '4ch': '4ch', // 4文字分
+        '8ch': '8ch', // 8文字分
+        '80ch': '80ch', // 標準ターミナル幅
       },
     },
   },
