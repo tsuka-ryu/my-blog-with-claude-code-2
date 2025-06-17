@@ -123,6 +123,9 @@ catalogs:
     storybook:
       specifier: ^8.6.14
       version: 8.6.14
+    tailwind-merge:
+      specifier: ^3.3.1
+      version: 3.3.1
     tailwindcss:
       specifier: ^3.4.17
       version: 3.4.17
@@ -148,6 +151,13 @@ catalogs:
 importers:
 
   .:
+    dependencies:
+      clsx:
+        specifier: 'catalog:'
+        version: 2.1.1
+      tailwind-merge:
+        specifier: ^3.3.1
+        version: 3.3.1
     devDependencies:
       '@commitlint/cli':
         specifier: 'catalog:'
@@ -434,6 +444,12 @@ importers:
 
   packages/utils:
     dependencies:
+      clsx:
+        specifier: 'catalog:'
+        version: 2.1.1
+      tailwind-merge:
+        specifier: 'catalog:'
+        version: 3.3.1
       type-fest:
         specifier: 'catalog:'
         version: 4.41.0
