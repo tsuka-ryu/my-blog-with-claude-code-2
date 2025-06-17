@@ -37,6 +37,6 @@
   },
   "dependencies": {
     "clsx": "catalog:",
-    "tailwind-merge": "^3.3.1"
+    "tailwind-merge": "catalog:"
   }
 }
