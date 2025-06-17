@@ -137,3 +137,48 @@ next.js:
   label: Next.js
   permalink: /nextjs
   description: Next.jsフレームワークに関する記事
+
+git:
+  label: Git
+  permalink: /git
+  description: Gitバージョン管理に関する記事
+
+development:
+  label: 開発
+  permalink: /development
+  description: 開発全般に関する記事
+
+best-practices:
+  label: ベストプラクティス
+  permalink: /best-practices
+  description: 開発のベストプラクティスに関する記事
+
+tailwindcss:
+  label: Tailwind CSS
+  permalink: /tailwindcss
+  description: Tailwind CSSフレームワークに関する記事
+
+config:
+  label: 設定
+  permalink: /config
+  description: 各種設定に関する記事
+
+ui-components:
+  label: UIコンポーネント
+  permalink: /ui-components
+  description: UIコンポーネント開発に関する記事
+
+ui:
+  label: UI
+  permalink: /ui
+  description: ユーザーインターフェース全般に関する記事
+
+theme:
+  label: テーマ
+  permalink: /theme
+  description: テーマ設定やカスタマイズに関する記事
+
+terminal:
+  label: ターミナル
+  permalink: /terminal
+  description: ターミナルUIやコンソール風デザインに関する記事

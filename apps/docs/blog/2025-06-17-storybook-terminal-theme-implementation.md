@@ -98,7 +98,7 @@ const preview: Preview = {
 
 ### デザインシステムの統一
 
-- **カラーパレット**: `packages/ui-config/src/colors.css`で定義されたターミナル風カラーを使用
+- **カラーパレット**: プロジェクトで定義されたターミナル風カラーを使用
 - **フォント**: JetBrains Mono + Noto Sans JPでプロジェクト全体と統一
 - **ブランディング**: "TsukaryuTech UI Components"として表示
 
@@ -153,5 +153,3 @@ Storybookにプロジェクト専用のターミナル風カスタムテーマ�
 ## 関連リンク
 
 - [Storybook Theming Documentation](https://storybook.js.org/docs/configure/user-interface/theming)
-- [プロジェクトのカラーパレット設定](../../ui-config/src/colors.css)
-- [Storybookカスタムテーマファイル](../../ui/.storybook/theme.ts)
