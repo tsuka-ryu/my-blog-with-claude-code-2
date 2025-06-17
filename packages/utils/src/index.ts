@@ -7,7 +7,10 @@
 // 型定義のエクスポート
 export type * from './types.js';
 
-// ユーティリティ関数のエクスポート（将来実装予定）
+// ユーティリティ関数のエクスポート
+export * from './cn.js';
+
+// その他のユーティリティ関数（将来実装予定）
 // export * from './string';
 // export * from './date';
 // export * from './url';

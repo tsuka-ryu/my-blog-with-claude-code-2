@@ -82,7 +82,7 @@ catalogs:
       specifier: ^10.4.20
       version: 10.4.21
     clsx:
-      specifier: 2.1.1
+      specifier: ^2.0.0
       version: 2.1.1
     eslint:
       specifier: ^9.28.0
@@ -123,6 +123,9 @@ catalogs:
     storybook:
       specifier: ^8.6.14
       version: 8.6.14
+    tailwind-merge:
+      specifier: ^3.3.1
+      version: 3.3.1
     tailwindcss:
       specifier: ^3.4.17
       version: 3.4.17
@@ -441,6 +444,12 @@ importers:
 
   packages/utils:
     dependencies:
+      clsx:
+        specifier: 'catalog:'
+        version: 2.1.1
+      tailwind-merge:
+        specifier: 'catalog:'
+        version: 3.3.1
       type-fest:
         specifier: 'catalog:'
         version: 4.41.0
