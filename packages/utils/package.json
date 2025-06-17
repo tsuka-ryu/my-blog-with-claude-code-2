@@ -30,6 +30,8 @@
     "prettier": "catalog:"
   },
   "dependencies": {
+    "clsx": "catalog:",
+    "tailwind-merge": "catalog:",
     "type-fest": "catalog:"
   }
 }
