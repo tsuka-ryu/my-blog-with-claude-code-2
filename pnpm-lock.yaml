@@ -82,7 +82,7 @@ catalogs:
       specifier: ^10.4.20
       version: 10.4.21
     clsx:
-      specifier: ^2.0.0
+      specifier: 2.1.1
       version: 2.1.1
     eslint:
       specifier: ^9.28.0
@@ -148,6 +148,13 @@ catalogs:
 importers:
 
   .:
+    dependencies:
+      clsx:
+        specifier: 'catalog:'
+        version: 2.1.1
+      tailwind-merge:
+        specifier: ^3.3.1
+        version: 3.3.1
     devDependencies:
       '@commitlint/cli':
         specifier: 'catalog:'
@@ -333,12 +340,18 @@ importers:
 
   packages/ui:
     dependencies:
+      clsx:
+        specifier: 'catalog:'
+        version: 2.1.1
       react:
         specifier: 'catalog:'
         version: 19.1.0
       react-dom:
         specifier: 'catalog:'
         version: 19.1.0(react@19.1.0)
+      tailwind-merge:
+        specifier: ^3.3.1
+        version: 3.3.1
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -7557,6 +7570,9 @@ packages:
   synckit@0.11.8:
     resolution: {integrity: sha512-+XZ+r1XGIJGeQk3VvXhT6xx/VpbHsRzsTkGgF6E5RX9TTXD0118l87puaEBZ566FhqblC6U0d4XnubznJDm30A==}
     engines: {node: ^14.18.0 || >=16.0.0}
+
+  tailwind-merge@3.3.1:
+    resolution: {integrity: sha512-gBXpgUm/3rp1lMZZrM/w7D8GKqshif0zAymAhbCyIt8KMe+0v9DQ7cdYLR4FHH/cKpdTXb+A/tKKU3eolfsI+g==}
 
   tailwindcss@3.4.17:
     resolution: {integrity: sha512-w33E2aCvSDP0tW9RZuNXadXlkHXqFzSkQew/aIa2i/Sj8fThxwovwlXHSPXTbAHwEIhBFXAedUhP2tueAKP8Og==}
@@ -17149,6 +17165,8 @@ snapshots:
   synckit@0.11.8:
     dependencies:
       '@pkgr/core': 0.2.7
+
+  tailwind-merge@3.3.1: {}
 
   tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.15.3)(typescript@5.8.3)):
     dependencies:
