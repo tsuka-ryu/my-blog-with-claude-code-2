@@ -3,6 +3,7 @@ export { Card } from './card';
 export { Code } from './code';
 export { ColorPalette } from './color-palette';
 export { Error } from './error';
+export { Footer } from './footer';
 export { Loading } from './loading';
 export { ThemeProvider, useTheme } from './components/theme-provider';
 export { ThemeToggle } from './components/theme-toggle';
