@@ -41,7 +41,9 @@
     "vite": "catalog:"
   },
   "dependencies": {
+    "clsx": "catalog:",
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "react-dom": "catalog:",
+    "tailwind-merge": "^3.3.1"
   }
 }
