@@ -1,5 +1,6 @@
 import { type HTMLAttributes, forwardRef } from 'react';
-import { cn } from '@repo/utils';
+
+import { cn } from '../utils/cn';
 
 export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
@@ -56,7 +57,8 @@ export interface SectionProps extends HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
 }
 
-const Section = forwardRef<HTMLElement, SectionProps>(
+// TODO: HTMLElementだと型エラーになるので、いったんHTMLDivElementとする
+const Section = forwardRef<HTMLDivElement, SectionProps>(
   ({ className, as: Comp = 'section', spacing = 'md', children, ...props }, ref) => {
     const spacingStyles = {
       none: '',
