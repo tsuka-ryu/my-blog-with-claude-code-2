@@ -20,7 +20,7 @@
 
 ### 1.2 モノレポ構造構築
 
-```
+```bash
 my-blog-with-claude-code/
 ├── apps/
 │   ├── web/               # Next.js 15+ メインアプリ
@@ -62,12 +62,12 @@ my-blog-with-claude-code/
 
 ### 2.2 共有UIコンポーネント
 
-- [ ] **2.2.1** Typography コンポーネント（アクセシビリティ考慮：見出し階層、読みやすさ）
-- [ ] **2.2.2** Button・Link コンポーネント（アクセシビリティ考慮：フォーカス、キーボード操作、ARIA）
+- [x] **2.2.1** Typography コンポーネント（アクセシビリティ考慮：見出し階層、読みやすさ）
+- [x] **2.2.2** Button・Link コンポーネント（アクセシビリティ考慮：フォーカス、キーボード操作、ARIA）
 - [x] **2.2.3** Card・Container コンポーネント（アクセシビリティ考慮：セマンティック構造）
-- [ ] **2.2.4** Navigation・Header コンポーネント（アクセシビリティ考慮：ランドマーク、キーボード操作）
-- [ ] **2.2.5** Footer コンポーネント（アクセシビリティ考慮：ランドマーク）
-- [ ] **2.2.6** Loading・Error コンポーネント（アクセシビリティ考慮：aria-live、スクリーンリーダー）
+- [x] **2.2.4** Navigation・Header コンポーネント（アクセシビリティ考慮：ランドマーク、キーボード操作）
+- [x] **2.2.5** Footer コンポーネント（アクセシビリティ考慮：ランドマーク）
+- [x] **2.2.6** Loading・Error コンポーネント（アクセシビリティ考慮：aria-live、スクリーンリーダー）
 
 ### 2.3 テスト・品質保証環境
 
@@ -86,6 +86,12 @@ my-blog-with-claude-code/
 
 ### 2.4 アプリケーション構造
 
+- [ ] **2.4.1** app/layout.tsx 基本レイアウト
+- [ ] **2.4.2** app/page.tsx ホームページ
+- [ ] **2.4.3** app/posts/[slug]/page.tsx 記事詳細
+- [ ] **2.4.4** app/posts/page.tsx 記事一覧
+- [ ] **2.4.5** app/tags/[tag]/page.tsx タグ別記事一覧
+- [ ] **2.4.6** app/search/page.tsx 検索結果ページ
 - [ ] **2.4.1** app/layout.tsx 基本レイアウト
 - [ ] **2.4.2** app/page.tsx ホームページ
 - [ ] **2.4.3** app/posts/[slug]/page.tsx 記事詳細

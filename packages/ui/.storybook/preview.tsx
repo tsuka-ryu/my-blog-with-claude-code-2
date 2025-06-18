@@ -1,4 +1,4 @@
-import { themes } from '@storybook/theming';
+import { ThemeProvider } from '../src/components/theme-provider';
 
 import customTheme from './theme';
 
@@ -9,12 +9,14 @@ import '../src/styles/globals.css';
 const preview: Preview = {
   decorators: [
     Story => (
-      <div
-        style={{ fontFamily: "'JetBrains Mono', 'Noto Sans JP', monospace" }}
-        className='min-h-screen'
-      >
-        <Story />
-      </div>
+      <ThemeProvider defaultTheme='dark' storageKey='storybook-theme'>
+        <div
+          style={{ fontFamily: "'JetBrains Mono', 'Noto Sans JP', monospace" }}
+          className='min-h-screen'
+        >
+          <Story />
+        </div>
+      </ThemeProvider>
     ),
   ],
   parameters: {
