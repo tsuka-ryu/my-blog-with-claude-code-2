@@ -1,4 +1,5 @@
-export { Button } from './button';
+export { Button } from './components/button';
+export { Link } from './components/link';
 export { Card } from './card';
 export { Code } from './code';
 export { ColorPalette } from './color-palette';
@@ -9,6 +10,8 @@ export { Typography } from './typography';
 export { ThemeProvider, useTheme } from './components/theme-provider';
 export { ThemeToggle } from './components/theme-toggle';
 export type { Theme } from './components/theme-provider';
+export type { ButtonProps } from './components/button';
+export type { LinkProps } from './components/link';
 export type { TypographyProps, TypographyVariant, TypographyTag } from './typography';
 export type { ErrorProps } from './error';
 export type { LoadingProps } from './loading';
