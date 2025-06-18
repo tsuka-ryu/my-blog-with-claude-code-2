@@ -1,7 +1,5 @@
 export { Button } from './components/button';
 export { Link } from './components/link';
-export { Card } from './card';
-export { Code } from './code';
 export { ColorPalette } from './color-palette';
 export { Error } from './error';
 export { Footer } from './footer';

@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Button } from './button';
+
+import { Button } from './components/button';
 import { ThemeToggle } from './components/theme-toggle';
 
 interface NavigationItem {

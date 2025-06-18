@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from './components/button';
 import { Navigation, Header } from './navigation';
-import { Button } from './button';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Navigation> = {
   title: 'Components/Navigation',
