@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import { Button } from './components/button';
-import { ThemeToggle } from './components/theme-toggle';
+import { Button } from './button';
+import { ThemeToggle } from './theme-toggle';
 
 interface NavigationItem {
   label: string;

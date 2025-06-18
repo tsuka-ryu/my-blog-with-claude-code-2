@@ -1,4 +1,4 @@
-import { Button } from './components/button';
+import { Button } from './button';
 import { Navigation, Header } from './navigation';
 
 import type { Meta, StoryObj } from '@storybook/react';
