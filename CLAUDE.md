@@ -99,3 +99,9 @@ my-blog-with-claude-code/
 - **作者名**: ブログ記事のauthorsフィールドでは必ず`tsuka-ryu`を使用すること（`tsukaryu`ではない）
 - **参照**: apps/docs/blog/authors.ymlで定義されている正確な作者IDを確認すること
 - **truncate**: 全てのブログ記事には必ず`<!-- truncate -->`コメントを含めること（フロントマッターの後、本文の適切な位置に配置）
+
+## UIコンポーネント開発
+
+- **配置場所**: 新しいUIコンポーネントは`packages/ui/src/components/`ディレクトリに配置すること
+- **構成**: 各コンポーネントは`component-name.tsx`と`component-name.stories.tsx`の2ファイルで構成
+- **エクスポート**: 作成したコンポーネントは`packages/ui/src/index.ts`からエクスポートすること
