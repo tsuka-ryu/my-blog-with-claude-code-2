@@ -3,6 +3,8 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 
+import { expectNoA11yViolations } from '../test-utils/accessibility';
+
 import { Button } from './button';
 
 describe('Button', () => {
@@ -90,5 +92,12 @@ describe('Button', () => {
     const ref = React.createRef<HTMLButtonElement>();
     render(<Button ref={ref}>With Ref</Button>);
     expect(ref.current).toBeInstanceOf(HTMLButtonElement);
+  });
+
+  describe('Accessibility', () => {
+    it('should not have accessibility violations', async () => {
+      const { container } = render(<Button>Accessible Button</Button>);
+      await expectNoA11yViolations(container);
+    });
   });
 });
