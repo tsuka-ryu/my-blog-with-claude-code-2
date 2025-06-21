@@ -47,6 +47,18 @@
     "doc": {
       "cache": false,
       "persistent": true
+    },
+    "test": {
+      "dependsOn": ["^test"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "vitest.config.ts",
+        "vitest.setup.ts"
+      ]
+    },
+    "test:ui": {
+      "cache": false,
+      "persistent": true
     }
   }
 }
