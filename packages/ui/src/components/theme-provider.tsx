@@ -29,9 +29,14 @@ export function ThemeProvider({
 
   useEffect(() => {
     setMounted(true);
-    const stored = localStorage.getItem(storageKey) as Theme;
-    if (stored) {
-      setTheme(stored);
+    try {
+      const stored = localStorage.getItem(storageKey) as Theme;
+      if (stored) {
+        setTheme(stored);
+      }
+    } catch (error) {
+      // Silently handle localStorage errors (e.g., in private browsing mode)
+      console.error('Failed to load theme from localStorage:', error);
     }
   }, [storageKey]);
 
@@ -57,15 +62,20 @@ export function ThemeProvider({
       updateResolvedTheme(false);
     } else {
       // system
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      updateResolvedTheme(mediaQuery.matches);
+      try {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        updateResolvedTheme(mediaQuery.matches);
 
-      const handleChange = (e: MediaQueryListEvent) => {
-        updateResolvedTheme(e.matches);
-      };
+        const handleChange = (e: MediaQueryListEvent) => {
+          updateResolvedTheme(e.matches);
+        };
 
-      mediaQuery.addEventListener('change', handleChange);
-      return () => mediaQuery.removeEventListener('change', handleChange);
+        mediaQuery.addEventListener('change', handleChange);
+        return () => mediaQuery.removeEventListener('change', handleChange);
+      } catch {
+        // Fallback to light theme if matchMedia is not available
+        updateResolvedTheme(false);
+      }
     }
   }, [theme, mounted]);
 

@@ -366,15 +366,16 @@ describe('ThemeProvider', () => {
       const themes: Theme[] = ['light', 'dark', 'system'];
 
       for (const theme of themes) {
-        const { container } = render(
+        const { container, unmount } = render(
           <ThemeProvider defaultTheme={theme}>
-            <main>
+            <div>
               <h1>Application</h1>
               <TestComponent />
-            </main>
+            </div>
           </ThemeProvider>
         );
         await expectNoA11yViolations(container);
+        unmount(); // Clean up between iterations
       }
     });
   });

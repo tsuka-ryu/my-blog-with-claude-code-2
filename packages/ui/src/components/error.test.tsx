@@ -249,6 +249,7 @@ describe('Error Component', () => {
           <h1>アプリケーション</h1>
           <main>
             <section>
+              <h2>エラー処理</h2>
               <Error title='フォーム送信エラー' variant='warning' onRetry={mockRetry}>
                 <div>
                   <p>フォームの送信中にエラーが発生しました。</p>

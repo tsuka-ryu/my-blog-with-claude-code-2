@@ -26,16 +26,12 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>(
     const renderSpinner = () => (
       <div
         className={`animate-spin rounded-full border-2 border-gray-300 border-t-green-400 dark:border-gray-600 dark:border-t-green-400 ${sizeClasses[size]}`}
-        role='status'
-        aria-label='読み込み中'
       />
     );
 
     const renderPulse = () => (
       <div
         className={`animate-pulse rounded-full bg-gray-300 dark:bg-gray-600 ${sizeClasses[size]}`}
-        role='status'
-        aria-label='読み込み中'
       />
     );
 

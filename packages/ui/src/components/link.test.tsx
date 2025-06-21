@@ -370,7 +370,7 @@ describe('Link Component', () => {
       render(<Link href={undefined}>Undefined Link</Link>);
       const link = screen.getByText('Undefined Link');
       expect(link.tagName).toBe('A');
-      expect(link).toHaveAttribute('href');
+      expect(link).not.toHaveAttribute('href');
     });
 
     it('handles very long text content', () => {

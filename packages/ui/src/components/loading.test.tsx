@@ -49,14 +49,16 @@ describe('Loading Component', () => {
       render(<Loading variant='spinner' />);
       const spinner = screen.getByRole('status').querySelector('.animate-spin');
       expect(spinner).toBeInTheDocument();
-      expect(spinner).toHaveAttribute('aria-label', '読み込み中');
+      // aria-label is on the container, not the spinner itself
+      expect(screen.getByRole('status')).toHaveAttribute('aria-label', '読み込み中');
     });
 
     it('renders pulse variant', () => {
       render(<Loading variant='pulse' />);
       const pulse = screen.getByRole('status').querySelector('.animate-pulse.rounded-full');
       expect(pulse).toBeInTheDocument();
-      expect(pulse).toHaveAttribute('aria-label', '読み込み中');
+      // aria-label is on the container, not the pulse itself
+      expect(screen.getByRole('status')).toHaveAttribute('aria-label', '読み込み中');
     });
 
     it('renders skeleton variant', () => {
@@ -194,7 +196,7 @@ describe('Loading Component', () => {
     it('has proper role attributes for individual elements', () => {
       render(<Loading variant='spinner' />);
       const statusElements = screen.getAllByRole('status');
-      expect(statusElements).toHaveLength(2); // Main container and spinner itself
+      expect(statusElements).toHaveLength(1); // Only main container
     });
   });
 
@@ -315,7 +317,10 @@ describe('Loading Component', () => {
   describe('Edge cases', () => {
     it('handles empty text prop', () => {
       render(<Loading text='' />);
-      expect(screen.queryByText('')).not.toBeInTheDocument();
+      // Empty text should not render a span element
+      const container = screen.getByRole('status');
+      const textSpan = container.querySelector('span[aria-live="polite"]');
+      expect(textSpan).not.toBeInTheDocument();
     });
 
     it('handles very long text', () => {

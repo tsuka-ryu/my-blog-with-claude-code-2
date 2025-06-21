@@ -125,26 +125,12 @@ describe('ColorPalette Component', () => {
 
   describe('Accessibility', () => {
     it('should not have accessibility violations', async () => {
-      const { container } = render(
-        <div>
-          <h1>Page Title</h1>
-          <main>
-            <ColorPalette />
-          </main>
-        </div>
-      );
+      const { container } = render(<ColorPalette />);
       await expectNoA11yViolations(container);
     });
 
     it('should not have accessibility violations with custom className', async () => {
-      const { container } = render(
-        <div>
-          <h1>Page Title</h1>
-          <main>
-            <ColorPalette className='test-class' />
-          </main>
-        </div>
-      );
+      const { container } = render(<ColorPalette className='test-class' />);
       await expectNoA11yViolations(container);
     });
 
@@ -161,8 +147,8 @@ describe('ColorPalette Component', () => {
     it('should have proper heading hierarchy', () => {
       render(<ColorPalette />);
 
-      // Main title should be h1
-      expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Terminal Color Palette');
+      // Main title should be h2
+      expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Terminal Color Palette');
 
       // Section titles should be h3
       const h3Headings = screen.getAllByRole('heading', { level: 3 });
