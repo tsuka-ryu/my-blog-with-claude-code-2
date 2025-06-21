@@ -71,7 +71,12 @@ export function ThemeProvider({
 
   const updateTheme = (newTheme: Theme) => {
     setTheme(newTheme);
-    localStorage.setItem(storageKey, newTheme);
+    try {
+      localStorage.setItem(storageKey, newTheme);
+    } catch (error) {
+      // Silently handle localStorage errors (e.g., in private browsing mode)
+      console.error('Failed to save theme to localStorage:', error);
+    }
   };
 
   return (
