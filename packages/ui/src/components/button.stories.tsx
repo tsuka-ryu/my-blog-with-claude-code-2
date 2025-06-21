@@ -1,4 +1,5 @@
 import { Button } from './button';
+import { expect, userEvent, within } from '@storybook/test';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -38,6 +39,15 @@ export const Primary: Story = {
     children: 'Primary Button',
     variant: 'primary',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Primary Button' });
+
+    // Check if button exists and has correct classes
+    await expect(button).toBeInTheDocument();
+    await expect(button).toHaveClass('bg-terminal-accent');
+    await expect(button).toHaveClass('px-4 py-2'); // md size by default
+  },
 };
 
 export const Secondary: Story = {
@@ -73,6 +83,18 @@ export const Loading: Story = {
     children: 'Loading Button',
     loading: true,
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Loading Button' });
+
+    // Check loading state
+    await expect(button).toBeDisabled();
+    await expect(button).toHaveAttribute('aria-disabled', 'true');
+
+    // Check loading spinner exists
+    const spinner = button.querySelector('[aria-hidden="true"]');
+    await expect(spinner).toBeInTheDocument();
+  },
 };
 
 export const Disabled: Story = {
@@ -103,6 +125,22 @@ export const FullWidth: Story = {
   },
   parameters: {
     layout: 'padded',
+  },
+};
+
+export const Clickable: Story = {
+  args: {
+    children: 'Click me',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Click me' });
+
+    // Test click interaction
+    await userEvent.click(button);
+
+    // Button should remain in document after click
+    await expect(button).toBeInTheDocument();
   },
 };
 

@@ -48,6 +48,9 @@ catalogs:
     '@storybook/blocks':
       specifier: ^8.6.14
       version: 8.6.14
+    '@storybook/experimental-addon-vitest':
+      specifier: latest
+      version: 0.0.0-pr-28768-sha-f4bf860e
     '@storybook/react':
       specifier: ^8.6.14
       version: 8.6.14
@@ -57,15 +60,6 @@ catalogs:
     '@storybook/test':
       specifier: ^8.6.14
       version: 8.6.14
-    '@testing-library/jest-dom':
-      specifier: ^6.6.3
-      version: 6.6.3
-    '@testing-library/react':
-      specifier: ^16.1.2
-      version: 16.3.0
-    '@testing-library/user-event':
-      specifier: ^14.5.2
-      version: 14.5.2
     '@turbo/gen':
       specifier: ^2.5.0
       version: 2.5.0
@@ -183,15 +177,9 @@ importers:
       '@eslint/config-inspector':
         specifier: 'catalog:'
         version: 1.1.0(eslint@9.28.0(jiti@2.4.2))
-      '@testing-library/jest-dom':
+      '@storybook/experimental-addon-vitest':
         specifier: 'catalog:'
-        version: 6.6.3
-      '@testing-library/react':
-        specifier: 'catalog:'
-        version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@testing-library/user-event':
-        specifier: 'catalog:'
-        version: 14.5.2(@testing-library/dom@10.4.0)
+        version: 0.0.0-pr-28768-sha-f4bf860e(storybook@8.6.14(prettier@3.5.3))(vitest@2.1.9(@types/node@22.15.3)(jsdom@25.0.1)(terser@5.42.0))
       '@typescript-eslint/eslint-plugin':
         specifier: 'catalog:'
         version: 8.34.0(@typescript-eslint/parser@8.34.0(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)
@@ -410,6 +398,9 @@ importers:
       '@storybook/blocks':
         specifier: 'catalog:'
         version: 8.6.14(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14(prettier@3.5.3))
+      '@storybook/experimental-addon-vitest':
+        specifier: 'catalog:'
+        version: 0.0.0-pr-28768-sha-f4bf860e(storybook@8.6.14(prettier@3.5.3))(vitest@2.1.9(@types/node@22.15.3)(jsdom@25.0.1)(terser@5.42.0))
       '@storybook/react':
         specifier: 'catalog:'
         version: 8.6.14(@storybook/test@8.6.14(storybook@8.6.14(prettier@3.5.3)))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14(prettier@3.5.3))(typescript@5.8.3)
@@ -419,15 +410,6 @@ importers:
       '@storybook/test':
         specifier: 'catalog:'
         version: 8.6.14(storybook@8.6.14(prettier@3.5.3))
-      '@testing-library/jest-dom':
-        specifier: 'catalog:'
-        version: 6.6.3
-      '@testing-library/react':
-        specifier: 'catalog:'
-        version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@testing-library/user-event':
-        specifier: 'catalog:'
-        version: 14.5.2(@testing-library/dom@10.4.0)
       '@turbo/gen':
         specifier: 'catalog:'
         version: 2.5.0(@types/node@22.15.3)(typescript@5.8.3)
@@ -505,9 +487,6 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@testing-library/jest-dom':
-        specifier: 'catalog:'
-        version: 6.6.3
       eslint:
         specifier: 'catalog:'
         version: 9.28.0(jiti@2.4.2)
@@ -2667,6 +2646,12 @@ packages:
     peerDependencies:
       storybook: ^8.6.14
 
+  '@storybook/experimental-addon-vitest@0.0.0-pr-28768-sha-f4bf860e':
+    resolution: {integrity: sha512-RxlWDXhGgMC0vXq92RKOwIzw8ej+pRn4+L+KnL0P551UPjEAgAYGepeyEuIP1y6ONln0EPEr7D9nAQMuQI8W1A==}
+    peerDependencies:
+      storybook: ^0.0.0-pr-28768-sha-f4bf860e
+      vitest: ^2.0.0
+
   '@storybook/global@5.0.0':
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
 
@@ -2832,25 +2817,6 @@ packages:
   '@testing-library/jest-dom@6.5.0':
     resolution: {integrity: sha512-xGGHpBXYSHUUr6XsKBfs85TWlYKpTc37cSBBVrXcib2MkHLboWlkClhWF37JKlDb9KEq3dHs+f2xR7XJEWGBxA==}
     engines: {node: '>=14', npm: '>=6', yarn: '>=1'}
-
-  '@testing-library/jest-dom@6.6.3':
-    resolution: {integrity: sha512-IteBhl4XqYNkM54f4ejhLRJiZNqcSCoXUOG2CPK7qbD322KjQozM4kHQOfkG2oln9b9HTYqs+Sae8vBATubxxA==}
-    engines: {node: '>=14', npm: '>=6', yarn: '>=1'}
-
-  '@testing-library/react@16.3.0':
-    resolution: {integrity: sha512-kFSyxiEDwv1WLl2fgsq6pPBbw5aWKrsY2/noi1Id0TK0UParSF62oFQFGHXIyaG4pp2tEub/Zlel+fjjZILDsw==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      '@testing-library/dom': ^10.0.0
-      '@types/react': ^18.0.0 || ^19.0.0
-      '@types/react-dom': ^18.0.0 || ^19.0.0
-      react: ^18.0.0 || ^19.0.0
-      react-dom: ^18.0.0 || ^19.0.0
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/react-dom':
-        optional: true
 
   '@testing-library/user-event@14.5.2':
     resolution: {integrity: sha512-YAh82Wh4TIrxYLmfGcixwD18oIjyC1pFQC2Y01F2lzV2HTMiYrI0nze0FD0ocB//CKS/7jIUgae+adPqxK5yCQ==}
@@ -11631,6 +11597,13 @@ snapshots:
       storybook: 8.6.14(prettier@3.5.3)
       unplugin: 1.16.1
 
+  '@storybook/experimental-addon-vitest@0.0.0-pr-28768-sha-f4bf860e(storybook@8.6.14(prettier@3.5.3))(vitest@2.1.9(@types/node@22.15.3)(jsdom@25.0.1)(terser@5.42.0))':
+    dependencies:
+      magic-string: 0.30.17
+      storybook: 8.6.14(prettier@3.5.3)
+      typescript: 5.8.3
+      vitest: 2.1.9(@types/node@22.15.3)(jsdom@25.0.1)(terser@5.42.0)
+
   '@storybook/global@5.0.0': {}
 
   '@storybook/icons@1.4.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
@@ -11833,26 +11806,6 @@ snapshots:
       dom-accessibility-api: 0.6.3
       lodash: 4.17.21
       redent: 3.0.0
-
-  '@testing-library/jest-dom@6.6.3':
-    dependencies:
-      '@adobe/css-tools': 4.4.3
-      aria-query: 5.3.2
-      chalk: 3.0.0
-      css.escape: 1.5.1
-      dom-accessibility-api: 0.6.3
-      lodash: 4.17.21
-      redent: 3.0.0
-
-  '@testing-library/react@16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
-    dependencies:
-      '@babel/runtime': 7.27.6
-      '@testing-library/dom': 10.4.0
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
-    optionalDependencies:
-      '@types/react': 19.1.8
-      '@types/react-dom': 19.1.6(@types/react@19.1.8)
 
   '@testing-library/user-event@14.5.2(@testing-library/dom@10.4.0)':
     dependencies:

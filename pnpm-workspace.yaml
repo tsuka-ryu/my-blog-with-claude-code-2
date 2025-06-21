@@ -65,9 +65,7 @@ catalog:
 
   # Testing
   vitest: '^2.1.2'
-  '@testing-library/react': '^16.1.2'
-  '@testing-library/jest-dom': '^6.6.3'
-  '@testing-library/user-event': '^14.5.2'
+  '@storybook/experimental-addon-vitest': 'latest'
   jsdom: '^25.0.1'
 
   # Dev tools
