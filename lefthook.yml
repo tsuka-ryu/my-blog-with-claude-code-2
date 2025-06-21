@@ -30,6 +30,34 @@ commit-msg:
       run: npx commitlint --edit $1
       fail_text: 'Commit message format is invalid. Please follow conventional commit format.'
 
+pre-push:
+  parallel: false
+  commands:
+    format-check:
+      run: pnpm run format:check
+      fail_text: 'Code is not properly formatted. Please run "pnpm run format" before pushing.'
+      skip:
+        - merge
+        - rebase
+    lint:
+      run: pnpm turbo lint
+      fail_text: 'Linting failed. Please fix errors before pushing.'
+      skip:
+        - merge
+        - rebase
+    check-types:
+      run: pnpm turbo check-types
+      fail_text: 'Type checking failed. Please fix type errors before pushing.'
+      skip:
+        - merge
+        - rebase
+    build:
+      run: pnpm turbo build
+      fail_text: 'Build failed. Please fix build errors before pushing.'
+      skip:
+        - merge
+        - rebase
+
 # Colors for better visibility
 colors: true
 

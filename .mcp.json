@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "ui-fetcher": {
+      "command": "node",
+      "args": ["tools/mcp-ui-fetcher/dist/index.js"],
+      "env": {}
+    }
+  }
+}
