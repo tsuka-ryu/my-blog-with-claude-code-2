@@ -46,7 +46,9 @@
     "tailwindcss": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
-    "vitest": "catalog:"
+    "vitest": "catalog:",
+    "axe-core": "catalog:",
+    "@axe-core/react": "catalog:"
   },
   "dependencies": {
     "clsx": "catalog:",

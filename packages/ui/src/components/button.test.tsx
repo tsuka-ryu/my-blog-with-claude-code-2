@@ -3,6 +3,8 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 
+import { expectNoA11yViolations } from '../test-utils/accessibility';
+
 import { Button } from './button';
 
 describe('Button', () => {
@@ -90,5 +92,40 @@ describe('Button', () => {
     const ref = React.createRef<HTMLButtonElement>();
     render(<Button ref={ref}>With Ref</Button>);
     expect(ref.current).toBeInstanceOf(HTMLButtonElement);
+  });
+
+  describe('Accessibility', () => {
+    it('should not have accessibility violations', async () => {
+      const { container } = render(<Button>Accessible Button</Button>);
+      await expectNoA11yViolations(container);
+    });
+
+    it('should not have accessibility violations in different variants', async () => {
+      const variants = ['primary', 'secondary', 'outline', 'ghost', 'danger'] as const;
+
+      for (const variant of variants) {
+        const { container } = render(<Button variant={variant}>{variant} Button</Button>);
+        await expectNoA11yViolations(container);
+      }
+    });
+
+    it('should not have accessibility violations in different sizes', async () => {
+      const sizes = ['sm', 'md', 'lg'] as const;
+
+      for (const size of sizes) {
+        const { container } = render(<Button size={size}>{size} Button</Button>);
+        await expectNoA11yViolations(container);
+      }
+    });
+
+    it('should not have accessibility violations when disabled', async () => {
+      const { container } = render(<Button disabled>Disabled Button</Button>);
+      await expectNoA11yViolations(container);
+    });
+
+    it('should not have accessibility violations when loading', async () => {
+      const { container } = render(<Button loading>Loading Button</Button>);
+      await expectNoA11yViolations(container);
+    });
   });
 });
