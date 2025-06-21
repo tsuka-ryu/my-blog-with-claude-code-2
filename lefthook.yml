@@ -51,6 +51,12 @@ pre-push:
       skip:
         - merge
         - rebase
+    test:
+      run: pnpm turbo test
+      fail_text: 'Tests failed. Please fix failing tests before pushing.'
+      skip:
+        - merge
+        - rebase
     build:
       run: pnpm turbo build
       fail_text: 'Build failed. Please fix build errors before pushing.'

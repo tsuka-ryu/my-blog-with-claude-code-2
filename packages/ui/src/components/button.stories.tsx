@@ -106,6 +106,12 @@ export const FullWidth: Story = {
   },
 };
 
+export const Clickable: Story = {
+  args: {
+    children: 'Click me',
+  },
+};
+
 export const AllVariants: Story = {
   render: () => (
     <div className='space-y-4'>

@@ -18,14 +18,21 @@
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
     "check-types": "tsc --noEmit",
+    "test": "vitest --run",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest --watch",
     "config:inspect": "eslint-config-inspector --port 7772",
     "config:build": "eslint-config-inspector build"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@testing-library/jest-dom": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:",
+    "jsdom": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:"
   },
