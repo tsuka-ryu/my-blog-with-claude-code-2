@@ -1,9 +1,11 @@
 /// <reference types="vitest" />
 import { resolve } from 'path';
 
+import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  plugins: [react()],
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
@@ -14,11 +16,19 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['../../vitest.setup.ts'],
     include: ['src/**/*.{test,spec}.{ts,tsx}'],
-    exclude: ['node_modules', 'dist'],
+    exclude: ['node_modules', 'dist', 'storybook-static'],
     reporters: ['verbose'],
     coverage: {
       reporter: ['text', 'json', 'html'],
-      exclude: ['node_modules/', 'dist/', '**/*.config.{ts,js}', '**/*.d.ts', 'coverage/'],
+      exclude: [
+        'node_modules/',
+        'dist/',
+        'storybook-static/',
+        '**/*.stories.{ts,tsx}',
+        '**/*.config.{ts,js}',
+        '**/*.d.ts',
+        'coverage/',
+      ],
     },
   },
 });
