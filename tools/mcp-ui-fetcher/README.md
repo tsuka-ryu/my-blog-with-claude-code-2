@@ -31,24 +31,51 @@ pnpm build
 
 ## Claude Codeでのセットアップ
 
-### 1. 前提条件
+### 方法1: プロジェクトスコープのMCPサーバー（推奨）
 
-- このプロジェクトをローカルにクローンしていること
-- Node.jsがインストールされていること
-- pnpmがインストールされていること
+プロジェクトスコープのサーバーは、プロジェクトのルートにある`.mcp.json`ファイルに保存されます。このファイルはバージョン管理にチェックインして、チームとサーバーを共有できます。
 
-### 2. MCPサーバーのビルド
+1. **前提条件**
 
-```bash
-# プロジェクトルートで依存関係をインストール
-pnpm install
+   - このプロジェクトをローカルにクローンしていること
+   - Node.jsがインストールされていること
+   - pnpmがインストールされていること
 
-# MCPサーバーをビルド
-cd tools/mcp-ui-fetcher
-pnpm build
-```
+2. **MCPサーバーのビルド**
 
-### 3. Claude Codeの設定
+   ```bash
+   # プロジェクトルートで依存関係をインストール
+   pnpm install
+
+   # MCPサーバーをビルド
+   cd tools/mcp-ui-fetcher
+   pnpm build
+   ```
+
+3. **プロジェクトスコープのサーバーを追加**
+
+   ```bash
+   # プロジェクトルートで実行
+   claude mcp add ui-fetcher -s project node tools/mcp-ui-fetcher/dist/index.js
+   ```
+
+   これにより、プロジェクトルートに以下の構造の`.mcp.json`ファイルが作成または更新されます：
+
+   ```json
+   {
+     "mcpServers": {
+       "ui-fetcher": {
+         "command": "node",
+         "args": ["tools/mcp-ui-fetcher/dist/index.js"],
+         "env": {}
+       }
+     }
+   }
+   ```
+
+4. **Claude Codeを再起動**
+
+### 方法2: グローバル設定（個人利用）
 
 1. Claude Codeの設定ファイルを開きます：
 
@@ -93,7 +120,7 @@ pnpm build
 
 3. Claude Codeを再起動します
 
-### 4. 使用方法
+## 使用方法
 
 Claude Codeで以下のようなプロンプトを使用できます：
 
