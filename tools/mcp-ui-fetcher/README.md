@@ -31,7 +31,7 @@ pnpm build
 
 ## Claude Codeでのセットアップ
 
-### 方法1: プロジェクトスコープのMCPサーバー（推奨）
+### プロジェクトスコープのMCPサーバー
 
 プロジェクトスコープのサーバーは、プロジェクトのルートにある`.mcp.json`ファイルに保存されます。このファイルはバージョン管理にチェックインして、チームとサーバーを共有できます。
 
@@ -74,51 +74,6 @@ pnpm build
    ```
 
 4. **Claude Codeを再起動**
-
-### 方法2: グローバル設定（個人利用）
-
-1. Claude Codeの設定ファイルを開きます：
-
-   ```bash
-   # macOS
-   open ~/Library/Application\ Support/Claude/claude_desktop_config.json
-
-   # ファイルが存在しない場合は作成
-   mkdir -p ~/Library/Application\ Support/Claude
-   echo '{}' > ~/Library/Application\ Support/Claude/claude_desktop_config.json
-   ```
-
-2. 設定ファイルに以下を追加します（既存の設定がある場合はマージしてください）：
-
-   ```json
-   {
-     "mcpServers": {
-       "ui-fetcher": {
-         "command": "node",
-         "args": ["/absolute/path/to/my-blog-with-claude-code/tools/mcp-ui-fetcher/dist/index.js"]
-       }
-     }
-   }
-   ```
-
-   **注意**: `/absolute/path/to/` は実際のプロジェクトパスに置き換えてください。
-
-   例：
-
-   ```json
-   {
-     "mcpServers": {
-       "ui-fetcher": {
-         "command": "node",
-         "args": [
-           "/Users/username/ghq/github.com/tsukaryu/my-blog-with-claude-code/tools/mcp-ui-fetcher/dist/index.js"
-         ]
-       }
-     }
-   }
-   ```
-
-3. Claude Codeを再起動します
 
 ## 使用方法
 
