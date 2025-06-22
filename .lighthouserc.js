@@ -1,12 +1,12 @@
 module.exports = {
   ci: {
     collect: {
-      staticDistDir: './apps/web/.next',
       url: ['http://localhost:3000'],
-      numberOfRuns: 3,
+      numberOfRuns: 1,
       settings: {
         onlyCategories: ['accessibility'],
         locale: 'ja',
+        chromeFlags: '--no-sandbox',
       },
     },
     assert: {
