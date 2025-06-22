@@ -16,12 +16,14 @@
     "doc": "turbo run doc --filter=@my-blog/docs",
     "markuplint": "markuplint \"**/*.{html,tsx,jsx}\"",
     "markuplint:fix": "markuplint \"**/*.{html,tsx,jsx}\" --fix",
+    "lighthouse:accessibility": "node scripts/lighthouse-accessibility.js",
     "prepare": "lefthook install || echo 'lefthook install failed, but continuing...'"
   },
   "devDependencies": {
     "@commitlint/cli": "catalog:",
     "@commitlint/config-conventional": "catalog:",
     "@eslint/config-inspector": "catalog:",
+    "@lhci/cli": "^0.15.0",
     "@markuplint/jsx-parser": "^4.7.19",
     "@markuplint/react-spec": "^4.5.19",
     "@testing-library/jest-dom": "catalog:",
@@ -36,6 +38,7 @@
     "globals": "catalog:",
     "jsdom": "catalog:",
     "lefthook": "catalog:",
+    "lighthouse": "^12.6.1",
     "markuplint": "^4.12.0",
     "oxlint": "catalog:",
     "prettier": "catalog:",
