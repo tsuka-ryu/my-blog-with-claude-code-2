@@ -149,9 +149,9 @@ export function ColorPalette({ className, ...props }: ColorPaletteProps) {
       {...props}
     >
       <div className='mb-8'>
-        <h1 className='text-2xl font-bold text-gray-900 dark:text-terminal-text-bright mb-2'>
+        <h2 className='text-2xl font-bold text-gray-900 dark:text-terminal-text-bright mb-2'>
           Terminal Color Palette
-        </h1>
+        </h2>
         <p className='text-gray-600 dark:text-terminal-text-secondary text-sm'>
           技術ブログのターミナル風デザインで使用するカラーシステム
         </p>
