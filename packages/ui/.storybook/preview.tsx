@@ -1,3 +1,5 @@
+import { themes } from '@storybook/theming';
+
 import { ThemeProvider } from '../src/components/theme-provider';
 
 import customTheme from './theme';
