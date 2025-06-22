@@ -63,6 +63,12 @@ pre-push:
       skip:
         - merge
         - rebase
+    markuplint:
+      run: pnpm run markuplint
+      fail_text: 'Markuplint validation failed. Please fix HTML/JSX markup issues before pushing.'
+      skip:
+        - merge
+        - rebase
 
 # Colors for better visibility
 colors: true
