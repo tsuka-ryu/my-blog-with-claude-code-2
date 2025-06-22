@@ -1,3 +1,5 @@
+import { expect, userEvent, within } from '@storybook/test';
+
 import { Button } from './button';
 
 import type { Meta, StoryObj } from '@storybook/react';
@@ -73,12 +75,50 @@ export const Loading: Story = {
     children: 'Loading Button',
     loading: true,
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Loading Button' });
+
+    // Test loading button is disabled
+    await expect(button).toBeDisabled();
+    await expect(button).toHaveAttribute('aria-disabled', 'true');
+
+    // Test loading spinner is present
+    const spinner = button.querySelector('[aria-hidden="true"]');
+    await expect(spinner).toBeInTheDocument();
+
+    // Test button is not clickable when loading
+    await userEvent.click(button);
+    // Button should remain disabled after click attempt
+    await expect(button).toBeDisabled();
+  },
 };
 
 export const Disabled: Story = {
   args: {
     children: 'Disabled Button',
     disabled: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Disabled Button' });
+
+    // Test disabled button state
+    await expect(button).toBeDisabled();
+    await expect(button).toHaveAttribute('aria-disabled', 'true');
+
+    // Test disabled button styling
+    await expect(button).toHaveClass('disabled:opacity-50');
+    await expect(button).toHaveClass('disabled:cursor-not-allowed');
+
+    // Test button is not focusable when disabled
+    await userEvent.tab();
+    await expect(button).not.toHaveFocus();
+
+    // Test button is not clickable when disabled
+    await userEvent.click(button);
+    // Button should remain disabled after click attempt
+    await expect(button).toBeDisabled();
   },
 };
 
@@ -109,6 +149,31 @@ export const FullWidth: Story = {
 export const Clickable: Story = {
   args: {
     children: 'Click me',
+    onClick: () => alert('Button clicked!'),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Click me' });
+
+    // Test button is visible and has correct text
+    await expect(button).toBeVisible();
+    await expect(button).toHaveTextContent('Click me');
+
+    // Test button is clickable (not disabled)
+    await expect(button).toBeEnabled();
+
+    // Test focus behavior
+    await userEvent.tab();
+    await expect(button).toHaveFocus();
+
+    // Test keyboard activation
+    await userEvent.keyboard('{Enter}');
+
+    // Test click interaction
+    await userEvent.click(button);
+
+    // Verify button maintains focus after click
+    await expect(button).toHaveFocus();
   },
 };
 
