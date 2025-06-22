@@ -14,7 +14,8 @@
     "config:inspect": "turbo run config:inspect",
     "config:build": "turbo run config:build",
     "doc": "turbo run doc --filter=@my-blog/docs",
-    "markuplint": "markuplint \"**/*.{html,tsx,jsx}\"",
+    "markuplint": "turbo run markuplint",
+    "markuplint:local": "markuplint \"**/*.{html,tsx,jsx}\"",
     "markuplint:fix": "markuplint \"**/*.{html,tsx,jsx}\" --fix",
     "prepare": "lefthook install || echo 'lefthook install failed, but continuing...'"
   },

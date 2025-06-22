@@ -56,6 +56,13 @@
         "vitest.setup.ts"
       ]
     },
+    "markuplint": {
+      "dependsOn": ["^markuplint"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".markuplintrc.json"
+      ]
+    },
     "test:ui": {
       "cache": false,
       "persistent": true

@@ -13,6 +13,7 @@
     "test": "vitest --run",
     "test:ui": "vitest --ui",
     "test:watch": "vitest",
+    "markuplint": "markuplint \"src/**/*.{tsx,jsx}\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "config:inspect": "eslint-config-inspector --port 7773",
