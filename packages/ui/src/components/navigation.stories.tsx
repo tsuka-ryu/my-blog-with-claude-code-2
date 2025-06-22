@@ -1,3 +1,5 @@
+import { expect, userEvent, within } from '@storybook/test';
+
 import { Button } from './button';
 import { Navigation, Header } from './navigation';
 
@@ -51,6 +53,37 @@ export const Default: Story = {
     items: defaultNavigationItems,
     showThemeToggle: true,
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Test navigation structure
+    const nav = canvas.getByRole('navigation', { name: 'メインナビゲーション' });
+    await expect(nav).toBeVisible();
+
+    // Test title/logo link
+    const titleLink = canvas.getByRole('link', { name: 'Tech Blog - ホームページに移動' });
+    await expect(titleLink).toBeVisible();
+    await expect(titleLink).toHaveAttribute('href', '/');
+
+    // Test navigation items
+    const homeLink = canvas.getByRole('link', { name: 'ホーム' });
+    await expect(homeLink).toBeVisible();
+    await expect(homeLink).toHaveAttribute('aria-current', 'page');
+
+    const postsLink = canvas.getByRole('link', { name: '記事' });
+    await expect(postsLink).toBeVisible();
+    await expect(postsLink).toHaveAttribute('href', '/posts');
+
+    // Test keyboard navigation
+    await userEvent.tab();
+    await expect(titleLink).toHaveFocus();
+
+    await userEvent.tab();
+    await expect(homeLink).toHaveFocus();
+
+    await userEvent.tab();
+    await expect(postsLink).toHaveFocus();
+  },
 };
 
 export const WithoutThemeToggle: Story = {
@@ -92,6 +125,7 @@ export const MobileMenuOpen: Story = {
     items: defaultNavigationItems,
     isMobileMenuOpen: true,
     showThemeToggle: true,
+    onMobileMenuToggle: () => console.log('Mobile menu toggled'),
   },
   parameters: {
     docs: {
@@ -102,6 +136,31 @@ export const MobileMenuOpen: Story = {
     viewport: {
       defaultViewport: 'mobile1',
     },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // Test mobile menu is visible
+    const mobileMenu = canvas.getByRole('menu');
+    await expect(mobileMenu).toBeVisible();
+
+    // Test mobile menu button
+    const menuButton = canvas.getByRole('button', { name: 'メニューを開く' });
+    await expect(menuButton).toBeVisible();
+    await expect(menuButton).toHaveAttribute('aria-expanded', 'true');
+    await expect(menuButton).toHaveAttribute('aria-controls', 'mobile-menu');
+
+    // Test mobile menu items
+    const mobileMenuItems = canvas.getAllByRole('menuitem');
+    await expect(mobileMenuItems).toHaveLength(4);
+
+    // Test first mobile menu item
+    const firstMenuItem = mobileMenuItems[0];
+    await expect(firstMenuItem).toHaveTextContent('ホーム');
+    await expect(firstMenuItem).toHaveAttribute('aria-current', 'page');
+
+    // Test mobile menu button click
+    await userEvent.click(menuButton);
   },
 };
 

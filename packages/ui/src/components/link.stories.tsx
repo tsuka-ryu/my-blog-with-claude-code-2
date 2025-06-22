@@ -1,3 +1,5 @@
+import { expect, userEvent, within } from '@storybook/test';
+
 import { Link } from './link';
 
 import type { Meta, StoryObj } from '@storybook/react';
@@ -32,6 +34,28 @@ export const Primary: Story = {
     href: '#',
     variant: 'primary',
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const link = canvas.getByRole('link', { name: 'Primary Link' });
+
+    // Test link is visible and has correct href
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute('href', '#');
+    await expect(link).toHaveTextContent('Primary Link');
+
+    // Test keyboard navigation
+    await userEvent.tab();
+    await expect(link).toHaveFocus();
+
+    // Test keyboard activation (Enter key)
+    await userEvent.keyboard('{Enter}');
+
+    // Test click interaction
+    await userEvent.click(link);
+
+    // Verify focus behavior
+    await expect(link).toHaveFocus();
+  },
 };
 
 export const Secondary: Story = {
@@ -63,6 +87,30 @@ export const External: Story = {
     children: 'External Link',
     href: 'https://example.com',
     external: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const link = canvas.getByRole('link', { name: 'External Link' });
+
+    // Test external link attributes
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute('href', 'https://example.com');
+    await expect(link).toHaveAttribute('target', '_blank');
+    await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+
+    // Test external link icon is present
+    const icon = link.querySelector('svg');
+    await expect(icon).toBeInTheDocument();
+    await expect(icon).toHaveAttribute('aria-hidden', 'true');
+
+    // Test keyboard navigation
+    await userEvent.tab();
+    await expect(link).toHaveFocus();
+
+    // Test screen reader text
+    const srText = link.querySelector('.sr-only');
+    await expect(srText).toBeInTheDocument();
+    await expect(srText).toHaveTextContent('新しいタブで開く');
   },
 };
 
