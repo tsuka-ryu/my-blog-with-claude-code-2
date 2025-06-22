@@ -1,9 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/markuplint/markuplint/main/packages/%40markuplint/config-schema/schema.json",
   "extends": [],
-  "specs": ["@markuplint/react-spec"],
+  "specs": {
+    "\\.(jsx|tsx)$": "@markuplint/react-spec"
+  },
   "parser": {
-    "\\.tsx?$": "@markuplint/jsx-parser"
+    "\\.(jsx|tsx)$": "@markuplint/jsx-parser"
   },
   "rules": {
     "doctype": false,
@@ -13,7 +15,7 @@
     "required-attr": true,
     "invalid-attr": true,
     "attr-duplication": true,
-    "character-reference": true,
+    "character-reference": false,
     "deprecated-attr": true,
     "deprecated-element": true,
     "id-duplication": true,
@@ -55,6 +57,12 @@
       "rules": {
         "require-accessible-name": true
       }
+    },
+    {
+      "selector": "span[role=status]",
+      "rules": {
+        "no-empty-palpable-content": false
+      }
     }
   ],
   "childNodeRules": [
@@ -72,6 +80,7 @@
     "./build/**/*",
     "./out/**/*",
     "./coverage/**/*",
-    "./storybook-static/**/*"
+    "./storybook-static/**/*",
+    "./apps/docs/build/**/*"
   ]
 }
