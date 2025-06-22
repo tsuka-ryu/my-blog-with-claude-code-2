@@ -29,7 +29,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build application
-        run: pnpm turbo run build --filter=@my-blog/web
+        run: pnpm turbo run build --filter=web
 
       - name: Start Next.js server
         run: |
