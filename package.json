@@ -17,6 +17,7 @@
     "markuplint": "markuplint \"**/*.{html,tsx,jsx}\"",
     "markuplint:fix": "markuplint \"**/*.{html,tsx,jsx}\" --fix",
     "lighthouse:accessibility": "node scripts/lighthouse-accessibility.js",
+    "lighthouse:pr-comment": "node scripts/lighthouse-pr-comment.js",
     "prepare": "lefthook install || echo 'lefthook install failed, but continuing...'"
   },
   "devDependencies": {

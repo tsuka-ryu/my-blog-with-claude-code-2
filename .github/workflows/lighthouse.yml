@@ -37,6 +37,9 @@ jobs:
           pnpm next start &
           sleep 5
 
-      - name: Run Lighthouse CI
+      - name: Run Lighthouse CI with PR Comments
         run: |
-          npx @lhci/cli autorun --collect.settings.chromeFlags="--no-sandbox"
+          node scripts/lighthouse-pr-comment.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LHCI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

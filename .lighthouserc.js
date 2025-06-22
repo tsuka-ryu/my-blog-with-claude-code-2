@@ -64,5 +64,11 @@ module.exports = {
     upload: {
       target: 'temporary-public-storage',
     },
+    server: {
+      target: 'github-status-check',
+      urlReplacementPatterns: [
+        'http://localhost:3000=https://your-production-url.vercel.app',
+      ],
+    },
   },
 };
