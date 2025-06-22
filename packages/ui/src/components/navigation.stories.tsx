@@ -188,11 +188,11 @@ export const HeaderWithActions: StoryObj<typeof Header> = {
     title: 'ブログ管理',
     description: 'ブログ記事の作成・編集・削除を行います',
     actions: (
-      <div className='flex space-x-2'>
-        <Button variant='outline' size='sm'>
+      <div className="flex space-x-2">
+        <Button variant="outline" size="sm">
           下書き保存
         </Button>
-        <Button size='sm'>公開する</Button>
+        <Button size="sm">公開する</Button>
       </div>
     ),
   },
@@ -223,10 +223,10 @@ export const HeaderMinimal: StoryObj<typeof Header> = {
 export const FullLayoutExample: Story = {
   render: () => (
     <div>
-      <Navigation title='Tech Blog' items={defaultNavigationItems} showThemeToggle={true} />
+      <Navigation title="Tech Blog" items={defaultNavigationItems} showThemeToggle={true} />
       <Header
-        title='Next.js 15 App Router入門'
-        description='新しいApp Routerの機能と実装方法について詳しく解説します'
+        title="Next.js 15 App Router入門"
+        description="新しいApp Routerの機能と実装方法について詳しく解説します"
         breadcrumbs={[
           { label: 'ホーム', href: '/' },
           { label: '記事', href: '/posts' },
@@ -234,14 +234,14 @@ export const FullLayoutExample: Story = {
           { label: 'Next.js 15 App Router入門' },
         ]}
         actions={
-          <Button variant='outline' size='sm'>
+          <Button variant="outline" size="sm">
             共有
           </Button>
         }
       />
-      <div className='mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8'>
-        <div className='bg-card p-6 rounded-lg border border-accent'>
-          <p className='text-muted'>
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <div className="bg-card p-6 rounded-lg border border-accent">
+          <p className="text-muted">
             ここにメインコンテンツが表示されます。ナビゲーションとヘッダーの組み合わせ例です。
           </p>
         </div>

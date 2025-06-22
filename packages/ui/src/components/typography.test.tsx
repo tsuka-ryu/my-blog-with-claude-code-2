@@ -10,7 +10,7 @@ describe('Typography Component', () => {
   describe('Heading variants', () => {
     it('renders h1 correctly', () => {
       render(
-        <Typography variant='h1' component='h1'>
+        <Typography variant="h1" component="h1">
           Heading 1
         </Typography>
       );
@@ -21,7 +21,7 @@ describe('Typography Component', () => {
 
     it('renders h2 correctly', () => {
       render(
-        <Typography variant='h2' component='h2'>
+        <Typography variant="h2" component="h2">
           Heading 2
         </Typography>
       );
@@ -31,7 +31,7 @@ describe('Typography Component', () => {
 
     it('renders h3 correctly', () => {
       render(
-        <Typography variant='h3' component='h3'>
+        <Typography variant="h3" component="h3">
           Heading 3
         </Typography>
       );
@@ -42,22 +42,22 @@ describe('Typography Component', () => {
     it('should not have accessibility violations for headings', async () => {
       const { container } = render(
         <div>
-          <Typography variant='h1' component='h1'>
+          <Typography variant="h1" component="h1">
             Heading 1
           </Typography>
-          <Typography variant='h2' component='h2'>
+          <Typography variant="h2" component="h2">
             Heading 2
           </Typography>
-          <Typography variant='h3' component='h3'>
+          <Typography variant="h3" component="h3">
             Heading 3
           </Typography>
-          <Typography variant='h4' component='h4'>
+          <Typography variant="h4" component="h4">
             Heading 4
           </Typography>
-          <Typography variant='h5' component='h5'>
+          <Typography variant="h5" component="h5">
             Heading 5
           </Typography>
-          <Typography variant='h6' component='h6'>
+          <Typography variant="h6" component="h6">
             Heading 6
           </Typography>
         </div>
@@ -69,7 +69,7 @@ describe('Typography Component', () => {
   describe('Body text variants', () => {
     it('renders body text correctly', () => {
       render(
-        <Typography variant='body1' component='p'>
+        <Typography variant="body1" component="p">
           Body text
         </Typography>
       );
@@ -78,7 +78,7 @@ describe('Typography Component', () => {
 
     it('renders caption text correctly', () => {
       render(
-        <Typography variant='caption' component='span'>
+        <Typography variant="caption" component="span">
           Caption text
         </Typography>
       );
@@ -88,16 +88,16 @@ describe('Typography Component', () => {
     it('should not have accessibility violations for body text', async () => {
       const { container } = render(
         <div>
-          <Typography variant='body1' component='p'>
+          <Typography variant="body1" component="p">
             Body text
           </Typography>
-          <Typography variant='body2' component='p'>
+          <Typography variant="body2" component="p">
             Smaller body text
           </Typography>
-          <Typography variant='caption' component='span'>
+          <Typography variant="caption" component="span">
             Caption text
           </Typography>
-          <Typography variant='overline' component='span'>
+          <Typography variant="overline" component="span">
             Overline text
           </Typography>
         </div>
@@ -110,25 +110,25 @@ describe('Typography Component', () => {
     it('should not have accessibility violations with proper heading hierarchy', async () => {
       const { container } = render(
         <article>
-          <Typography variant='h1' component='h1'>
+          <Typography variant="h1" component="h1">
             Main Title
           </Typography>
-          <Typography variant='body1' component='p'>
+          <Typography variant="body1" component="p">
             Introduction paragraph
           </Typography>
-          <Typography variant='h2' component='h2'>
+          <Typography variant="h2" component="h2">
             Section Title
           </Typography>
-          <Typography variant='body1' component='p'>
+          <Typography variant="body1" component="p">
             Section content
           </Typography>
-          <Typography variant='h3' component='h3'>
+          <Typography variant="h3" component="h3">
             Subsection Title
           </Typography>
-          <Typography variant='body2' component='p'>
+          <Typography variant="body2" component="p">
             Subsection content
           </Typography>
-          <Typography variant='caption' component='p'>
+          <Typography variant="caption" component="p">
             Additional note
           </Typography>
         </article>

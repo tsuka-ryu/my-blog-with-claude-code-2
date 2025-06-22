@@ -31,7 +31,7 @@ describe('Footer Component', () => {
   });
 
   it('applies custom className', () => {
-    render(<Footer className='custom-footer-class' />);
+    render(<Footer className="custom-footer-class" />);
     const footerElement = screen.getByRole('contentinfo');
     expect(footerElement).toHaveClass('custom-footer-class');
   });
@@ -161,7 +161,7 @@ describe('Footer Component', () => {
     });
 
     it('should not have accessibility violations with custom className', async () => {
-      const { container } = render(<Footer className='test-footer' />);
+      const { container } = render(<Footer className="test-footer" />);
       await expectNoA11yViolations(container);
     });
 
@@ -249,7 +249,7 @@ describe('Footer Component', () => {
             <h2>メインコンテンツ</h2>
             <p>ページの内容</p>
           </main>
-          <Footer className='site-footer' />
+          <Footer className="site-footer" />
         </div>
       );
 

@@ -26,31 +26,31 @@ describe('Container Components', () => {
     });
 
     it('applies different sizes', () => {
-      const { rerender } = render(<Container size='sm'>Content</Container>);
+      const { rerender } = render(<Container size="sm">Content</Container>);
       expect(screen.getByText('Content')).toHaveClass('max-w-sm');
 
-      rerender(<Container size='md'>Content</Container>);
+      rerender(<Container size="md">Content</Container>);
       expect(screen.getByText('Content')).toHaveClass('max-w-md');
 
-      rerender(<Container size='xl'>Content</Container>);
+      rerender(<Container size="xl">Content</Container>);
       expect(screen.getByText('Content')).toHaveClass('max-w-6xl');
 
-      rerender(<Container size='full'>Content</Container>);
+      rerender(<Container size="full">Content</Container>);
       expect(screen.getByText('Content')).toHaveClass('max-w-full');
     });
 
     it('applies different padding sizes', () => {
-      const { rerender } = render(<Container padding='none'>Content</Container>);
+      const { rerender } = render(<Container padding="none">Content</Container>);
       const container = screen.getByText('Content');
       expect(container).not.toHaveClass('px-4');
 
-      rerender(<Container padding='sm'>Content</Container>);
+      rerender(<Container padding="sm">Content</Container>);
       expect(screen.getByText('Content')).toHaveClass('px-2');
 
-      rerender(<Container padding='lg'>Content</Container>);
+      rerender(<Container padding="lg">Content</Container>);
       expect(screen.getByText('Content')).toHaveClass('px-6');
 
-      rerender(<Container padding='xl'>Content</Container>);
+      rerender(<Container padding="xl">Content</Container>);
       expect(screen.getByText('Content')).toHaveClass('px-8');
     });
 
@@ -63,7 +63,7 @@ describe('Container Components', () => {
     });
 
     it('applies custom className', () => {
-      render(<Container className='custom-class'>Content</Container>);
+      render(<Container className="custom-class">Content</Container>);
       expect(screen.getByText('Content')).toHaveClass('custom-class');
     });
 
@@ -74,7 +74,7 @@ describe('Container Components', () => {
     });
 
     it('forwards additional props', () => {
-      render(<Container data-testid='container'>Content</Container>);
+      render(<Container data-testid="container">Content</Container>);
       expect(screen.getByTestId('container')).toBeInTheDocument();
     });
 
@@ -111,36 +111,36 @@ describe('Container Components', () => {
     });
 
     it('renders with different HTML elements', () => {
-      const { rerender } = render(<Section as='article'>Content</Section>);
+      const { rerender } = render(<Section as="article">Content</Section>);
       expect(screen.getByText('Content').tagName).toBe('ARTICLE');
 
-      rerender(<Section as='main'>Content</Section>);
+      rerender(<Section as="main">Content</Section>);
       expect(screen.getByText('Content').tagName).toBe('MAIN');
 
-      rerender(<Section as='header'>Content</Section>);
+      rerender(<Section as="header">Content</Section>);
       expect(screen.getByText('Content').tagName).toBe('HEADER');
 
-      rerender(<Section as='footer'>Content</Section>);
+      rerender(<Section as="footer">Content</Section>);
       expect(screen.getByText('Content').tagName).toBe('FOOTER');
     });
 
     it('applies different spacing', () => {
-      const { rerender } = render(<Section spacing='none'>Content</Section>);
+      const { rerender } = render(<Section spacing="none">Content</Section>);
       const section = screen.getByText('Content');
       expect(section).not.toHaveClass('py-8');
 
-      rerender(<Section spacing='sm'>Content</Section>);
+      rerender(<Section spacing="sm">Content</Section>);
       expect(screen.getByText('Content')).toHaveClass('py-4');
 
-      rerender(<Section spacing='lg'>Content</Section>);
+      rerender(<Section spacing="lg">Content</Section>);
       expect(screen.getByText('Content')).toHaveClass('py-12');
 
-      rerender(<Section spacing='xl'>Content</Section>);
+      rerender(<Section spacing="xl">Content</Section>);
       expect(screen.getByText('Content')).toHaveClass('py-16');
     });
 
     it('applies custom className', () => {
-      render(<Section className='custom-section'>Content</Section>);
+      render(<Section className="custom-section">Content</Section>);
       expect(screen.getByText('Content')).toHaveClass('custom-section');
     });
 
@@ -212,17 +212,17 @@ describe('Container Components', () => {
     });
 
     it('applies different gaps', () => {
-      const { rerender } = render(<Grid gap='none'>Content</Grid>);
+      const { rerender } = render(<Grid gap="none">Content</Grid>);
       const grid = screen.getByText('Content');
       expect(grid).not.toHaveClass('gap-4');
 
-      rerender(<Grid gap='sm'>Content</Grid>);
+      rerender(<Grid gap="sm">Content</Grid>);
       expect(screen.getByText('Content')).toHaveClass('gap-2');
 
-      rerender(<Grid gap='lg'>Content</Grid>);
+      rerender(<Grid gap="lg">Content</Grid>);
       expect(screen.getByText('Content')).toHaveClass('gap-6');
 
-      rerender(<Grid gap='xl'>Content</Grid>);
+      rerender(<Grid gap="xl">Content</Grid>);
       expect(screen.getByText('Content')).toHaveClass('gap-8');
     });
 
@@ -244,7 +244,7 @@ describe('Container Components', () => {
     });
 
     it('applies custom className', () => {
-      render(<Grid className='custom-grid'>Content</Grid>);
+      render(<Grid className="custom-grid">Content</Grid>);
       expect(screen.getByText('Content')).toHaveClass('custom-grid');
     });
 
@@ -268,7 +268,7 @@ describe('Container Components', () => {
 
       it('should not have accessibility violations with different configurations', async () => {
         const { container } = render(
-          <Grid cols={3} gap='lg'>
+          <Grid cols={3} gap="lg">
             <article>
               <h3>Article 1</h3>
               <p>Content 1</p>
@@ -292,9 +292,9 @@ describe('Container Components', () => {
     it('should not have accessibility violations when components are combined', async () => {
       const { container } = render(
         <Container>
-          <Section as='main'>
+          <Section as="main">
             <h1>Main Content</h1>
-            <Grid cols={2} gap='lg'>
+            <Grid cols={2} gap="lg">
               <article>
                 <h2>Article 1</h2>
                 <p>Content for first article</p>

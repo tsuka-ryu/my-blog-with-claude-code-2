@@ -75,18 +75,18 @@ export const Skeleton: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div className='space-y-8'>
+    <div className="space-y-8">
       <div>
-        <h3 className='text-sm font-medium mb-4'>Small</h3>
-        <Loading size='sm' text='小さいサイズ' />
+        <h3 className="text-sm font-medium mb-4">Small</h3>
+        <Loading size="sm" text="小さいサイズ" />
       </div>
       <div>
-        <h3 className='text-sm font-medium mb-4'>Medium (Default)</h3>
-        <Loading size='md' text='中サイズ' />
+        <h3 className="text-sm font-medium mb-4">Medium (Default)</h3>
+        <Loading size="md" text="中サイズ" />
       </div>
       <div>
-        <h3 className='text-sm font-medium mb-4'>Large</h3>
-        <Loading size='lg' text='大きいサイズ' />
+        <h3 className="text-sm font-medium mb-4">Large</h3>
+        <Loading size="lg" text="大きいサイズ" />
       </div>
     </div>
   ),
@@ -101,18 +101,18 @@ export const Sizes: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <div className='space-y-8'>
+    <div className="space-y-8">
       <div>
-        <h3 className='text-sm font-medium mb-4'>Spinner</h3>
-        <Loading variant='spinner' text='スピナー' />
+        <h3 className="text-sm font-medium mb-4">Spinner</h3>
+        <Loading variant="spinner" text="スピナー" />
       </div>
       <div>
-        <h3 className='text-sm font-medium mb-4'>Pulse</h3>
-        <Loading variant='pulse' text='パルス' />
+        <h3 className="text-sm font-medium mb-4">Pulse</h3>
+        <Loading variant="pulse" text="パルス" />
       </div>
       <div>
-        <h3 className='text-sm font-medium mb-4'>Skeleton</h3>
-        <Loading variant='skeleton' />
+        <h3 className="text-sm font-medium mb-4">Skeleton</h3>
+        <Loading variant="skeleton" />
       </div>
     </div>
   ),

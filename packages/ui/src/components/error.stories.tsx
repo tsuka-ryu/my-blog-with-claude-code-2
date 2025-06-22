@@ -97,7 +97,7 @@ export const CustomContent: Story = {
     children: (
       <div>
         <p>以下のファイルをアップロードできませんでした：</p>
-        <ul className='list-disc list-inside mt-2 space-y-1'>
+        <ul className="list-disc list-inside mt-2 space-y-1">
           <li>document.pdf （ファイルサイズが大きすぎます）</li>
           <li>image.png （サポートされていない形式です）</li>
         </ul>
@@ -115,26 +115,26 @@ export const CustomContent: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <div className='space-y-6 max-w-md'>
+    <div className="space-y-6 max-w-md">
       <div>
-        <h3 className='text-sm font-medium mb-2'>Default</h3>
-        <Error message='通常のエラーメッセージです。' onRetry={() => console.log('再試行')} />
+        <h3 className="text-sm font-medium mb-2">Default</h3>
+        <Error message="通常のエラーメッセージです。" onRetry={() => console.log('再試行')} />
       </div>
       <div>
-        <h3 className='text-sm font-medium mb-2'>Critical</h3>
+        <h3 className="text-sm font-medium mb-2">Critical</h3>
         <Error
-          variant='critical'
-          title='重大なエラー'
-          message='システムエラーが発生しました。'
+          variant="critical"
+          title="重大なエラー"
+          message="システムエラーが発生しました。"
           onRetry={() => console.log('再試行')}
         />
       </div>
       <div>
-        <h3 className='text-sm font-medium mb-2'>Warning</h3>
+        <h3 className="text-sm font-medium mb-2">Warning</h3>
         <Error
-          variant='warning'
-          title='警告'
-          message='一部の処理が完了しませんでした。'
+          variant="warning"
+          title="警告"
+          message="一部の処理が完了しませんでした。"
           onRetry={() => console.log('再試行')}
         />
       </div>

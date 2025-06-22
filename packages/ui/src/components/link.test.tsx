@@ -8,24 +8,24 @@ import { Link } from './link';
 
 describe('Link Component', () => {
   it('renders children correctly', () => {
-    render(<Link href='/test'>Test Link</Link>);
+    render(<Link href="/test">Test Link</Link>);
     expect(screen.getByText('Test Link')).toBeInTheDocument();
   });
 
   it('renders as anchor element', () => {
-    render(<Link href='/test'>Link Text</Link>);
+    render(<Link href="/test">Link Text</Link>);
     const linkElement = screen.getByRole('link');
     expect(linkElement.tagName).toBe('A');
   });
 
   it('applies href attribute', () => {
-    render(<Link href='/test-page'>Test</Link>);
+    render(<Link href="/test-page">Test</Link>);
     expect(screen.getByRole('link')).toHaveAttribute('href', '/test-page');
   });
 
   it('applies custom className', () => {
     render(
-      <Link href='/test' className='custom-link'>
+      <Link href="/test" className="custom-link">
         Test
       </Link>
     );
@@ -35,7 +35,7 @@ describe('Link Component', () => {
   it('forwards ref correctly', () => {
     const ref = React.createRef<HTMLAnchorElement>();
     render(
-      <Link ref={ref} href='/test'>
+      <Link ref={ref} href="/test">
         Test
       </Link>
     );
@@ -44,7 +44,7 @@ describe('Link Component', () => {
 
   it('forwards additional props', () => {
     render(
-      <Link href='/test' data-testid='test-link' title='Test Title'>
+      <Link href="/test" data-testid="test-link" title="Test Title">
         Test
       </Link>
     );
@@ -54,14 +54,14 @@ describe('Link Component', () => {
 
   describe('Variants', () => {
     it('applies default primary variant', () => {
-      render(<Link href='/test'>Primary Link</Link>);
+      render(<Link href="/test">Primary Link</Link>);
       const link = screen.getByRole('link');
       expect(link).toHaveClass('text-terminal-accent');
     });
 
     it('applies secondary variant', () => {
       render(
-        <Link href='/test' variant='secondary'>
+        <Link href="/test" variant="secondary">
           Secondary Link
         </Link>
       );
@@ -71,7 +71,7 @@ describe('Link Component', () => {
 
     it('applies muted variant', () => {
       render(
-        <Link href='/test' variant='muted'>
+        <Link href="/test" variant="muted">
           Muted Link
         </Link>
       );
@@ -81,7 +81,7 @@ describe('Link Component', () => {
 
     it('applies underline variant', () => {
       render(
-        <Link href='/test' variant='underline'>
+        <Link href="/test" variant="underline">
           Underlined Link
         </Link>
       );
@@ -93,7 +93,7 @@ describe('Link Component', () => {
   describe('External links', () => {
     it('applies external link attributes when external prop is true', () => {
       render(
-        <Link href='https://example.com' external>
+        <Link href="https://example.com" external>
           External Link
         </Link>
       );
@@ -104,7 +104,7 @@ describe('Link Component', () => {
 
     it('does not apply external attributes when external prop is false', () => {
       render(
-        <Link href='/internal' external={false}>
+        <Link href="/internal" external={false}>
           Internal Link
         </Link>
       );
@@ -115,7 +115,7 @@ describe('Link Component', () => {
 
     it('renders external link icon when external prop is true', () => {
       render(
-        <Link href='https://example.com' external>
+        <Link href="https://example.com" external>
           External Link
         </Link>
       );
@@ -125,13 +125,13 @@ describe('Link Component', () => {
     });
 
     it('does not render external link icon when external prop is false', () => {
-      render(<Link href='/internal'>Internal Link</Link>);
+      render(<Link href="/internal">Internal Link</Link>);
       expect(screen.queryByLabelText('(外部リンク)')).not.toBeInTheDocument();
     });
 
     it('external link icon has proper attributes', () => {
       render(
-        <Link href='https://example.com' external>
+        <Link href="https://example.com" external>
           External Link
         </Link>
       );
@@ -145,7 +145,7 @@ describe('Link Component', () => {
   describe('Unstyled variant', () => {
     it('applies minimal styling when unstyled is true', () => {
       render(
-        <Link href='/test' unstyled>
+        <Link href="/test" unstyled>
           Unstyled Link
         </Link>
       );
@@ -156,7 +156,7 @@ describe('Link Component', () => {
 
     it('applies full styling when unstyled is false', () => {
       render(
-        <Link href='/test' unstyled={false}>
+        <Link href="/test" unstyled={false}>
           Styled Link
         </Link>
       );
@@ -167,7 +167,7 @@ describe('Link Component', () => {
 
     it('can combine unstyled with custom className', () => {
       render(
-        <Link href='/test' unstyled className='custom-unstyled'>
+        <Link href="/test" unstyled className="custom-unstyled">
           Custom Link
         </Link>
       );
@@ -179,7 +179,7 @@ describe('Link Component', () => {
 
   describe('Focus and accessibility', () => {
     it('has proper focus styles', () => {
-      render(<Link href='/test'>Focusable Link</Link>);
+      render(<Link href="/test">Focusable Link</Link>);
       const link = screen.getByRole('link');
       expect(link).toHaveClass('focus:outline-none');
       expect(link).toHaveClass('focus:ring-2');
@@ -188,7 +188,7 @@ describe('Link Component', () => {
 
     it('does not have focus styles when unstyled', () => {
       render(
-        <Link href='/test' unstyled>
+        <Link href="/test" unstyled>
           Unstyled Link
         </Link>
       );
@@ -200,7 +200,7 @@ describe('Link Component', () => {
 
   describe('Accessibility', () => {
     it('should not have accessibility violations', async () => {
-      const { container } = render(<Link href='/test'>Test Link</Link>);
+      const { container } = render(<Link href="/test">Test Link</Link>);
       await expectNoA11yViolations(container);
     });
 
@@ -208,7 +208,7 @@ describe('Link Component', () => {
       const variants = ['primary', 'secondary', 'muted', 'underline'] as const;
       for (const variant of variants) {
         const { container } = render(
-          <Link href='/test' variant={variant}>
+          <Link href="/test" variant={variant}>
             {variant} Link
           </Link>
         );
@@ -218,7 +218,7 @@ describe('Link Component', () => {
 
     it('should not have accessibility violations for external links', async () => {
       const { container } = render(
-        <Link href='https://example.com' external>
+        <Link href="https://example.com" external>
           External Link
         </Link>
       );
@@ -227,7 +227,7 @@ describe('Link Component', () => {
 
     it('should not have accessibility violations when unstyled', async () => {
       const { container } = render(
-        <Link href='/test' unstyled>
+        <Link href="/test" unstyled>
           Unstyled Link
         </Link>
       );
@@ -239,15 +239,15 @@ describe('Link Component', () => {
         <div>
           <p>
             This is a paragraph with a{' '}
-            <Link href='/test' variant='underline'>
+            <Link href="/test" variant="underline">
               link inside
             </Link>{' '}
             the text.
           </p>
           <nav>
-            <Link href='/home'>Home</Link>
-            <Link href='/about'>About</Link>
-            <Link href='https://example.com' external>
+            <Link href="/home">Home</Link>
+            <Link href="/about">About</Link>
+            <Link href="https://example.com" external>
               External Site
             </Link>
           </nav>
@@ -260,7 +260,7 @@ describe('Link Component', () => {
   describe('Complex scenarios', () => {
     it('handles complex content with multiple elements', () => {
       render(
-        <Link href='/complex' variant='secondary'>
+        <Link href="/complex" variant="secondary">
           <span>Complex Link</span>
           <em>with emphasis</em>
         </Link>
@@ -271,7 +271,7 @@ describe('Link Component', () => {
 
     it('external link with custom variant', () => {
       render(
-        <Link href='https://example.com' external variant='muted'>
+        <Link href="https://example.com" external variant="muted">
           External Muted Link
         </Link>
       );
@@ -283,7 +283,7 @@ describe('Link Component', () => {
 
     it('unstyled external link', () => {
       render(
-        <Link href='https://example.com' external unstyled className='custom-external'>
+        <Link href="https://example.com" external unstyled className="custom-external">
           Unstyled External Link
         </Link>
       );
@@ -298,14 +298,14 @@ describe('Link Component', () => {
       const handleClick = () => {};
       render(
         <Link
-          href='https://example.com'
+          href="https://example.com"
           external
-          variant='secondary'
-          className='custom-class'
+          variant="secondary"
+          className="custom-class"
           onClick={handleClick}
-          title='Custom Title'
-          id='custom-id'
-          data-testid='full-link'
+          title="Custom Title"
+          id="custom-id"
+          data-testid="full-link"
         >
           Full Featured Link
         </Link>
@@ -328,25 +328,25 @@ describe('Link Component', () => {
           <h2>Article Title</h2>
           <p>
             This article discusses various topics. You can read more about this on{' '}
-            <Link href='https://example.com' external variant='underline'>
+            <Link href="https://example.com" external variant="underline">
               the official documentation
             </Link>
             .
           </p>
-          <nav aria-label='Related links'>
+          <nav aria-label="Related links">
             <ul>
               <li>
-                <Link href='/related-1' variant='primary'>
+                <Link href="/related-1" variant="primary">
                   Related Article 1
                 </Link>
               </li>
               <li>
-                <Link href='/related-2' variant='secondary'>
+                <Link href="/related-2" variant="secondary">
                   Related Article 2
                 </Link>
               </li>
               <li>
-                <Link href='https://external.com' external variant='muted'>
+                <Link href="https://external.com" external variant="muted">
                   External Resource
                 </Link>
               </li>
@@ -360,7 +360,7 @@ describe('Link Component', () => {
 
   describe('Edge cases', () => {
     it('handles empty href', () => {
-      render(<Link href=''>Empty Link</Link>);
+      render(<Link href="">Empty Link</Link>);
       const link = screen.getByText('Empty Link');
       expect(link.tagName).toBe('A');
       expect(link).toHaveAttribute('href', '');
@@ -376,7 +376,7 @@ describe('Link Component', () => {
     it('handles very long text content', () => {
       const longText =
         'This is a very long link text that might wrap across multiple lines and should still work correctly with all the styling and functionality intact';
-      render(<Link href='/long'>{longText}</Link>);
+      render(<Link href="/long">{longText}</Link>);
       expect(screen.getByText(longText)).toBeInTheDocument();
     });
 

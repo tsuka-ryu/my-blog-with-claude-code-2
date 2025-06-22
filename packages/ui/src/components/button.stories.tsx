@@ -114,20 +114,20 @@ export const Clickable: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <div className='space-y-4'>
-      <div className='space-x-2'>
-        <Button variant='primary'>Primary</Button>
-        <Button variant='secondary'>Secondary</Button>
-        <Button variant='outline'>Outline</Button>
-        <Button variant='ghost'>Ghost</Button>
-        <Button variant='danger'>Danger</Button>
+    <div className="space-y-4">
+      <div className="space-x-2">
+        <Button variant="primary">Primary</Button>
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="outline">Outline</Button>
+        <Button variant="ghost">Ghost</Button>
+        <Button variant="danger">Danger</Button>
       </div>
-      <div className='space-x-2'>
-        <Button size='sm'>Small</Button>
-        <Button size='md'>Medium</Button>
-        <Button size='lg'>Large</Button>
+      <div className="space-x-2">
+        <Button size="sm">Small</Button>
+        <Button size="md">Medium</Button>
+        <Button size="lg">Large</Button>
       </div>
-      <div className='space-x-2'>
+      <div className="space-x-2">
         <Button loading>Loading</Button>
         <Button disabled>Disabled</Button>
       </div>

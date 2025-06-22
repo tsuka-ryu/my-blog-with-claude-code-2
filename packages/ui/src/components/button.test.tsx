@@ -17,24 +17,24 @@ describe('Button', () => {
   });
 
   it('renders different variants', () => {
-    const { rerender } = render(<Button variant='secondary'>Secondary</Button>);
+    const { rerender } = render(<Button variant="secondary">Secondary</Button>);
     expect(screen.getByRole('button')).toHaveClass('bg-terminal-bg-secondary');
 
-    rerender(<Button variant='outline'>Outline</Button>);
+    rerender(<Button variant="outline">Outline</Button>);
     expect(screen.getByRole('button')).toHaveClass('bg-transparent');
 
-    rerender(<Button variant='ghost'>Ghost</Button>);
+    rerender(<Button variant="ghost">Ghost</Button>);
     expect(screen.getByRole('button')).toHaveClass('bg-transparent');
 
-    rerender(<Button variant='danger'>Danger</Button>);
+    rerender(<Button variant="danger">Danger</Button>);
     expect(screen.getByRole('button')).toHaveClass('bg-terminal-error');
   });
 
   it('renders different sizes', () => {
-    const { rerender } = render(<Button size='sm'>Small</Button>);
+    const { rerender } = render(<Button size="sm">Small</Button>);
     expect(screen.getByRole('button')).toHaveClass('px-3 py-1.5 text-xs');
 
-    rerender(<Button size='lg'>Large</Button>);
+    rerender(<Button size="lg">Large</Button>);
     expect(screen.getByRole('button')).toHaveClass('px-6 py-3 text-base');
   });
 
@@ -84,7 +84,7 @@ describe('Button', () => {
   });
 
   it('applies custom className', () => {
-    render(<Button className='custom-class'>Custom</Button>);
+    render(<Button className="custom-class">Custom</Button>);
     expect(screen.getByRole('button')).toHaveClass('custom-class');
   });
 

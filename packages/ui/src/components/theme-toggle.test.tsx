@@ -80,7 +80,7 @@ describe('ThemeToggle', () => {
   describe('Theme display', () => {
     it('displays system theme by default', async () => {
       render(
-        <ThemeProvider defaultTheme='system'>
+        <ThemeProvider defaultTheme="system">
           <ThemeToggle />
         </ThemeProvider>
       );
@@ -93,7 +93,7 @@ describe('ThemeToggle', () => {
 
     it('displays light theme', async () => {
       render(
-        <ThemeProvider defaultTheme='light'>
+        <ThemeProvider defaultTheme="light">
           <ThemeToggle />
         </ThemeProvider>
       );
@@ -106,7 +106,7 @@ describe('ThemeToggle', () => {
 
     it('displays dark theme', async () => {
       render(
-        <ThemeProvider defaultTheme='dark'>
+        <ThemeProvider defaultTheme="dark">
           <ThemeToggle />
         </ThemeProvider>
       );
@@ -121,7 +121,7 @@ describe('ThemeToggle', () => {
   describe('Theme cycling', () => {
     it('cycles from light to dark to system to light', async () => {
       render(
-        <ThemeProvider defaultTheme='light'>
+        <ThemeProvider defaultTheme="light">
           <ThemeToggle />
         </ThemeProvider>
       );
@@ -156,7 +156,7 @@ describe('ThemeToggle', () => {
 
     it('cycles correctly starting from dark theme', async () => {
       render(
-        <ThemeProvider defaultTheme='dark'>
+        <ThemeProvider defaultTheme="dark">
           <ThemeToggle />
         </ThemeProvider>
       );
@@ -188,7 +188,7 @@ describe('ThemeToggle', () => {
 
     it('cycles correctly starting from system theme', async () => {
       render(
-        <ThemeProvider defaultTheme='system'>
+        <ThemeProvider defaultTheme="system">
           <ThemeToggle />
         </ThemeProvider>
       );
@@ -222,7 +222,7 @@ describe('ThemeToggle', () => {
   describe('Button attributes', () => {
     it('has proper title attribute for light theme', async () => {
       render(
-        <ThemeProvider defaultTheme='light'>
+        <ThemeProvider defaultTheme="light">
           <ThemeToggle />
         </ThemeProvider>
       );
@@ -235,7 +235,7 @@ describe('ThemeToggle', () => {
 
     it('has proper title attribute for dark theme', async () => {
       render(
-        <ThemeProvider defaultTheme='dark'>
+        <ThemeProvider defaultTheme="dark">
           <ThemeToggle />
         </ThemeProvider>
       );
@@ -248,7 +248,7 @@ describe('ThemeToggle', () => {
 
     it('has proper title attribute for system theme', async () => {
       render(
-        <ThemeProvider defaultTheme='system'>
+        <ThemeProvider defaultTheme="system">
           <ThemeToggle />
         </ThemeProvider>
       );
@@ -261,7 +261,7 @@ describe('ThemeToggle', () => {
 
     it('updates title when theme changes', async () => {
       render(
-        <ThemeProvider defaultTheme='light'>
+        <ThemeProvider defaultTheme="light">
           <ThemeToggle />
         </ThemeProvider>
       );
@@ -362,7 +362,7 @@ describe('ThemeToggle', () => {
           <nav>
             <ul>
               <li>
-                <a href='/home'>Home</a>
+                <a href="/home">Home</a>
               </li>
               <li>
                 <ThemeToggle />
@@ -390,7 +390,7 @@ describe('ThemeToggle', () => {
 
     it('supports keyboard navigation', async () => {
       render(
-        <ThemeProvider defaultTheme='light'>
+        <ThemeProvider defaultTheme="light">
           <ThemeToggle />
         </ThemeProvider>
       );
@@ -415,7 +415,7 @@ describe('ThemeToggle', () => {
 
     it('supports space key activation', async () => {
       render(
-        <ThemeProvider defaultTheme='dark'>
+        <ThemeProvider defaultTheme="dark">
           <ThemeToggle />
         </ThemeProvider>
       );
@@ -455,7 +455,7 @@ describe('ThemeToggle', () => {
 
     it('works with custom storage key', async () => {
       render(
-        <ThemeProvider storageKey='custom-theme'>
+        <ThemeProvider storageKey="custom-theme">
           <ThemeToggle />
         </ThemeProvider>
       );
@@ -474,7 +474,7 @@ describe('ThemeToggle', () => {
   describe('Multiple rapid clicks', () => {
     it('handles rapid theme changes correctly', async () => {
       render(
-        <ThemeProvider defaultTheme='light'>
+        <ThemeProvider defaultTheme="light">
           <ThemeToggle />
         </ThemeProvider>
       );
@@ -550,7 +550,7 @@ describe('ThemeToggle and ThemeToggleFallback integration', () => {
     const fallbackClasses = fallbackContainer?.className;
 
     rerender(
-      <ThemeProvider defaultTheme='system'>
+      <ThemeProvider defaultTheme="system">
         <ThemeToggle />
       </ThemeProvider>
     );
@@ -570,7 +570,7 @@ describe('ThemeToggle and ThemeToggleFallback integration', () => {
 
   it('transitions smoothly from fallback to interactive button', async () => {
     render(
-      <ThemeProvider defaultTheme='system'>
+      <ThemeProvider defaultTheme="system">
         <ThemeToggle />
       </ThemeProvider>
     );
@@ -587,7 +587,7 @@ describe('ThemeToggle and ThemeToggleFallback integration', () => {
 
   it('should not have accessibility violations during transition', async () => {
     const { container } = render(
-      <ThemeProvider defaultTheme='system'>
+      <ThemeProvider defaultTheme="system">
         <div>
           <h1>Navigation</h1>
           <ThemeToggle />

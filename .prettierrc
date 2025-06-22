@@ -9,7 +9,7 @@
   "arrowParens": "avoid",
   "endOfLine": "lf",
   "quoteProps": "as-needed",
-  "jsxSingleQuote": true,
+  "jsxSingleQuote": false,
   "bracketSameLine": false,
   "proseWrap": "preserve"
 }

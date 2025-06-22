@@ -103,10 +103,10 @@
 
 ```tsx
 // ✅ 良い例
-<nav aria-label='メインナビゲーション'>
+<nav aria-label="メインナビゲーション">
   <ul>
     <li>
-      <Link href='/home' aria-current={currentPath === '/home' ? 'page' : undefined}>
+      <Link href="/home" aria-current={currentPath === '/home' ? 'page' : undefined}>
         ホーム
       </Link>
     </li>
@@ -128,12 +128,12 @@
 ```tsx
 // ✅ 良い例
 <div>
-  <label htmlFor='email'>
-    メールアドレス <span aria-label='必須'>*</span>
+  <label htmlFor="email">
+    メールアドレス <span aria-label="必須">*</span>
   </label>
-  <input id='email' type='email' required aria-describedby='email-error' aria-invalid={hasError} />
+  <input id="email" type="email" required aria-describedby="email-error" aria-invalid={hasError} />
   {hasError && (
-    <div id='email-error' role='alert'>
+    <div id="email-error" role="alert">
       有効なメールアドレスを入力してください
     </div>
   )}
@@ -154,13 +154,13 @@
 ```tsx
 // ✅ 良い例
 <div
-  role='dialog'
-  aria-modal='true'
-  aria-labelledby='modal-title'
-  aria-describedby='modal-description'
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+  aria-describedby="modal-description"
 >
-  <h2 id='modal-title'>確認</h2>
-  <p id='modal-description'>この操作を実行しますか？</p>
+  <h2 id="modal-title">確認</h2>
+  <p id="modal-description">この操作を実行しますか？</p>
   <button onClick={handleConfirm}>はい</button>
   <button onClick={handleCancel}>いいえ</button>
 </div>
@@ -178,15 +178,15 @@
 
 ```tsx
 // ✅ 良い例
-<div aria-live='polite' aria-label='読み込み状況'>
+<div aria-live="polite" aria-label="読み込み状況">
   {isLoading && (
     <p>
-      <span aria-hidden='true'>⏳</span>
+      <span aria-hidden="true">⏳</span>
       データを読み込んでいます...
     </p>
   )}
   {error && (
-    <div role='alert'>
+    <div role="alert">
       <p>データの読み込みに失敗しました。</p>
       <button onClick={handleRetry}>再試行</button>
     </div>

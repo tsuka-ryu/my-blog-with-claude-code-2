@@ -98,13 +98,13 @@ describe('ColorPalette Component', () => {
   });
 
   it('applies custom className', () => {
-    render(<ColorPalette className='custom-class' />);
+    render(<ColorPalette className="custom-class" />);
     const container = screen.getByText('Terminal Color Palette').closest('[class*="custom-class"]');
     expect(container).toHaveClass('custom-class');
   });
 
   it('forwards additional props', () => {
-    render(<ColorPalette data-testid='color-palette' />);
+    render(<ColorPalette data-testid="color-palette" />);
     expect(screen.getByTestId('color-palette')).toBeInTheDocument();
   });
 
@@ -130,7 +130,7 @@ describe('ColorPalette Component', () => {
     });
 
     it('should not have accessibility violations with custom className', async () => {
-      const { container } = render(<ColorPalette className='test-class' />);
+      const { container } = render(<ColorPalette className="test-class" />);
       await expectNoA11yViolations(container);
     });
 

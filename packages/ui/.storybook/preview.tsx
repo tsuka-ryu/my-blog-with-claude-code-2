@@ -9,10 +9,10 @@ import '../src/styles/globals.css';
 const preview: Preview = {
   decorators: [
     Story => (
-      <ThemeProvider defaultTheme='dark' storageKey='storybook-theme'>
+      <ThemeProvider defaultTheme="dark" storageKey="storybook-theme">
         <div
           style={{ fontFamily: "'JetBrains Mono', 'Noto Sans JP', monospace" }}
-          className='min-h-screen'
+          className="min-h-screen"
         >
           <Story />
         </div>

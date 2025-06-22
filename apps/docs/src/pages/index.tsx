@@ -12,13 +12,13 @@ function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className='container'>
-        <Heading as='h1' className='hero__title'>
+      <div className="container">
+        <Heading as="h1" className="hero__title">
           {siteConfig.title}
         </Heading>
-        <p className='hero__subtitle'>{siteConfig.tagline}</p>
+        <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <Link className='button button--secondary button--lg' to='/docs/TODO'>
+          <Link className="button button--secondary button--lg" to="/docs/TODO">
             プロジェクトTODO 📋
           </Link>
         </div>
@@ -32,7 +32,7 @@ export default function Home(): ReactElement {
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description='Description will go into a meta tag in <head />'
+      description="Description will go into a meta tag in <head />"
     >
       <HomepageHeader />
       <main>

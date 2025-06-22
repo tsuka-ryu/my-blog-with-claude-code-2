@@ -13,12 +13,12 @@ describe('Error Component', () => {
   });
 
   it('renders with custom title', () => {
-    render(<Error title='カスタムエラー' />);
+    render(<Error title="カスタムエラー" />);
     expect(screen.getByText('カスタムエラー')).toBeInTheDocument();
   });
 
   it('renders with message', () => {
-    render(<Error message='エラーメッセージが表示されます' />);
+    render(<Error message="エラーメッセージが表示されます" />);
     expect(screen.getByText('エラーメッセージが表示されます')).toBeInTheDocument();
   });
 
@@ -39,7 +39,7 @@ describe('Error Component', () => {
 
   it('prioritizes children over message when both are provided', () => {
     render(
-      <Error message='メッセージ'>
+      <Error message="メッセージ">
         <p>子要素</p>
       </Error>
     );
@@ -48,7 +48,7 @@ describe('Error Component', () => {
   });
 
   it('applies custom className', () => {
-    render(<Error className='custom-error-class' />);
+    render(<Error className="custom-error-class" />);
     const errorElement = screen.getByRole('alert');
     expect(errorElement).toHaveClass('custom-error-class');
   });
@@ -60,7 +60,7 @@ describe('Error Component', () => {
   });
 
   it('forwards additional props', () => {
-    render(<Error data-testid='error-component' />);
+    render(<Error data-testid="error-component" />);
     expect(screen.getByTestId('error-component')).toBeInTheDocument();
   });
 
@@ -80,7 +80,7 @@ describe('Error Component', () => {
 
     it('uses custom retry text', () => {
       const mockRetry = vi.fn();
-      render(<Error onRetry={mockRetry} retryText='もう一度試す' />);
+      render(<Error onRetry={mockRetry} retryText="もう一度試す" />);
       expect(screen.getByRole('button', { name: /もう一度試す/ })).toBeInTheDocument();
     });
 
@@ -92,35 +92,35 @@ describe('Error Component', () => {
 
   describe('Variants', () => {
     it('renders default variant correctly', () => {
-      render(<Error variant='default' />);
+      render(<Error variant="default" />);
       const errorElement = screen.getByRole('alert');
       expect(errorElement).toHaveClass('border-red-300');
     });
 
     it('renders critical variant correctly', () => {
-      render(<Error variant='critical' />);
+      render(<Error variant="critical" />);
       const errorElement = screen.getByRole('alert');
       expect(errorElement).toHaveClass('border-red-500');
     });
 
     it('renders warning variant correctly', () => {
-      render(<Error variant='warning' />);
+      render(<Error variant="warning" />);
       const errorElement = screen.getByRole('alert');
       expect(errorElement).toHaveClass('border-yellow-300');
     });
 
     it('renders correct icon for default and critical variants', () => {
-      const { rerender } = render(<Error variant='default' />);
+      const { rerender } = render(<Error variant="default" />);
       const errorIcon = screen.getByRole('alert').querySelector('svg');
       expect(errorIcon).toBeInTheDocument();
 
-      rerender(<Error variant='critical' />);
+      rerender(<Error variant="critical" />);
       const criticalIcon = screen.getByRole('alert').querySelector('svg');
       expect(criticalIcon).toBeInTheDocument();
     });
 
     it('renders warning icon for warning variant', () => {
-      render(<Error variant='warning' />);
+      render(<Error variant="warning" />);
       const warningIcon = screen.getByRole('alert').querySelector('svg');
       expect(warningIcon).toBeInTheDocument();
     });
@@ -134,14 +134,14 @@ describe('Error Component', () => {
 
     it('should not have accessibility violations with message', async () => {
       const { container } = render(
-        <Error title='アクセシビリティテスト' message='エラーメッセージの内容' />
+        <Error title="アクセシビリティテスト" message="エラーメッセージの内容" />
       );
       await expectNoA11yViolations(container);
     });
 
     it('should not have accessibility violations with children', async () => {
       const { container } = render(
-        <Error title='フォームエラー'>
+        <Error title="フォームエラー">
           <p>以下の項目を確認してください：</p>
           <ul>
             <li>メールアドレスの形式</li>
@@ -156,10 +156,10 @@ describe('Error Component', () => {
       const mockRetry = vi.fn();
       const { container } = render(
         <Error
-          title='接続エラー'
-          message='サーバーに接続できませんでした'
+          title="接続エラー"
+          message="サーバーに接続できませんでした"
           onRetry={mockRetry}
-          retryText='再接続'
+          retryText="再接続"
         />
       );
       await expectNoA11yViolations(container);
@@ -188,17 +188,17 @@ describe('Error Component', () => {
 
     it('has proper ARIA label for retry button', () => {
       const mockRetry = vi.fn();
-      render(<Error onRetry={mockRetry} retryText='再試行' />);
+      render(<Error onRetry={mockRetry} retryText="再試行" />);
       const retryButton = screen.getByRole('button');
       expect(retryButton).toHaveAttribute('aria-label', 'エラーを解決するために再試行');
     });
 
     it('icons have proper aria-hidden attribute', () => {
-      const { rerender } = render(<Error variant='default' />);
+      const { rerender } = render(<Error variant="default" />);
       let icon = screen.getByRole('alert').querySelector('svg');
       expect(icon).toHaveAttribute('aria-hidden', 'true');
 
-      rerender(<Error variant='warning' />);
+      rerender(<Error variant="warning" />);
       icon = screen.getByRole('alert').querySelector('svg');
       expect(icon).toHaveAttribute('aria-hidden', 'true');
     });
@@ -209,12 +209,12 @@ describe('Error Component', () => {
       const mockRetry = vi.fn();
       render(
         <Error
-          title='データベース接続エラー'
-          variant='critical'
+          title="データベース接続エラー"
+          variant="critical"
           onRetry={mockRetry}
-          retryText='データベースに再接続'
-          className='custom-critical-error'
-          data-error-id='db-connection-001'
+          retryText="データベースに再接続"
+          className="custom-critical-error"
+          data-error-id="db-connection-001"
         >
           <div>
             <p>
@@ -250,7 +250,7 @@ describe('Error Component', () => {
           <main>
             <section>
               <h2>エラー処理</h2>
-              <Error title='フォーム送信エラー' variant='warning' onRetry={mockRetry}>
+              <Error title="フォーム送信エラー" variant="warning" onRetry={mockRetry}>
                 <div>
                   <p>フォームの送信中にエラーが発生しました。</p>
                   <details>

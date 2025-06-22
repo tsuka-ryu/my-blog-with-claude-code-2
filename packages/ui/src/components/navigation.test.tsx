@@ -21,7 +21,7 @@ describe('Navigation Components', () => {
     ];
 
     it('renders navigation items correctly', () => {
-      render(<Navigation title='Test Blog' items={mockItems} />, { wrapper: TestWrapper });
+      render(<Navigation title="Test Blog" items={mockItems} />, { wrapper: TestWrapper });
 
       expect(screen.getByRole('navigation')).toBeInTheDocument();
       expect(screen.getByRole('link', { name: 'Home' })).toBeInTheDocument();
@@ -30,7 +30,7 @@ describe('Navigation Components', () => {
     });
 
     it('marks active item with aria-current', () => {
-      render(<Navigation title='Test Blog' items={mockItems} />, { wrapper: TestWrapper });
+      render(<Navigation title="Test Blog" items={mockItems} />, { wrapper: TestWrapper });
 
       const homeLink = screen.getByRole('link', { name: 'Home' });
       expect(homeLink).toHaveAttribute('aria-current', 'page');
@@ -40,7 +40,7 @@ describe('Navigation Components', () => {
     });
 
     it('should not have accessibility violations', async () => {
-      const { container } = render(<Navigation title='Test Blog' items={mockItems} />, {
+      const { container } = render(<Navigation title="Test Blog" items={mockItems} />, {
         wrapper: TestWrapper,
       });
       await expectNoA11yViolations(container);
@@ -48,7 +48,7 @@ describe('Navigation Components', () => {
 
     it('should not have accessibility violations with single item', async () => {
       const singleItem = [{ href: '/', label: 'Home', isActive: true }];
-      const { container } = render(<Navigation title='Test Blog' items={singleItem} />, {
+      const { container } = render(<Navigation title="Test Blog" items={singleItem} />, {
         wrapper: TestWrapper,
       });
       await expectNoA11yViolations(container);
@@ -59,7 +59,7 @@ describe('Navigation Components', () => {
         { href: 'https://example.com', label: 'External Link', isActive: false },
         { href: 'mailto:test@example.com', label: 'Email', isActive: false },
       ];
-      const { container } = render(<Navigation title='Test Blog' items={externalItems} />, {
+      const { container } = render(<Navigation title="Test Blog" items={externalItems} />, {
         wrapper: TestWrapper,
       });
       await expectNoA11yViolations(container);
@@ -68,14 +68,14 @@ describe('Navigation Components', () => {
 
   describe('Header', () => {
     it('renders header with title', () => {
-      render(<Header title='My Blog' />);
+      render(<Header title="My Blog" />);
 
       expect(screen.getByRole('banner')).toBeInTheDocument();
       expect(screen.getByText('My Blog')).toBeInTheDocument();
     });
 
     it('renders header with description', () => {
-      render(<Header title='My Blog' description='A technical blog' />);
+      render(<Header title="My Blog" description="A technical blog" />);
 
       expect(screen.getByText('My Blog')).toBeInTheDocument();
       expect(screen.getByText('A technical blog')).toBeInTheDocument();
@@ -88,7 +88,7 @@ describe('Navigation Components', () => {
         { label: 'Post Title' },
       ];
 
-      render(<Header title='Post Title' breadcrumbs={breadcrumbs} />);
+      render(<Header title="Post Title" breadcrumbs={breadcrumbs} />);
 
       expect(screen.getByText('Home')).toBeInTheDocument();
       expect(screen.getByText('Blog')).toBeInTheDocument();
@@ -96,32 +96,32 @@ describe('Navigation Components', () => {
     });
 
     it('should not have accessibility violations', async () => {
-      const { container } = render(<Header title='My Blog' />);
+      const { container } = render(<Header title="My Blog" />);
       await expectNoA11yViolations(container);
     });
 
     it('should not have accessibility violations with breadcrumbs', async () => {
       const breadcrumbs = [{ label: 'Home', href: '/' }, { label: 'Current Page' }];
 
-      const { container } = render(<Header title='My Blog' breadcrumbs={breadcrumbs} />);
+      const { container } = render(<Header title="My Blog" breadcrumbs={breadcrumbs} />);
       await expectNoA11yViolations(container);
     });
 
     it('should not have accessibility violations with actions', async () => {
-      const actions = <button type='button'>Action</button>;
+      const actions = <button type="button">Action</button>;
 
-      const { container } = render(<Header title='My Blog' actions={actions} />);
+      const { container } = render(<Header title="My Blog" actions={actions} />);
       await expectNoA11yViolations(container);
     });
 
     it('should not have accessibility violations with all props', async () => {
       const breadcrumbs = [{ label: 'Home', href: '/' }, { label: 'Current' }];
-      const actions = <button type='button'>Action</button>;
+      const actions = <button type="button">Action</button>;
 
       const { container } = render(
         <Header
-          title='My Blog'
-          description='A technical blog'
+          title="My Blog"
+          description="A technical blog"
           breadcrumbs={breadcrumbs}
           actions={actions}
         />
@@ -130,7 +130,7 @@ describe('Navigation Components', () => {
     });
 
     it('maintains proper landmark structure', () => {
-      render(<Header title='My Blog' />);
+      render(<Header title="My Blog" />);
 
       const banner = screen.getByRole('banner');
       expect(banner).toBeInTheDocument();

@@ -13,7 +13,7 @@ describe('Code Component', () => {
   });
 
   it('applies custom className', () => {
-    render(<Code className='custom-class'>const x = 1;</Code>);
+    render(<Code className="custom-class">const x = 1;</Code>);
     const codeElement = screen.getByText('const x = 1;');
     expect(codeElement).toHaveClass('custom-class');
   });
@@ -49,7 +49,7 @@ describe('Code Component', () => {
 
     it('should not have accessibility violations with custom className', async () => {
       const { container } = render(
-        <Code className='syntax-highlight'>import React from &apos;react&apos;;</Code>
+        <Code className="syntax-highlight">import React from &apos;react&apos;;</Code>
       );
       await expectNoA11yViolations(container);
     });

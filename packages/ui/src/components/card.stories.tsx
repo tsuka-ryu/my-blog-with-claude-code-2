@@ -65,9 +65,9 @@ export const Sizes: Story = {
     children: <div />,
   },
   render: () => (
-    <div className='space-y-4'>
+    <div className="space-y-4">
       {(['sm', 'md', 'lg'] as const).map(size => (
-        <Card key={size} size={size} variant='outlined'>
+        <Card key={size} size={size} variant="outlined">
           <CardHeader>
             <CardTitle>Size: {size}</CardTitle>
           </CardHeader>
@@ -93,37 +93,37 @@ export const ComplexExample: Story = {
     children: <div />,
   },
   render: () => (
-    <div className='grid gap-4 max-w-2xl'>
-      <Card variant='default'>
+    <div className="grid gap-4 max-w-2xl">
+      <Card variant="default">
         <CardHeader>
           <CardTitle>User Profile</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className='space-y-2'>
-            <p className='text-muted-foreground'>Name: John Doe</p>
-            <p className='text-muted-foreground'>Email: john@example.com</p>
-            <p className='text-muted-foreground'>Role: Developer</p>
+          <div className="space-y-2">
+            <p className="text-muted-foreground">Name: John Doe</p>
+            <p className="text-muted-foreground">Email: john@example.com</p>
+            <p className="text-muted-foreground">Role: Developer</p>
           </div>
         </CardContent>
       </Card>
 
-      <Card variant='outlined'>
+      <Card variant="outlined">
         <CardHeader>
           <CardTitle>Statistics</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className='grid grid-cols-3 gap-4 text-center'>
+          <div className="grid grid-cols-3 gap-4 text-center">
             <div>
-              <p className='text-2xl font-bold'>42</p>
-              <p className='text-sm text-muted-foreground'>Projects</p>
+              <p className="text-2xl font-bold">42</p>
+              <p className="text-sm text-muted-foreground">Projects</p>
             </div>
             <div>
-              <p className='text-2xl font-bold'>128</p>
-              <p className='text-sm text-muted-foreground'>Commits</p>
+              <p className="text-2xl font-bold">128</p>
+              <p className="text-sm text-muted-foreground">Commits</p>
             </div>
             <div>
-              <p className='text-2xl font-bold'>7</p>
-              <p className='text-sm text-muted-foreground'>Reviews</p>
+              <p className="text-2xl font-bold">7</p>
+              <p className="text-sm text-muted-foreground">Reviews</p>
             </div>
           </div>
         </CardContent>

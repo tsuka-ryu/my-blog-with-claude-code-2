@@ -36,10 +36,10 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>(
     );
 
     const renderSkeleton = () => (
-      <div className='animate-pulse space-y-2'>
-        <div className='h-4 bg-gray-300 dark:bg-gray-600 rounded w-3/4' />
-        <div className='h-4 bg-gray-300 dark:bg-gray-600 rounded w-1/2' />
-        <div className='h-4 bg-gray-300 dark:bg-gray-600 rounded w-5/6' />
+      <div className="animate-pulse space-y-2">
+        <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-3/4" />
+        <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-1/2" />
+        <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-5/6" />
       </div>
     );
 
@@ -61,7 +61,7 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>(
           {text && (
             <span
               className={`text-gray-600 dark:text-gray-400 font-mono ${textSizeClasses[size]}`}
-              aria-live='polite'
+              aria-live="polite"
             >
               {text}
             </span>
@@ -72,10 +72,10 @@ const Loading = forwardRef<HTMLDivElement, LoadingProps>(
 
     return (
       <div
-        role='status'
-        aria-live='polite'
+        role="status"
+        aria-live="polite"
         aria-label={text || '読み込み中'}
-        className='flex justify-center items-center'
+        className="flex justify-center items-center"
       >
         {renderContent()}
       </div>

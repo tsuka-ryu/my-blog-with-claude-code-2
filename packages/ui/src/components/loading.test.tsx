@@ -21,7 +21,7 @@ describe('Loading Component', () => {
   });
 
   it('applies custom className', () => {
-    render(<Loading className='custom-loading' />);
+    render(<Loading className="custom-loading" />);
     const loadingContainer = screen.getByRole('status').querySelector('div');
     expect(loadingContainer).toHaveClass('custom-loading');
   });
@@ -33,7 +33,7 @@ describe('Loading Component', () => {
   });
 
   it('forwards additional props', () => {
-    render(<Loading data-testid='loading-component' />);
+    render(<Loading data-testid="loading-component" />);
     expect(screen.getByTestId('loading-component')).toBeInTheDocument();
   });
 
@@ -46,7 +46,7 @@ describe('Loading Component', () => {
     });
 
     it('renders spinner variant explicitly', () => {
-      render(<Loading variant='spinner' />);
+      render(<Loading variant="spinner" />);
       const spinner = screen.getByRole('status').querySelector('.animate-spin');
       expect(spinner).toBeInTheDocument();
       // aria-label is on the container, not the spinner itself
@@ -54,7 +54,7 @@ describe('Loading Component', () => {
     });
 
     it('renders pulse variant', () => {
-      render(<Loading variant='pulse' />);
+      render(<Loading variant="pulse" />);
       const pulse = screen.getByRole('status').querySelector('.animate-pulse.rounded-full');
       expect(pulse).toBeInTheDocument();
       // aria-label is on the container, not the pulse itself
@@ -62,7 +62,7 @@ describe('Loading Component', () => {
     });
 
     it('renders skeleton variant', () => {
-      render(<Loading variant='skeleton' />);
+      render(<Loading variant="skeleton" />);
       const skeleton = screen.getByRole('status').querySelector('.animate-pulse.space-y-2');
       expect(skeleton).toBeInTheDocument();
 
@@ -74,37 +74,37 @@ describe('Loading Component', () => {
 
   describe('Sizes', () => {
     it('applies default medium size', () => {
-      render(<Loading variant='spinner' />);
+      render(<Loading variant="spinner" />);
       const spinner = screen.getByRole('status').querySelector('.animate-spin');
       expect(spinner).toHaveClass('w-8', 'h-8');
     });
 
     it('applies small size', () => {
-      render(<Loading variant='spinner' size='sm' />);
+      render(<Loading variant="spinner" size="sm" />);
       const spinner = screen.getByRole('status').querySelector('.animate-spin');
       expect(spinner).toHaveClass('w-4', 'h-4');
     });
 
     it('applies medium size explicitly', () => {
-      render(<Loading variant='spinner' size='md' />);
+      render(<Loading variant="spinner" size="md" />);
       const spinner = screen.getByRole('status').querySelector('.animate-spin');
       expect(spinner).toHaveClass('w-8', 'h-8');
     });
 
     it('applies large size', () => {
-      render(<Loading variant='spinner' size='lg' />);
+      render(<Loading variant="spinner" size="lg" />);
       const spinner = screen.getByRole('status').querySelector('.animate-spin');
       expect(spinner).toHaveClass('w-12', 'h-12');
     });
 
     it('applies size to pulse variant', () => {
-      render(<Loading variant='pulse' size='lg' />);
+      render(<Loading variant="pulse" size="lg" />);
       const pulse = screen.getByRole('status').querySelector('.animate-pulse.rounded-full');
       expect(pulse).toHaveClass('w-12', 'h-12');
     });
 
     it('skeleton variant ignores size prop for its structure', () => {
-      render(<Loading variant='skeleton' size='lg' />);
+      render(<Loading variant="skeleton" size="lg" />);
       const skeleton = screen.getByRole('status').querySelector('.animate-pulse.space-y-2');
       expect(skeleton).toBeInTheDocument();
       // Skeleton has its own fixed structure regardless of size prop
@@ -113,36 +113,36 @@ describe('Loading Component', () => {
 
   describe('Text prop', () => {
     it('displays custom loading text', () => {
-      render(<Loading text='データを読み込み中...' />);
+      render(<Loading text="データを読み込み中..." />);
       expect(screen.getByText('データを読み込み中...')).toBeInTheDocument();
     });
 
     it('text has proper ARIA attributes', () => {
-      render(<Loading text='Processing...' />);
+      render(<Loading text="Processing..." />);
       const textElement = screen.getByText('Processing...');
       expect(textElement).toHaveAttribute('aria-live', 'polite');
     });
 
     it('applies correct text size for small loading', () => {
-      render(<Loading size='sm' text='Small loading' />);
+      render(<Loading size="sm" text="Small loading" />);
       const textElement = screen.getByText('Small loading');
       expect(textElement).toHaveClass('text-sm');
     });
 
     it('applies correct text size for medium loading', () => {
-      render(<Loading size='md' text='Medium loading' />);
+      render(<Loading size="md" text="Medium loading" />);
       const textElement = screen.getByText('Medium loading');
       expect(textElement).toHaveClass('text-base');
     });
 
     it('applies correct text size for large loading', () => {
-      render(<Loading size='lg' text='Large loading' />);
+      render(<Loading size="lg" text="Large loading" />);
       const textElement = screen.getByText('Large loading');
       expect(textElement).toHaveClass('text-lg');
     });
 
     it('updates aria-label when custom text is provided', () => {
-      render(<Loading text='カスタムローディング' />);
+      render(<Loading text="カスタムローディング" />);
       const loadingElement = screen.getByRole('status');
       expect(loadingElement).toHaveAttribute('aria-label', 'カスタムローディング');
     });
@@ -160,7 +160,7 @@ describe('Loading Component', () => {
     });
 
     it('should not have accessibility violations with text', async () => {
-      const { container } = render(<Loading text='Loading content...' />);
+      const { container } = render(<Loading text="Loading content..." />);
       await expectNoA11yViolations(container);
     });
 
@@ -186,7 +186,7 @@ describe('Loading Component', () => {
           <h1>Application</h1>
           <main>
             <p>Content is loading...</p>
-            <Loading text='データを読み込み中...' />
+            <Loading text="データを読み込み中..." />
           </main>
         </div>
       );
@@ -194,7 +194,7 @@ describe('Loading Component', () => {
     });
 
     it('has proper role attributes for individual elements', () => {
-      render(<Loading variant='spinner' />);
+      render(<Loading variant="spinner" />);
       const statusElements = screen.getAllByRole('status');
       expect(statusElements).toHaveLength(1); // Only main container
     });
@@ -202,19 +202,19 @@ describe('Loading Component', () => {
 
   describe('Animation classes', () => {
     it('spinner has animate-spin class', () => {
-      render(<Loading variant='spinner' />);
+      render(<Loading variant="spinner" />);
       const spinner = screen.getByRole('status').querySelector('.animate-spin');
       expect(spinner).toHaveClass('animate-spin');
     });
 
     it('pulse has animate-pulse class', () => {
-      render(<Loading variant='pulse' />);
+      render(<Loading variant="pulse" />);
       const pulse = screen.getByRole('status').querySelector('.animate-pulse.rounded-full');
       expect(pulse).toHaveClass('animate-pulse');
     });
 
     it('skeleton has animate-pulse class', () => {
-      render(<Loading variant='skeleton' />);
+      render(<Loading variant="skeleton" />);
       const skeleton = screen.getByRole('status').querySelector('.animate-pulse.space-y-2');
       expect(skeleton).toHaveClass('animate-pulse');
     });
@@ -222,7 +222,7 @@ describe('Loading Component', () => {
 
   describe('Styling', () => {
     it('applies proper spinner styling', () => {
-      render(<Loading variant='spinner' />);
+      render(<Loading variant="spinner" />);
       const spinner = screen.getByRole('status').querySelector('.animate-spin');
       expect(spinner).toHaveClass(
         'rounded-full',
@@ -233,13 +233,13 @@ describe('Loading Component', () => {
     });
 
     it('applies proper pulse styling', () => {
-      render(<Loading variant='pulse' />);
+      render(<Loading variant="pulse" />);
       const pulse = screen.getByRole('status').querySelector('.animate-pulse.rounded-full');
       expect(pulse).toHaveClass('rounded-full', 'bg-gray-300');
     });
 
     it('applies proper skeleton styling', () => {
-      render(<Loading variant='skeleton' />);
+      render(<Loading variant="skeleton" />);
       const skeletonContainer = screen
         .getByRole('status')
         .querySelector('.animate-pulse.space-y-2');
@@ -252,7 +252,7 @@ describe('Loading Component', () => {
     });
 
     it('text has proper styling', () => {
-      render(<Loading text='Loading...' />);
+      render(<Loading text="Loading..." />);
       const textElement = screen.getByText('Loading...');
       expect(textElement).toHaveClass('text-gray-600', 'font-mono');
     });
@@ -262,11 +262,11 @@ describe('Loading Component', () => {
     it('handles all props combined', () => {
       render(
         <Loading
-          variant='spinner'
-          size='lg'
-          text='大きなスピナーで読み込み中...'
-          className='custom-loading'
-          data-testid='complex-loading'
+          variant="spinner"
+          size="lg"
+          text="大きなスピナーで読み込み中..."
+          className="custom-loading"
+          data-testid="complex-loading"
         />
       );
 
@@ -284,14 +284,14 @@ describe('Loading Component', () => {
       const { container } = render(
         <section>
           <h2>Data Dashboard</h2>
-          <div role='region' aria-label='Charts'>
-            <Loading variant='skeleton' />
+          <div role="region" aria-label="Charts">
+            <Loading variant="skeleton" />
           </div>
-          <div role='region' aria-label='Status'>
-            <Loading variant='pulse' size='sm' text='Updating...' />
+          <div role="region" aria-label="Status">
+            <Loading variant="pulse" size="sm" text="Updating..." />
           </div>
-          <div role='region' aria-label='Main content'>
-            <Loading variant='spinner' size='lg' text='読み込み中...' />
+          <div role="region" aria-label="Main content">
+            <Loading variant="spinner" size="lg" text="読み込み中..." />
           </div>
         </section>
       );
@@ -303,8 +303,8 @@ describe('Loading Component', () => {
         <form>
           <fieldset>
             <legend>User Information</legend>
-            <button type='submit' disabled>
-              <Loading variant='spinner' size='sm' />
+            <button type="submit" disabled>
+              <Loading variant="spinner" size="sm" />
               Save Changes
             </button>
           </fieldset>
@@ -316,7 +316,7 @@ describe('Loading Component', () => {
 
   describe('Edge cases', () => {
     it('handles empty text prop', () => {
-      render(<Loading text='' />);
+      render(<Loading text="" />);
       // Empty text should not render a span element
       const container = screen.getByRole('status');
       const textSpan = container.querySelector('span[aria-live="polite"]');
@@ -339,9 +339,9 @@ describe('Loading Component', () => {
     it('maintains accessibility with multiple loading components', async () => {
       const { container } = render(
         <div>
-          <Loading variant='spinner' text='First loading' />
-          <Loading variant='pulse' text='Second loading' />
-          <Loading variant='skeleton' />
+          <Loading variant="spinner" text="First loading" />
+          <Loading variant="pulse" text="Second loading" />
+          <Loading variant="skeleton" />
         </div>
       );
       await expectNoA11yViolations(container);

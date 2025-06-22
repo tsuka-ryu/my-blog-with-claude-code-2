@@ -14,8 +14,8 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className='inline-flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md border border-terminal-ui-border bg-terminal-bg-primary text-terminal-text-primary opacity-50'>
-        <span className='text-base'>🖥️</span>
+      <div className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md border border-terminal-ui-border bg-terminal-bg-primary text-terminal-text-primary opacity-50">
+        <span className="text-base">🖥️</span>
         <span>システム</span>
       </div>
     );
@@ -60,10 +60,10 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(getNextTheme())}
-      className='inline-flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md border border-terminal-ui-border bg-terminal-bg-primary text-terminal-text-primary hover:bg-terminal-bg-hover hover:border-terminal-ui-border-hover focus:outline-none focus:ring-2 focus:ring-terminal-ui-border-focus focus:ring-offset-2 focus:ring-offset-terminal-bg-primary transition-colors'
+      className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md border border-terminal-ui-border bg-terminal-bg-primary text-terminal-text-primary hover:bg-terminal-bg-hover hover:border-terminal-ui-border-hover focus:outline-none focus:ring-2 focus:ring-terminal-ui-border-focus focus:ring-offset-2 focus:ring-offset-terminal-bg-primary transition-colors"
       title={`現在: ${getThemeLabel()}モード (クリックで切り替え)`}
     >
-      <span className='text-base'>{getThemeIcon()}</span>
+      <span className="text-base">{getThemeIcon()}</span>
       <span>{getThemeLabel()}</span>
     </button>
   );

@@ -20,7 +20,7 @@ describe('Card Component', () => {
   });
 
   it('applies custom className', () => {
-    render(<Card className='custom-class'>Content</Card>);
+    render(<Card className="custom-class">Content</Card>);
     const card = screen.getByText('Content').closest('div');
     expect(card).toHaveClass('custom-class');
   });
@@ -47,11 +47,11 @@ describe('Card Component', () => {
         <Card>
           <header>
             <h2>Card Header</h2>
-            <time dateTime='2023-01-01'>January 1, 2023</time>
+            <time dateTime="2023-01-01">January 1, 2023</time>
           </header>
           <main>
             <p>
-              Main card content with <a href='#link'>a link</a>.
+              Main card content with <a href="#link">a link</a>.
             </p>
             <ul>
               <li>List item 1</li>
@@ -59,7 +59,7 @@ describe('Card Component', () => {
             </ul>
           </main>
           <footer>
-            <button type='button'>Action</button>
+            <button type="button">Action</button>
           </footer>
         </Card>
       );
@@ -68,7 +68,7 @@ describe('Card Component', () => {
 
     it('should not have accessibility violations with custom className', async () => {
       const { container } = render(
-        <Card className='custom-styling'>
+        <Card className="custom-styling">
           <h2>Custom Styled Card</h2>
           <p>Content with custom styling</p>
         </Card>
@@ -81,9 +81,9 @@ describe('Card Component', () => {
         <Card>
           <h2>Interactive Card</h2>
           <form>
-            <label htmlFor='email'>Email:</label>
-            <input type='email' id='email' name='email' />
-            <button type='submit'>Submit</button>
+            <label htmlFor="email">Email:</label>
+            <input type="email" id="email" name="email" />
+            <button type="submit">Submit</button>
           </form>
         </Card>
       );
@@ -96,7 +96,7 @@ describe('Card Component', () => {
           <Card>
             <h2>Article Title</h2>
             <p>Article content</p>
-            <time dateTime='2023-01-01'>Published: January 1, 2023</time>
+            <time dateTime="2023-01-01">Published: January 1, 2023</time>
           </Card>
         </article>
       );

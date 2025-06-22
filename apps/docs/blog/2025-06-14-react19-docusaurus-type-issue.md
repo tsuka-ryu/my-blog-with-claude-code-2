@@ -34,7 +34,7 @@ React 19の型定義では、コンポーネントの戻り値として`Promise<
 {
   /* @ts-expect-error: DocusaurusのLinkコンポーネントの型互換性問題 */
 }
-<Link className='button button--secondary button--lg' to='/docs/TODO'>
+<Link className="button button--secondary button--lg" to="/docs/TODO">
   プロジェクトTODO 📋
 </Link>;
 ```

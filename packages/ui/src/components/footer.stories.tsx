@@ -40,7 +40,7 @@ export const DarkMode: Story = {
   },
   decorators: [
     Story => (
-      <div className='dark'>
+      <div className="dark">
         <Story />
       </div>
     ),
@@ -54,7 +54,7 @@ export const LightMode: Story = {
   },
   decorators: [
     Story => (
-      <div className=''>
+      <div className="">
         <Story />
       </div>
     ),

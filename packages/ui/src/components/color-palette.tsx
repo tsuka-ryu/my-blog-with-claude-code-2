@@ -37,23 +37,23 @@ function ColorSwatch({ name, value, cssVar }: ColorSwatchProps) {
   };
 
   return (
-    <div className='group relative flex flex-col items-center p-4 m-2 rounded-lg transition-colors bg-white dark:bg-terminal-bg-secondary border border-gray-200 dark:border-gray-700 hover:shadow-md dark:hover:shadow-lg'>
+    <div className="group relative flex flex-col items-center p-4 m-2 rounded-lg transition-colors bg-white dark:bg-terminal-bg-secondary border border-gray-200 dark:border-gray-700 hover:shadow-md dark:hover:shadow-lg">
       <div
-        className='w-16 h-16 rounded-lg border-2 border-gray-200 dark:border-gray-600 shadow-sm transition-all'
+        className="w-16 h-16 rounded-lg border-2 border-gray-200 dark:border-gray-600 shadow-sm transition-all"
         style={{
           backgroundColor: cssVar ? `var(${cssVar})` : computedValue,
           minHeight: '4rem',
           minWidth: '4rem',
         }}
       />
-      <div className='mt-2 text-center'>
-        <div className='font-mono text-xs font-medium text-gray-800 dark:text-terminal-text-primary truncate max-w-[80px]'>
+      <div className="mt-2 text-center">
+        <div className="font-mono text-xs font-medium text-gray-800 dark:text-terminal-text-primary truncate max-w-[80px]">
           {name.replace('terminal-', '').replace('light-', '').replace(/-/g, ' ')}
         </div>
-        <div className='font-mono text-xs text-gray-500 dark:text-terminal-text-secondary mt-1'>
+        <div className="font-mono text-xs text-gray-500 dark:text-terminal-text-secondary mt-1">
           {cssVar ? cssVar : computedValue}
         </div>
-        <div className='font-mono text-xs text-gray-400 dark:text-terminal-text-muted mt-1'>
+        <div className="font-mono text-xs text-gray-400 dark:text-terminal-text-muted mt-1">
           {computedValue}
         </div>
       </div>
@@ -79,11 +79,11 @@ interface ColorPaletteSectionProps {
 
 function ColorPaletteSection({ title, colors }: ColorPaletteSectionProps) {
   return (
-    <div className='mb-8'>
-      <h3 className='text-lg font-semibold mb-4 font-mono text-gray-700 dark:text-terminal-text-primary'>
+    <div className="mb-8">
+      <h3 className="text-lg font-semibold mb-4 font-mono text-gray-700 dark:text-terminal-text-primary">
         {title}
       </h3>
-      <div className='grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-6'>
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-6">
         {colors.map((color, index) => (
           <ColorSwatch key={index} {...color} />
         ))}
@@ -148,21 +148,21 @@ export function ColorPalette({ className, ...props }: ColorPaletteProps) {
       className={`max-w-4xl mx-auto p-6 bg-white dark:bg-terminal-bg-primary transition-colors ${className}`}
       {...props}
     >
-      <div className='mb-8'>
-        <h2 className='text-2xl font-bold text-gray-900 dark:text-terminal-text-bright mb-2'>
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-terminal-text-bright mb-2">
           Terminal Color Palette
         </h2>
-        <p className='text-gray-600 dark:text-terminal-text-secondary text-sm'>
+        <p className="text-gray-600 dark:text-terminal-text-secondary text-sm">
           技術ブログのターミナル風デザインで使用するカラーシステム
         </p>
       </div>
 
-      <div className='space-y-8'>
-        <ColorPaletteSection title='Background Colors' colors={backgroundColors} />
-        <ColorPaletteSection title='Text Colors' colors={textColors} />
-        <ColorPaletteSection title='Accent Colors' colors={accentColors} />
-        <ColorPaletteSection title='Syntax Highlighting' colors={syntaxColors} />
-        <ColorPaletteSection title='UI Elements' colors={uiColors} />
+      <div className="space-y-8">
+        <ColorPaletteSection title="Background Colors" colors={backgroundColors} />
+        <ColorPaletteSection title="Text Colors" colors={textColors} />
+        <ColorPaletteSection title="Accent Colors" colors={accentColors} />
+        <ColorPaletteSection title="Syntax Highlighting" colors={syntaxColors} />
+        <ColorPaletteSection title="UI Elements" colors={uiColors} />
       </div>
     </div>
   );

@@ -52,15 +52,15 @@ describe('ThemeProvider', () => {
     const { theme, setTheme, resolvedTheme } = useTheme();
     return (
       <div>
-        <div data-testid='current-theme'>{theme}</div>
-        <div data-testid='resolved-theme'>{resolvedTheme}</div>
-        <button onClick={() => setTheme('dark')} data-testid='set-dark'>
+        <div data-testid="current-theme">{theme}</div>
+        <div data-testid="resolved-theme">{resolvedTheme}</div>
+        <button onClick={() => setTheme('dark')} data-testid="set-dark">
           Set Dark
         </button>
-        <button onClick={() => setTheme('light')} data-testid='set-light'>
+        <button onClick={() => setTheme('light')} data-testid="set-light">
           Set Light
         </button>
-        <button onClick={() => setTheme('system')} data-testid='set-system'>
+        <button onClick={() => setTheme('system')} data-testid="set-system">
           Set System
         </button>
       </div>
@@ -91,7 +91,7 @@ describe('ThemeProvider', () => {
 
   it('accepts custom default theme', async () => {
     render(
-      <ThemeProvider defaultTheme='dark'>
+      <ThemeProvider defaultTheme="dark">
         <TestComponent />
       </ThemeProvider>
     );
@@ -192,7 +192,7 @@ describe('ThemeProvider', () => {
   describe('DOM class manipulation', () => {
     it('adds dark class to document when theme is dark', async () => {
       render(
-        <ThemeProvider defaultTheme='dark'>
+        <ThemeProvider defaultTheme="dark">
           <TestComponent />
         </ThemeProvider>
       );
@@ -207,7 +207,7 @@ describe('ThemeProvider', () => {
       document.documentElement.classList.add('dark');
 
       render(
-        <ThemeProvider defaultTheme='light'>
+        <ThemeProvider defaultTheme="light">
           <TestComponent />
         </ThemeProvider>
       );
@@ -219,7 +219,7 @@ describe('ThemeProvider', () => {
 
     it('updates DOM class when theme changes', async () => {
       render(
-        <ThemeProvider defaultTheme='light'>
+        <ThemeProvider defaultTheme="light">
           <TestComponent />
         </ThemeProvider>
       );
@@ -244,7 +244,7 @@ describe('ThemeProvider', () => {
       vi.spyOn(window, 'matchMedia').mockReturnValue(mockMediaQuery as MediaQueryList);
 
       render(
-        <ThemeProvider defaultTheme='system'>
+        <ThemeProvider defaultTheme="system">
           <TestComponent />
         </ThemeProvider>
       );
@@ -260,7 +260,7 @@ describe('ThemeProvider', () => {
       vi.spyOn(window, 'matchMedia').mockReturnValue(mockMediaQuery as MediaQueryList);
 
       render(
-        <ThemeProvider defaultTheme='system'>
+        <ThemeProvider defaultTheme="system">
           <TestComponent />
         </ThemeProvider>
       );
@@ -287,7 +287,7 @@ describe('ThemeProvider', () => {
 
     it('cleans up media query listener', () => {
       const { unmount } = render(
-        <ThemeProvider defaultTheme='system'>
+        <ThemeProvider defaultTheme="system">
           <TestComponent />
         </ThemeProvider>
       );
@@ -302,7 +302,7 @@ describe('ThemeProvider', () => {
       vi.spyOn(window, 'matchMedia').mockReturnValue(mockMediaQuery as MediaQueryList);
 
       render(
-        <ThemeProvider defaultTheme='system'>
+        <ThemeProvider defaultTheme="system">
           <TestComponent />
         </ThemeProvider>
       );
@@ -337,7 +337,7 @@ describe('ThemeProvider', () => {
 
     it('provides theme context values', async () => {
       render(
-        <ThemeProvider defaultTheme='dark'>
+        <ThemeProvider defaultTheme="dark">
           <TestComponent />
         </ThemeProvider>
       );
@@ -444,7 +444,7 @@ describe('ThemeProvider', () => {
 
       expect(() => {
         render(
-          <ThemeProvider defaultTheme='system'>
+          <ThemeProvider defaultTheme="system">
             <TestComponent />
           </ThemeProvider>
         );
@@ -487,11 +487,11 @@ describe('ThemeProvider', () => {
     it('works correctly in nested component structure', async () => {
       function NestedComponent() {
         const { resolvedTheme } = useTheme();
-        return <div data-testid='nested-theme'>{resolvedTheme}</div>;
+        return <div data-testid="nested-theme">{resolvedTheme}</div>;
       }
 
       const { container } = render(
-        <ThemeProvider defaultTheme='dark'>
+        <ThemeProvider defaultTheme="dark">
           <header>
             <nav>
               <NestedComponent />
@@ -525,9 +525,9 @@ describe('ThemeProvider', () => {
       }
 
       render(
-        <ThemeProvider defaultTheme='light'>
-          <ThemeDisplay id='1' />
-          <ThemeDisplay id='2' />
+        <ThemeProvider defaultTheme="light">
+          <ThemeDisplay id="1" />
+          <ThemeDisplay id="2" />
           <TestComponent />
         </ThemeProvider>
       );
