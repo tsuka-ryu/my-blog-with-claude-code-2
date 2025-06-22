@@ -43,7 +43,7 @@ describe('Button', () => {
     const button = screen.getByRole('button');
     expect(button).toBeDisabled();
     expect(button).toHaveAttribute('aria-disabled', 'true');
-    expect(button.querySelector('[aria-hidden="true"]')).toBeInTheDocument();
+    expect(button.querySelector('[role="status"]')).toBeInTheDocument();
   });
 
   it('handles disabled state', () => {
