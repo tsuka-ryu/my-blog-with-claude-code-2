@@ -39,4 +39,4 @@ jobs:
 
       - name: Run Lighthouse CI
         run: |
-          npx @lhci/cli autorun --collect.settings.chromeFlags="--no-sandbox" || echo "Lighthouse CI failed but continuing..."
+          npx @lhci/cli autorun --collect.settings.chromeFlags="--no-sandbox"
