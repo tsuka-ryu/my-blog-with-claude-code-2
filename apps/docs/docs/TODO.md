@@ -82,7 +82,7 @@ my-blog-with-claude-code/
 - [x] **2.3.9** デザインシステムドキュメント
 - [x] **2.3.10** コンポーネント単体テスト
 - [x] **2.3.11** Storybook インタラクションテスト
-- [ ] **2.3.12** Lighthouse Accessibility監査
+- [x] **2.3.12** Lighthouse Accessibility監査
 
 ### 2.4 アプリケーション構造
 
