@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/markuplint/markuplint/main/packages/%40markuplint/config-schema/schema.json",
+  "extends": [],
+  "specs": ["@markuplint/react-spec"],
+  "parser": {
+    "\\.tsx?$": "@markuplint/jsx-parser"
+  },
+  "rules": {
+    "doctype": false,
+    "required-h1": false,
+    "landmark-roles": true,
+    "permitted-contents": true,
+    "required-attr": true,
+    "invalid-attr": true,
+    "attr-duplication": true,
+    "character-reference": true,
+    "deprecated-attr": true,
+    "deprecated-element": true,
+    "id-duplication": true,
+    "permitted-role": true,
+    "required-element": false,
+    "wai-aria": true,
+    "class-naming": false,
+    "attr-equal-space-after": true,
+    "attr-equal-space-before": true,
+    "attr-spacing": true,
+    "attr-value-quotes": true,
+    "case-sensitive-attr-name": true,
+    "case-sensitive-tag-name": true,
+    "end-tag": true,
+    "indentation": false,
+    "ineffective-attr": true,
+    "no-empty-palpable-content": true,
+    "no-hard-code-id": false,
+    "no-refer-to-non-existent-id": true,
+    "placeholder-label-option": true,
+    "require-accessible-name": true,
+    "use-list": true
+  },
+  "nodeRules": [
+    {
+      "selector": "img",
+      "rules": {
+        "required-attr": ["alt"]
+      }
+    },
+    {
+      "selector": "a",
+      "rules": {
+        "require-accessible-name": true
+      }
+    },
+    {
+      "selector": "input[type=button], input[type=submit], input[type=reset], button",
+      "rules": {
+        "require-accessible-name": true
+      }
+    }
+  ],
+  "childNodeRules": [
+    {
+      "selector": "head",
+      "rules": {
+        "required-element": ["title"]
+      }
+    }
+  ],
+  "excludeFiles": [
+    "./node_modules/**/*",
+    "./.next/**/*",
+    "./dist/**/*",
+    "./build/**/*",
+    "./out/**/*",
+    "./coverage/**/*",
+    "./storybook-static/**/*"
+  ]
+}
