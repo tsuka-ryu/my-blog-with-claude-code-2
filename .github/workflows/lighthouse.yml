@@ -56,20 +56,26 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const output = `${{ steps.lighthouse.outputs.LIGHTHOUSE_OUTPUT }}`;
-            const reportUrl = `${{ steps.lighthouse.outputs.REPORT_URL }}`;
+            const fs = require('fs');
+            const output = fs.readFileSync('lighthouse_output.txt', 'utf8');
+            const reportUrl = '${{ steps.lighthouse.outputs.REPORT_URL }}';
             
             // アクセシビリティスコアを抽出
-            const scoreMatch = output.match(/categories:accessibility.*?(\d+)/);
+            const scoreMatch = output.match(/Accessibility:\s*(\d+)/);
             const score = scoreMatch ? scoreMatch[1] : '不明';
             
-            const body = `## 🔍 Lighthouse アクセシビリティ監査結果
+            const isSuccess = !output.includes('Assertion failed');
+            const statusText = isSuccess ? 
+              '✅ **監査成功**: アクセシビリティ基準を満たしています。' : 
+              '❌ **監査失敗**: アクセシビリティ基準を満たしていません。';
             
+            const body = `## 🔍 Lighthouse アクセシビリティ監査結果
+
 **アクセシビリティスコア**: ${score}%
 
 📊 **詳細レポート**: [Lighthouseレポートを確認する](${reportUrl})
 
-${output.includes('Assertion failed') ? '❌ **監査失敗**: アクセシビリティ基準を満たしていません。' : '✅ **監査成功**: アクセシビリティ基準を満たしています。'}
+${statusText}
 
 <details>
 <summary>詳細ログを表示</summary>
@@ -80,7 +86,7 @@ ${output}
 
 </details>`;
 
-            github.rest.issues.createComment({
+            await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
