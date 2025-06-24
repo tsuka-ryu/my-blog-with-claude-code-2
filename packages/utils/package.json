@@ -13,7 +13,7 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && tsc --emitDeclarationOnly",
     "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
