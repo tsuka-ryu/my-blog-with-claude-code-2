@@ -28,8 +28,8 @@ export function getTagNameFromSlug(slug: string): string {
 export function getAllTags(posts: BlogPost[] | BlogPostSummary[]): TagInfo[] {
   const tagCountMap = new Map<string, number>();
 
-  posts.forEach((post) => {
-    post.tags.forEach((tag) => {
+  posts.forEach(post => {
+    post.tags.forEach(tag => {
       tagCountMap.set(tag, (tagCountMap.get(tag) || 0) + 1);
     });
   });
@@ -48,11 +48,11 @@ export function getAllTags(posts: BlogPost[] | BlogPostSummary[]): TagInfo[] {
  */
 export function getPostsByTag<T extends BlogPost | BlogPostSummary>(
   posts: T[],
-  tagSlug: string,
+  tagSlug: string
 ): T[] {
   const tagName = getTagNameFromSlug(tagSlug);
-  return posts.filter((post) =>
-    post.tags.some((tag) => createTagSlug(tag) === tagSlug || tag === tagName),
+  return posts.filter(post =>
+    post.tags.some(tag => createTagSlug(tag) === tagSlug || tag === tagName)
   );
 }
 

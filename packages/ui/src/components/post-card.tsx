@@ -48,7 +48,7 @@ export function PostCard({ post, className = '' }: PostCardProps) {
       )}
 
       <div className='flex flex-wrap gap-2 pt-2'>
-        {post.tags.map(tag => (
+        {post.tags.map((tag: string) => (
           <Link
             key={tag}
             href={`/tags/${encodeURIComponent(tag.toLowerCase().replace(/\s+/g, '-'))}`}
