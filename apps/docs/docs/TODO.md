@@ -86,7 +86,7 @@ my-blog-with-claude-code/
 
 ### 2.4 アプリケーション構造
 
-- [ ] **2.4.1** app/layout.tsx 基本レイアウト
+- [x] **2.4.1** app/layout.tsx 基本レイアウト
 - [ ] **2.4.2** app/page.tsx ホームページ
 - [ ] **2.4.3** app/posts/[slug]/page.tsx 記事詳細
 - [ ] **2.4.4** app/posts/page.tsx 記事一覧
