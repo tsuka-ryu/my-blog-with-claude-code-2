@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import type { BlogPostSummary } from '@repo/utils';
 import { PostCard } from './post-card';
+
+import type { BlogPostSummary } from '@repo/utils';
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof PostCard> = {
   title: 'Components/PostCard',
@@ -27,7 +28,8 @@ const mockPost: BlogPostSummary = {
 const longPost: BlogPostSummary = {
   ...mockPost,
   title: '非常に長いタイトルの記事：TypeScript Genericsの基礎から応用まで完全ガイド',
-  description: '非常に長い説明文のサンプルです。TypeScriptのGenericsを理解して、型安全で再利用可能なコードを書くためのテクニックを詳しく解説します。実践的な例を交えながら、基礎から応用まで幅広くカバーしています。',
+  description:
+    '非常に長い説明文のサンプルです。TypeScriptのGenericsを理解して、型安全で再利用可能なコードを書くためのテクニックを詳しく解説します。実践的な例を交えながら、基礎から応用まで幅広くカバーしています。',
   tags: ['TypeScript', 'JavaScript', 'Programming', 'Advanced', 'Generics'],
   readingTime: 25,
 };
@@ -66,7 +68,15 @@ export const ManyTags: Story = {
   args: {
     post: {
       ...mockPost,
-      tags: ['React', 'JavaScript', 'TypeScript', 'Frontend', 'Hooks', 'Performance', 'Best Practices'],
+      tags: [
+        'React',
+        'JavaScript',
+        'TypeScript',
+        'Frontend',
+        'Hooks',
+        'Performance',
+        'Best Practices',
+      ],
     },
   },
 };
