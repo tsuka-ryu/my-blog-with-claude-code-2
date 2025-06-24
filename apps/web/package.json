@@ -15,9 +15,12 @@
   "dependencies": {
     "@repo/utils": "workspace:*",
     "@repo/ui": "workspace:*",
+    "gray-matter": "^4.0.3",
     "next": "catalog:",
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "react-dom": "catalog:",
+    "react-markdown": "^9.0.1",
+    "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
@@ -26,6 +29,7 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "autoprefixer": "catalog:",
     "eslint": "catalog:",
     "postcss": "catalog:",
