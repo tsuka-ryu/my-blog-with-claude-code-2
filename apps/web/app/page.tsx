@@ -1,95 +1,113 @@
-import { Button, ThemeToggle } from '@repo/ui';
-import Image, { type ImageProps } from 'next/image';
-
-import styles from './page.module.css';
-
-type Props = Omit<ImageProps, 'src'> & {
-  srcLight: string;
-  srcDark: string;
-};
-
-const ThemeImage = (props: Props) => {
-  const { srcLight, srcDark, ...rest } = props;
-
-  return (
-    <>
-      <Image {...rest} src={srcLight} className='imgLight' />
-      <Image {...rest} src={srcDark} className='imgDark' />
-    </>
-  );
-};
+import { Header, Link, Typography } from '@repo/ui';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <ThemeImage
-          className={styles.logo}
-          srcLight='turborepo-dark.svg'
-          srcDark='turborepo-light.svg'
-          alt='Turborepo logo'
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>apps/web/app/page.tsx</code>
-          </li>
-          <li>Save and see your changes instantly.</li>
-          <li>日本語のテスト。１２３４1234</li>
-        </ol>
+    <div className='space-y-8'>
+      <Header title='技術ブログ' description='技術共有・解説記事・Podcast感想を発信しています' />
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href='https://vercel.com/new/clone?demo-description=Learn+to+implement+a+monorepo+with+a+two+Next.js+sites+that+has+installed+three+local+packages.&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F4K8ZISWAzJ8X1504ca0zmC%2F0b21a1c6246add355e55816278ef54bc%2FBasic.png&demo-title=Monorepo+with+Turborepo&demo-url=https%3A%2F%2Fexamples-basic-web.vercel.sh%2F&from=templates&project-name=Monorepo+with+Turborepo&repository-name=monorepo-turborepo&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fturborepo%2Ftree%2Fmain%2Fexamples%2Fbasic&root-directory=apps%2Fdocs&skippable-integrations=1&teamSlug=vercel&utm_source=create-turbo'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <Image
-              className={styles.logo}
-              src='/vercel.svg'
-              alt='Vercel logomark'
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href='https://turborepo.com/docs?utm_source'
-            target='_blank'
-            rel='noopener noreferrer'
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+      <section className='space-y-6'>
+        <div className='bg-card border border-accent rounded-lg p-8 space-y-6'>
+          <div className='text-center space-y-4'>
+            <Typography component='h2' variant='h2' color='accent'>
+              $ whoami
+            </Typography>
+            <Typography component='p' variant='body1' color='muted'>
+              技術者として学んだこと、体験したこと、考えたことを
+              <br />
+              ターミナル風のデザインで記録・共有する技術ブログです
+            </Typography>
+          </div>
+
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-6 pt-6'>
+            <div className='text-center space-y-3 p-4 bg-background border border-accent/30 rounded-lg'>
+              <Typography component='h3' variant='h4' color='primary'>
+                📝 技術記事
+              </Typography>
+              <Typography component='p' variant='body2' color='muted'>
+                開発で学んだ技術や
+                <br />
+                ツールの使い方を共有
+              </Typography>
+            </div>
+
+            <div className='text-center space-y-3 p-4 bg-background border border-accent/30 rounded-lg'>
+              <Typography component='h3' variant='h4' color='primary'>
+                🎧 Podcast感想
+              </Typography>
+              <Typography component='p' variant='body2' color='muted'>
+                技術系Podcastを聞いた
+                <br />
+                感想や学びを記録
+              </Typography>
+            </div>
+
+            <div className='text-center space-y-3 p-4 bg-background border border-accent/30 rounded-lg'>
+              <Typography component='h3' variant='h4' color='primary'>
+                💭 思考の整理
+              </Typography>
+              <Typography component='p' variant='body2' color='muted'>
+                技術やキャリアについて
+                <br />
+                考えたことを整理・共有
+              </Typography>
+            </div>
+          </div>
         </div>
-        <div className='flex gap-4 items-center'>
-          <Button variant='secondary' className={styles.secondary}>
-            Open alert
-          </Button>
-          <ThemeToggle />
+
+        <div className='bg-card border border-accent rounded-lg p-8 space-y-6'>
+          <Typography component='h2' variant='h3' color='accent' align='center'>
+            $ ls -la recent_posts/
+          </Typography>
+
+          <div className='space-y-4'>
+            <div className='border-l-2 border-accent pl-4 py-2'>
+              <Typography component='p' variant='caption' color='muted' className='font-mono'>
+                2024-12-24 10:30:00
+              </Typography>
+              <Typography
+                component='h3'
+                variant='h4'
+                color='primary'
+                className='hover:text-accent transition-colors'
+              >
+                <Link href='/posts/coming-soon' variant='underline'>
+                  ブログ記事準備中...
+                </Link>
+              </Typography>
+              <Typography component='p' variant='body2' color='muted'>
+                現在、記事システムを構築中です。しばらくお待ちください。
+              </Typography>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href='https://vercel.com/templates?search=turborepo&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Image aria-hidden src='/window.svg' alt='Window icon' width={16} height={16} />
-          Examples
-        </a>
-        <a
-          href='https://turborepo.com?utm_source=create-turbo'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Image aria-hidden src='/globe.svg' alt='Globe icon' width={16} height={16} />
-          Go to turborepo.com →
-        </a>
-      </footer>
+
+        <div className='text-center space-y-4'>
+          <Typography component='h2' variant='h3' color='accent'>
+            $ explore --help
+          </Typography>
+
+          <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
+            <Link
+              href='/posts'
+              className='inline-flex items-center justify-center font-medium rounded-md border transition-colors bg-terminal-accent text-terminal-accent-foreground hover:bg-terminal-accent-hover border-terminal-accent px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-terminal-ui-border-focus focus:ring-offset-2 focus:ring-offset-terminal-bg-primary'
+            >
+              記事一覧を見る
+            </Link>
+            <Link
+              href='/tags'
+              className='inline-flex items-center justify-center font-medium rounded-md border transition-colors bg-transparent text-terminal-text-primary hover:bg-terminal-bg-hover border-terminal-ui-border hover:border-terminal-ui-border-hover px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-terminal-ui-border-focus focus:ring-offset-2 focus:ring-offset-terminal-bg-primary'
+            >
+              タグから探す
+            </Link>
+            <Link
+              href='/search'
+              className='inline-flex items-center justify-center font-medium rounded-md border transition-colors bg-transparent text-terminal-text-primary hover:bg-terminal-bg-hover border-transparent px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-terminal-ui-border-focus focus:ring-offset-2 focus:ring-offset-terminal-bg-primary'
+            >
+              検索する
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
