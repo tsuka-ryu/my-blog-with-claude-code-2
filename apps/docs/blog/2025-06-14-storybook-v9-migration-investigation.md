@@ -24,7 +24,6 @@ npx storybook@9 upgrade
 ### 発生した問題
 
 1. **パッケージ依存関係の不整合**
-
    - `@storybook/test@^9.0.9`が存在しない
    - `@storybook/blocks@^9.0.9`が存在しない
    - 一部のアドオンパッケージがv9に対応していない
