@@ -90,7 +90,7 @@ my-blog-with-claude-code/
 - [x] **2.4.2** app/page.tsx ホームページ
 - [ ] **2.4.3** app/posts/[slug]/page.tsx 記事詳細
 - [ ] **2.4.4** app/posts/page.tsx 記事一覧
-- [ ] **2.4.5** app/tags/[tag]/page.tsx タグ別記事一覧
+- [x] **2.4.5** app/tags/[tag]/page.tsx タグ別記事一覧
 - [ ] **2.4.6** app/search/page.tsx 検索結果ページ
 
 ## 🛠 Phase 3: 統合テスト・品質保証

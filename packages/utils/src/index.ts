@@ -9,6 +9,7 @@ export type * from './types.js';
 
 // ユーティリティ関数のエクスポート
 export * from './cn.js';
+export * from './tags.js';
 
 // その他のユーティリティ関数（将来実装予定）
 // export * from './string';
