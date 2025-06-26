@@ -22,7 +22,7 @@
       "inputs": ["$TURBO_DEFAULT$", ".prettierrc", ".prettierignore"]
     },
     "check-types": {
-      "dependsOn": ["^check-types"]
+      "dependsOn": ["^build", "^check-types"]
     },
     "dev": {
       "cache": false,
