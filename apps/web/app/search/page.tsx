@@ -85,21 +85,24 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   );
 }
 
-export function generateMetadata({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
-  return searchParams.then(params => {
-    const query = params.q || '';
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
+  const params = await searchParams;
+  const query = params.q || '';
 
-    if (query) {
-      return {
-        title: `"${query}" の検索結果 - 技術ブログ`,
-        description: `"${query}" の検索結果ページ。技術記事・思考の整理から関連する記事を検索できます。`,
-      };
-    }
-
+  if (query) {
     return {
-      title: '検索 - 技術ブログ',
-      description:
-        '技術記事・思考の整理から記事を検索。タイトル、内容、タグから記事を見つけることができます。',
+      title: `"${query}" の検索結果 - 技術ブログ`,
+      description: `"${query}" の検索結果ページ。技術記事・思考の整理から関連する記事を検索できます。`,
     };
-  });
+  }
+
+  return {
+    title: '検索 - 技術ブログ',
+    description:
+      '技術記事・思考の整理から記事を検索。タイトル、内容、タグから記事を見つけることができます。',
+  };
 }
