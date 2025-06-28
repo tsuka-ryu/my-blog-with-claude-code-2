@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+
 import { getAllPosts } from '../../_mocks/mock-data';
 
 export async function GET() {
@@ -18,7 +19,8 @@ export async function GET() {
     }));
 
     return NextResponse.json(tags);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to fetch tags' }, { status: 500 });
   }
 }
+
