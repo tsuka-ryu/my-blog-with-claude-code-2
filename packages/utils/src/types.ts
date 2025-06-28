@@ -68,3 +68,24 @@ export interface SearchResult {
   /** 検索スコア */
   score: number;
 }
+
+/**
+ * タグ情報の型定義
+ */
+export interface TagInfo {
+  /** タグ名 */
+  name: string;
+  /** タグのスラッグ */
+  slug: string;
+  /** 記事数 */
+  count: number;
+  /** タグの説明 */
+  description?: string;
+}
+
+/**
+ * タグページのパラメータ型
+ */
+export interface TagPageParams {
+  tag: string;
+}

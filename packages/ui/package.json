@@ -51,6 +51,7 @@
     "@axe-core/react": "catalog:"
   },
   "dependencies": {
+    "@repo/utils": "workspace:*",
     "clsx": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",

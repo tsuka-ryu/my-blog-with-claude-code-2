@@ -68,7 +68,7 @@ catalogs:
       version: 16.3.0
     '@testing-library/user-event':
       specifier: ^14.6.1
-      version: 14.5.2
+      version: 14.6.1
     '@turbo/gen':
       specifier: ^2.5.0
       version: 2.5.0
@@ -101,10 +101,10 @@ catalogs:
       version: 2.1.1
     eslint:
       specifier: ^9.29.0
-      version: 9.28.0
+      version: 9.29.0
     eslint-config-prettier:
       specifier: ^10.1.5
-      version: 10.1.1
+      version: 10.1.5
     eslint-plugin-prettier:
       specifier: ^5.5.0
       version: 5.5.0
@@ -128,7 +128,7 @@ catalogs:
       version: 8.5.5
     prettier:
       specifier: ^3.6.0
-      version: 3.5.3
+      version: 3.6.0
     prism-react-renderer:
       specifier: ^2.3.0
       version: 2.4.1
@@ -388,6 +388,9 @@ importers:
 
   packages/ui:
     dependencies:
+      '@repo/utils':
+        specifier: workspace:*
+        version: link:../utils
       clsx:
         specifier: 'catalog:'
         version: 2.1.1
