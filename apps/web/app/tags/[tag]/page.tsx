@@ -2,7 +2,7 @@ import { Header, Typography, Link, PostCard } from '@repo/ui';
 import { getPostsByTag, getTagNameFromSlug, getAllTags } from '@repo/utils';
 import { notFound } from 'next/navigation';
 
-import { getPublishedPosts } from '../../../lib/mock-data';
+import { getPublishedPosts } from '../../_mocks/mock-data';
 
 import type { TagPageParams, TagInfo, BlogPostSummary } from '@repo/utils';
 
