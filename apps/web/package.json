@@ -7,6 +7,12 @@
     "dev": "next dev --turbopack --port 3000",
     "build": "next build",
     "start": "next start",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:api": "vitest --config vitest.config.api.ts",
+    "test:api:run": "vitest run --config vitest.config.api.ts",
+    "test:browser": "vitest",
+    "test:browser:run": "vitest run",
     "lint": "next lint --max-warnings 0",
     "check-types": "tsc --noEmit",
     "config:inspect": "eslint-config-inspector --port 7774",
@@ -30,6 +36,13 @@
     "eslint": "catalog:",
     "postcss": "catalog:",
     "tailwindcss": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:",
+    "@vitest/browser": "catalog:",
+    "webdriverio": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "@testing-library/react": "catalog:",
+    "@testing-library/jest-dom": "catalog:",
+    "jsdom": "catalog:"
   }
 }

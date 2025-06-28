@@ -98,7 +98,7 @@ my-blog-with-claude-code/
 
 ### 3.1 アプリケーション統合テスト
 
-- [ ] **3.1.1** API ルートテスト
+- [x] **3.1.1** API ルートテスト
 - [ ] **3.1.2** Playwright E2Eテスト
 - [ ] **3.1.3** Playwright + axe-core アクセシビリティテスト
 - [ ] **3.1.4** Visual Regression テスト
