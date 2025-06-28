@@ -6,15 +6,33 @@ import type { BlogPostSummary } from '@repo/utils';
 export interface PostCardProps {
   post: BlogPostSummary;
   className?: string;
+  highlightTerm?: string;
 }
 
-export function PostCard({ post, className = '' }: PostCardProps) {
+export function PostCard({ post, className = '', highlightTerm }: PostCardProps) {
   const formatDate = (date: Date) => {
     return new Intl.DateTimeFormat('ja-JP', {
       year: 'numeric',
       month: '2-digit',
       day: '2-digit',
     }).format(date);
+  };
+
+  const highlightText = (text: string) => {
+    if (!highlightTerm) return text;
+
+    const regex = new RegExp(`(${highlightTerm})`, 'gi');
+    const parts = text.split(regex);
+
+    return parts.map((part, index) =>
+      regex.test(part) ? (
+        <mark key={index} className='bg-terminal-accent/20 text-terminal-accent px-1 rounded'>
+          {part}
+        </mark>
+      ) : (
+        part
+      )
+    );
   };
 
   return (
@@ -37,13 +55,13 @@ export function PostCard({ post, className = '' }: PostCardProps) {
         className='hover:text-accent transition-colors'
       >
         <Link href={`/posts/${post.slug}`} variant='underline'>
-          {post.title}
+          {highlightText(post.title)}
         </Link>
       </Typography>
 
       {post.description && (
         <Typography component='p' variant='body2' color='muted'>
-          {post.description}
+          {highlightText(post.description)}
         </Typography>
       )}
 
