@@ -22,8 +22,9 @@
 pnpm install
 
 # 開発サーバー起動
-pnpm dev --filter="web"    # webアプリのみを起動（推奨）
-pnpm turbo dev             # 全パッケージの開発サーバー起動
+pnpm dev --filter="web"           # webアプリのみ起動（推奨・ブラウザ自動起動）
+pnpm dev:headless --filter="web"  # webアプリのみ起動（Playwright MCP用・ブラウザ起動なし）
+pnpm turbo dev                    # 全パッケージの開発サーバー起動
 
 # 将来利用可能（パッケージ作成後）:
 pnpm turbo build    # 全パッケージをビルド
@@ -124,7 +125,7 @@ my-blog-with-claude-code/
 
 **画面・ページ実装時は必ずPlaywright MCPによる動作確認を実行すること**：
 
-1. 開発サーバーを起動: `pnpm dev --filter="web"`（webアプリのみ起動、推奨）
+1. 開発サーバーを起動: `pnpm dev:headless --filter="web"`（Playwright MCP用・ブラウザ起動なし）
 2. Playwright MCPでブラウザを操作して以下を確認:
    - ページが正しく表示される
    - ナビゲーションが機能する
