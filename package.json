@@ -16,6 +16,10 @@
     "doc": "turbo run doc --filter=@my-blog/docs",
     "markuplint": "markuplint \"**/*.{html,tsx,jsx}\"",
     "markuplint:fix": "markuplint \"**/*.{html,tsx,jsx}\" --fix",
+    "playwright": "playwright test",
+    "playwright:ui": "playwright test --ui",
+    "playwright:debug": "playwright test --debug",
+    "playwright:report": "playwright show-report",
     "prepare": "lefthook install || echo 'lefthook install failed, but continuing...'"
   },
   "devDependencies": {
@@ -24,6 +28,7 @@
     "@eslint/config-inspector": "catalog:",
     "@markuplint/jsx-parser": "^4.7.19",
     "@markuplint/react-spec": "^4.5.19",
+    "@playwright/test": "^1.53.1",
     "@testing-library/jest-dom": "catalog:",
     "@testing-library/react": "catalog:",
     "@testing-library/user-event": "catalog:",
@@ -38,6 +43,7 @@
     "lefthook": "catalog:",
     "markuplint": "^4.12.0",
     "oxlint": "catalog:",
+    "playwright": "^1.53.1",
     "prettier": "catalog:",
     "turbo": "catalog:",
     "typescript": "catalog:",
