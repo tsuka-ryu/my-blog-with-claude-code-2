@@ -32,12 +32,6 @@ pnpm turbo lint
 
 # テスト実行
 pnpm turbo test
-
-# E2Eテスト（webアプリ）
-pnpm --filter=web test:e2e
-
-# Playwrightブラウザのインストール
-pnpm --filter=web playwright:install
 ```
 
 ## コアファイルとユーティリティ
@@ -139,7 +133,7 @@ my-blog-with-claude-code/
 
 1. **タスク開始前**: apps/docs/docs/TODO.mdでタスクを確認
 2. **実装中**: TodoWrite/TodoReadツールを活用して進捗管理
-3. **動作確認**: 必ずPlaywright MCPを使用してブラウザで動作確認
+3. **動作確認**: 必ずPlaywright MCPを使用してブラウザで動作確認（E2Eテストは削除済み）
 4. **コミット時**: TODO.mdで完了タスクを`[x]`でマーク
 5. **PR作成前**: リント・テストが全て通過することを確認
 
@@ -153,7 +147,9 @@ my-blog-with-claude-code/
    - ナビゲーションが機能する
    - レスポンシブデザインが適切に動作する
    - アクセシビリティ要件を満たしている
-3. E2Eテストを作成して動作を保証
+   - 動的機能（検索、フィルタリングなど）が正常に動作する
+
+**注意**: E2Eテストは重すぎるため削除済み。Playwright MCPによる手動検証を優先すること。
 
 ### MCPサーバー活用
 
@@ -184,7 +180,6 @@ my-blog-with-claude-code/
 - [ ] リントエラーがない: `pnpm turbo lint`
 - [ ] フォーマットが適用されている: `pnpm format`
 - [ ] 単体テストが通過する: `pnpm turbo test`
-- [ ] E2Eテストが通過する（該当する場合）: `pnpm --filter=web test:e2e`
 - [ ] ブラウザで動作確認済み（Playwright MCP使用）
 - [ ] TODO.mdが更新されている
 
@@ -201,7 +196,6 @@ my-blog-with-claude-code/
 1. **依存関係エラー**: `pnpm install --frozen-lockfile`を実行
 2. **ビルドエラー**: `pnpm turbo build --force`でキャッシュをクリア
 3. **テストエラー**: `pnpm --filter=<package> test -- --no-cache`でキャッシュなしで実行
-4. **Playwrightエラー**: `pnpm --filter=web playwright:install`でブラウザを再インストール
 
 ## 参考リンク
 
