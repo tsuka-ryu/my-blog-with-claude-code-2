@@ -45,7 +45,7 @@ pnpm test:e2e:debug
 
 ### ディレクトリ構造
 
-```
+```bash
 apps/web/
 ├── e2e/
 │   ├── home.spec.ts      # ホームページのテスト
