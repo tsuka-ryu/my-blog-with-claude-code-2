@@ -1,5 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
+// Node.js processを使用するための型定義
+declare const process: NodeJS.Process;
+
 /**
  * Playwright設定ファイル
  * MCP (Model Context Protocol) での動作確認用
