@@ -37,7 +37,7 @@ pnpm turbo dev      # 開発サーバーを起動
 
 ### 現在の構造
 
-```
+```text
 my-blog-with-claude-code/
 ├── package.json           # ルートパッケージ設定
 ├── turbo.json            # TurboRepoパイプライン設定
