@@ -1,0 +1,146 @@
+# Page snapshot
+
+```yaml
+- navigation "メインナビゲーション":
+    - heading "技術ブログ - ホームページに移動" [level=1]:
+        - link "技術ブログ - ホームページに移動":
+            - /url: /
+            - text: 技術ブログ
+    - link "ホーム":
+        - /url: /
+    - link "記事一覧":
+        - /url: /posts
+    - link "タグ":
+        - /url: /tags
+    - link "検索":
+        - /url: /search
+    - button "🖥️ システム"
+- main:
+    - banner:
+        - heading "記事一覧" [level=1]
+        - paragraph: 技術記事・思考の整理（全7件）
+    - heading "$ ls posts/ | wc -l" [level=2]
+    - paragraph: 7件の記事が見つかりました
+    - article:
+        - paragraph: 2024/02/25
+        - text: 約6分で読めます
+        - heading "2024年のキャリア考察" [level=3]:
+            - link "2024年のキャリア考察":
+                - /url: /posts/career-thoughts-2024
+        - paragraph: エンジニアとしてのキャリアについて考えたことをまとめました。
+        - link "#Career":
+            - /url: /tags/career
+        - link "#Thoughts":
+            - /url: /tags/thoughts
+        - link "#Engineering":
+            - /url: /tags/engineering
+    - article:
+        - paragraph: 2024/02/20
+        - text: 約7分で読めます
+        - heading "Vimで生産性を向上させるコツ" [level=3]:
+            - link "Vimで生産性を向上させるコツ":
+                - /url: /posts/vim-productivity-tips
+        - paragraph: 日常のVim使用で実践している生産性向上のテクニックを紹介。
+        - link "#Vim":
+            - /url: /tags/vim
+        - link "#Productivity":
+            - /url: /tags/productivity
+        - link "#Tools":
+            - /url: /tags/tools
+    - article:
+        - paragraph: 2024/02/15
+        - text: 約5分で読めます
+        - 'heading "Syntax.fm Podcast感想: Modern CSS" [level=3]':
+            - 'link "Syntax.fm Podcast感想: Modern CSS"':
+                - /url: /posts/podcast-review-syntax-fm
+        - paragraph: Syntax.fmのModern CSSエピソードを聞いた感想と学び。
+        - link "#Podcast":
+            - /url: /tags/podcast
+        - link "#CSS":
+            - /url: /tags/css
+        - link "#Frontend":
+            - /url: /tags/frontend
+    - article:
+        - paragraph: 2024/02/10
+        - text: 約15分で読めます
+        - heading "TurboRepoでモノレポ構築" [level=3]:
+            - link "TurboRepoでモノレポ構築":
+                - /url: /posts/monorepo-with-turborepo
+        - paragraph: TurboRepoを使用したモノレポの構築とその利点について。
+        - link "#TurboRepo":
+            - /url: /tags/turborepo
+        - link "#Monorepo":
+            - /url: /tags/monorepo
+        - link "#DevOps":
+            - /url: /tags/devops
+    - article:
+        - paragraph: 2024/02/01
+        - text: 約10分で読めます
+        - heading "Next.js App Routerへの移行体験記" [level=3]:
+            - link "Next.js App Routerへの移行体験記":
+                - /url: /posts/nextjs-app-router-migration
+        - paragraph: Pages RouterからApp Routerへの移行で学んだことをまとめました。
+        - link "#Next.js":
+            - /url: /tags/next.js
+        - link "#React":
+            - /url: /tags/react
+        - link "#Frontend":
+            - /url: /tags/frontend
+    - article:
+        - paragraph: 2024/01/20
+        - text: 約12分で読めます
+        - heading "TypeScript Genericsの基礎から応用まで" [level=3]:
+            - link "TypeScript Genericsの基礎から応用まで":
+                - /url: /posts/typescript-generics-guide
+        - paragraph: TypeScriptのGenericsを理解して、型安全で再利用可能なコードを書こう。
+        - link "#TypeScript":
+            - /url: /tags/typescript
+        - link "#JavaScript":
+            - /url: /tags/javascript
+        - link "#Programming":
+            - /url: /tags/programming
+    - article:
+        - paragraph: 2024/01/15
+        - text: 約8分で読めます
+        - heading "React Hooksのベストプラクティス" [level=3]:
+            - link "React Hooksのベストプラクティス":
+                - /url: /posts/react-hooks-best-practices
+        - paragraph: React Hooksを効果的に使用するためのパターンとアンチパターンを解説します。
+        - link "#React":
+            - /url: /tags/react
+        - link "#JavaScript":
+            - /url: /tags/javascript
+        - link "#Frontend":
+            - /url: /tags/frontend
+    - heading "$ cd ../" [level=3]
+    - link "タグから探す":
+        - /url: /tags
+    - link "ホームに戻る":
+        - /url: /
+- contentinfo "サイトフッター":
+    - heading "技術ブログ" [level=3]
+    - paragraph: 技術共有・解説記事・Podcast感想を発信しています
+    - heading "ナビゲーション" [level=3]
+    - navigation "フッターナビゲーション":
+        - list:
+            - listitem:
+                - link "記事一覧":
+                    - /url: /posts
+            - listitem:
+                - link "タグ":
+                    - /url: /tags
+            - listitem:
+                - link "検索":
+                    - /url: /search
+    - heading "リンク" [level=3]
+    - navigation "ソーシャルリンク":
+        - list:
+            - listitem:
+                - link "GitHub":
+                    - /url: https://github.com/tsukaryu
+            - listitem:
+                - link "Twitter":
+                    - /url: https://twitter.com/tsukaryu
+    - paragraph: © 2025 tsuka-ryu. All rights reserved.
+- alert
+```

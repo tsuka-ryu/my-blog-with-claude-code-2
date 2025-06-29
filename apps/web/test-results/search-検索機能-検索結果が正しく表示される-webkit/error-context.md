@@ -1,0 +1,78 @@
+# Page snapshot
+
+```yaml
+- navigation "メインナビゲーション":
+    - heading "技術ブログ - ホームページに移動" [level=1]:
+        - link "技術ブログ - ホームページに移動":
+            - /url: /
+            - text: 技術ブログ
+    - link "ホーム":
+        - /url: /
+    - link "記事一覧":
+        - /url: /posts
+    - link "タグ":
+        - /url: /tags
+    - link "検索":
+        - /url: /search
+    - text: 🖥️ システム
+- main:
+    - banner:
+        - heading "検索結果" [level=1]
+        - paragraph: '"Next.js" の検索結果'
+    - heading "$ grep -r \"Next.js\" posts/" [level=2]
+    - paragraph: '"Next.js" の検索結果: 1件'
+    - heading "$ search --interactive" [level=3]
+    - textbox "記事タイトル、内容、タグで検索...": Next.js
+    - button "検索"
+    - button "クリア"
+    - paragraph: 'ヒント: タイトル、説明、タグ、カテゴリから検索できます'
+    - paragraph: 全7件の記事から検索
+    - heading "検索結果 (1件)" [level=3]
+    - article:
+        - paragraph: 2024/02/01
+        - text: 約10分で読めます
+        - heading "Next.js App Routerへの移行体験記" [level=3]:
+            - link "Next.js App Routerへの移行体験記":
+                - /url: /posts/nextjs-app-router-migration
+                - mark: Next.js
+                - text: App Routerへの移行体験記
+        - paragraph: Pages RouterからApp Routerへの移行で学んだことをまとめました。
+        - link "#Next.js":
+            - /url: /tags/next.js
+        - link "#React":
+            - /url: /tags/react
+        - link "#Frontend":
+            - /url: /tags/frontend
+    - heading "$ cd ../" [level=3]
+    - link "全記事を見る":
+        - /url: /posts
+    - link "タグから探す":
+        - /url: /tags
+    - link "ホームに戻る":
+        - /url: /
+- contentinfo "サイトフッター":
+    - heading "技術ブログ" [level=3]
+    - paragraph: 技術共有・解説記事・Podcast感想を発信しています
+    - heading "ナビゲーション" [level=3]
+    - navigation "フッターナビゲーション":
+        - list:
+            - listitem:
+                - link "記事一覧":
+                    - /url: /posts
+            - listitem:
+                - link "タグ":
+                    - /url: /tags
+            - listitem:
+                - link "検索":
+                    - /url: /search
+    - heading "リンク" [level=3]
+    - navigation "ソーシャルリンク":
+        - list:
+            - listitem:
+                - link "GitHub":
+                    - /url: https://github.com/tsukaryu
+            - listitem:
+                - link "Twitter":
+                    - /url: https://twitter.com/tsukaryu
+    - paragraph: © 2025 tsuka-ryu. All rights reserved.
+```

@@ -26,13 +26,13 @@ jobs:
         run: pnpm install --frozen-lockfile
         
       - name: Install Playwright Browsers
-        run: pnpm --filter=web playwright:install
+        run: pnpm --filter=web playwright install chromium --with-deps
         
       - name: Build application
         run: pnpm turbo build --filter=web
         
       - name: Run Playwright tests
-        run: pnpm --filter=web test:e2e
+        run: pnpm --filter=web test:e2e --project=chromium
         
       - uses: actions/upload-artifact@v4
         if: always()

@@ -52,7 +52,7 @@ pnpm --filter=web playwright:install
 
 ### 現在の構造
 
-```
+```bash
 my-blog-with-claude-code/
 ├── apps/
 │   ├── docs/             # Docusaurus ドキュメントサイト

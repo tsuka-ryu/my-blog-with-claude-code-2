@@ -1,0 +1,71 @@
+# Page snapshot
+
+```yaml
+- navigation "メインナビゲーション":
+    - heading "技術ブログ - ホームページに移動" [level=1]:
+        - link "技術ブログ - ホームページに移動":
+            - /url: /
+            - text: 技術ブログ
+    - link "ホーム":
+        - /url: /
+    - link "記事一覧":
+        - /url: /posts
+    - link "タグ":
+        - /url: /tags
+    - link "検索":
+        - /url: /search
+    - button "🖥️ システム"
+- main:
+    - banner:
+        - heading "技術ブログ" [level=1]
+        - paragraph: 技術共有・解説記事・Podcast感想を発信しています
+    - heading "$ whoami" [level=2]
+    - paragraph: 技術者として学んだこと、体験したこと、考えたことを ターミナル風のデザインで記録・共有する技術ブログです
+    - heading "📝 技術記事" [level=3]
+    - paragraph: 開発で学んだ技術や ツールの使い方を共有
+    - heading "🎧 Podcast感想" [level=3]
+    - paragraph: 技術系Podcastを聞いた 感想や学びを記録
+    - heading "💭 思考の整理" [level=3]
+    - paragraph: 技術やキャリアについて 考えたことを整理・共有
+    - heading "$ ls -la recent_posts/" [level=2]
+    - paragraph: 2024-12-24 10:30:00
+    - heading "ブログ記事準備中..." [level=3]:
+        - link "ブログ記事準備中...":
+            - /url: /posts/coming-soon
+    - paragraph: 現在、記事システムを構築中です。しばらくお待ちください。
+    - heading "$ explore --help" [level=2]
+    - link "記事一覧を見る":
+        - /url: /posts
+    - link "タグから探す":
+        - /url: /tags
+    - link "検索する":
+        - /url: /search
+- contentinfo "サイトフッター":
+    - heading "技術ブログ" [level=3]
+    - paragraph: 技術共有・解説記事・Podcast感想を発信しています
+    - heading "ナビゲーション" [level=3]
+    - navigation "フッターナビゲーション":
+        - list:
+            - listitem:
+                - link "記事一覧":
+                    - /url: /posts
+            - listitem:
+                - link "タグ":
+                    - /url: /tags
+            - listitem:
+                - link "検索":
+                    - /url: /search
+    - heading "リンク" [level=3]
+    - navigation "ソーシャルリンク":
+        - list:
+            - listitem:
+                - link "GitHub":
+                    - /url: https://github.com/tsukaryu
+            - listitem:
+                - link "Twitter":
+                    - /url: https://twitter.com/tsukaryu
+    - paragraph: © 2025 tsuka-ryu. All rights reserved.
+- alert
+- button "Open Next.js Dev Tools":
+    - img
+```

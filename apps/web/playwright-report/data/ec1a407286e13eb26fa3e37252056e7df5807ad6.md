@@ -1,0 +1,70 @@
+# Page snapshot
+
+```yaml
+- navigation "メインナビゲーション":
+    - heading "技術ブログ - ホームページに移動" [level=1]:
+        - link "技術ブログ - ホームページに移動":
+            - /url: /
+            - text: 技術ブログ
+    - link "ホーム":
+        - /url: /
+    - link "記事一覧":
+        - /url: /posts
+    - link "タグ":
+        - /url: /tags
+    - link "検索":
+        - /url: /search
+    - text: 🖥️ システム
+- main:
+    - banner:
+        - heading "検索結果" [level=1]
+        - paragraph: 記事を検索してください
+    - heading "$ grep -r \"...\" posts/" [level=2]
+    - paragraph: 検索クエリを入力してください
+    - heading "$ search --interactive" [level=3]
+    - textbox "記事タイトル、内容、タグで検索..."
+    - button "検索"
+    - paragraph: 'ヒント: タイトル、説明、タグ、カテゴリから検索できます'
+    - paragraph: 全7件の記事から検索
+    - heading "$ man search" [level=3]
+    - paragraph: 上の検索フォームに検索したいキーワードを入力してください
+    - paragraph: 'よく検索されるキーワード:'
+    - button "React"
+    - button "TypeScript"
+    - button "Next.js"
+    - button "Frontend"
+    - button "Podcast"
+    - heading "$ cd ../" [level=3]
+    - link "全記事を見る":
+        - /url: /posts
+    - link "タグから探す":
+        - /url: /tags
+    - link "ホームに戻る":
+        - /url: /
+- contentinfo "サイトフッター":
+    - heading "技術ブログ" [level=3]
+    - paragraph: 技術共有・解説記事・Podcast感想を発信しています
+    - heading "ナビゲーション" [level=3]
+    - navigation "フッターナビゲーション":
+        - list:
+            - listitem:
+                - link "記事一覧":
+                    - /url: /posts
+            - listitem:
+                - link "タグ":
+                    - /url: /tags
+            - listitem:
+                - link "検索":
+                    - /url: /search
+    - heading "リンク" [level=3]
+    - navigation "ソーシャルリンク":
+        - list:
+            - listitem:
+                - link "GitHub":
+                    - /url: https://github.com/tsukaryu
+            - listitem:
+                - link "Twitter":
+                    - /url: https://twitter.com/tsukaryu
+    - paragraph: © 2025 tsuka-ryu. All rights reserved.
+- alert
+```
