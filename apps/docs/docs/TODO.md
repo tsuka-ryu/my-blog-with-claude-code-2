@@ -113,7 +113,7 @@ my-blog-with-claude-code/
 
 ### 4.1 Markdown処理システム
 
-- [ ] **4.1.1** MDX セットアップ（@next/mdx）
+- [x] **4.1.1** MDX セットアップ（@next/mdx）
 - [ ] **4.1.2** Shiki シンタックスハイライト設定
 - [ ] **4.1.3** 目次生成（カスタム実装またはmarkdown-toc）
 - [ ] **4.1.4** 画像最適化（next/image統合）
