@@ -346,6 +346,9 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.1.0(react@19.1.0)
+      react-markdown:
+        specifier: ^10.1.0
+        version: 10.1.0(@types/react@19.1.8)(react@19.1.0)
       rehype-autolink-headings:
         specifier: ^7.1.0
         version: 7.1.0
@@ -5949,6 +5952,9 @@ packages:
     resolution: {integrity: sha512-ztqyC3kLto0e9WbNp0aeP+M3kTt+nbaIveGmUxAtZa+8iFgKLUOD4YKM5j+f3QD89bra7UeumolZHKuOXnTmeQ==}
     engines: {node: '>=8'}
 
+  html-url-attributes@3.0.1:
+    resolution: {integrity: sha512-ol6UPyBWqsrO6EJySPz2O7ZSr856WDrEzM5zMqp+FJJLGMW35cLYmmZnl0vztAZxRUoNZJFTCohfjuIJ8I4QBQ==}
+
   html-void-elements@3.0.0:
     resolution: {integrity: sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==}
 
@@ -8194,6 +8200,12 @@ packages:
     peerDependencies:
       react-loadable: '*'
       webpack: '>=4.41.1 || 5.x'
+
+  react-markdown@10.1.0:
+    resolution: {integrity: sha512-qKxVopLT/TyA6BX3Ue5NwabOsAzm0Q7kAPwq6L+wWDwisYs7R8vZ0nRXqq6rkueboxpkjvLGU9fWifiX/ZZFxQ==}
+    peerDependencies:
+      '@types/react': '>=18'
+      react: '>=18'
 
   react-refresh@0.17.0:
     resolution: {integrity: sha512-z6F7K9bV85EfseRCp2bzrpyQ0Gkw1uLoCel9XBVWPg/TjRj94SkJzUTGfOa4bs7iJvBWtQG0Wq7wnI0syw3EBQ==}
@@ -13931,11 +13943,11 @@ snapshots:
       - utf-8-validate
       - vite
 
-  '@vitest/browser@2.1.9(@types/node@24.0.3)(typescript@5.8.3)(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(terser@5.42.0)(yaml@2.8.0))(vitest@2.1.9)(webdriverio@9.16.2)':
+  '@vitest/browser@2.1.9(@types/node@24.0.3)(typescript@5.8.3)(vite@5.4.19(@types/node@24.0.3)(terser@5.42.0))(vitest@2.1.9)(webdriverio@9.16.2)':
     dependencies:
       '@testing-library/dom': 10.4.0
       '@testing-library/user-event': 14.6.1(@testing-library/dom@10.4.0)
-      '@vitest/mocker': 2.1.9(msw@2.10.2(@types/node@24.0.3)(typescript@5.8.3))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(terser@5.42.0)(yaml@2.8.0))
+      '@vitest/mocker': 2.1.9(msw@2.10.2(@types/node@24.0.3)(typescript@5.8.3))(vite@5.4.19(@types/node@24.0.3)(terser@5.42.0))
       '@vitest/utils': 2.1.9
       magic-string: 0.30.17
       msw: 2.10.2(@types/node@24.0.3)(typescript@5.8.3)
@@ -13984,16 +13996,6 @@ snapshots:
     optionalDependencies:
       msw: 2.10.2(@types/node@24.0.3)(typescript@5.8.3)
       vite: 5.4.19(@types/node@24.0.3)(terser@5.42.0)
-
-  '@vitest/mocker@2.1.9(msw@2.10.2(@types/node@24.0.3)(typescript@5.8.3))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(terser@5.42.0)(yaml@2.8.0))':
-    dependencies:
-      '@vitest/spy': 2.1.9
-      estree-walker: 3.0.3
-      magic-string: 0.30.17
-    optionalDependencies:
-      msw: 2.10.2(@types/node@24.0.3)(typescript@5.8.3)
-      vite: 6.3.5(@types/node@24.0.3)(jiti@2.4.2)(terser@5.42.0)(yaml@2.8.0)
-    optional: true
 
   '@vitest/pretty-format@2.0.5':
     dependencies:
@@ -16768,6 +16770,8 @@ snapshots:
 
   html-tags@3.3.1: {}
 
+  html-url-attributes@3.0.1: {}
+
   html-void-elements@3.0.0: {}
 
   html-webpack-plugin@5.6.3(webpack@5.99.9(esbuild@0.25.5)):
@@ -19365,6 +19369,24 @@ snapshots:
       react-loadable: '@docusaurus/react-loadable@6.0.0(react@19.1.0)'
       webpack: 5.99.9(esbuild@0.25.5)
 
+  react-markdown@10.1.0(@types/react@19.1.8)(react@19.1.0):
+    dependencies:
+      '@types/hast': 3.0.4
+      '@types/mdast': 4.0.4
+      '@types/react': 19.1.8
+      devlop: 1.1.0
+      hast-util-to-jsx-runtime: 2.3.6
+      html-url-attributes: 3.0.1
+      mdast-util-to-hast: 13.2.0
+      react: 19.1.0
+      remark-parse: 11.0.0
+      remark-rehype: 11.1.2
+      unified: 11.0.5
+      unist-util-visit: 5.0.0
+      vfile: 6.0.3
+    transitivePeerDependencies:
+      - supports-color
+
   react-refresh@0.17.0: {}
 
   react-router-config@5.1.1(react-router@5.3.4(react@19.1.0))(react@19.1.0):
@@ -21106,7 +21128,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 24.0.3
-      '@vitest/browser': 2.1.9(@types/node@24.0.3)(typescript@5.8.3)(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(terser@5.42.0)(yaml@2.8.0))(vitest@2.1.9)(webdriverio@9.16.2)
+      '@vitest/browser': 2.1.9(@types/node@24.0.3)(typescript@5.8.3)(vite@5.4.19(@types/node@24.0.3)(terser@5.42.0))(vitest@2.1.9)(webdriverio@9.16.2)
       jsdom: 25.0.1
     transitivePeerDependencies:
       - less
