@@ -10,8 +10,14 @@ TurboRepoとpnpmを使用したモノレポ構成の技術ブログプラット�
 ### アプリケーション
 
 - `docs`: [Docusaurus](https://docusaurus.io/)を使用したドキュメントサイト
-- `web`: [Next.js 15+](https://nextjs.org/) App Routerを使用したメインブログサイト
-- `packages/`: 共有パッケージ（将来実装予定）
+- `web`: [Next.js 15+](https://nextjs.org/) App Routerを使用したメインブログサイト（MDX・検索機能実装済み）
+
+### 共有パッケージ
+
+- `packages/ui`: Storybookを含むUIコンポーネントライブラリ
+- `packages/utils`: 共通ユーティリティ関数
+- `packages/eslint-config`: ESLint共有設定
+- `packages/typescript-config`: TypeScript共有設定
 
 全てのパッケージ/アプリは100% [TypeScript](https://www.typescriptlang.org/)で開発されています。
 
@@ -95,7 +101,21 @@ pnpm turbo config:build --filter=@repo/ui
 
 ## 現在のステータス
 
-**フェーズ1: プロジェクト基盤構築** - 進行中
+**フェーズ5: 検索・ナビゲーション機能** - 完了 ✅
+
+### 実装済み機能
+
+- ✅ モノレポ基盤構築（TurboRepo + pnpm）
+- ✅ デザインシステム・UIコンポーネントライブラリ（Storybook付き）
+- ✅ Next.js 15ブログアプリケーション（App Router）
+- ✅ MDX記事管理システム
+- ✅ タグ・カテゴリシステム
+- ✅ fuse.jsを使用したあいまい検索機能
+- ✅ テスト環境（Vitest + Playwright）
+
+### 次フェーズ
+
+**フェーズ6: 多言語・SEO・パフォーマンス最適化**
 
 詳細な開発計画については `apps/docs/docs/TODO.md` を参照してください。
 
