@@ -1,10 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 
-import Demo from './demo.mdx';
+import { TableOfContents } from '../../../components/mdx/table-of-contents';
+import { extractToc } from '../../../lib/mdx/toc';
 
-import { TableOfContents } from '@/components/mdx/table-of-contents';
-import { extractToc } from '@/lib/mdx/toc';
+import Demo from './demo.mdx';
 
 export default function MDXDemoPage() {
   // MDXファイルの内容を読み込んで目次を生成
