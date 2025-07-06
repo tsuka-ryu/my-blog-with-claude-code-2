@@ -11,7 +11,7 @@ export default defineConfig({
       name: 'chrome',
       headless: true,
     },
-    include: ['__tests__/components/**/*.test.{ts,tsx}'],
+    include: ['__tests__/**/*.test.{ts,tsx}'],
     exclude: ['__tests__/api/**/*'],
     setupFiles: ['./vitest.setup.ts'],
     globals: true,
