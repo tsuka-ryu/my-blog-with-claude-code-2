@@ -24,9 +24,17 @@
     "@next/mdx": "^15.3.5",
     "@repo/ui": "workspace:*",
     "@repo/utils": "workspace:*",
+    "@shikijs/rehype": "^3.7.0",
+    "@sindresorhus/slugify": "^2.2.1",
+    "github-slugger": "^2.0.0",
+    "mdx-bundler": "^10.1.1",
     "next": "catalog:",
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "react-dom": "catalog:",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1",
+    "shiki": "^3.7.0"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
@@ -34,6 +42,7 @@
     "@repo/ui-config": "workspace:*",
     "@testing-library/jest-dom": "catalog:",
     "@testing-library/react": "catalog:",
+    "@types/mdast": "^4.0.4",
     "@types/mdx": "^2.0.13",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
@@ -43,9 +52,11 @@
     "autoprefixer": "catalog:",
     "eslint": "catalog:",
     "jsdom": "catalog:",
+    "mdast-util-to-string": "^4.0.0",
     "postcss": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:",
+    "unist-util-visit": "^5.0.0",
     "vitest": "catalog:",
     "webdriverio": "catalog:"
   }

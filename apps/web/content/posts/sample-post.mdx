@@ -1,27 +1,84 @@
 ---
-title: "サンプルMDX記事"
-date: "2025-07-05"
-tags: ["mdx", "nextjs", "blog"]
-excerpt: "MDXセットアップのテスト記事です"
+title: "MDX機能のデモンストレーション"
+date: "2025-01-06"
+tags: ["MDX", "Next.js", "React"]
+excerpt: "Shiki、目次生成、画像最適化を含むMDX機能のデモ"
 ---
 
-# MDXセットアップ完了
+# MDX機能のデモンストレーション
 
-これはMDXのサンプル記事です。MDXを使うことで、Markdownの中にReactコンポーネントを埋め込むことができます。
+このページは、新しく実装したMDX機能をデモンストレーションします。
 
-## MDXの特徴
+## 目次機能
 
-- **Markdown + JSX**: MarkdownとJSXを組み合わせて使える
-- **コンポーネント**: カスタムReactコンポーネントを記事内で使用可能
-- **動的コンテンツ**: インタラクティブな要素を記事に追加できる
+この記事には自動生成された目次が表示されます。見出しをクリックすることで、該当セクションにスムーズにスクロールします。
 
-## コード例
+## シンタックスハイライト
 
-```javascript
-const greeting = "Hello, MDX!";
-console.log(greeting);
+Shikiを使用したシンタックスハイライトの例：
+
+```typescript
+interface User {
+  id: number
+  name: string
+  email: string
+}
+
+async function fetchUser(id: number): Promise<User> {
+  const response = await fetch(`/api/users/${id}`)
+  if (!response.ok) {
+    throw new Error('Failed to fetch user')
+  }
+  return response.json()
+}
 ```
 
-## まとめ
+```jsx
+function Welcome({ name }) {
+  return (
+    <div className="welcome">
+      <h1>Hello, {name}!</h1>
+      <p>Welcome to our application.</p>
+    </div>
+  )
+}
+```
 
-MDXを使うことで、より豊かな表現力を持つブログ記事を作成できます。
+## GitHub Flavored Markdown
+
+### テーブル
+
+| 機能 | 説明 | ステータス |
+|------|------|------------|
+| シンタックスハイライト | Shikiによるコードハイライト | ✅ 完了 |
+| 目次生成 | 自動的に見出しから目次を生成 | ✅ 完了 |
+| 画像最適化 | Next.js Imageによる最適化 | ✅ 完了 |
+
+### タスクリスト
+
+- [x] Shikiセットアップ
+- [x] 目次生成機能
+- [x] 画像最適化
+- [ ] さらなる機能追加
+
+## リンク
+
+- [内部リンク](/posts)
+- [外部リンク](https://nextjs.org)
+
+## 引用
+
+> これは引用文です。
+> MDXでは様々なMarkdown記法が使用できます。
+
+## 画像最適化
+
+画像はNext.js Imageコンポーネントで自動的に最適化されます。
+
+## インラインコード
+
+テキスト内で`code`のようにインラインコードを使用できます。
+
+---
+
+これらの機能により、より豊かなコンテンツ作成が可能になりました。

@@ -53,3 +53,54 @@ a {
     display: unset;
   }
 }
+
+/* Shiki シンタックスハイライト */
+.shiki {
+  overflow-x: auto;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.shiki code {
+  display: block;
+  width: fit-content;
+  min-width: 100%;
+}
+
+/* 目次のアンカーリンク */
+.anchor {
+  display: inline-block;
+  margin-left: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+  opacity: 1;
+}
+
+.anchor::before {
+  content: '#';
+  color: var(--terminal-green);
+}
+
+/* プロース（記事）スタイル */
+.prose-terminal {
+  color: var(--terminal-text-primary);
+}
+
+.prose-terminal h1,
+.prose-terminal h2,
+.prose-terminal h3,
+.prose-terminal h4,
+.prose-terminal h5,
+.prose-terminal h6 {
+  color: var(--terminal-green);
+  scroll-margin-top: 5rem;
+}
