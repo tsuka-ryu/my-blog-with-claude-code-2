@@ -19,8 +19,11 @@
     "config:build": "eslint-config-inspector build"
   },
   "dependencies": {
-    "@repo/utils": "workspace:*",
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "catalog:",
+    "@next/mdx": "^15.3.5",
     "@repo/ui": "workspace:*",
+    "@repo/utils": "workspace:*",
     "next": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"
@@ -29,20 +32,21 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@repo/ui-config": "workspace:*",
+    "@testing-library/jest-dom": "catalog:",
+    "@testing-library/react": "catalog:",
+    "@types/mdx": "^2.0.13",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "@vitest/browser": "catalog:",
     "autoprefixer": "catalog:",
     "eslint": "catalog:",
+    "jsdom": "catalog:",
     "postcss": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:",
-    "@vitest/browser": "catalog:",
-    "webdriverio": "catalog:",
-    "@vitejs/plugin-react": "catalog:",
-    "@testing-library/react": "catalog:",
-    "@testing-library/jest-dom": "catalog:",
-    "jsdom": "catalog:"
+    "webdriverio": "catalog:"
   }
 }
