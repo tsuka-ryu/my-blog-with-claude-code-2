@@ -1,13 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 
+import Demo from './demo.mdx';
+
 import { TableOfContents } from '@/components/mdx/table-of-contents';
-import SamplePost from '@/content/posts/sample-post.mdx';
 import { extractToc } from '@/lib/mdx/toc';
 
 export default function MDXDemoPage() {
   // MDXファイルの内容を読み込んで目次を生成
-  const mdxPath = path.join(process.cwd(), 'content/posts/sample-post.mdx');
+  const mdxPath = path.join(process.cwd(), 'app/demo/mdx/demo.mdx');
   const mdxContent = fs.readFileSync(mdxPath, 'utf-8');
   const toc = extractToc(mdxContent);
 
@@ -18,7 +19,7 @@ export default function MDXDemoPage() {
           {/* メインコンテンツ */}
           <div className='lg:col-span-3'>
             <article className='prose prose-terminal max-w-none'>
-              <SamplePost />
+              <Demo />
             </article>
           </div>
 

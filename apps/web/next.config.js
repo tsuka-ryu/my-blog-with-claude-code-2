@@ -1,8 +1,4 @@
 import createMDX from '@next/mdx'
-import remarkGfm from 'remark-gfm'
-import rehypeSlug from 'rehype-slug'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypeShiki from '@shikijs/rehype'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -16,33 +12,8 @@ const nextConfig = {
 }
 
 const withMDX = createMDX({
-  extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [
-      remarkGfm, // GitHub Flavored Markdown (テーブル、タスクリスト等)
-    ],
-    rehypePlugins: [
-      rehypeSlug, // 見出しにIDを付与
-      [
-        rehypeAutolinkHeadings,
-        {
-          properties: {
-            className: ['anchor'],
-            ariaLabel: 'リンクをこのセクションに',
-          },
-        },
-      ],
-      [
-        rehypeShiki,
-        {
-          themes: {
-            light: 'github-light',
-            dark: 'github-dark',
-          },
-          defaultColor: 'dark',
-        },
-      ],
-    ],
+    // 最小限の設定でテスト
   }
 })
 

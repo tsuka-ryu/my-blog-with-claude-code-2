@@ -61,6 +61,7 @@ my-blog-with-claude-code/
 - **単体テスト**: Vitest + Testing Library（予定）
 - **E2Eテスト**: Playwright（予定）
 - **Visual Regression**: 設定予定
+- **動作確認**: 実装後はPlaywright MCPを使用してブラウザでの動作確認を必須とする
 
 ## リポジトリエチケット
 
@@ -93,6 +94,7 @@ my-blog-with-claude-code/
 - **進捗管理**: apps/docs/docs/TODO.mdが主要ロードマップ - 必ず参照・更新すること
 - **コミット時**: 変更内容に応じてTODOファイルを更新し、Claude Codeにも自動的にTODO更新を指示すること
 - **ドキュメント**: 主要決定はapps/docs/docs/ディレクトリに記録
+- **実装フロー**: 新機能実装時は最後に必ずPlaywright MCPを使用してブラウザでの動作確認を実施すること
 
 ## ブログ作成時の注意事項
 
