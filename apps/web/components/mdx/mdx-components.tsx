@@ -1,44 +1,98 @@
 import { cn } from '@repo/ui';
+import GithubSlugger from 'github-slugger';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import type { MDXComponents } from 'mdx/types';
 
+// 見出しテキストからIDを生成するヘルパー関数
+function getHeadingId(children: React.ReactNode): string {
+  const text =
+    typeof children === 'string'
+      ? children
+      : Array.isArray(children)
+        ? children.join('')
+        : String(children);
+
+  // github-sluggerを使用してIDを生成
+  const slugger = new GithubSlugger();
+  return slugger.slug(text);
+}
+
 export const mdxComponents: MDXComponents = {
   // 見出し
-  h1: ({ className, ...props }) => (
-    <h1 className={cn('mt-8 mb-4 text-3xl font-bold text-terminal-green', className)} {...props} />
-  ),
-  h2: ({ className, ...props }) => (
-    <h2
-      className={cn('mt-8 mb-4 text-2xl font-semibold text-terminal-green', className)}
-      {...props}
-    />
-  ),
-  h3: ({ className, ...props }) => (
-    <h3
-      className={cn('mt-6 mb-3 text-xl font-semibold text-terminal-white', className)}
-      {...props}
-    />
-  ),
-  h4: ({ className, ...props }) => (
-    <h4
-      className={cn('mt-6 mb-3 text-lg font-semibold text-terminal-white', className)}
-      {...props}
-    />
-  ),
-  h5: ({ className, ...props }) => (
-    <h5
-      className={cn('mt-4 mb-2 text-base font-semibold text-terminal-white', className)}
-      {...props}
-    />
-  ),
-  h6: ({ className, ...props }) => (
-    <h6
-      className={cn('mt-4 mb-2 text-sm font-semibold text-terminal-white', className)}
-      {...props}
-    />
-  ),
+  h1: ({ className, children, id, ...props }) => {
+    const headingId = id || getHeadingId(children);
+    return (
+      <h1
+        id={headingId}
+        className={cn('mt-8 mb-4 text-3xl font-bold text-terminal-green', className)}
+        {...props}
+      >
+        {children}
+      </h1>
+    );
+  },
+  h2: ({ className, children, id, ...props }) => {
+    const headingId = id || getHeadingId(children);
+    return (
+      <h2
+        id={headingId}
+        className={cn('mt-8 mb-4 text-2xl font-semibold text-terminal-green', className)}
+        {...props}
+      >
+        {children}
+      </h2>
+    );
+  },
+  h3: ({ className, children, id, ...props }) => {
+    const headingId = id || getHeadingId(children);
+    return (
+      <h3
+        id={headingId}
+        className={cn('mt-6 mb-3 text-xl font-semibold text-terminal-white', className)}
+        {...props}
+      >
+        {children}
+      </h3>
+    );
+  },
+  h4: ({ className, children, id, ...props }) => {
+    const headingId = id || getHeadingId(children);
+    return (
+      <h4
+        id={headingId}
+        className={cn('mt-6 mb-3 text-lg font-semibold text-terminal-white', className)}
+        {...props}
+      >
+        {children}
+      </h4>
+    );
+  },
+  h5: ({ className, children, id, ...props }) => {
+    const headingId = id || getHeadingId(children);
+    return (
+      <h5
+        id={headingId}
+        className={cn('mt-4 mb-2 text-base font-semibold text-terminal-white', className)}
+        {...props}
+      >
+        {children}
+      </h5>
+    );
+  },
+  h6: ({ className, children, id, ...props }) => {
+    const headingId = id || getHeadingId(children);
+    return (
+      <h6
+        id={headingId}
+        className={cn('mt-4 mb-2 text-sm font-semibold text-terminal-white', className)}
+        {...props}
+      >
+        {children}
+      </h6>
+    );
+  },
   // パラグラフ
   p: ({ className, ...props }) => (
     <p className={cn('mb-4 leading-7 text-terminal-white/80', className)} {...props} />

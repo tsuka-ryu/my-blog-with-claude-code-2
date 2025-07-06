@@ -69,6 +69,11 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
                   const offset = 80;
                   const elementPosition = element.getBoundingClientRect().top;
                   const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                  // URLを更新
+                  window.history.pushState(null, '', `#${item.id}`);
+
+                  // スムーススクロール
                   window.scrollTo({
                     top: offsetPosition,
                     behavior: 'smooth',
