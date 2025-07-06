@@ -1,8 +1,8 @@
 import { Header, Typography, Link, PostCard } from '@repo/ui';
 
-import { getPublishedPosts } from '../_mocks/mock-data';
-
 import type { BlogPostSummary } from '@repo/utils';
+
+import { getPublishedArticles } from '@/lib/articles';
 
 const POSTS_PER_PAGE = 10;
 
@@ -10,11 +10,26 @@ interface PostsPageProps {
   searchParams: Promise<{ page?: string }>;
 }
 
+function convertToBlogPostSummary(
+  articles: ReturnType<typeof getPublishedArticles>
+): BlogPostSummary[] {
+  return articles.map(article => ({
+    slug: article.slug,
+    title: article.frontMatter.title,
+    description: article.frontMatter.description || article.excerpt,
+    publishedAt: new Date(article.frontMatter.date),
+    tags: article.frontMatter.tags || [],
+    category: article.frontMatter.category,
+    readingTime: article.readingTime,
+  }));
+}
+
 export default async function PostsPage({ searchParams }: PostsPageProps) {
   const params = await searchParams;
   const currentPage = Number(params.page) || 1;
 
-  const allPosts = getPublishedPosts();
+  const articles = getPublishedArticles();
+  const allPosts = convertToBlogPostSummary(articles);
   const totalPosts = allPosts.length;
   const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
 
@@ -145,8 +160,8 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
 }
 
 export function generateMetadata() {
-  const allPosts = getPublishedPosts();
-  const totalPosts = allPosts.length;
+  const articles = getPublishedArticles();
+  const totalPosts = articles.length;
 
   return {
     title: '記事一覧 - 技術ブログ',
