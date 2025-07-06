@@ -11,6 +11,8 @@ export { ThemeToggle } from './components/theme-toggle';
 export { PostCard } from './components/post-card';
 export { TagCloud, Tag } from './components/tag-cloud';
 export { PopularTags, TagRanking } from './components/popular-tags';
+export { SearchBox } from './components/search-box';
+export { SearchResults } from './components/search-results';
 export type { Theme } from './components/theme-provider';
 export type { ButtonProps } from './components/button';
 export type { LinkProps } from './components/link';
@@ -20,6 +22,8 @@ export type { LoadingProps } from './components/loading';
 export type { PostCardProps } from './components/post-card';
 export type { TagCloudProps, TagCloudItem, TagProps } from './components/tag-cloud';
 export type { PopularTagsProps, TagRankingProps } from './components/popular-tags';
+export type { SearchBoxProps } from './components/search-box';
+export type { SearchResultsProps, SearchResultItem } from './components/search-results';
 
 // ユーティリティ関数をre-export
 export { cn } from '@repo/utils';

@@ -1,86 +1,123 @@
-import { Header, Typography, Link } from '@repo/ui';
+'use client';
 
-import { getPublishedPosts } from '../_mocks/mock-data';
+import { Loading, SearchBox, SearchResults, Typography } from '@repo/ui';
+import { useSearchParams, useRouter } from 'next/navigation';
+import { Suspense, useCallback, useEffect, useState } from 'react';
 
-import { SearchResults } from './_components/search-results';
+import type { SearchResultItem } from '@repo/ui';
 
-import type { BlogPostSummary } from '@repo/utils';
-
-interface SearchPageProps {
-  searchParams: Promise<{ q?: string }>;
+export default function SearchPage() {
+  return (
+    <main className='container mx-auto px-4 py-8 min-h-screen'>
+      <Typography variant='h1' className='mb-8'>
+        検索
+      </Typography>
+      <Suspense fallback={<Loading />}>
+        <SearchContent />
+      </Suspense>
+    </main>
+  );
 }
 
-export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const params = await searchParams;
-  const query = params.q || '';
+function SearchContent() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const initialQuery = searchParams.get('q') || '';
 
-  const allPosts = getPublishedPosts();
+  const [query, setQuery] = useState(initialQuery);
+  const [results, setResults] = useState<SearchResultItem[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [searched, setSearched] = useState(false);
 
-  let searchResults: BlogPostSummary[] = [];
-  if (query.trim()) {
-    const searchTerm = query.toLowerCase();
-    searchResults = allPosts.filter(
-      post =>
-        post.title.toLowerCase().includes(searchTerm) ||
-        (post.description && post.description.toLowerCase().includes(searchTerm)) ||
-        post.tags.some(tag => tag.toLowerCase().includes(searchTerm)) ||
-        (post.category && post.category.toLowerCase().includes(searchTerm))
-    );
-  }
+  const performSearch = useCallback(async (searchQuery: string) => {
+    if (!searchQuery || searchQuery.trim().length === 0) {
+      setResults([]);
+      setSearched(false);
+      return;
+    }
+
+    setLoading(true);
+    setSearched(true);
+
+    try {
+      const response = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}`);
+      if (!response.ok) {
+        throw new Error('Search request failed');
+      }
+
+      const data = await response.json();
+      setResults(data.results || []);
+    } catch (error) {
+      console.error('Search error:', error);
+      setResults([]);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (initialQuery) {
+      performSearch(initialQuery);
+    }
+  }, [initialQuery, performSearch]);
+
+  const handleSearch = useCallback(
+    (newQuery: string) => {
+      setQuery(newQuery);
+      const params = new URLSearchParams(searchParams.toString());
+
+      if (newQuery) {
+        params.set('q', newQuery);
+      } else {
+        params.delete('q');
+      }
+
+      router.push(`/search?${params.toString()}`, { scroll: false });
+      performSearch(newQuery);
+    },
+    [router, searchParams, performSearch]
+  );
+
+  const handleClear = useCallback(() => {
+    setQuery('');
+    setResults([]);
+    setSearched(false);
+    router.push('/search', { scroll: false });
+  }, [router]);
 
   return (
-    <div className='space-y-8'>
-      <Header
-        title='検索結果'
-        description={query ? `"${query}" の検索結果` : '記事を検索してください'}
-      />
-
-      <div className='space-y-6'>
-        <div className='bg-card border border-accent rounded-lg p-6 space-y-4'>
-          <Typography component='h2' variant='h3' color='accent'>
-            $ grep -r &quot;{query || '...'}&quot; posts/
-          </Typography>
-
-          {query ? (
-            <Typography component='p' variant='body1' color='muted'>
-              &quot;{query}&quot; の検索結果: {searchResults.length}件
-            </Typography>
-          ) : (
-            <Typography component='p' variant='body1' color='muted'>
-              検索クエリを入力してください
-            </Typography>
-          )}
-        </div>
-
-        <SearchResults query={query} results={searchResults} totalPosts={allPosts.length} />
-
-        <div className='bg-card border border-accent rounded-lg p-6 space-y-4'>
-          <Typography component='h3' variant='h4' color='accent'>
-            $ cd ../
-          </Typography>
-
-          <div className='flex flex-col sm:flex-row gap-4'>
-            <Link
-              href='/posts'
-              className='inline-flex items-center justify-center font-medium rounded-md border transition-colors bg-terminal-accent text-terminal-accent-foreground hover:bg-terminal-accent-hover border-terminal-accent px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-terminal-ui-border-focus focus:ring-offset-2 focus:ring-offset-terminal-bg-primary'
-            >
-              全記事を見る
-            </Link>
-            <Link
-              href='/tags'
-              className='inline-flex items-center justify-center font-medium rounded-md border transition-colors bg-transparent text-terminal-text-primary hover:bg-terminal-bg-hover border-terminal-ui-border hover:border-terminal-ui-border-hover px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-terminal-ui-border-focus focus:ring-offset-2 focus:ring-offset-terminal-bg-primary'
-            >
-              タグから探す
-            </Link>
-            <Link
-              href='/'
-              className='inline-flex items-center justify-center font-medium rounded-md border transition-colors bg-transparent text-terminal-text-primary hover:bg-terminal-bg-hover border-transparent px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-terminal-ui-border-focus focus:ring-offset-2 focus:ring-offset-terminal-bg-primary'
-            >
-              ホームに戻る
-            </Link>
-          </div>
-        </div>
+    <div className='max-w-4xl mx-auto'>
+      <div className='mb-8'>
+        <SearchBox
+          value={query}
+          onChange={handleSearch}
+          onClear={handleClear}
+          placeholder='記事を検索...'
+          autoFocus
+        />
       </div>
+
+      {!searched && !loading && (
+        <div className='text-center py-12'>
+          <Typography className='text-terminal-muted mb-4'>
+            キーワードを入力して記事を検索してください
+          </Typography>
+          <Typography className='text-terminal-muted text-sm'>
+            タイトル、説明文、タグなどから検索できます
+          </Typography>
+        </div>
+      )}
+
+      {searched && (
+        <SearchResults
+          results={results}
+          query={query}
+          loading={loading}
+          onResultClick={() => {
+            // 結果クリック時の処理（オプション）
+          }}
+        />
+      )}
     </div>
   );
 }
