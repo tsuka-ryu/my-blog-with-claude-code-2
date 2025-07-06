@@ -9,6 +9,8 @@ export { Navigation, Header } from './components/navigation';
 export { ThemeProvider, useTheme } from './components/theme-provider';
 export { ThemeToggle } from './components/theme-toggle';
 export { PostCard } from './components/post-card';
+export { TagCloud, Tag } from './components/tag-cloud';
+export { PopularTags, TagRanking } from './components/popular-tags';
 export type { Theme } from './components/theme-provider';
 export type { ButtonProps } from './components/button';
 export type { LinkProps } from './components/link';
@@ -16,6 +18,8 @@ export type { TypographyProps, TypographyVariant, TypographyTag } from './compon
 export type { ErrorProps } from './components/error';
 export type { LoadingProps } from './components/loading';
 export type { PostCardProps } from './components/post-card';
+export type { TagCloudProps, TagCloudItem, TagProps } from './components/tag-cloud';
+export type { PopularTagsProps, TagRankingProps } from './components/popular-tags';
 
 // ユーティリティ関数をre-export
 export { cn } from '@repo/utils';
