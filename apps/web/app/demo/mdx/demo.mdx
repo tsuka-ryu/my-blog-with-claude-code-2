@@ -1,0 +1,73 @@
+# MDX機能のデモンストレーション
+
+このページは、新しく実装したMDX機能をデモンストレーションします。
+
+## 目次機能
+
+この記事には自動生成された目次が表示されます。見出しをクリックすることで、該当セクションにスムーズにスクロールします。
+
+## シンタックスハイライト
+
+Prismを使用したシンタックスハイライトの例：
+
+```typescript
+interface User {
+  id: number
+  name: string
+  email: string
+}
+
+async function fetchUser(id: number): Promise<User> {
+  const response = await fetch(`/api/users/${id}`)
+  if (!response.ok) {
+    throw new Error('Failed to fetch user')
+  }
+  return response.json()
+}
+```
+
+```jsx
+function Welcome({ name }) {
+  return (
+    <div className="welcome">
+      <h1>Hello, {name}!</h1>
+      <p>Welcome to our application.</p>
+    </div>
+  )
+}
+```
+
+## GitHub Flavored Markdown
+
+### テーブル
+
+| 機能 | 説明 | ステータス |
+|------|------|------------|
+| シンタックスハイライト | Prismによるコードハイライト | ✅ 完了 |
+| 目次生成 | 自動的に見出しから目次を生成 | ✅ 完了 |
+| 画像最適化 | Next.js Imageによる最適化 | ✅ 完了 |
+
+### タスクリスト
+
+- [x] Prismセットアップ
+- [x] 目次生成機能
+- [x] 画像最適化
+- [ ] さらなる機能追加
+
+## リンク
+
+- [内部リンク](/posts)
+- [外部リンク](https://nextjs.org)
+
+## 引用
+
+> これは引用文です。
+> MDXでは様々なMarkdown記法が使用できます。
+
+## インラインコード
+
+テキスト内で`code`のようにインラインコードを使用できます。
+
+---
+
+これらの機能により、より豊かなコンテンツ作成が可能になりました。

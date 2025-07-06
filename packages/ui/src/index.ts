@@ -16,3 +16,6 @@ export type { TypographyProps, TypographyVariant, TypographyTag } from './compon
 export type { ErrorProps } from './components/error';
 export type { LoadingProps } from './components/loading';
 export type { PostCardProps } from './components/post-card';
+
+// ユーティリティ関数をre-export
+export { cn } from '@repo/utils';
