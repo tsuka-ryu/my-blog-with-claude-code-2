@@ -1,8 +1,13 @@
 /* eslint-disable import-x/order */
-import { Header, Typography, Link } from '@repo/ui';
+import { Header, Typography, Link, Breadcrumb, PostNavigation } from '@repo/ui';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
+import {
+  getPublishedArticlesSortedByDate,
+  CONSTANTS,
+  getArticleNavigation,
+} from '@/lib/article-utils';
 /* eslint-enable import-x/order */
 
 interface PostPageProps {
@@ -18,6 +23,12 @@ interface PostData {
   description?: string;
 }
 
+interface PostNavigationData {
+  title: string;
+  slug: string;
+  excerpt?: string;
+}
+
 async function getPost(slug: string): Promise<PostData | null> {
   // 実際のMarkdownファイルから記事を読み込み
   const { getArticleBySlug } = await import('@/lib/articles');
@@ -31,11 +42,20 @@ async function getPost(slug: string): Promise<PostData | null> {
   return {
     title: article.frontMatter.title,
     date: article.frontMatter.date,
-    author: article.frontMatter.author || 'tsuka-ryu',
+    author: article.frontMatter.author || CONSTANTS.DEFAULT_AUTHOR,
     tags: article.frontMatter.tags || [],
     description: article.frontMatter.description,
     content: article.content,
   };
+}
+
+async function getPostNavigation(currentSlug: string): Promise<{
+  previousPost?: PostNavigationData;
+  nextPost?: PostNavigationData;
+}> {
+  const { getAllArticles } = await import('@/lib/articles');
+  const allArticles = getPublishedArticlesSortedByDate(getAllArticles());
+  return getArticleNavigation(allArticles, currentSlug);
 }
 
 export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
@@ -71,8 +91,17 @@ export default async function PostPage({ params }: PostPageProps) {
     notFound();
   }
 
+  const { previousPost, nextPost } = await getPostNavigation(slug);
+
+  const breadcrumbItems = [
+    { label: 'ホーム', href: '/' },
+    { label: '記事一覧', href: '/posts' },
+    { label: post.title },
+  ];
+
   return (
     <div className='space-y-8'>
+      <Breadcrumb items={breadcrumbItems} />
       <Header title={post.title} description={post.description} />
 
       <article className='space-y-8'>
@@ -169,6 +198,9 @@ export default async function PostPage({ params }: PostPageProps) {
             </ReactMarkdown>
           </div>
         </div>
+
+        {/* 記事間ナビゲーション */}
+        <PostNavigation previousPost={previousPost} nextPost={nextPost} />
 
         {/* ナビゲーション */}
         <div className='bg-card border border-accent rounded-lg p-6'>

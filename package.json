@@ -45,7 +45,7 @@
   },
   "packageManager": "pnpm@10.12.4",
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "dependencies": {
     "clsx": "catalog:",
