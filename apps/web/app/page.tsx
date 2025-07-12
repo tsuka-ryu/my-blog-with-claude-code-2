@@ -1,41 +1,23 @@
 import { Header, Link, Typography, RecentPosts, PopularPosts } from '@repo/ui';
 
+import {
+  getPublishedArticlesSortedByDate,
+  transformArticleToPost,
+  transformArticleToPopularPost,
+} from '@/lib/article-utils';
+
 async function getRecentPosts() {
   const { getAllArticles } = await import('@/lib/articles');
 
-  const allArticles = getAllArticles()
-    .filter(article => article.frontMatter.published !== false)
-    .sort((a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime())
-    .slice(0, 5);
-
-  return allArticles.map(article => ({
-    title: article.frontMatter.title,
-    slug: article.slug,
-    excerpt: article.frontMatter.description,
-    date: new Date(article.frontMatter.date).toLocaleDateString('ja-JP'),
-    author: article.frontMatter.author || 'tsuka-ryu',
-    tags: article.frontMatter.tags || [],
-    readTime: Math.ceil(article.content.length / 500), // 500文字/分で概算
-  }));
+  const allArticles = getPublishedArticlesSortedByDate(getAllArticles()).slice(0, 5);
+  return allArticles.map(transformArticleToPost);
 }
 
 async function getPopularPosts() {
   const { getAllArticles } = await import('@/lib/articles');
 
-  const allArticles = getAllArticles()
-    .filter(article => article.frontMatter.published !== false)
-    .sort((a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime())
-    .slice(0, 5);
-
-  return allArticles.map((article, index) => ({
-    title: article.frontMatter.title,
-    slug: article.slug,
-    excerpt: article.frontMatter.description,
-    date: new Date(article.frontMatter.date).toLocaleDateString('ja-JP'),
-    author: article.frontMatter.author || 'tsuka-ryu',
-    views: Math.floor(Math.random() * 10000) + 1000, // 模擬データ
-    rank: index + 1,
-  }));
+  const allArticles = getPublishedArticlesSortedByDate(getAllArticles()).slice(0, 5);
+  return allArticles.map((article, index) => transformArticleToPopularPost(article, index + 1));
 }
 
 export default async function Home() {

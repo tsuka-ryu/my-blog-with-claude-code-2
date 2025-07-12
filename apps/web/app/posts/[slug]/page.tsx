@@ -3,6 +3,11 @@ import { Header, Typography, Link, Breadcrumb, PostNavigation } from '@repo/ui';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
+import {
+  getPublishedArticlesSortedByDate,
+  CONSTANTS,
+  getArticleNavigation,
+} from '@/lib/article-utils';
 /* eslint-enable import-x/order */
 
 interface PostPageProps {
@@ -37,7 +42,7 @@ async function getPost(slug: string): Promise<PostData | null> {
   return {
     title: article.frontMatter.title,
     date: article.frontMatter.date,
-    author: article.frontMatter.author || 'tsuka-ryu',
+    author: article.frontMatter.author || CONSTANTS.DEFAULT_AUTHOR,
     tags: article.frontMatter.tags || [],
     description: article.frontMatter.description,
     content: article.content,
@@ -49,38 +54,8 @@ async function getPostNavigation(currentSlug: string): Promise<{
   nextPost?: PostNavigationData;
 }> {
   const { getAllArticles } = await import('@/lib/articles');
-
-  const allArticles = getAllArticles()
-    .filter(article => article.frontMatter.published !== false)
-    .sort(
-      (a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime()
-    );
-
-  const currentIndex = allArticles.findIndex(article => article.slug === currentSlug);
-
-  if (currentIndex === -1) {
-    return {};
-  }
-
-  const previousArticle = allArticles[currentIndex + 1];
-  const previousPost = previousArticle
-    ? {
-        title: previousArticle.frontMatter.title,
-        slug: previousArticle.slug,
-        excerpt: previousArticle.frontMatter.description,
-      }
-    : undefined;
-
-  const nextArticle = allArticles[currentIndex - 1];
-  const nextPost = nextArticle
-    ? {
-        title: nextArticle.frontMatter.title,
-        slug: nextArticle.slug,
-        excerpt: nextArticle.frontMatter.description,
-      }
-    : undefined;
-
-  return { previousPost, nextPost };
+  const allArticles = getPublishedArticlesSortedByDate(getAllArticles());
+  return getArticleNavigation(allArticles, currentSlug);
 }
 
 export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
