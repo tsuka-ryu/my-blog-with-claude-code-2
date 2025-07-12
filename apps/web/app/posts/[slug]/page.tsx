@@ -1,5 +1,5 @@
 /* eslint-disable import-x/order */
-import { Header, Typography, Link } from '@repo/ui';
+import { Header, Typography, Link, Breadcrumb, PostNavigation } from '@repo/ui';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
@@ -16,6 +16,12 @@ interface PostData {
   tags: string[];
   content: string;
   description?: string;
+}
+
+interface PostNavigationData {
+  title: string;
+  slug: string;
+  excerpt?: string;
 }
 
 async function getPost(slug: string): Promise<PostData | null> {
@@ -36,6 +42,45 @@ async function getPost(slug: string): Promise<PostData | null> {
     description: article.frontMatter.description,
     content: article.content,
   };
+}
+
+async function getPostNavigation(currentSlug: string): Promise<{
+  previousPost?: PostNavigationData;
+  nextPost?: PostNavigationData;
+}> {
+  const { getAllArticles } = await import('@/lib/articles');
+
+  const allArticles = getAllArticles()
+    .filter(article => article.frontMatter.published !== false)
+    .sort(
+      (a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime()
+    );
+
+  const currentIndex = allArticles.findIndex(article => article.slug === currentSlug);
+
+  if (currentIndex === -1) {
+    return {};
+  }
+
+  const previousArticle = allArticles[currentIndex + 1];
+  const previousPost = previousArticle
+    ? {
+        title: previousArticle.frontMatter.title,
+        slug: previousArticle.slug,
+        excerpt: previousArticle.frontMatter.description,
+      }
+    : undefined;
+
+  const nextArticle = allArticles[currentIndex - 1];
+  const nextPost = nextArticle
+    ? {
+        title: nextArticle.frontMatter.title,
+        slug: nextArticle.slug,
+        excerpt: nextArticle.frontMatter.description,
+      }
+    : undefined;
+
+  return { previousPost, nextPost };
 }
 
 export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
@@ -71,8 +116,17 @@ export default async function PostPage({ params }: PostPageProps) {
     notFound();
   }
 
+  const { previousPost, nextPost } = await getPostNavigation(slug);
+
+  const breadcrumbItems = [
+    { label: 'ホーム', href: '/' },
+    { label: '記事一覧', href: '/posts' },
+    { label: post.title },
+  ];
+
   return (
     <div className='space-y-8'>
+      <Breadcrumb items={breadcrumbItems} />
       <Header title={post.title} description={post.description} />
 
       <article className='space-y-8'>
@@ -169,6 +223,9 @@ export default async function PostPage({ params }: PostPageProps) {
             </ReactMarkdown>
           </div>
         </div>
+
+        {/* 記事間ナビゲーション */}
+        <PostNavigation previousPost={previousPost} nextPost={nextPost} />
 
         {/* ナビゲーション */}
         <div className='bg-card border border-accent rounded-lg p-6'>

@@ -1,6 +1,47 @@
-import { Header, Link, Typography } from '@repo/ui';
+import { Header, Link, Typography, RecentPosts, PopularPosts } from '@repo/ui';
 
-export default function Home() {
+async function getRecentPosts() {
+  const { getAllArticles } = await import('@/lib/articles');
+
+  const allArticles = getAllArticles()
+    .filter(article => article.frontMatter.published !== false)
+    .sort((a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime())
+    .slice(0, 5);
+
+  return allArticles.map(article => ({
+    title: article.frontMatter.title,
+    slug: article.slug,
+    excerpt: article.frontMatter.description,
+    date: new Date(article.frontMatter.date).toLocaleDateString('ja-JP'),
+    author: article.frontMatter.author || 'tsuka-ryu',
+    tags: article.frontMatter.tags || [],
+    readTime: Math.ceil(article.content.length / 500), // 500文字/分で概算
+  }));
+}
+
+async function getPopularPosts() {
+  const { getAllArticles } = await import('@/lib/articles');
+
+  const allArticles = getAllArticles()
+    .filter(article => article.frontMatter.published !== false)
+    .sort((a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime())
+    .slice(0, 5);
+
+  return allArticles.map((article, index) => ({
+    title: article.frontMatter.title,
+    slug: article.slug,
+    excerpt: article.frontMatter.description,
+    date: new Date(article.frontMatter.date).toLocaleDateString('ja-JP'),
+    author: article.frontMatter.author || 'tsuka-ryu',
+    views: Math.floor(Math.random() * 10000) + 1000, // 模擬データ
+    rank: index + 1,
+  }));
+}
+
+export default async function Home() {
+  const recentPosts = await getRecentPosts();
+  const popularPosts = await getPopularPosts();
+
   return (
     <div className='space-y-8'>
       <Header title='技術ブログ' description='技術共有・解説記事・Podcast感想を発信しています' />
@@ -54,30 +95,19 @@ export default function Home() {
           </div>
         </div>
 
-        <div className='bg-card border border-accent rounded-lg p-8 space-y-6'>
-          <Typography component='h2' variant='h3' color='accent' align='center'>
-            $ ls -la recent_posts/
-          </Typography>
+        {/* 最新記事セクション */}
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
+          <div className='bg-card border border-accent rounded-lg p-6'>
+            <RecentPosts
+              posts={recentPosts}
+              maxItems={5}
+              showViewAllLink={true}
+              viewAllHref='/posts'
+            />
+          </div>
 
-          <div className='space-y-4'>
-            <div className='border-l-2 border-accent pl-4 py-2'>
-              <Typography component='p' variant='caption' color='muted' className='font-mono'>
-                2024-12-24 10:30:00
-              </Typography>
-              <Typography
-                component='h3'
-                variant='h4'
-                color='primary'
-                className='hover:text-accent transition-colors'
-              >
-                <Link href='/posts/coming-soon' variant='underline'>
-                  ブログ記事準備中...
-                </Link>
-              </Typography>
-              <Typography component='p' variant='body2' color='muted'>
-                現在、記事システムを構築中です。しばらくお待ちください。
-              </Typography>
-            </div>
+          <div className='bg-card border border-accent rounded-lg p-6'>
+            <PopularPosts posts={popularPosts} maxItems={5} />
           </div>
         </div>
 
