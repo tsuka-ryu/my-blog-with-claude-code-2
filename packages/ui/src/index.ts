@@ -13,6 +13,11 @@ export { TagCloud, Tag } from './components/tag-cloud';
 export { PopularTags, TagRanking } from './components/popular-tags';
 export { SearchBox } from './components/search-box';
 export { SearchResults } from './components/search-results';
+export { Breadcrumb } from './components/breadcrumb';
+export { PostNavigation } from './components/post-navigation';
+export { PopularPosts } from './components/popular-posts';
+export { RecentPosts } from './components/recent-posts';
+export { ArchiveList } from './components/archive-list';
 export type { Theme } from './components/theme-provider';
 export type { ButtonProps } from './components/button';
 export type { LinkProps } from './components/link';
@@ -24,6 +29,11 @@ export type { TagCloudProps, TagCloudItem, TagProps } from './components/tag-clo
 export type { PopularTagsProps, TagRankingProps } from './components/popular-tags';
 export type { SearchBoxProps } from './components/search-box';
 export type { SearchResultsProps, SearchResultItem } from './components/search-results';
+export type { BreadcrumbProps, BreadcrumbItem } from './components/breadcrumb';
+export type { PostNavigationProps, PostNavigationItem } from './components/post-navigation';
+export type { PopularPostsProps, PopularPost } from './components/popular-posts';
+export type { RecentPostsProps, RecentPost } from './components/recent-posts';
+export type { ArchiveListProps, ArchiveYear, ArchiveMonth } from './components/archive-list';
 
 // ユーティリティ関数をre-export
 export { cn } from '@repo/utils';
