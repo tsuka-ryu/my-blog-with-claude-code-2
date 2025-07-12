@@ -2,6 +2,7 @@
 import { Header, Typography, Link } from '@repo/ui';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import ReactMarkdown from 'react-markdown';
 /* eslint-enable import-x/order */
 
 interface PostPageProps {
@@ -18,65 +19,23 @@ interface PostData {
 }
 
 async function getPost(slug: string): Promise<PostData | null> {
-  // TODO: 実際のMarkdownファイル読み込み処理を実装予定
-  // 現在はサンプルデータを返す
-  const mockPosts: Record<string, PostData> = {
-    'sample-post': {
-      title: 'サンプル記事タイトル',
-      date: '2024-12-24',
-      author: 'tsuka-ryu',
-      tags: ['TypeScript', 'Next.js', 'React'],
-      description: 'これはサンプル記事の説明文です。',
-      content: `
-# サンプル記事
+  // 実際のMarkdownファイルから記事を読み込み
+  const { getArticleBySlug } = await import('@/lib/articles');
 
-これはサンプル記事の内容です。
+  const article = getArticleBySlug(slug);
 
-## セクション1
+  if (!article || article.frontMatter.published === false) {
+    return null;
+  }
 
-ここにコンテンツが入ります。
-
-\`\`\`typescript
-const example = &quot;Hello, World!&quot;;
-console.log(example);
-\`\`\`
-
-## セクション2
-
-更に詳しい説明がここに続きます。
-
-- リストアイテム1
-- リストアイテム2
-- リストアイテム3
-
-**太字のテキスト**や*斜体のテキスト*も使用できます。
-      `,
-    },
-    'coming-soon': {
-      title: 'ブログ記事準備中...',
-      date: '2024-12-24',
-      author: 'tsuka-ryu',
-      tags: ['お知らせ'],
-      description: '現在、記事システムを構築中です。',
-      content: `
-# ブログ記事準備中...
-
-現在、記事システムを構築中です。しばらくお待ちください。
-
-## 予定している機能
-
-- Markdownファイルからの記事読み込み
-- シンタックスハイライト
-- 目次生成
-- タグ機能
-- 検索機能
-
-近日中に公開予定です！
-      `,
-    },
+  return {
+    title: article.frontMatter.title,
+    date: article.frontMatter.date,
+    author: article.frontMatter.author || 'tsuka-ryu',
+    tags: article.frontMatter.tags || [],
+    description: article.frontMatter.description,
+    content: article.content,
   };
-
-  return mockPosts[slug] || null;
 }
 
 export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
@@ -150,49 +109,64 @@ export default async function PostPage({ params }: PostPageProps) {
         {/* 記事コンテンツ */}
         <div className='bg-card border border-accent rounded-lg p-8'>
           <div className='prose prose-lg max-w-none prose-headings:text-primary prose-p:text-muted prose-strong:text-primary prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-code:text-accent prose-code:bg-accent/10 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-background prose-pre:border prose-pre:border-accent/30'>
-            {/* TODO: MDXやreact-markdownでの処理を実装予定 */}
-            <div
-              dangerouslySetInnerHTML={{
-                __html: post.content
-                  .split('\n')
-                  .map(line => {
-                    if (line.startsWith('# ')) {
-                      return `<h1 class="text-2xl font-bold text-primary mt-8 mb-4">${line.slice(2)}</h1>`;
-                    }
-                    if (line.startsWith('## ')) {
-                      return `<h2 class="text-xl font-semibold text-primary mt-6 mb-3">${line.slice(3)}</h2>`;
-                    }
-                    if (line.startsWith('```')) {
-                      return '<pre class="bg-background border border-accent/30 rounded p-4 overflow-x-auto my-4"><code>';
-                    }
-                    if (line === '```') {
-                      return '</code></pre>';
-                    }
-                    if (line.startsWith('- ')) {
-                      return `<li class="text-muted ml-6">${line.slice(2)}</li>`;
-                    }
-                    if (line.includes('**') && line.includes('**')) {
-                      const boldText = line.replace(
-                        /\*\*(.*?)\*\*/g,
-                        '<strong class="text-primary">$1</strong>'
-                      );
-                      return `<p class="text-muted my-2">${boldText}</p>`;
-                    }
-                    if (line.includes('*') && line.includes('*')) {
-                      const italicText = line.replace(
-                        /\*(.*?)\*/g,
-                        '<em class="text-primary">$1</em>'
-                      );
-                      return `<p class="text-muted my-2">${italicText}</p>`;
-                    }
-                    if (line.trim() === '') {
-                      return '<br>';
-                    }
-                    return `<p class="text-muted my-2">${line}</p>`;
-                  })
-                  .join(''),
+            <ReactMarkdown
+              components={{
+                h1: ({ children }) => (
+                  <h1 className='text-2xl font-bold text-primary mt-8 mb-4'>{children}</h1>
+                ),
+                h2: ({ children }) => (
+                  <h2 className='text-xl font-semibold text-primary mt-6 mb-3'>{children}</h2>
+                ),
+                h3: ({ children }) => (
+                  <h3 className='text-lg font-semibold text-primary mt-4 mb-2'>{children}</h3>
+                ),
+                p: ({ children }) => <p className='text-muted my-3 leading-relaxed'>{children}</p>,
+                ul: ({ children }) => (
+                  <ul className='text-muted my-4 ml-6 list-disc space-y-1'>{children}</ul>
+                ),
+                ol: ({ children }) => (
+                  <ol className='text-muted my-4 ml-6 list-decimal space-y-1'>{children}</ol>
+                ),
+                li: ({ children }) => <li className='text-muted'>{children}</li>,
+                code: ({ children, className }) => {
+                  const isInline = !className?.includes('language-');
+                  return isInline ? (
+                    <code className='text-accent bg-accent/10 px-1 py-0.5 rounded font-mono text-sm'>
+                      {children}
+                    </code>
+                  ) : (
+                    <code className='block'>{children}</code>
+                  );
+                },
+                pre: ({ children }) => (
+                  <pre className='bg-background border border-accent/30 rounded p-4 overflow-x-auto my-4 text-sm'>
+                    {children}
+                  </pre>
+                ),
+                strong: ({ children }) => (
+                  <strong className='text-primary font-semibold'>{children}</strong>
+                ),
+                em: ({ children }) => <em className='text-primary italic'>{children}</em>,
+                a: ({ href, children }) => (
+                  <Link
+                    href={href || '#'}
+                    className='text-accent hover:underline focus:underline focus:outline-none'
+                    target={href?.startsWith('http') ? '_blank' : undefined}
+                    rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  >
+                    {children}
+                  </Link>
+                ),
+                blockquote: ({ children }) => (
+                  <blockquote className='border-l-4 border-accent/50 pl-4 my-4 italic text-muted/80'>
+                    {children}
+                  </blockquote>
+                ),
+                hr: () => <hr className='my-8 border-accent/20' />,
               }}
-            />
+            >
+              {post.content}
+            </ReactMarkdown>
           </div>
         </div>
 

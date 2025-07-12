@@ -6,7 +6,7 @@
 
 **TurboRepoとpnpmを使用したモノレポ**として構築された技術ブログプロジェクト。日本語圏の開発者をターゲットとし、ターミナル/コンソール風デザインテーマを特徴とする。
 
-**現在のステータス**: フェーズ2 - デザインシステム・UI基盤
+**現在のステータス**: フェーズ5完了 - コンテンツ管理・検索機能実装済み
 
 ## 開発環境設定
 
@@ -21,10 +21,15 @@
 # 依存関係のインストール
 pnpm install
 
-# 将来利用可能（パッケージ作成後）:
+# 利用可能なコマンド:
 pnpm turbo build    # 全パッケージをビルド
 pnpm turbo lint     # 全パッケージをリント
+pnpm turbo typecheck # 型チェック
 pnpm turbo dev      # 開発サーバーを起動
+pnpm turbo test     # テスト実行
+
+# webアプリケーション単体での開発
+cd apps/web && pnpm dev
 ```
 
 ## コアファイルとユーティリティ
@@ -37,15 +42,19 @@ pnpm turbo dev      # 開発サーバーを起動
 
 ### 現在の構造
 
-```
+```bash
 my-blog-with-claude-code/
 ├── package.json           # ルートパッケージ設定
 ├── turbo.json            # TurboRepoパイプライン設定
 ├── pnpm-workspace.yaml   # ワークスペース定義
 ├── apps/
 │   ├── docs/             # Docusaurus ドキュメントサイト
-│   └── web/              # Next.js ウェブアプリ
-└── packages/             # 共有パッケージ（現在空）
+│   └── web/              # Next.js ウェブアプリ（MDX・検索機能実装済み）
+└── packages/             # 共有パッケージ
+    ├── ui/               # UIコンポーネントライブラリ（Storybook付き）
+    ├── utils/            # 共通ユーティリティ
+    ├── eslint-config/    # ESLint共有設定
+    └── typescript-config/ # TypeScript共有設定
 ```
 
 ## コードスタイルガイドライン
@@ -56,11 +65,13 @@ my-blog-with-claude-code/
 
 ## テスト手順
 
-現在設定中：
+設定済み・実行可能：
 
-- **単体テスト**: Vitest + Testing Library（予定）
-- **E2Eテスト**: Playwright（予定）
+- **単体テスト**: Vitest + Testing Library（packages/ui, apps/web対応）
+- **E2Eテスト**: Playwright（設定済み、テスト拡充予定）
 - **Visual Regression**: 設定予定
+- **動作確認**: 実装後はPlaywright MCPを使用してブラウザでの動作確認を必須とする
+- **Storybook**: UIコンポーネントのインタラクションテスト対応
 
 ## リポジトリエチケット
 
@@ -81,11 +92,13 @@ my-blog-with-claude-code/
 
 ## プロジェクト特有の動作・警告
 
-- 実際のアプリケーションパッケージ未作成のため、多くの開発コマンドは現在利用不可
+- アプリケーション・パッケージ実装済み（全ての開発コマンドが利用可能）
+- webアプリケーション: Markdownベースのブログ機能・検索機能実装済み
 - turbo.jsonのパイプライン設定:
   - **build**: `.next/**`キャッシュを除くNext.js出力キャッシュ
   - **lint**: パッケージ間カスケードlint
   - **dev**: キャッシュなし永続開発サーバー
+  - **test**: Vitestテスト実行
   - **globalDependencies**: `**/.env.*local`
 
 ## 重要な開発ノート
@@ -93,6 +106,7 @@ my-blog-with-claude-code/
 - **進捗管理**: apps/docs/docs/TODO.mdが主要ロードマップ - 必ず参照・更新すること
 - **コミット時**: 変更内容に応じてTODOファイルを更新し、Claude Codeにも自動的にTODO更新を指示すること
 - **ドキュメント**: 主要決定はapps/docs/docs/ディレクトリに記録
+- **実装フロー**: 新機能実装時は最後に必ずPlaywright MCPを使用してブラウザでの動作確認を実施すること
 
 ## ブログ作成時の注意事項
 

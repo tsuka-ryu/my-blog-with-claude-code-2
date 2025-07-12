@@ -2,7 +2,17 @@
   "mcpServers": {
     "ui-fetcher": {
       "command": "node",
-      "args": ["tools/mcp-ui-fetcher/dist/index.js"],
+      "args": [
+        "tools/mcp-ui-fetcher/dist/index.js"
+      ],
+      "env": {}
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ],
       "env": {}
     }
   }

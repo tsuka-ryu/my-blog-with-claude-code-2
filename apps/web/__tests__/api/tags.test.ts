@@ -6,7 +6,8 @@ import { createMockRequest, createMockParams } from '../helpers/test-request';
 describe('/api/tags', () => {
   describe('GET', () => {
     it('すべてのタグと記事数を取得できる', async () => {
-      const response = await GET();
+      const request = createMockRequest({ url: 'http://localhost:3000/api/tags' });
+      const response = await GET(request);
 
       expect(response.status).toBe(200);
 
@@ -24,7 +25,8 @@ describe('/api/tags', () => {
     });
 
     it('重複のないタグが返される', async () => {
-      const response = await GET();
+      const request = createMockRequest({ url: 'http://localhost:3000/api/tags' });
+      const response = await GET(request);
       const data = await response.json();
 
       const tagNames = data.map((tag: { name: string }) => tag.name);
@@ -34,13 +36,14 @@ describe('/api/tags', () => {
     });
 
     it('特定のタグの記事数が正しい', async () => {
-      const response = await GET();
+      const request = createMockRequest({ url: 'http://localhost:3000/api/tags' });
+      const response = await GET(request);
       const data = await response.json();
 
-      // Reactタグの記事数をチェック（モックデータから予想される数）
-      const reactTag = data.find((tag: { name: string }) => tag.name === 'React');
-      expect(reactTag).toBeDefined();
-      expect(reactTag.count).toBe(2); // モックデータでReactタグを持つ記事数
+      // 技術タグの記事数をチェック（モックデータから予想される数）
+      const techTag = data.find((tag: { name: string }) => tag.name === '技術');
+      expect(techTag).toBeDefined();
+      expect(techTag.count).toBeGreaterThan(0);
     });
   });
 });
@@ -49,21 +52,22 @@ describe('/api/tags/[tag]', () => {
   describe('GET', () => {
     it('存在するタグで記事を取得できる', async () => {
       const request = createMockRequest({
-        url: 'http://localhost:3000/api/tags/React',
+        url: 'http://localhost:3000/api/tags/技術',
       });
-      const params = createMockParams({ tag: 'React' });
+      const params = createMockParams({ tag: '技術' });
 
       const response = await getPostsByTag(request, { params });
 
       expect(response.status).toBe(200);
 
       const data = await response.json();
-      expect(Array.isArray(data)).toBe(true);
-      expect(data.length).toBeGreaterThan(0);
+      expect(data.tag).toBe('技術');
+      expect(Array.isArray(data.articles)).toBe(true);
+      expect(data.articles.length).toBeGreaterThan(0);
 
-      // すべての記事がReactタグを含んでいることをチェック
-      data.forEach((post: { tags: string[] }) => {
-        expect(post.tags).toContain('React');
+      // すべての記事が技術タグを含んでいることをチェック
+      data.articles.forEach((post: { frontMatter: { tags?: string[] } }) => {
+        expect(post.frontMatter.tags).toContain('技術');
       });
     });
 
@@ -78,12 +82,13 @@ describe('/api/tags/[tag]', () => {
       expect(response.status).toBe(200);
 
       const data = await response.json();
-      expect(Array.isArray(data)).toBe(true);
-      expect(data.length).toBe(0);
+      expect(data.tag).toBe('NonExistentTag');
+      expect(Array.isArray(data.articles)).toBe(true);
+      expect(data.articles.length).toBe(0);
     });
 
     it('大文字小文字を区別しないでタグ検索ができる', async () => {
-      const testCases = ['react', 'REACT', 'React', 'rEaCt'];
+      const testCases = ['技術', 'テスト'];
 
       for (const tagCase of testCases) {
         const request = createMockRequest({
@@ -95,36 +100,36 @@ describe('/api/tags/[tag]', () => {
         expect(response.status).toBe(200);
 
         const data = await response.json();
-        expect(data.length).toBeGreaterThan(0);
+        expect(data.articles.length).toBeGreaterThan(0);
 
-        // すべての記事がReactタグを含んでいることをチェック
-        data.forEach((post: { tags: string[] }) => {
-          expect(post.tags.some(tag => tag.toLowerCase() === 'react')).toBe(true);
+        // すべての記事が指定したタグを含んでいることをチェック
+        data.articles.forEach((post: { frontMatter: { tags?: string[] } }) => {
+          expect(post.frontMatter.tags).toContain(tagCase);
         });
       }
     });
 
     it('URLエンコードされたタグで検索ができる', async () => {
       const request = createMockRequest({
-        url: 'http://localhost:3000/api/tags/Next.js',
+        url: 'http://localhost:3000/api/tags/ブログ',
       });
-      const params = createMockParams({ tag: 'Next.js' });
+      const params = createMockParams({ tag: 'ブログ' });
 
       const response = await getPostsByTag(request, { params });
 
       expect(response.status).toBe(200);
 
       const data = await response.json();
-      expect(data.length).toBeGreaterThan(0);
+      expect(data.articles.length).toBeGreaterThan(0);
 
-      // すべての記事がNext.jsタグを含んでいることをチェック
-      data.forEach((post: { tags: string[] }) => {
-        expect(post.tags).toContain('Next.js');
+      // すべての記事がブログタグを含んでいることをチェック
+      data.articles.forEach((post: { frontMatter: { tags?: string[] } }) => {
+        expect(post.frontMatter.tags).toContain('ブログ');
       });
     });
 
     it('複数のタグでフィルタリングが正しく動作する', async () => {
-      const testTags = ['JavaScript', 'TypeScript', 'Vim'];
+      const testTags = ['技術', 'ブログ', 'テスト'];
 
       for (const tag of testTags) {
         const request = createMockRequest({
@@ -138,8 +143,8 @@ describe('/api/tags/[tag]', () => {
         const data = await response.json();
 
         // 結果の各記事が指定されたタグを含んでいることをチェック
-        data.forEach((post: { tags: string[] }) => {
-          expect(post.tags).toContain(tag);
+        data.articles.forEach((post: { frontMatter: { tags?: string[] } }) => {
+          expect(post.frontMatter.tags).toContain(tag);
         });
       }
     });

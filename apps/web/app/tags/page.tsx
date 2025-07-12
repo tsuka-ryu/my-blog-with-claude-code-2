@@ -1,15 +1,11 @@
-import { Header, Typography, Link } from '@repo/ui';
-import { getAllTags, sortTagsByFrequency, sortTagsByName } from '@repo/utils';
+import { Header, Typography, Link, TagCloud } from '@repo/ui';
 
-import { getPublishedPosts } from '../_mocks/mock-data';
-
-import type { TagInfo } from '@repo/utils';
+import { getTagsWithCount, getTagCloudData, getPopularTags } from '../../lib/tags';
 
 export default function TagsPage() {
-  const allPosts = getPublishedPosts();
-  const allTags = getAllTags(allPosts);
-  const tagsByFrequency = sortTagsByFrequency(allTags);
-  const tagsByName = sortTagsByName(allTags);
+  const allTags = getTagsWithCount();
+  const tagCloudData = getTagCloudData();
+  const popularTags = getPopularTags(10);
 
   return (
     <div className='space-y-8'>
@@ -29,18 +25,30 @@ export default function TagsPage() {
         <section className='space-y-8'>
           <div className='bg-card border border-accent rounded-lg p-6 space-y-4'>
             <Typography component='h3' variant='h4' color='accent'>
-              $ tags --sort=frequency
+              $ tags --display=cloud
             </Typography>
 
             <Typography component='p' variant='body2' color='muted'>
-              使用頻度順
+              タグクラウド（使用頻度によりサイズが変化）
             </Typography>
 
-            <div className='flex flex-wrap gap-3'>
-              {tagsByFrequency.map((tag: TagInfo) => (
+            <TagCloud tags={tagCloudData} variant='interactive' spacing='normal' showCount={true} />
+          </div>
+
+          <div className='bg-card border border-accent rounded-lg p-6 space-y-4'>
+            <Typography component='h3' variant='h4' color='accent'>
+              $ tags --sort=frequency --limit=10
+            </Typography>
+
+            <Typography component='p' variant='body2' color='muted'>
+              人気タグ Top 10
+            </Typography>
+
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3'>
+              {popularTags.map(tag => (
                 <Link
-                  key={tag.slug}
-                  href={`/tags/${tag.slug}`}
+                  key={tag.name}
+                  href={`/tags/${encodeURIComponent(tag.name)}`}
                   className='inline-flex items-center gap-2 px-3 py-2 bg-accent/10 text-accent rounded-md border border-accent/20 hover:bg-accent/20 hover:border-accent/30 transition-colors'
                 >
                   <span className='text-sm font-medium'>#{tag.name}</span>
@@ -56,14 +64,14 @@ export default function TagsPage() {
             </Typography>
 
             <Typography component='p' variant='body2' color='muted'>
-              名前順（50音順）
+              全タグ一覧（名前順）
             </Typography>
 
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3'>
-              {tagsByName.map((tag: TagInfo) => (
+              {allTags.map(tag => (
                 <Link
-                  key={tag.slug}
-                  href={`/tags/${tag.slug}`}
+                  key={tag.name}
+                  href={`/tags/${encodeURIComponent(tag.name)}`}
                   className='inline-flex items-center justify-between px-3 py-2 bg-terminal-bg-secondary rounded-md border border-terminal-ui-border hover:bg-terminal-bg-hover hover:border-terminal-ui-border-hover transition-colors'
                 >
                   <span className='text-sm font-medium text-terminal-text-primary'>
@@ -102,8 +110,7 @@ export default function TagsPage() {
 }
 
 export function generateMetadata() {
-  const allPosts = getPublishedPosts();
-  const allTags = getAllTags(allPosts);
+  const allTags = getTagsWithCount();
 
   return {
     title: 'タグ一覧 - 技術ブログ',
