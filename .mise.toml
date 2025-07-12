@@ -1,6 +1,6 @@
 [tools]
-node = "22"  # 最新LTS version
-pnpm = "10.12.1"
+node = "22.15.0"  # 最新LTS version
+pnpm = "10.12.4"
 
 [env]
 NODE_ENV = "development"
