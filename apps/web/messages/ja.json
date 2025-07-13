@@ -1,0 +1,54 @@
+{
+  "common": {
+    "home": "ホーム",
+    "posts": "記事一覧",
+    "tags": "タグ",
+    "search": "検索",
+    "notFound": "ページが見つかりません",
+    "backToHome": "ホームに戻る",
+    "readMore": "続きを読む",
+    "publishedAt": "公開日",
+    "updatedAt": "更新日",
+    "readingTime": "読了時間",
+    "minute": "分",
+    "minutes": "分",
+    "recentPosts": "最近の記事",
+    "popularPosts": "人気の記事",
+    "archive": "アーカイブ",
+    "previousPost": "前の記事",
+    "nextPost": "次の記事",
+    "searchPlaceholder": "記事を検索...",
+    "searchNoResults": "検索結果が見つかりませんでした",
+    "searchResultsCount": "{count} 件の検索結果",
+    "tagsAll": "すべてのタグ",
+    "postCount": "{count} 件の記事",
+    "category": "カテゴリー",
+    "categories": "カテゴリー",
+    "allPosts": "すべての記事"
+  },
+  "navigation": {
+    "home": "ホーム",
+    "blog": "ブログ",
+    "tags": "タグ",
+    "search": "検索"
+  },
+  "footer": {
+    "copyright": "© {year} {author}. All rights reserved.",
+    "builtWith": "Built with Next.js and Tailwind CSS"
+  },
+  "metadata": {
+    "siteTitle": "技術ブログ",
+    "siteDescription": "技術共有・解説記事・Podcast感想を発信するブログ",
+    "author": "tsuka-ryu"
+  },
+  "error": {
+    "404": {
+      "title": "404 - ページが見つかりません",
+      "description": "お探しのページは存在しないか、移動された可能性があります。"
+    },
+    "500": {
+      "title": "500 - サーバーエラー",
+      "description": "申し訳ございません。サーバーエラーが発生しました。"
+    }
+  }
+}

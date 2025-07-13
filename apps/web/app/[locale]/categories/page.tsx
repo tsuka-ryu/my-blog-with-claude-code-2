@@ -4,7 +4,7 @@ import {
   getCategoriesWithCount,
   getCategoryHierarchy,
   getPopularCategories,
-} from '../../lib/categories';
+} from '../../../lib/categories';
 
 export default function CategoriesPage() {
   const allCategories = getCategoriesWithCount();

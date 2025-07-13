@@ -1,6 +1,6 @@
 import { Header, Typography, Link, TagCloud } from '@repo/ui';
 
-import { getTagsWithCount, getTagCloudData, getPopularTags } from '../../lib/tags';
+import { getTagsWithCount, getTagCloudData, getPopularTags } from '../../../lib/tags';
 
 export default function TagsPage() {
   const allTags = getTagsWithCount();

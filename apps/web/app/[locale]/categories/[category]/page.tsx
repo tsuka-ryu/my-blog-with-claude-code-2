@@ -1,8 +1,8 @@
 import { Header, Typography, Link, PostCard } from '@repo/ui';
 import { notFound } from 'next/navigation';
 
-import { getArticlesByCategory } from '../../../lib/articles';
-import { getRelatedCategories, getCategoryBreadcrumb } from '../../../lib/categories';
+import { getArticlesByCategory } from '../../../../lib/articles';
+import { getRelatedCategories, getCategoryBreadcrumb } from '../../../../lib/categories';
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;

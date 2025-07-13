@@ -1,0 +1,54 @@
+{
+  "common": {
+    "home": "Home",
+    "posts": "Posts",
+    "tags": "Tags",
+    "search": "Search",
+    "notFound": "Page not found",
+    "backToHome": "Back to home",
+    "readMore": "Read more",
+    "publishedAt": "Published at",
+    "updatedAt": "Updated at",
+    "readingTime": "Reading time",
+    "minute": "minute",
+    "minutes": "minutes",
+    "recentPosts": "Recent Posts",
+    "popularPosts": "Popular Posts",
+    "archive": "Archive",
+    "previousPost": "Previous Post",
+    "nextPost": "Next Post",
+    "searchPlaceholder": "Search posts...",
+    "searchNoResults": "No search results found",
+    "searchResultsCount": "{count} search results",
+    "tagsAll": "All tags",
+    "postCount": "{count} posts",
+    "category": "Category",
+    "categories": "Categories",
+    "allPosts": "All Posts"
+  },
+  "navigation": {
+    "home": "Home",
+    "blog": "Blog",
+    "tags": "Tags",
+    "search": "Search"
+  },
+  "footer": {
+    "copyright": "© {year} {author}. All rights reserved.",
+    "builtWith": "Built with Next.js and Tailwind CSS"
+  },
+  "metadata": {
+    "siteTitle": "Tech Blog",
+    "siteDescription": "A blog for sharing technical insights, tutorials, and podcast reviews",
+    "author": "tsuka-ryu"
+  },
+  "error": {
+    "404": {
+      "title": "404 - Page Not Found",
+      "description": "The page you are looking for doesn't exist or has been moved."
+    },
+    "500": {
+      "title": "500 - Server Error",
+      "description": "Sorry, there was a server error."
+    }
+  }
+}
