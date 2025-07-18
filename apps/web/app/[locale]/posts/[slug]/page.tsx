@@ -203,11 +203,11 @@ export default async function PostPage({ params }: PostPageProps) {
             <ShareButtons title={post.title} url={currentUrl} description={post.description} />
           </div>
 
-          {/* 目次 */}
-          {tableOfContentsItems.length > 0 && <TableOfContents items={tableOfContentsItems} />}
-
-          {/* 記事コンテンツ */}
-          <div className='bg-card border border-accent rounded-lg p-8'>
+          {/* メインコンテンツエリア */}
+          <div className='grid grid-cols-1 lg:grid-cols-4 gap-8'>
+            {/* 記事コンテンツ */}
+            <div className='lg:col-span-3'>
+              <div className='bg-card border border-accent rounded-lg p-8'>
             <div className='prose prose-lg max-w-none prose-headings:text-primary prose-p:text-muted prose-strong:text-primary prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-code:text-accent prose-code:bg-accent/10 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-background prose-pre:border prose-pre:border-accent/30'>
               <ReactMarkdown
                 components={{
@@ -293,6 +293,20 @@ export default async function PostPage({ params }: PostPageProps) {
               >
                 {post.content}
               </ReactMarkdown>
+            </div>
+              </div>
+            </div>
+
+            {/* サイドバー - 目次 */}
+            <div className='lg:col-span-1 order-first lg:order-last'>
+              {tableOfContentsItems.length > 0 && (
+                <div className='lg:sticky lg:top-4 lg:max-h-screen lg:overflow-y-auto mb-8 lg:mb-0'>
+                  <TableOfContents 
+                    items={tableOfContentsItems} 
+                    sticky={false}
+                  />
+                </div>
+              )}
             </div>
           </div>
 
