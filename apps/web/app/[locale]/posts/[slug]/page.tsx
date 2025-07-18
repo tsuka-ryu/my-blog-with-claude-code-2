@@ -5,9 +5,9 @@ import {
   Link,
   Breadcrumb,
   PostNavigation,
-  ShareButtons,
   ReadingTime,
   TableOfContents,
+  TableOfContentsDrawer,
   Comments,
 } from '@repo/ui';
 import { notFound } from 'next/navigation';
@@ -132,9 +132,6 @@ export default async function PostPage({ params }: PostPageProps) {
     { name: post.title },
   ]);
 
-  // 記事のURL
-  const currentUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/posts/${slug}`;
-
   // 記事から見出しを抽出して目次を生成
   const generateTableOfContents = (content: string) => {
     const lines = content.split('\n');
@@ -210,9 +207,6 @@ export default async function PostPage({ params }: PostPageProps) {
                 ))}
               </div>
             </div>
-
-            {/* シェアボタン */}
-            <ShareButtons title={post.title} url={currentUrl} description={post.description} />
           </div>
 
           {/* メインコンテンツエリア */}
@@ -378,8 +372,8 @@ export default async function PostPage({ params }: PostPageProps) {
               </div>
             </div>
 
-            {/* サイドバー - 目次 */}
-            <div className='lg:col-span-1 order-first lg:order-last'>
+            {/* サイドバー - 目次（デスクトップ） */}
+            <div className='lg:col-span-1 order-first lg:order-last hidden lg:block'>
               {tableOfContentsItems.length > 0 && (
                 <div className='lg:sticky lg:top-4 lg:max-h-screen lg:overflow-y-auto mb-8 lg:mb-0'>
                   <TableOfContents items={tableOfContentsItems} sticky={false} />
@@ -432,6 +426,9 @@ export default async function PostPage({ params }: PostPageProps) {
             </div>
           </div>
         </article>
+
+        {/* モバイル用目次ドロワー */}
+        {tableOfContentsItems.length > 0 && <TableOfContentsDrawer items={tableOfContentsItems} />}
       </div>
     </>
   );
