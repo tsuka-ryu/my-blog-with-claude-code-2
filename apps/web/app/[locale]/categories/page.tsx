@@ -1,19 +1,27 @@
 import { Header, Typography, Link } from '@repo/ui';
+import { getTranslations } from 'next-intl/server';
 
 import {
   getCategoriesWithCount,
   getCategoryHierarchy,
   getPopularCategories,
-} from '../../lib/categories';
+} from '../../../lib/categories';
+import { locales } from '../../../lib/i18n-config';
 
-export default function CategoriesPage() {
+export default async function CategoriesPage({ params }: { params: Promise<{ locale: string }> }) {
+  await params;
+  const t = await getTranslations();
+
   const allCategories = getCategoriesWithCount();
   const categoryHierarchy = getCategoryHierarchy();
   const popularCategories = getPopularCategories(10);
 
   return (
     <div className='space-y-8'>
-      <Header title='カテゴリ一覧' description={`すべてのカテゴリ（${allCategories.length}件）`} />
+      <Header
+        title={t('pages.categories.title')}
+        description={t('pages.categories.description', { count: allCategories.length })}
+      />
 
       <div className='space-y-6'>
         <div className='bg-card border border-accent rounded-lg p-6 space-y-4'>
@@ -22,7 +30,7 @@ export default function CategoriesPage() {
           </Typography>
 
           <Typography component='p' variant='body1' color='muted'>
-            {allCategories.length}個のカテゴリが見つかりました
+            {t('pages.categories.foundCategories', { count: allCategories.length })}
           </Typography>
         </div>
 
@@ -33,7 +41,7 @@ export default function CategoriesPage() {
             </Typography>
 
             <Typography component='p' variant='body2' color='muted'>
-              人気カテゴリ Top 10
+              {t('pages.categories.popularCategories')}
             </Typography>
 
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3'>
@@ -59,14 +67,16 @@ export default function CategoriesPage() {
               </Typography>
 
               <Typography component='p' variant='body2' color='muted'>
-                階層構造
+                {t('pages.categories.hierarchy')}
               </Typography>
 
               <div className='space-y-6'>
                 {categoryHierarchy.map(hierarchy => (
                   <div key={hierarchy.parent} className='space-y-3'>
                     <Typography component='h4' variant='h5' color='accent'>
-                      {hierarchy.parent === 'root' ? 'ルートカテゴリ' : hierarchy.parent}
+                      {hierarchy.parent === 'root'
+                        ? t('pages.categories.rootCategory')
+                        : hierarchy.parent}
                     </Typography>
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 ml-4'>
                       {hierarchy.children.map(category => (
@@ -100,7 +110,7 @@ export default function CategoriesPage() {
             </Typography>
 
             <Typography component='p' variant='body2' color='muted'>
-              全カテゴリ一覧（名前順）
+              {t('pages.categories.allCategories')}
             </Typography>
 
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3'>
@@ -130,13 +140,13 @@ export default function CategoriesPage() {
               href='/posts'
               className='inline-flex items-center justify-center font-medium rounded-md border transition-colors bg-terminal-accent text-terminal-accent-foreground hover:bg-terminal-accent-hover border-terminal-accent px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-terminal-ui-border-focus focus:ring-offset-2 focus:ring-offset-terminal-bg-primary'
             >
-              全記事を見る
+              {t('pages.categories.viewAllPosts')}
             </Link>
             <Link
               href='/'
               className='inline-flex items-center justify-center font-medium rounded-md border transition-colors bg-transparent text-terminal-text-primary hover:bg-terminal-bg-hover border-terminal-ui-border hover:border-terminal-ui-border-hover px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-terminal-ui-border-focus focus:ring-offset-2 focus:ring-offset-terminal-bg-primary'
             >
-              ホームに戻る
+              {t('pages.categories.backToHome')}
             </Link>
           </div>
         </div>
@@ -145,11 +155,20 @@ export default function CategoriesPage() {
   );
 }
 
-export function generateMetadata() {
+export function generateStaticParams() {
+  return locales.map(locale => ({ locale }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
   const allCategories = getCategoriesWithCount();
 
   return {
-    title: 'カテゴリ一覧 - 技術ブログ',
-    description: `すべてのカテゴリ一覧（${allCategories.length}件）。記事をカテゴリから探すことができます。`,
+    title: messages.metadata.categories.title,
+    description: messages.metadata.categories.description.replace(
+      '{count}',
+      allCategories.length.toString()
+    ),
   };
 }

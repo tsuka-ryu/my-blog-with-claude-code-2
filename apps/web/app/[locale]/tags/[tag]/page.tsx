@@ -2,7 +2,7 @@ import { Header, Typography, Link, PostCard } from '@repo/ui';
 import { getPostsByTag, getTagNameFromSlug, getAllTags } from '@repo/utils';
 import { notFound } from 'next/navigation';
 
-import { getPublishedPosts } from '../../_mocks/mock-data';
+import { getPublishedPosts } from '../../../_mocks/mock-data';
 
 import type { TagPageParams, TagInfo, BlogPostSummary } from '@repo/utils';
 
@@ -105,11 +105,4 @@ export async function generateMetadata({ params }: TagPageProps) {
   };
 }
 
-export async function generateStaticParams(): Promise<TagPageParams[]> {
-  const allPosts = getPublishedPosts();
-  const allTags = getAllTags(allPosts);
-
-  return allTags.map((tag: TagInfo) => ({
-    tag: tag.slug,
-  }));
-}
+export const dynamic = 'force-dynamic';

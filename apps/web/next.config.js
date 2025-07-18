@@ -1,4 +1,7 @@
 import createMDX from '@next/mdx'
+import createNextIntlPlugin from 'next-intl/plugin'
+
+const withNextIntl = createNextIntlPlugin('./i18n.js')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -17,4 +20,4 @@ const withMDX = createMDX({
   }
 })
 
-export default withMDX(nextConfig)
+export default withNextIntl(withMDX(nextConfig))
