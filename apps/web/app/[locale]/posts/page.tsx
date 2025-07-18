@@ -1,12 +1,16 @@
 import { Header, Typography, Link, PostCard } from '@repo/ui';
 
 import type { BlogPostSummary } from '@repo/utils';
+import type { Metadata } from 'next';
 
 import { getPublishedArticles } from '@/lib/articles';
+import { type Locale } from '@/lib/i18n-config';
+import { generateMetadata as createMetadata } from '@/lib/metadata-utils';
 
 const POSTS_PER_PAGE = 10;
 
 interface PostsPageProps {
+  params: Promise<{ locale: Locale }>;
   searchParams: Promise<{ page?: string }>;
 }
 
@@ -25,8 +29,8 @@ function convertToBlogPostSummary(
 }
 
 export default async function PostsPage({ searchParams }: PostsPageProps) {
-  const params = await searchParams;
-  const currentPage = Number(params.page) || 1;
+  const searchParamsResolved = await searchParams;
+  const currentPage = Number(searchParamsResolved.page) || 1;
 
   const articles = getPublishedArticles();
   const allPosts = convertToBlogPostSummary(articles);
@@ -159,12 +163,19 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
   );
 }
 
-export function generateMetadata() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
   const articles = getPublishedArticles();
   const totalPosts = articles.length;
 
-  return {
-    title: '記事一覧 - 技術ブログ',
+  return createMetadata({
+    title: '記事一覧',
     description: `技術記事・思考の整理（全${totalPosts}件）。プログラミング、開発ツール、技術トレンドについての記事。`,
-  };
+    locale,
+    url: `/${locale}/posts`,
+  });
 }

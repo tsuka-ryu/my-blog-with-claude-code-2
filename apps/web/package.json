@@ -26,6 +26,7 @@
     "@repo/utils": "workspace:*",
     "@shikijs/rehype": "^3.7.0",
     "@sindresorhus/slugify": "^2.2.1",
+    "@vercel/og": "^0.7.2",
     "fuse.js": "^7.1.0",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
