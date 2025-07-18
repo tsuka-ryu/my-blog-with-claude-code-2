@@ -22,6 +22,8 @@ interface NavigationProps {
   onMobileMenuToggle?: () => void;
   /** テーマトグルを表示するかどうか */
   showThemeToggle?: boolean;
+  /** 追加のコンテンツ（言語切り替えなど） */
+  extraContent?: React.ReactNode;
 }
 
 export function Navigation({
@@ -30,6 +32,7 @@ export function Navigation({
   isMobileMenuOpen = false,
   onMobileMenuToggle,
   showThemeToggle = true,
+  extraContent,
 }: NavigationProps) {
   return (
     <nav
@@ -75,6 +78,7 @@ export function Navigation({
           {/* 右側のコントロール */}
           <div className='flex items-center space-x-4'>
             {showThemeToggle && <ThemeToggle />}
+            {extraContent}
 
             {/* モバイルメニューボタン */}
             <div className='md:hidden'>

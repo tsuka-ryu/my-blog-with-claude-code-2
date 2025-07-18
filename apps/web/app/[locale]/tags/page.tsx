@@ -1,15 +1,23 @@
 import { Header, Typography, Link, TagCloud } from '@repo/ui';
+import { getTranslations } from 'next-intl/server';
 
-import { getTagsWithCount, getTagCloudData, getPopularTags } from '../../lib/tags';
+import { locales } from '../../../lib/i18n-config';
+import { getTagsWithCount, getTagCloudData, getPopularTags } from '../../../lib/tags';
 
-export default function TagsPage() {
+export default async function TagsPage({ params }: { params: Promise<{ locale: string }> }) {
+  await params;
+  const t = await getTranslations();
+
   const allTags = getTagsWithCount();
   const tagCloudData = getTagCloudData();
   const popularTags = getPopularTags(10);
 
   return (
     <div className='space-y-8'>
-      <Header title='タグ一覧' description={`すべてのタグ（${allTags.length}件）`} />
+      <Header
+        title={t('pages.tags.title')}
+        description={t('pages.tags.description', { count: allTags.length })}
+      />
 
       <div className='space-y-6'>
         <div className='bg-card border border-accent rounded-lg p-6 space-y-4'>
@@ -18,7 +26,7 @@ export default function TagsPage() {
           </Typography>
 
           <Typography component='p' variant='body1' color='muted'>
-            {allTags.length}個のタグが見つかりました
+            {t('pages.tags.foundTags', { count: allTags.length })}
           </Typography>
         </div>
 
@@ -29,7 +37,7 @@ export default function TagsPage() {
             </Typography>
 
             <Typography component='p' variant='body2' color='muted'>
-              タグクラウド（使用頻度によりサイズが変化）
+              {t('pages.tags.tagCloud')}
             </Typography>
 
             <TagCloud tags={tagCloudData} variant='interactive' spacing='normal' showCount={true} />
@@ -41,7 +49,7 @@ export default function TagsPage() {
             </Typography>
 
             <Typography component='p' variant='body2' color='muted'>
-              人気タグ Top 10
+              {t('pages.tags.popularTags')}
             </Typography>
 
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3'>
@@ -64,7 +72,7 @@ export default function TagsPage() {
             </Typography>
 
             <Typography component='p' variant='body2' color='muted'>
-              全タグ一覧（名前順）
+              {t('pages.tags.allTags')}
             </Typography>
 
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3'>
@@ -94,13 +102,13 @@ export default function TagsPage() {
               href='/posts'
               className='inline-flex items-center justify-center font-medium rounded-md border transition-colors bg-terminal-accent text-terminal-accent-foreground hover:bg-terminal-accent-hover border-terminal-accent px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-terminal-ui-border-focus focus:ring-offset-2 focus:ring-offset-terminal-bg-primary'
             >
-              全記事を見る
+              {t('pages.tags.viewAllPosts')}
             </Link>
             <Link
               href='/'
               className='inline-flex items-center justify-center font-medium rounded-md border transition-colors bg-transparent text-terminal-text-primary hover:bg-terminal-bg-hover border-terminal-ui-border hover:border-terminal-ui-border-hover px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-terminal-ui-border-focus focus:ring-offset-2 focus:ring-offset-terminal-bg-primary'
             >
-              ホームに戻る
+              {t('pages.tags.backToHome')}
             </Link>
           </div>
         </div>
@@ -109,11 +117,17 @@ export default function TagsPage() {
   );
 }
 
-export function generateMetadata() {
+export function generateStaticParams() {
+  return locales.map(locale => ({ locale }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
   const allTags = getTagsWithCount();
 
   return {
-    title: 'タグ一覧 - 技術ブログ',
-    description: `すべてのタグ一覧（${allTags.length}件）。記事をタグから探すことができます。`,
+    title: messages.metadata.tags.title,
+    description: messages.metadata.tags.description.replace('{count}', allTags.length.toString()),
   };
 }
