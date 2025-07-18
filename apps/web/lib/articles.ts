@@ -15,6 +15,7 @@ export interface ArticleFrontMatter {
   featured?: boolean;
   image?: string;
   slug?: string;
+  locale?: string;
 }
 
 export interface Article {
@@ -221,4 +222,52 @@ export function generateUniqueSlug(title: string): string {
   }
 
   return newSlug;
+}
+
+// 多言語対応関数
+export function getPublishedArticlesByLocale(locale: string): Article[] {
+  return getPublishedArticles().filter(
+    article =>
+      article.frontMatter.locale === locale || (!article.frontMatter.locale && locale === 'ja')
+  );
+}
+
+export function getArticlesByLocaleAndTag(locale: string, tag: string): Article[] {
+  return getPublishedArticlesByLocale(locale).filter(article =>
+    article.frontMatter.tags?.includes(tag)
+  );
+}
+
+export function getArticlesByLocaleAndCategory(locale: string, category: string): Article[] {
+  return getPublishedArticlesByLocale(locale).filter(
+    article => article.frontMatter.category === category
+  );
+}
+
+export function getTagsByLocale(locale: string): string[] {
+  const tagSet = new Set<string>();
+
+  getPublishedArticlesByLocale(locale).forEach(article => {
+    article.frontMatter.tags?.forEach(tag => tagSet.add(tag));
+  });
+
+  return Array.from(tagSet).sort();
+}
+
+export function getCategoriesByLocale(locale: string): string[] {
+  const categorySet = new Set<string>();
+
+  getPublishedArticlesByLocale(locale).forEach(article => {
+    if (article.frontMatter.category) {
+      categorySet.add(article.frontMatter.category);
+    }
+  });
+
+  return Array.from(categorySet).sort();
+}
+
+export function getFeaturedArticlesByLocale(locale: string): Article[] {
+  return getPublishedArticlesByLocale(locale).filter(
+    article => article.frontMatter.featured === true
+  );
 }

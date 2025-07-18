@@ -1,0 +1,97 @@
+{
+  "common": {
+    "home": "ホーム",
+    "posts": "記事一覧",
+    "tags": "タグ",
+    "search": "検索",
+    "notFound": "ページが見つかりません",
+    "backToHome": "ホームに戻る",
+    "readMore": "続きを読む",
+    "publishedAt": "公開日",
+    "updatedAt": "更新日",
+    "readingTime": "読了時間",
+    "minute": "分",
+    "minutes": "分",
+    "recentPosts": "最近の記事",
+    "popularPosts": "人気の記事",
+    "archive": "アーカイブ",
+    "previousPost": "前の記事",
+    "nextPost": "次の記事",
+    "searchPlaceholder": "記事を検索...",
+    "searchNoResults": "検索結果が見つかりませんでした",
+    "searchResultsCount": "{count} 件の検索結果",
+    "tagsAll": "すべてのタグ",
+    "postCount": "{count} 件の記事",
+    "category": "カテゴリー",
+    "categories": "カテゴリー",
+    "allPosts": "すべての記事"
+  },
+  "navigation": {
+    "home": "ホーム",
+    "blog": "ブログ",
+    "tags": "タグ",
+    "search": "検索"
+  },
+  "footer": {
+    "copyright": "© {year} {author}. All rights reserved.",
+    "builtWith": "Built with Next.js and Tailwind CSS"
+  },
+  "metadata": {
+    "siteTitle": "技術ブログ",
+    "siteDescription": "技術共有・解説記事・Podcast感想を発信するブログ",
+    "author": "tsuka-ryu",
+    "categories": {
+      "title": "カテゴリ一覧 - 技術ブログ",
+      "description": "すべてのカテゴリ一覧（{count}件）。記事をカテゴリから探すことができます。"
+    },
+    "search": {
+      "title": "検索 - 技術ブログ",
+      "description": "技術記事・思考の整理から記事を検索。タイトル、内容、タグから記事を見つけることができます。",
+      "titleWithQuery": "\"{query}\" の検索結果 - 技術ブログ",
+      "descriptionWithQuery": "\"{query}\" の検索結果ページ。技術記事・思考の整理から関連する記事を検索できます。"
+    },
+    "tags": {
+      "title": "タグ一覧 - 技術ブログ",
+      "description": "すべてのタグ一覧（{count}件）。記事をタグから探すことができます。"
+    }
+  },
+  "pages": {
+    "categories": {
+      "title": "カテゴリ一覧",
+      "description": "すべてのカテゴリ（{count}件）",
+      "foundCategories": "{count}個のカテゴリが見つかりました",
+      "popularCategories": "人気カテゴリ Top 10",
+      "hierarchy": "階層構造",
+      "allCategories": "全カテゴリ一覧（名前順）",
+      "viewAllPosts": "全記事を見る",
+      "backToHome": "ホームに戻る",
+      "rootCategory": "ルートカテゴリ"
+    },
+    "search": {
+      "title": "検索",
+      "placeholder": "記事を検索...",
+      "instructions": "キーワードを入力して記事を検索してください",
+      "searchInfo": "タイトル、説明文、タグなどから検索できます"
+    },
+    "tags": {
+      "title": "タグ一覧",
+      "description": "すべてのタグ（{count}件）",
+      "foundTags": "{count}個のタグが見つかりました",
+      "tagCloud": "タグクラウド（使用頻度によりサイズが変化）",
+      "popularTags": "人気タグ Top 10",
+      "allTags": "全タグ一覧（名前順）",
+      "viewAllPosts": "全記事を見る",
+      "backToHome": "ホームに戻る"
+    }
+  },
+  "error": {
+    "404": {
+      "title": "404 - ページが見つかりません",
+      "description": "お探しのページは存在しないか、移動された可能性があります。"
+    },
+    "500": {
+      "title": "500 - サーバーエラー",
+      "description": "申し訳ございません。サーバーエラーが発生しました。"
+    }
+  }
+}
