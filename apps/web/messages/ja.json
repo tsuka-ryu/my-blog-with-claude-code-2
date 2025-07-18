@@ -55,6 +55,35 @@
       "description": "すべてのタグ一覧（{count}件）。記事をタグから探すことができます。"
     }
   },
+  "pages": {
+    "categories": {
+      "title": "カテゴリ一覧",
+      "description": "すべてのカテゴリ（{count}件）",
+      "foundCategories": "{count}個のカテゴリが見つかりました",
+      "popularCategories": "人気カテゴリ Top 10",
+      "hierarchy": "階層構造",
+      "allCategories": "全カテゴリ一覧（名前順）",
+      "viewAllPosts": "全記事を見る",
+      "backToHome": "ホームに戻る",
+      "rootCategory": "ルートカテゴリ"
+    },
+    "search": {
+      "title": "検索",
+      "placeholder": "記事を検索...",
+      "instructions": "キーワードを入力して記事を検索してください",
+      "searchInfo": "タイトル、説明文、タグなどから検索できます"
+    },
+    "tags": {
+      "title": "タグ一覧",
+      "description": "すべてのタグ（{count}件）",
+      "foundTags": "{count}個のタグが見つかりました",
+      "tagCloud": "タグクラウド（使用頻度によりサイズが変化）",
+      "popularTags": "人気タグ Top 10",
+      "allTags": "全タグ一覧（名前順）",
+      "viewAllPosts": "全記事を見る",
+      "backToHome": "ホームに戻る"
+    }
+  },
   "error": {
     "404": {
       "title": "404 - ページが見つかりません",

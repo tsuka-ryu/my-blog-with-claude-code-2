@@ -1,4 +1,5 @@
 import { Loading, Typography } from '@repo/ui';
+import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 
 import { locales } from '../../../lib/i18n-config';
@@ -6,12 +7,13 @@ import { locales } from '../../../lib/i18n-config';
 import SearchContent from './search-content';
 
 export default async function SearchPage({ params }: { params: Promise<{ locale: string }> }) {
-  await params; // パラメータを解決するが、localeは現在使用していない
+  await params;
+  const t = await getTranslations();
 
   return (
     <main className='container mx-auto px-4 py-8 min-h-screen'>
       <Typography variant='h1' className='mb-8'>
-        検索
+        {t('pages.search.title')}
       </Typography>
       <Suspense fallback={<Loading />}>
         <SearchContent />

@@ -55,6 +55,35 @@
       "description": "All tags ({count} items). You can find articles by tag."
     }
   },
+  "pages": {
+    "categories": {
+      "title": "Categories",
+      "description": "All categories ({count} items)",
+      "foundCategories": "{count} categories found",
+      "popularCategories": "Popular Categories Top 10",
+      "hierarchy": "Hierarchy",
+      "allCategories": "All Categories (sorted by name)",
+      "viewAllPosts": "View All Posts",
+      "backToHome": "Back to Home",
+      "rootCategory": "Root Categories"
+    },
+    "search": {
+      "title": "Search",
+      "placeholder": "Search posts...",
+      "instructions": "Enter keywords to search for articles",
+      "searchInfo": "You can search by title, description, tags, etc."
+    },
+    "tags": {
+      "title": "Tags",
+      "description": "All tags ({count} items)",
+      "foundTags": "{count} tags found",
+      "tagCloud": "Tag Cloud (size varies by frequency)",
+      "popularTags": "Popular Tags Top 10",
+      "allTags": "All Tags (sorted by name)",
+      "viewAllPosts": "View All Posts",
+      "backToHome": "Back to Home"
+    }
+  },
   "error": {
     "404": {
       "title": "404 - Page Not Found",

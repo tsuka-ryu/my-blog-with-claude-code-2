@@ -1,10 +1,12 @@
 import { Header, Typography, Link, TagCloud } from '@repo/ui';
+import { getTranslations } from 'next-intl/server';
 
 import { locales } from '../../../lib/i18n-config';
 import { getTagsWithCount, getTagCloudData, getPopularTags } from '../../../lib/tags';
 
 export default async function TagsPage({ params }: { params: Promise<{ locale: string }> }) {
-  await params; // パラメータを解決するが、localeは現在使用していない
+  await params;
+  const t = await getTranslations();
 
   const allTags = getTagsWithCount();
   const tagCloudData = getTagCloudData();
@@ -12,7 +14,10 @@ export default async function TagsPage({ params }: { params: Promise<{ locale: s
 
   return (
     <div className='space-y-8'>
-      <Header title='タグ一覧' description={`すべてのタグ（${allTags.length}件）`} />
+      <Header
+        title={t('pages.tags.title')}
+        description={t('pages.tags.description', { count: allTags.length })}
+      />
 
       <div className='space-y-6'>
         <div className='bg-card border border-accent rounded-lg p-6 space-y-4'>
@@ -21,7 +26,7 @@ export default async function TagsPage({ params }: { params: Promise<{ locale: s
           </Typography>
 
           <Typography component='p' variant='body1' color='muted'>
-            {allTags.length}個のタグが見つかりました
+            {t('pages.tags.foundTags', { count: allTags.length })}
           </Typography>
         </div>
 
@@ -32,7 +37,7 @@ export default async function TagsPage({ params }: { params: Promise<{ locale: s
             </Typography>
 
             <Typography component='p' variant='body2' color='muted'>
-              タグクラウド（使用頻度によりサイズが変化）
+              {t('pages.tags.tagCloud')}
             </Typography>
 
             <TagCloud tags={tagCloudData} variant='interactive' spacing='normal' showCount={true} />
@@ -44,7 +49,7 @@ export default async function TagsPage({ params }: { params: Promise<{ locale: s
             </Typography>
 
             <Typography component='p' variant='body2' color='muted'>
-              人気タグ Top 10
+              {t('pages.tags.popularTags')}
             </Typography>
 
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3'>
@@ -67,7 +72,7 @@ export default async function TagsPage({ params }: { params: Promise<{ locale: s
             </Typography>
 
             <Typography component='p' variant='body2' color='muted'>
-              全タグ一覧（名前順）
+              {t('pages.tags.allTags')}
             </Typography>
 
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3'>
@@ -97,13 +102,13 @@ export default async function TagsPage({ params }: { params: Promise<{ locale: s
               href='/posts'
               className='inline-flex items-center justify-center font-medium rounded-md border transition-colors bg-terminal-accent text-terminal-accent-foreground hover:bg-terminal-accent-hover border-terminal-accent px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-terminal-ui-border-focus focus:ring-offset-2 focus:ring-offset-terminal-bg-primary'
             >
-              全記事を見る
+              {t('pages.tags.viewAllPosts')}
             </Link>
             <Link
               href='/'
               className='inline-flex items-center justify-center font-medium rounded-md border transition-colors bg-transparent text-terminal-text-primary hover:bg-terminal-bg-hover border-terminal-ui-border hover:border-terminal-ui-border-hover px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-terminal-ui-border-focus focus:ring-offset-2 focus:ring-offset-terminal-bg-primary'
             >
-              ホームに戻る
+              {t('pages.tags.backToHome')}
             </Link>
           </div>
         </div>
