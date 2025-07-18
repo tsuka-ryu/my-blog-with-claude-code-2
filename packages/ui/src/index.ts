@@ -18,6 +18,7 @@ export { PostNavigation } from './components/post-navigation';
 export { PopularPosts } from './components/popular-posts';
 export { RecentPosts } from './components/recent-posts';
 export { ArchiveList } from './components/archive-list';
+export { LanguageSwitcher } from './components/language-switcher';
 export type { Theme } from './components/theme-provider';
 export type { ButtonProps } from './components/button';
 export type { LinkProps } from './components/link';
@@ -34,6 +35,7 @@ export type { PostNavigationProps, PostNavigationItem } from './components/post-
 export type { PopularPostsProps, PopularPost } from './components/popular-posts';
 export type { RecentPostsProps, RecentPost } from './components/recent-posts';
 export type { ArchiveListProps, ArchiveYear, ArchiveMonth } from './components/archive-list';
+export type { LanguageSwitcherProps } from './components/language-switcher';
 
 // ユーティリティ関数をre-export
 export { cn } from '@repo/utils';
