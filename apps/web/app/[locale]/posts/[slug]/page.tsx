@@ -208,92 +208,92 @@ export default async function PostPage({ params }: PostPageProps) {
             {/* 記事コンテンツ */}
             <div className='lg:col-span-3'>
               <div className='bg-card border border-accent rounded-lg p-8'>
-            <div className='prose prose-lg max-w-none prose-headings:text-primary prose-p:text-muted prose-strong:text-primary prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-code:text-accent prose-code:bg-accent/10 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-background prose-pre:border prose-pre:border-accent/30'>
-              <ReactMarkdown
-                components={{
-                  h1: ({ children }) => {
-                    const id = String(children)
-                      .toLowerCase()
-                      .replace(/[^\w\s-]/g, '')
-                      .replace(/[\s_-]+/g, '-');
-                    return (
-                      <h1 id={id} className='text-2xl font-bold text-primary mt-8 mb-4'>
-                        {children}
-                      </h1>
-                    );
-                  },
-                  h2: ({ children }) => {
-                    const id = String(children)
-                      .toLowerCase()
-                      .replace(/[^\w\s-]/g, '')
-                      .replace(/[\s_-]+/g, '-');
-                    return (
-                      <h2 id={id} className='text-xl font-semibold text-primary mt-6 mb-3'>
-                        {children}
-                      </h2>
-                    );
-                  },
-                  h3: ({ children }) => {
-                    const id = String(children)
-                      .toLowerCase()
-                      .replace(/[^\w\s-]/g, '')
-                      .replace(/[\s_-]+/g, '-');
-                    return (
-                      <h3 id={id} className='text-lg font-semibold text-primary mt-4 mb-2'>
-                        {children}
-                      </h3>
-                    );
-                  },
-                  p: ({ children }) => (
-                    <p className='text-muted my-3 leading-relaxed'>{children}</p>
-                  ),
-                  ul: ({ children }) => (
-                    <ul className='text-muted my-4 ml-6 list-disc space-y-1'>{children}</ul>
-                  ),
-                  ol: ({ children }) => (
-                    <ol className='text-muted my-4 ml-6 list-decimal space-y-1'>{children}</ol>
-                  ),
-                  li: ({ children }) => <li className='text-muted'>{children}</li>,
-                  code: ({ children, className }) => {
-                    const isInline = !className?.includes('language-');
-                    return isInline ? (
-                      <code className='text-accent bg-accent/10 px-1 py-0.5 rounded font-mono text-sm'>
-                        {children}
-                      </code>
-                    ) : (
-                      <code className='block'>{children}</code>
-                    );
-                  },
-                  pre: ({ children }) => (
-                    <pre className='bg-background border border-accent/30 rounded p-4 overflow-x-auto my-4 text-sm'>
-                      {children}
-                    </pre>
-                  ),
-                  strong: ({ children }) => (
-                    <strong className='text-primary font-semibold'>{children}</strong>
-                  ),
-                  em: ({ children }) => <em className='text-primary italic'>{children}</em>,
-                  a: ({ href, children }) => (
-                    <Link
-                      href={href || '#'}
-                      className='text-accent hover:underline focus:underline focus:outline-none'
-                      target={href?.startsWith('http') ? '_blank' : undefined}
-                      rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    >
-                      {children}
-                    </Link>
-                  ),
-                  blockquote: ({ children }) => (
-                    <blockquote className='border-l-4 border-accent/50 pl-4 my-4 italic text-muted/80'>
-                      {children}
-                    </blockquote>
-                  ),
-                  hr: () => <hr className='my-8 border-accent/20' />,
-                }}
-              >
-                {post.content}
-              </ReactMarkdown>
-            </div>
+                <div className='prose prose-lg max-w-none prose-headings:text-primary prose-p:text-muted prose-strong:text-primary prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-code:text-accent prose-code:bg-accent/10 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-background prose-pre:border prose-pre:border-accent/30'>
+                  <ReactMarkdown
+                    components={{
+                      h1: ({ children }) => {
+                        const id = String(children)
+                          .toLowerCase()
+                          .replace(/[^\w\s-]/g, '')
+                          .replace(/[\s_-]+/g, '-');
+                        return (
+                          <h1 id={id} className='text-2xl font-bold text-primary mt-8 mb-4'>
+                            {children}
+                          </h1>
+                        );
+                      },
+                      h2: ({ children }) => {
+                        const id = String(children)
+                          .toLowerCase()
+                          .replace(/[^\w\s-]/g, '')
+                          .replace(/[\s_-]+/g, '-');
+                        return (
+                          <h2 id={id} className='text-xl font-semibold text-primary mt-6 mb-3'>
+                            {children}
+                          </h2>
+                        );
+                      },
+                      h3: ({ children }) => {
+                        const id = String(children)
+                          .toLowerCase()
+                          .replace(/[^\w\s-]/g, '')
+                          .replace(/[\s_-]+/g, '-');
+                        return (
+                          <h3 id={id} className='text-lg font-semibold text-primary mt-4 mb-2'>
+                            {children}
+                          </h3>
+                        );
+                      },
+                      p: ({ children }) => (
+                        <p className='text-muted my-3 leading-relaxed'>{children}</p>
+                      ),
+                      ul: ({ children }) => (
+                        <ul className='text-muted my-4 ml-6 list-disc space-y-1'>{children}</ul>
+                      ),
+                      ol: ({ children }) => (
+                        <ol className='text-muted my-4 ml-6 list-decimal space-y-1'>{children}</ol>
+                      ),
+                      li: ({ children }) => <li className='text-muted'>{children}</li>,
+                      code: ({ children, className }) => {
+                        const isInline = !className?.includes('language-');
+                        return isInline ? (
+                          <code className='text-accent bg-accent/10 px-1 py-0.5 rounded font-mono text-sm'>
+                            {children}
+                          </code>
+                        ) : (
+                          <code className='block'>{children}</code>
+                        );
+                      },
+                      pre: ({ children }) => (
+                        <pre className='bg-background border border-accent/30 rounded p-4 overflow-x-auto my-4 text-sm'>
+                          {children}
+                        </pre>
+                      ),
+                      strong: ({ children }) => (
+                        <strong className='text-primary font-semibold'>{children}</strong>
+                      ),
+                      em: ({ children }) => <em className='text-primary italic'>{children}</em>,
+                      a: ({ href, children }) => (
+                        <Link
+                          href={href || '#'}
+                          className='text-accent hover:underline focus:underline focus:outline-none'
+                          target={href?.startsWith('http') ? '_blank' : undefined}
+                          rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        >
+                          {children}
+                        </Link>
+                      ),
+                      blockquote: ({ children }) => (
+                        <blockquote className='border-l-4 border-accent/50 pl-4 my-4 italic text-muted/80'>
+                          {children}
+                        </blockquote>
+                      ),
+                      hr: () => <hr className='my-8 border-accent/20' />,
+                    }}
+                  >
+                    {post.content}
+                  </ReactMarkdown>
+                </div>
               </div>
             </div>
 
@@ -301,10 +301,7 @@ export default async function PostPage({ params }: PostPageProps) {
             <div className='lg:col-span-1 order-first lg:order-last'>
               {tableOfContentsItems.length > 0 && (
                 <div className='lg:sticky lg:top-4 lg:max-h-screen lg:overflow-y-auto mb-8 lg:mb-0'>
-                  <TableOfContents 
-                    items={tableOfContentsItems} 
-                    sticky={false}
-                  />
+                  <TableOfContents items={tableOfContentsItems} sticky={false} />
                 </div>
               )}
             </div>
