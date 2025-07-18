@@ -49,6 +49,10 @@ export async function generateMetadata({
         'x-default': '/',
       },
     },
+    other: {
+      'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000'}/feed.xml`,
+      'application/atom+xml': `${process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000'}/atom.xml`,
+    },
   };
 }
 
