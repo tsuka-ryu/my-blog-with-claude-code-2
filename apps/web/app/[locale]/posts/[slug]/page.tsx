@@ -1,5 +1,15 @@
 /* eslint-disable import-x/order */
-import { Header, Typography, Link, Breadcrumb, PostNavigation } from '@repo/ui';
+import {
+  Header,
+  Typography,
+  Link,
+  Breadcrumb,
+  PostNavigation,
+  ShareButtons,
+  ReadingTime,
+  TableOfContents,
+  Comments,
+} from '@repo/ui';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
@@ -100,7 +110,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
   const post = await getPost(slug);
 
   if (!post) {
@@ -121,6 +131,32 @@ export default async function PostPage({ params }: PostPageProps) {
     { name: post.title },
   ]);
 
+  // 記事のURL
+  const currentUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/posts/${slug}`;
+
+  // 記事から見出しを抽出して目次を生成
+  const generateTableOfContents = (content: string) => {
+    const lines = content.split('\n');
+    const items: Array<{ id: string; title: string; level: number }> = [];
+
+    lines.forEach(line => {
+      const match = line.match(/^(#{1,6})\s+(.+)$/);
+      if (match && match[1] && match[2]) {
+        const level = match[1].length;
+        const title = match[2].trim();
+        const id = title
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, '')
+          .replace(/[\s_-]+/g, '-');
+        items.push({ id, title, level });
+      }
+    });
+
+    return items;
+  };
+
+  const tableOfContentsItems = generateTableOfContents(post.content);
+
   return (
     <>
       {/* 構造化データ */}
@@ -135,13 +171,16 @@ export default async function PostPage({ params }: PostPageProps) {
           <div className='bg-card border border-accent rounded-lg p-6 space-y-4'>
             <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4'>
               <div className='space-y-2'>
-                <Typography component='p' variant='caption' color='muted' className='font-mono'>
-                  {new Date(post.date).toLocaleDateString('ja-JP', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </Typography>
+                <div className='flex items-center gap-4'>
+                  <Typography component='p' variant='caption' color='muted' className='font-mono'>
+                    {new Date(post.date).toLocaleDateString('ja-JP', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </Typography>
+                  <ReadingTime content={post.content} />
+                </div>
                 <Typography component='p' variant='body2' color='muted'>
                   by {post.author}
                 </Typography>
@@ -159,22 +198,52 @@ export default async function PostPage({ params }: PostPageProps) {
                 ))}
               </div>
             </div>
+
+            {/* シェアボタン */}
+            <ShareButtons title={post.title} url={currentUrl} description={post.description} />
           </div>
+
+          {/* 目次 */}
+          {tableOfContentsItems.length > 0 && <TableOfContents items={tableOfContentsItems} />}
 
           {/* 記事コンテンツ */}
           <div className='bg-card border border-accent rounded-lg p-8'>
             <div className='prose prose-lg max-w-none prose-headings:text-primary prose-p:text-muted prose-strong:text-primary prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-code:text-accent prose-code:bg-accent/10 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-background prose-pre:border prose-pre:border-accent/30'>
               <ReactMarkdown
                 components={{
-                  h1: ({ children }) => (
-                    <h1 className='text-2xl font-bold text-primary mt-8 mb-4'>{children}</h1>
-                  ),
-                  h2: ({ children }) => (
-                    <h2 className='text-xl font-semibold text-primary mt-6 mb-3'>{children}</h2>
-                  ),
-                  h3: ({ children }) => (
-                    <h3 className='text-lg font-semibold text-primary mt-4 mb-2'>{children}</h3>
-                  ),
+                  h1: ({ children }) => {
+                    const id = String(children)
+                      .toLowerCase()
+                      .replace(/[^\w\s-]/g, '')
+                      .replace(/[\s_-]+/g, '-');
+                    return (
+                      <h1 id={id} className='text-2xl font-bold text-primary mt-8 mb-4'>
+                        {children}
+                      </h1>
+                    );
+                  },
+                  h2: ({ children }) => {
+                    const id = String(children)
+                      .toLowerCase()
+                      .replace(/[^\w\s-]/g, '')
+                      .replace(/[\s_-]+/g, '-');
+                    return (
+                      <h2 id={id} className='text-xl font-semibold text-primary mt-6 mb-3'>
+                        {children}
+                      </h2>
+                    );
+                  },
+                  h3: ({ children }) => {
+                    const id = String(children)
+                      .toLowerCase()
+                      .replace(/[^\w\s-]/g, '')
+                      .replace(/[\s_-]+/g, '-');
+                    return (
+                      <h3 id={id} className='text-lg font-semibold text-primary mt-4 mb-2'>
+                        {children}
+                      </h3>
+                    );
+                  },
                   p: ({ children }) => (
                     <p className='text-muted my-3 leading-relaxed'>{children}</p>
                   ),
@@ -229,6 +298,18 @@ export default async function PostPage({ params }: PostPageProps) {
 
           {/* 記事間ナビゲーション */}
           <PostNavigation previousPost={previousPost} nextPost={nextPost} />
+
+          {/* コメントセクション */}
+          <div className='bg-card border border-accent rounded-lg p-8'>
+            <Comments
+              repo='tsukaryu/my-blog-with-claude-code'
+              repoId='R_kgDONcHjVA'
+              category='General'
+              categoryId='DIC_kwDONcHjVM4ClsVa'
+              mapping='pathname'
+              lang={locale === 'ja' ? 'ja' : 'en'}
+            />
+          </div>
 
           {/* ナビゲーション */}
           <div className='bg-card border border-accent rounded-lg p-6'>
