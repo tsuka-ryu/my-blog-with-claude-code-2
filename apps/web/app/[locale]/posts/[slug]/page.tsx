@@ -138,6 +138,7 @@ export default async function PostPage({ params }: PostPageProps) {
   const generateTableOfContents = (content: string) => {
     const lines = content.split('\n');
     const items: Array<{ id: string; title: string; level: number }> = [];
+    const usedIds = new Set<string>();
 
     lines.forEach(line => {
       const match = line.match(/^(#{1,6})\s+(.+)$/);
@@ -148,7 +149,17 @@ export default async function PostPage({ params }: PostPageProps) {
           .toLowerCase()
           .replace(/[^\w\s-]/g, '')
           .replace(/[\s_-]+/g, '-');
-        items.push({ id, title, level });
+
+        // 重複するIDを防ぐ
+        let uniqueId = id;
+        let counter = 1;
+        while (usedIds.has(uniqueId)) {
+          uniqueId = `${id}-${counter}`;
+          counter++;
+        }
+        usedIds.add(uniqueId);
+
+        items.push({ id: uniqueId, title, level });
       }
     });
 
@@ -212,10 +223,16 @@ export default async function PostPage({ params }: PostPageProps) {
                   <ReactMarkdown
                     components={{
                       h1: ({ children }) => {
-                        const id = String(children)
-                          .toLowerCase()
-                          .replace(/[^\w\s-]/g, '')
-                          .replace(/[\s_-]+/g, '-');
+                        const title = String(children);
+                        const matchingItem = tableOfContentsItems.find(
+                          item => item.title === title && item.level === 1
+                        );
+                        const id =
+                          matchingItem?.id ||
+                          title
+                            .toLowerCase()
+                            .replace(/[^\w\s-]/g, '')
+                            .replace(/[\s_-]+/g, '-');
                         return (
                           <h1 id={id} className='text-2xl font-bold text-primary mt-8 mb-4'>
                             {children}
@@ -223,10 +240,16 @@ export default async function PostPage({ params }: PostPageProps) {
                         );
                       },
                       h2: ({ children }) => {
-                        const id = String(children)
-                          .toLowerCase()
-                          .replace(/[^\w\s-]/g, '')
-                          .replace(/[\s_-]+/g, '-');
+                        const title = String(children);
+                        const matchingItem = tableOfContentsItems.find(
+                          item => item.title === title && item.level === 2
+                        );
+                        const id =
+                          matchingItem?.id ||
+                          title
+                            .toLowerCase()
+                            .replace(/[^\w\s-]/g, '')
+                            .replace(/[\s_-]+/g, '-');
                         return (
                           <h2 id={id} className='text-xl font-semibold text-primary mt-6 mb-3'>
                             {children}
@@ -234,14 +257,71 @@ export default async function PostPage({ params }: PostPageProps) {
                         );
                       },
                       h3: ({ children }) => {
-                        const id = String(children)
-                          .toLowerCase()
-                          .replace(/[^\w\s-]/g, '')
-                          .replace(/[\s_-]+/g, '-');
+                        const title = String(children);
+                        const matchingItem = tableOfContentsItems.find(
+                          item => item.title === title && item.level === 3
+                        );
+                        const id =
+                          matchingItem?.id ||
+                          title
+                            .toLowerCase()
+                            .replace(/[^\w\s-]/g, '')
+                            .replace(/[\s_-]+/g, '-');
                         return (
                           <h3 id={id} className='text-lg font-semibold text-primary mt-4 mb-2'>
                             {children}
                           </h3>
+                        );
+                      },
+                      h4: ({ children }) => {
+                        const title = String(children);
+                        const matchingItem = tableOfContentsItems.find(
+                          item => item.title === title && item.level === 4
+                        );
+                        const id =
+                          matchingItem?.id ||
+                          title
+                            .toLowerCase()
+                            .replace(/[^\w\s-]/g, '')
+                            .replace(/[\s_-]+/g, '-');
+                        return (
+                          <h4 id={id} className='text-base font-semibold text-primary mt-3 mb-2'>
+                            {children}
+                          </h4>
+                        );
+                      },
+                      h5: ({ children }) => {
+                        const title = String(children);
+                        const matchingItem = tableOfContentsItems.find(
+                          item => item.title === title && item.level === 5
+                        );
+                        const id =
+                          matchingItem?.id ||
+                          title
+                            .toLowerCase()
+                            .replace(/[^\w\s-]/g, '')
+                            .replace(/[\s_-]+/g, '-');
+                        return (
+                          <h5 id={id} className='text-sm font-semibold text-primary mt-2 mb-1'>
+                            {children}
+                          </h5>
+                        );
+                      },
+                      h6: ({ children }) => {
+                        const title = String(children);
+                        const matchingItem = tableOfContentsItems.find(
+                          item => item.title === title && item.level === 6
+                        );
+                        const id =
+                          matchingItem?.id ||
+                          title
+                            .toLowerCase()
+                            .replace(/[^\w\s-]/g, '')
+                            .replace(/[\s_-]+/g, '-');
+                        return (
+                          <h6 id={id} className='text-xs font-semibold text-primary mt-2 mb-1'>
+                            {children}
+                          </h6>
                         );
                       },
                       p: ({ children }) => (
