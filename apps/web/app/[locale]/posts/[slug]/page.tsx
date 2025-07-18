@@ -18,6 +18,7 @@ import {
   CONSTANTS,
   getArticleNavigation,
 } from '@/lib/article-utils';
+import { HeadingWithAnchor } from '@/components/mdx/heading-with-anchor';
 import { generateMetadata as createMetadata, generateBreadcrumbJsonLd } from '@/lib/metadata-utils';
 import { type Locale } from '@/lib/i18n-config';
 /* eslint-enable import-x/order */
@@ -234,9 +235,9 @@ export default async function PostPage({ params }: PostPageProps) {
                             .replace(/[^\w\s-]/g, '')
                             .replace(/[\s_-]+/g, '-');
                         return (
-                          <h1 id={id} className='text-2xl font-bold text-primary mt-8 mb-4'>
+                          <HeadingWithAnchor level={1} id={id}>
                             {children}
-                          </h1>
+                          </HeadingWithAnchor>
                         );
                       },
                       h2: ({ children }) => {
@@ -251,9 +252,9 @@ export default async function PostPage({ params }: PostPageProps) {
                             .replace(/[^\w\s-]/g, '')
                             .replace(/[\s_-]+/g, '-');
                         return (
-                          <h2 id={id} className='text-xl font-semibold text-primary mt-6 mb-3'>
+                          <HeadingWithAnchor level={2} id={id}>
                             {children}
-                          </h2>
+                          </HeadingWithAnchor>
                         );
                       },
                       h3: ({ children }) => {
@@ -268,9 +269,9 @@ export default async function PostPage({ params }: PostPageProps) {
                             .replace(/[^\w\s-]/g, '')
                             .replace(/[\s_-]+/g, '-');
                         return (
-                          <h3 id={id} className='text-lg font-semibold text-primary mt-4 mb-2'>
+                          <HeadingWithAnchor level={3} id={id}>
                             {children}
-                          </h3>
+                          </HeadingWithAnchor>
                         );
                       },
                       h4: ({ children }) => {
@@ -285,9 +286,9 @@ export default async function PostPage({ params }: PostPageProps) {
                             .replace(/[^\w\s-]/g, '')
                             .replace(/[\s_-]+/g, '-');
                         return (
-                          <h4 id={id} className='text-base font-semibold text-primary mt-3 mb-2'>
+                          <HeadingWithAnchor level={4} id={id}>
                             {children}
-                          </h4>
+                          </HeadingWithAnchor>
                         );
                       },
                       h5: ({ children }) => {
@@ -302,9 +303,9 @@ export default async function PostPage({ params }: PostPageProps) {
                             .replace(/[^\w\s-]/g, '')
                             .replace(/[\s_-]+/g, '-');
                         return (
-                          <h5 id={id} className='text-sm font-semibold text-primary mt-2 mb-1'>
+                          <HeadingWithAnchor level={5} id={id}>
                             {children}
-                          </h5>
+                          </HeadingWithAnchor>
                         );
                       },
                       h6: ({ children }) => {
@@ -319,9 +320,9 @@ export default async function PostPage({ params }: PostPageProps) {
                             .replace(/[^\w\s-]/g, '')
                             .replace(/[\s_-]+/g, '-');
                         return (
-                          <h6 id={id} className='text-xs font-semibold text-primary mt-2 mb-1'>
+                          <HeadingWithAnchor level={6} id={id}>
                             {children}
-                          </h6>
+                          </HeadingWithAnchor>
                         );
                       },
                       p: ({ children }) => (
