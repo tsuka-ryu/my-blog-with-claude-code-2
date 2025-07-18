@@ -3,10 +3,11 @@ import { ThemeProvider } from '@repo/ui';
 import { JetBrains_Mono, Noto_Sans_JP } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
 import { LayoutClient } from './layout-client';
-import { type Locale } from '../../lib/i18n-config';
+import { type Locale, locales } from '../../lib/i18n-config';
 import '../globals.css';
 /* eslint-enable import-x/order */
 
@@ -51,6 +52,10 @@ export async function generateMetadata({
   };
 }
 
+export function generateStaticParams() {
+  return locales.map(locale => ({ locale }));
+}
+
 export default async function LocaleLayout({
   children,
   params,
@@ -59,6 +64,12 @@ export default async function LocaleLayout({
   params: Promise<{ locale: Locale }>;
 }>) {
   const { locale } = await params;
+
+  // ロケールの検証
+  if (!locales.includes(locale)) {
+    notFound();
+  }
+
   const messages = await getMessages();
 
   return (

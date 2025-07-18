@@ -1,8 +1,11 @@
 import { Header, Typography, Link, TagCloud } from '@repo/ui';
 
+import { locales } from '../../../lib/i18n-config';
 import { getTagsWithCount, getTagCloudData, getPopularTags } from '../../../lib/tags';
 
-export default function TagsPage() {
+export default async function TagsPage({ params }: { params: Promise<{ locale: string }> }) {
+  await params; // パラメータを解決するが、localeは現在使用していない
+
   const allTags = getTagsWithCount();
   const tagCloudData = getTagCloudData();
   const popularTags = getPopularTags(10);
@@ -109,11 +112,17 @@ export default function TagsPage() {
   );
 }
 
-export function generateMetadata() {
+export function generateStaticParams() {
+  return locales.map(locale => ({ locale }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
   const allTags = getTagsWithCount();
 
   return {
-    title: 'タグ一覧 - 技術ブログ',
-    description: `すべてのタグ一覧（${allTags.length}件）。記事をタグから探すことができます。`,
+    title: messages.metadata.tags.title,
+    description: messages.metadata.tags.description.replace('{count}', allTags.length.toString()),
   };
 }

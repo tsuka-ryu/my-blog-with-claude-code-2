@@ -5,8 +5,11 @@ import {
   getCategoryHierarchy,
   getPopularCategories,
 } from '../../../lib/categories';
+import { locales } from '../../../lib/i18n-config';
 
-export default function CategoriesPage() {
+export default async function CategoriesPage({ params }: { params: Promise<{ locale: string }> }) {
+  await params; // パラメータを解決するが、localeは現在使用していない
+
   const allCategories = getCategoriesWithCount();
   const categoryHierarchy = getCategoryHierarchy();
   const popularCategories = getPopularCategories(10);
@@ -145,11 +148,20 @@ export default function CategoriesPage() {
   );
 }
 
-export function generateMetadata() {
+export function generateStaticParams() {
+  return locales.map(locale => ({ locale }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
   const allCategories = getCategoriesWithCount();
 
   return {
-    title: 'カテゴリ一覧 - 技術ブログ',
-    description: `すべてのカテゴリ一覧（${allCategories.length}件）。記事をカテゴリから探すことができます。`,
+    title: messages.metadata.categories.title,
+    description: messages.metadata.categories.description.replace(
+      '{count}',
+      allCategories.length.toString()
+    ),
   };
 }

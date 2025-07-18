@@ -39,7 +39,21 @@
   "metadata": {
     "siteTitle": "技術ブログ",
     "siteDescription": "技術共有・解説記事・Podcast感想を発信するブログ",
-    "author": "tsuka-ryu"
+    "author": "tsuka-ryu",
+    "categories": {
+      "title": "カテゴリ一覧 - 技術ブログ",
+      "description": "すべてのカテゴリ一覧（{count}件）。記事をカテゴリから探すことができます。"
+    },
+    "search": {
+      "title": "検索 - 技術ブログ",
+      "description": "技術記事・思考の整理から記事を検索。タイトル、内容、タグから記事を見つけることができます。",
+      "titleWithQuery": "\"{query}\" の検索結果 - 技術ブログ",
+      "descriptionWithQuery": "\"{query}\" の検索結果ページ。技術記事・思考の整理から関連する記事を検索できます。"
+    },
+    "tags": {
+      "title": "タグ一覧 - 技術ブログ",
+      "description": "すべてのタグ一覧（{count}件）。記事をタグから探すことができます。"
+    }
   },
   "error": {
     "404": {

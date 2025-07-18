@@ -1,9 +1,13 @@
 import { Loading, Typography } from '@repo/ui';
 import { Suspense } from 'react';
 
+import { locales } from '../../../lib/i18n-config';
+
 import SearchContent from './search-content';
 
-export default function SearchPage() {
+export default async function SearchPage({ params }: { params: Promise<{ locale: string }> }) {
+  await params; // パラメータを解決するが、localeは現在使用していない
+
   return (
     <main className='container mx-auto px-4 py-8 min-h-screen'>
       <Typography variant='h1' className='mb-8'>
@@ -16,24 +20,31 @@ export default function SearchPage() {
   );
 }
 
+export function generateStaticParams() {
+  return locales.map(locale => ({ locale }));
+}
+
 export async function generateMetadata({
   searchParams,
+  params,
 }: {
   searchParams: Promise<{ q?: string }>;
+  params: Promise<{ locale: string }>;
 }) {
-  const params = await searchParams;
-  const query = params.q || '';
+  const searchParamsData = await searchParams;
+  const { locale } = await params;
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const query = searchParamsData.q || '';
 
   if (query) {
     return {
-      title: `"${query}" の検索結果 - 技術ブログ`,
-      description: `"${query}" の検索結果ページ。技術記事・思考の整理から関連する記事を検索できます。`,
+      title: messages.metadata.search.titleWithQuery.replace('{query}', query),
+      description: messages.metadata.search.descriptionWithQuery.replace('{query}', query),
     };
   }
 
   return {
-    title: '検索 - 技術ブログ',
-    description:
-      '技術記事・思考の整理から記事を検索。タイトル、内容、タグから記事を見つけることができます。',
+    title: messages.metadata.search.title,
+    description: messages.metadata.search.description,
   };
 }
