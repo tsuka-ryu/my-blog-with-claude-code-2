@@ -171,12 +171,12 @@ my-blog-with-claude-code/
 
 ### 6.2 SEO・メタデータ最適化
 
-- [ ] **6.2.1** Next.js Metadata API 実装
-- [ ] **6.2.2** 動的OGP画像生成（@vercel/og）
-- [ ] **6.2.3** サイトマップ自動生成
-- [ ] **6.2.4** robots.txt 設定
-- [ ] **6.2.5** JSON-LD 構造化データ
-- [ ] **6.2.6** RSS/Atom フィード生成
+- [x] **6.2.1** Next.js Metadata API 実装
+- [x] **6.2.2** 動的OGP画像生成（@vercel/og）
+- [x] **6.2.3** サイトマップ自動生成
+- [x] **6.2.4** robots.txt 設定
+- [x] **6.2.5** JSON-LD 構造化データ
+- [x] **6.2.6** RSS/Atom フィード生成
 
 ### 6.3 パフォーマンス最適化
 
@@ -270,7 +270,7 @@ my-blog-with-claude-code/
 - **2025/6/14**: ESLint設定厳密化のTODOを追加
 - **2025/6/16**: Tailwind CSS v4・Storybook v9アップグレードタスクを追加
 
-### 最終更新: 2025/7/13
+### 最終更新: 2025/7/18
 
 #### Phase 5 検索・ナビゲーション機能 - 完了
 
@@ -298,4 +298,13 @@ my-blog-with-claude-code/
 - SEO対応（hreflang、Open Graph、canonical URL）
 - App Router [locale] 構造への移行完了
 
-#### Phase 6.2 SEO・メタデータ最適化 - 次フェーズ対象
+#### Phase 6.2 SEO・メタデータ最適化 - 完了
+
+- Next.js Metadata API実装（多言語対応、動的メタデータ生成）
+- @vercel/ogを使用した動的OGP画像生成（ターミナル風デザイン）
+- サイトマップ自動生成（多言語・記事・タグ・カテゴリ対応）
+- robots.txt設定（SEOクローラー最適化）
+- JSON-LD構造化データ実装（記事・パンくず・WebSite）
+- RSS/Atomフィード生成（最新20記事）
+- metadata-utilsユーティリティ関数実装（OGP画像URL生成・メタデータ統合管理）
+- 各ページでのSEOメタデータ強化
