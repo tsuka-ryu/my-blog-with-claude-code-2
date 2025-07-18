@@ -31,7 +31,7 @@ commit-msg:
       fail_text: 'Commit message format is invalid. Please follow conventional commit format.'
 
 pre-push:
-  parallel: false
+  parallel: true
   commands:
     format-check:
       run: pnpm run format:check
@@ -57,15 +57,17 @@ pre-push:
       skip:
         - merge
         - rebase
-    build:
-      run: pnpm turbo build
-      fail_text: 'Build failed. Please fix build errors before pushing.'
-      skip:
-        - merge
-        - rebase
+
+# Add a comment explaining the build removal
+# Note: Build step removed from pre-push to improve performance
+# Build verification is handled by CI/CD pipeline
 
 # Colors for better visibility
 colors: true
 
 # Skip lefthook execution in CI/CD environments
 skip_in_ci: true
+
+# Output formatting
+output:
+  - execution
