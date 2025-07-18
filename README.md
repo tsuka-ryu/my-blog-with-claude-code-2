@@ -33,9 +33,19 @@ TurboRepoとpnpmを使用したモノレポ構成の技術ブログプラット�
 
 ## 開発環境のセットアップ
 
+### 前提条件
+
+- [Node.js](https://nodejs.org/) 18.17以上
+- [pnpm](https://pnpm.io/) 8.6.2以上
+- [mise](https://mise.jdx.dev/) (推奨) - `.tool-versions`ファイルで適切なバージョンを自動管理
+
 ### 依存関係のインストール
 
 ```bash
+# miseを使用する場合（推奨）
+mise install
+
+# 依存関係のインストール
 pnpm install
 ```
 
@@ -101,7 +111,7 @@ pnpm turbo config:build --filter=@repo/ui
 
 ## 現在のステータス
 
-**フェーズ5: 検索・ナビゲーション機能** - 完了 ✅
+**フェーズ7.1: コメント・ソーシャル機能** - 完了 ✅
 
 ### 実装済み機能
 
@@ -112,10 +122,16 @@ pnpm turbo config:build --filter=@repo/ui
 - ✅ タグ・カテゴリシステム
 - ✅ fuse.jsを使用したあいまい検索機能
 - ✅ テスト環境（Vitest + Playwright）
+- ✅ パフォーマンス最適化（ISR、遅延読み込み、Bundle分析）
+- ✅ 多言語対応（日本語・英語）
+- ✅ SEO最適化（メタデータ、構造化データ）
+- ✅ コメント機能（GitHub Discussions連携）
+- ✅ 見出しアンカーリンク機能
+- ✅ モバイル対応目次ドロワー
 
 ### 次フェーズ
 
-**フェーズ6: 多言語・SEO・パフォーマンス最適化**
+**フェーズ7.2: 拡張ソーシャル機能**
 
 詳細な開発計画については `apps/docs/docs/TODO.md` を参照してください。
 

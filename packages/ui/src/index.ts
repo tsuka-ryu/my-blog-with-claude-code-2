@@ -19,6 +19,11 @@ export { PopularPosts } from './components/popular-posts';
 export { RecentPosts } from './components/recent-posts';
 export { ArchiveList } from './components/archive-list';
 export { LanguageSwitcher } from './components/language-switcher';
+export { Comments } from './components/comments';
+export { ShareButtons } from './components/share-buttons';
+export { ReadingTime, calculateReadingTime } from './components/reading-time';
+export { TableOfContents, extractTableOfContents } from './components/table-of-contents';
+export { TableOfContentsDrawer } from './components/table-of-contents-drawer';
 export type { Theme } from './components/theme-provider';
 export type { ButtonProps } from './components/button';
 export type { LinkProps } from './components/link';
@@ -36,6 +41,11 @@ export type { PopularPostsProps, PopularPost } from './components/popular-posts'
 export type { RecentPostsProps, RecentPost } from './components/recent-posts';
 export type { ArchiveListProps, ArchiveYear, ArchiveMonth } from './components/archive-list';
 export type { LanguageSwitcherProps } from './components/language-switcher';
+export type { CommentsProps } from './components/comments';
+export type { ShareButtonsProps } from './components/share-buttons';
+export type { ReadingTimeProps } from './components/reading-time';
+export type { TableOfContentsProps, TableOfContentsItem } from './components/table-of-contents';
+export type { TableOfContentsDrawerProps } from './components/table-of-contents-drawer';
 
 // ユーティリティ関数をre-export
 export { cn } from '@repo/utils';

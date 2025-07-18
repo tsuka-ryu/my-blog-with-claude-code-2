@@ -1,11 +1,11 @@
-import createMDX from '@next/mdx'
-import createNextIntlPlugin from 'next-intl/plugin'
-import bundleAnalyzer from '@next/bundle-analyzer'
+import createMDX from '@next/mdx';
+import createNextIntlPlugin from 'next-intl/plugin';
+import bundleAnalyzer from '@next/bundle-analyzer';
 
-const withNextIntl = createNextIntlPlugin('./i18n.js')
+const withNextIntl = createNextIntlPlugin('./i18n.js');
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
-})
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -62,16 +62,16 @@ const nextConfig = {
             enforce: true,
           },
         },
-      }
+      };
     }
-    return config
+    return config;
   },
-}
+};
 
 const withMDX = createMDX({
   options: {
     // 最小限の設定でテスト
-  }
-})
+  },
+});
 
-export default withBundleAnalyzer(withNextIntl(withMDX(nextConfig)))
+export default withBundleAnalyzer(withNextIntl(withMDX(nextConfig)));

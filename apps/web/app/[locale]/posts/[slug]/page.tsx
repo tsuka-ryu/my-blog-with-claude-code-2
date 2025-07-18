@@ -1,5 +1,15 @@
 /* eslint-disable import-x/order */
-import { Header, Typography, Link, Breadcrumb, PostNavigation } from '@repo/ui';
+import {
+  Header,
+  Typography,
+  Link,
+  Breadcrumb,
+  PostNavigation,
+  ReadingTime,
+  TableOfContents,
+  TableOfContentsDrawer,
+  Comments,
+} from '@repo/ui';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
@@ -8,6 +18,7 @@ import {
   CONSTANTS,
   getArticleNavigation,
 } from '@/lib/article-utils';
+import { HeadingWithAnchor } from '@/components/mdx/heading-with-anchor';
 import { generateMetadata as createMetadata, generateBreadcrumbJsonLd } from '@/lib/metadata-utils';
 import { type Locale } from '@/lib/i18n-config';
 /* eslint-enable import-x/order */
@@ -100,7 +111,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
   const post = await getPost(slug);
 
   if (!post) {
@@ -121,6 +132,40 @@ export default async function PostPage({ params }: PostPageProps) {
     { name: post.title },
   ]);
 
+  // 記事から見出しを抽出して目次を生成
+  const generateTableOfContents = (content: string) => {
+    const lines = content.split('\n');
+    const items: Array<{ id: string; title: string; level: number }> = [];
+    const usedIds = new Set<string>();
+
+    lines.forEach(line => {
+      const match = line.match(/^(#{1,6})\s+(.+)$/);
+      if (match && match[1] && match[2]) {
+        const level = match[1].length;
+        const title = match[2].trim();
+        const id = title
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, '')
+          .replace(/[\s_-]+/g, '-');
+
+        // 重複するIDを防ぐ
+        let uniqueId = id;
+        let counter = 1;
+        while (usedIds.has(uniqueId)) {
+          uniqueId = `${id}-${counter}`;
+          counter++;
+        }
+        usedIds.add(uniqueId);
+
+        items.push({ id: uniqueId, title, level });
+      }
+    });
+
+    return items;
+  };
+
+  const tableOfContentsItems = generateTableOfContents(post.content);
+
   return (
     <>
       {/* 構造化データ */}
@@ -135,13 +180,16 @@ export default async function PostPage({ params }: PostPageProps) {
           <div className='bg-card border border-accent rounded-lg p-6 space-y-4'>
             <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4'>
               <div className='space-y-2'>
-                <Typography component='p' variant='caption' color='muted' className='font-mono'>
-                  {new Date(post.date).toLocaleDateString('ja-JP', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </Typography>
+                <div className='flex items-center gap-4'>
+                  <Typography component='p' variant='caption' color='muted' className='font-mono'>
+                    {new Date(post.date).toLocaleDateString('ja-JP', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </Typography>
+                  <ReadingTime content={post.content} />
+                </div>
                 <Typography component='p' variant='body2' color='muted'>
                   by {post.author}
                 </Typography>
@@ -161,74 +209,193 @@ export default async function PostPage({ params }: PostPageProps) {
             </div>
           </div>
 
-          {/* 記事コンテンツ */}
-          <div className='bg-card border border-accent rounded-lg p-8'>
-            <div className='prose prose-lg max-w-none prose-headings:text-primary prose-p:text-muted prose-strong:text-primary prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-code:text-accent prose-code:bg-accent/10 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-background prose-pre:border prose-pre:border-accent/30'>
-              <ReactMarkdown
-                components={{
-                  h1: ({ children }) => (
-                    <h1 className='text-2xl font-bold text-primary mt-8 mb-4'>{children}</h1>
-                  ),
-                  h2: ({ children }) => (
-                    <h2 className='text-xl font-semibold text-primary mt-6 mb-3'>{children}</h2>
-                  ),
-                  h3: ({ children }) => (
-                    <h3 className='text-lg font-semibold text-primary mt-4 mb-2'>{children}</h3>
-                  ),
-                  p: ({ children }) => (
-                    <p className='text-muted my-3 leading-relaxed'>{children}</p>
-                  ),
-                  ul: ({ children }) => (
-                    <ul className='text-muted my-4 ml-6 list-disc space-y-1'>{children}</ul>
-                  ),
-                  ol: ({ children }) => (
-                    <ol className='text-muted my-4 ml-6 list-decimal space-y-1'>{children}</ol>
-                  ),
-                  li: ({ children }) => <li className='text-muted'>{children}</li>,
-                  code: ({ children, className }) => {
-                    const isInline = !className?.includes('language-');
-                    return isInline ? (
-                      <code className='text-accent bg-accent/10 px-1 py-0.5 rounded font-mono text-sm'>
-                        {children}
-                      </code>
-                    ) : (
-                      <code className='block'>{children}</code>
-                    );
-                  },
-                  pre: ({ children }) => (
-                    <pre className='bg-background border border-accent/30 rounded p-4 overflow-x-auto my-4 text-sm'>
-                      {children}
-                    </pre>
-                  ),
-                  strong: ({ children }) => (
-                    <strong className='text-primary font-semibold'>{children}</strong>
-                  ),
-                  em: ({ children }) => <em className='text-primary italic'>{children}</em>,
-                  a: ({ href, children }) => (
-                    <Link
-                      href={href || '#'}
-                      className='text-accent hover:underline focus:underline focus:outline-none'
-                      target={href?.startsWith('http') ? '_blank' : undefined}
-                      rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    >
-                      {children}
-                    </Link>
-                  ),
-                  blockquote: ({ children }) => (
-                    <blockquote className='border-l-4 border-accent/50 pl-4 my-4 italic text-muted/80'>
-                      {children}
-                    </blockquote>
-                  ),
-                  hr: () => <hr className='my-8 border-accent/20' />,
-                }}
-              >
-                {post.content}
-              </ReactMarkdown>
+          {/* メインコンテンツエリア */}
+          <div className='grid grid-cols-1 lg:grid-cols-4 gap-8'>
+            {/* 記事コンテンツ */}
+            <div className='lg:col-span-3'>
+              <div className='bg-card border border-accent rounded-lg p-8'>
+                <div className='prose prose-lg max-w-none prose-headings:text-primary prose-p:text-muted prose-strong:text-primary prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-code:text-accent prose-code:bg-accent/10 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-background prose-pre:border prose-pre:border-accent/30'>
+                  <ReactMarkdown
+                    components={{
+                      h1: ({ children }) => {
+                        const title = String(children);
+                        const matchingItem = tableOfContentsItems.find(
+                          item => item.title === title && item.level === 1
+                        );
+                        const id =
+                          matchingItem?.id ||
+                          title
+                            .toLowerCase()
+                            .replace(/[^\w\s-]/g, '')
+                            .replace(/[\s_-]+/g, '-');
+                        return (
+                          <HeadingWithAnchor level={1} id={id}>
+                            {children}
+                          </HeadingWithAnchor>
+                        );
+                      },
+                      h2: ({ children }) => {
+                        const title = String(children);
+                        const matchingItem = tableOfContentsItems.find(
+                          item => item.title === title && item.level === 2
+                        );
+                        const id =
+                          matchingItem?.id ||
+                          title
+                            .toLowerCase()
+                            .replace(/[^\w\s-]/g, '')
+                            .replace(/[\s_-]+/g, '-');
+                        return (
+                          <HeadingWithAnchor level={2} id={id}>
+                            {children}
+                          </HeadingWithAnchor>
+                        );
+                      },
+                      h3: ({ children }) => {
+                        const title = String(children);
+                        const matchingItem = tableOfContentsItems.find(
+                          item => item.title === title && item.level === 3
+                        );
+                        const id =
+                          matchingItem?.id ||
+                          title
+                            .toLowerCase()
+                            .replace(/[^\w\s-]/g, '')
+                            .replace(/[\s_-]+/g, '-');
+                        return (
+                          <HeadingWithAnchor level={3} id={id}>
+                            {children}
+                          </HeadingWithAnchor>
+                        );
+                      },
+                      h4: ({ children }) => {
+                        const title = String(children);
+                        const matchingItem = tableOfContentsItems.find(
+                          item => item.title === title && item.level === 4
+                        );
+                        const id =
+                          matchingItem?.id ||
+                          title
+                            .toLowerCase()
+                            .replace(/[^\w\s-]/g, '')
+                            .replace(/[\s_-]+/g, '-');
+                        return (
+                          <HeadingWithAnchor level={4} id={id}>
+                            {children}
+                          </HeadingWithAnchor>
+                        );
+                      },
+                      h5: ({ children }) => {
+                        const title = String(children);
+                        const matchingItem = tableOfContentsItems.find(
+                          item => item.title === title && item.level === 5
+                        );
+                        const id =
+                          matchingItem?.id ||
+                          title
+                            .toLowerCase()
+                            .replace(/[^\w\s-]/g, '')
+                            .replace(/[\s_-]+/g, '-');
+                        return (
+                          <HeadingWithAnchor level={5} id={id}>
+                            {children}
+                          </HeadingWithAnchor>
+                        );
+                      },
+                      h6: ({ children }) => {
+                        const title = String(children);
+                        const matchingItem = tableOfContentsItems.find(
+                          item => item.title === title && item.level === 6
+                        );
+                        const id =
+                          matchingItem?.id ||
+                          title
+                            .toLowerCase()
+                            .replace(/[^\w\s-]/g, '')
+                            .replace(/[\s_-]+/g, '-');
+                        return (
+                          <HeadingWithAnchor level={6} id={id}>
+                            {children}
+                          </HeadingWithAnchor>
+                        );
+                      },
+                      p: ({ children }) => (
+                        <p className='text-muted my-3 leading-relaxed'>{children}</p>
+                      ),
+                      ul: ({ children }) => (
+                        <ul className='text-muted my-4 ml-6 list-disc space-y-1'>{children}</ul>
+                      ),
+                      ol: ({ children }) => (
+                        <ol className='text-muted my-4 ml-6 list-decimal space-y-1'>{children}</ol>
+                      ),
+                      li: ({ children }) => <li className='text-muted'>{children}</li>,
+                      code: ({ children, className }) => {
+                        const isInline = !className?.includes('language-');
+                        return isInline ? (
+                          <code className='text-accent bg-accent/10 px-1 py-0.5 rounded font-mono text-sm'>
+                            {children}
+                          </code>
+                        ) : (
+                          <code className='block'>{children}</code>
+                        );
+                      },
+                      pre: ({ children }) => (
+                        <pre className='bg-background border border-accent/30 rounded p-4 overflow-x-auto my-4 text-sm'>
+                          {children}
+                        </pre>
+                      ),
+                      strong: ({ children }) => (
+                        <strong className='text-primary font-semibold'>{children}</strong>
+                      ),
+                      em: ({ children }) => <em className='text-primary italic'>{children}</em>,
+                      a: ({ href, children }) => (
+                        <Link
+                          href={href || '#'}
+                          className='text-accent hover:underline focus:underline focus:outline-none'
+                          target={href?.startsWith('http') ? '_blank' : undefined}
+                          rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        >
+                          {children}
+                        </Link>
+                      ),
+                      blockquote: ({ children }) => (
+                        <blockquote className='border-l-4 border-accent/50 pl-4 my-4 italic text-muted/80'>
+                          {children}
+                        </blockquote>
+                      ),
+                      hr: () => <hr className='my-8 border-accent/20' />,
+                    }}
+                  >
+                    {post.content}
+                  </ReactMarkdown>
+                </div>
+              </div>
+            </div>
+
+            {/* サイドバー - 目次（デスクトップ） */}
+            <div className='lg:col-span-1 order-first lg:order-last hidden lg:block'>
+              {tableOfContentsItems.length > 0 && (
+                <div className='lg:sticky lg:top-4 lg:max-h-screen lg:overflow-y-auto mb-8 lg:mb-0'>
+                  <TableOfContents items={tableOfContentsItems} sticky={false} />
+                </div>
+              )}
             </div>
           </div>
 
           {/* 記事間ナビゲーション */}
           <PostNavigation previousPost={previousPost} nextPost={nextPost} />
+
+          {/* コメントセクション */}
+          <div className='bg-card border border-accent rounded-lg p-8'>
+            <Comments
+              repo='tsukaryu/my-blog-with-claude-code'
+              repoId='R_kgDONcHjVA'
+              category='General'
+              categoryId='DIC_kwDONcHjVM4ClsVa'
+              mapping='pathname'
+              lang={locale === 'ja' ? 'ja' : 'en'}
+            />
+          </div>
 
           {/* ナビゲーション */}
           <div className='bg-card border border-accent rounded-lg p-6'>
@@ -259,6 +426,9 @@ export default async function PostPage({ params }: PostPageProps) {
             </div>
           </div>
         </article>
+
+        {/* モバイル用目次ドロワー */}
+        {tableOfContentsItems.length > 0 && <TableOfContentsDrawer items={tableOfContentsItems} />}
       </div>
     </>
   );
