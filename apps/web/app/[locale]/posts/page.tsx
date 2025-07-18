@@ -7,6 +7,10 @@ import { getPublishedArticles } from '@/lib/articles';
 import { type Locale } from '@/lib/i18n-config';
 import { generateMetadata as createMetadata } from '@/lib/metadata-utils';
 
+// ISR設定: 静的生成のパフォーマンス最適化
+export const dynamic = 'force-static';
+export const revalidate = 1800; // 30分ごとに再生成
+
 const POSTS_PER_PAGE = 10;
 
 interface PostsPageProps {

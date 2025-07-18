@@ -180,11 +180,11 @@ my-blog-with-claude-code/
 
 ### 6.3 パフォーマンス最適化
 
-- [ ] **6.3.1** 画像最適化・WebP対応
-- [ ] **6.3.2** フォント最適化（@next/font）
-- [ ] **6.3.3** バンドルサイズ最適化
-- [ ] **6.3.4** ISR（Incremental Static Regeneration）設定
-- [ ] **6.3.5** Core Web Vitals 最適化
+- [x] **6.3.1** 画像最適化・WebP対応
+- [x] **6.3.2** フォント最適化（@next/font）
+- [x] **6.3.3** バンドルサイズ最適化
+- [x] **6.3.4** ISR（Incremental Static Regeneration）設定
+- [x] **6.3.5** Core Web Vitals 最適化
 
 ## 💬 Phase 7: ユーザー体験・交流機能
 
@@ -308,3 +308,12 @@ my-blog-with-claude-code/
 - RSS/Atomフィード生成（最新20記事）
 - metadata-utilsユーティリティ関数実装（OGP画像URL生成・メタデータ統合管理）
 - 各ページでのSEOメタデータ強化
+
+#### Phase 6.3 パフォーマンス最適化 - 完了
+
+- 画像最適化・WebP対応強化（Next.js Image設定、AVIF/WebP形式、キャッシュ最適化）
+- フォント最適化強化（@next/font、必要ウェイト指定、フォールバック調整）
+- バンドルサイズ最適化（@next/bundle-analyzer導入、webpack設定、コード分割）
+- ISR（Incremental Static Regeneration）設定（記事ページ1時間、一覧ページ30分）
+- Core Web Vitals最適化（web-vitalsライブラリ、メトリクス収集、パフォーマンス監視）
+- next.config.js包括的最適化（コンソール削除、ヘッダー最適化、React Strict Mode）

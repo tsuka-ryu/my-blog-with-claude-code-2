@@ -60,6 +60,20 @@ async function getPostNavigation(currentSlug: string): Promise<{
   return getArticleNavigation(allArticles, currentSlug);
 }
 
+// ISR設定: 静的生成のパフォーマンス最適化
+export const dynamic = 'force-static';
+export const revalidate = 3600; // 1時間ごとに再生成
+
+export async function generateStaticParams() {
+  // ビルド時に生成する記事パスを取得
+  const { getAllArticles } = await import('@/lib/articles');
+  const allArticles = getPublishedArticlesSortedByDate(getAllArticles());
+
+  return allArticles.map(article => ({
+    slug: article.slug,
+  }));
+}
+
 export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
   const { slug, locale } = await params;
   const post = await getPost(slug);

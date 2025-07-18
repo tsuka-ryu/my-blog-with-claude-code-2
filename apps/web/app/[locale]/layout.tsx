@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
 import { LayoutClient } from './layout-client';
+import { WebVitalsReporter } from '../../components/web-vitals-reporter';
 import { type Locale, locales } from '../../lib/i18n-config';
 import '../globals.css';
 /* eslint-enable import-x/order */
@@ -15,6 +16,10 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-jetbrains-mono',
   display: 'swap',
+  // パフォーマンス最適化: 必要な文字ウェイトのみを指定
+  weight: ['400', '500', '700'],
+  // 変数フォントを使用してファイルサイズを削減
+  adjustFontFallback: false,
 });
 
 const notoSansJP = Noto_Sans_JP({
@@ -22,6 +27,10 @@ const notoSansJP = Noto_Sans_JP({
   variable: '--font-noto-sans-jp',
   display: 'swap',
   preload: false,
+  // パフォーマンス最適化: 必要な文字ウェイトのみを指定
+  weight: ['400', '500', '700'],
+  // 日本語フォントの最適化
+  adjustFontFallback: false,
 });
 
 export async function generateMetadata({
@@ -82,6 +91,7 @@ export default async function LocaleLayout({
         <ThemeProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <LayoutClient>{children}</LayoutClient>
+            <WebVitalsReporter />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
