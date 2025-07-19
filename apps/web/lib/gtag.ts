@@ -1,0 +1,68 @@
+// TODO: 本番環境用のGoogle Analytics測定IDに置き換えてください
+export const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+
+// ページビューイベントを送信
+export const pageview = (url: string) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('config', GA_MEASUREMENT_ID, {
+      page_path: url,
+    });
+  }
+};
+
+// カスタムイベントを送信
+export const event = ({
+  action,
+  category,
+  label,
+  value,
+}: {
+  action: string;
+  category: string;
+  label?: string;
+  value?: number;
+}) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', action, {
+      event_category: category,
+      event_label: label,
+      value: value,
+    });
+  }
+};
+
+// 記事閲覧時間を計測
+export const trackReadingTime = (articleSlug: string, timeInSeconds: number) => {
+  event({
+    action: 'read_article',
+    category: 'engagement',
+    label: articleSlug,
+    value: Math.round(timeInSeconds),
+  });
+};
+
+// 検索イベントを送信
+export const trackSearch = (searchTerm: string, resultsCount: number) => {
+  event({
+    action: 'search',
+    category: 'engagement',
+    label: searchTerm,
+    value: resultsCount,
+  });
+};
+
+// ソーシャルシェアイベントを送信
+export const trackShare = (network: string, articleSlug: string) => {
+  event({
+    action: 'share',
+    category: 'social',
+    label: `${network}_${articleSlug}`,
+  });
+};
+
+// TypeScript用のgtag型定義
+declare global {
+  interface Window {
+    gtag: (command: 'config' | 'event', targetId: string, config?: Record<string, unknown>) => void;
+  }
+}

@@ -19,6 +19,7 @@ import {
   getArticleNavigation,
 } from '@/lib/article-utils';
 import { HeadingWithAnchor } from '@/components/mdx/heading-with-anchor';
+import { ReadingTimeTracker } from '@/components/reading-time-tracker';
 import { generateMetadata as createMetadata, generateBreadcrumbJsonLd } from '@/lib/metadata-utils';
 import { type Locale } from '@/lib/i18n-config';
 /* eslint-enable import-x/order */
@@ -170,6 +171,9 @@ export default async function PostPage({ params }: PostPageProps) {
     <>
       {/* 構造化データ */}
       <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd }} />
+
+      {/* 滞在時間トラッカー */}
+      <ReadingTimeTracker articleSlug={slug} />
 
       <div className='space-y-8'>
         <Breadcrumb items={breadcrumbItems} />
