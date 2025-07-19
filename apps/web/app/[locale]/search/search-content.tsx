@@ -4,6 +4,8 @@ import { SearchBox, SearchResults, Typography } from '@repo/ui';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 
+import { trackSearch } from '../../../lib/gtag';
+
 import type { SearchResultItem } from '@repo/ui';
 
 export default function SearchContent() {
@@ -33,7 +35,11 @@ export default function SearchContent() {
       }
 
       const data = await response.json();
-      setResults(data.results || []);
+      const searchResults = data.results || [];
+      setResults(searchResults);
+
+      // 検索イベントをトラッキング
+      trackSearch(searchQuery, searchResults.length);
     } catch (error) {
       console.error('Search error:', error);
       setResults([]);

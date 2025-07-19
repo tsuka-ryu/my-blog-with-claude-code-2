@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
 import { LayoutClient } from './layout-client';
+import { GoogleAnalytics } from '../../components/google-analytics';
 import { WebVitalsReporter } from '../../components/web-vitals-reporter';
 import { type Locale, locales } from '../../lib/i18n-config';
 import '../globals.css';
@@ -91,6 +92,7 @@ export default async function LocaleLayout({
         <ThemeProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <LayoutClient>{children}</LayoutClient>
+            <GoogleAnalytics />
             <WebVitalsReporter />
           </NextIntlClientProvider>
         </ThemeProvider>

@@ -4,6 +4,7 @@ import { Footer, Navigation, LanguageSwitcher } from '@repo/ui';
 import { useTranslations, useLocale } from 'next-intl';
 import { useState } from 'react';
 
+import { AnalyticsTracker } from '../../components/analytics-tracker';
 import { locales, localeNames } from '../../lib/i18n-config';
 
 interface LayoutClientProps {
@@ -26,6 +27,7 @@ export function LayoutClient({ children }: LayoutClientProps) {
 
   return (
     <div className='min-h-screen flex flex-col bg-background text-primary'>
+      <AnalyticsTracker />
       <Navigation
         title={metadata('siteTitle')}
         items={navigationItems}
