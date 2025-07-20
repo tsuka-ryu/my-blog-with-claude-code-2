@@ -1,44 +1,45 @@
-// Google Analytics Data APIを使用して人気記事を取得
-// TODO: 本番環境では以下の設定が必要です：
-// 1. Google Cloud Consoleでプロジェクトを作成
-// 2. Google Analytics Data APIを有効化
-// 3. サービスアカウントを作成してJSONキーをダウンロード
-// 4. 環境変数にサービスアカウントの認証情報を設定
-// 5. Google AnalyticsのプロパティIDを設定
+import { isGoogleAnalyticsDataApiEnabled } from './env';
 
 interface PopularArticle {
   slug: string;
   pageViews: number;
 }
 
-// 人気記事データを取得する関数（現在はモック実装）
+// 人気記事データを取得する関数
 export async function getPopularArticles(): Promise<PopularArticle[]> {
-  // TODO: 実装時には以下のようなGoogle Analytics Data APIを使用
-  // const analyticsDataClient = new BetaAnalyticsDataClient();
-  // const response = await analyticsDataClient.runReport({
-  //   property: `properties/${process.env.GA_PROPERTY_ID}`,
-  //   dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
-  //   dimensions: [{ name: 'pagePath' }],
-  //   metrics: [{ name: 'screenPageViews' }],
-  //   dimensionFilter: {
-  //     filter: {
-  //       fieldName: 'pagePath',
-  //       stringFilter: {
-  //         matchType: 'CONTAINS',
-  //         value: '/posts/',
-  //       },
-  //     },
-  //   },
-  //   orderBys: [
-  //     {
-  //       metric: { metricName: 'screenPageViews' },
-  //       desc: true,
-  //     },
-  //   ],
-  //   limit: limit,
-  // });
+  // Google Analytics Data APIが有効な場合
+  if (isGoogleAnalyticsDataApiEnabled) {
+    // TODO: Google Analytics Data APIの実装
+    // const { BetaAnalyticsDataClient } = await import('@google-analytics/data');
+    // const analyticsDataClient = new BetaAnalyticsDataClient();
+    // const response = await analyticsDataClient.runReport({
+    //   property: `properties/${env.GA_PROPERTY_ID}`,
+    //   dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+    //   dimensions: [{ name: 'pagePath' }],
+    //   metrics: [{ name: 'screenPageViews' }],
+    //   dimensionFilter: {
+    //     filter: {
+    //       fieldName: 'pagePath',
+    //       stringFilter: {
+    //         matchType: 'CONTAINS',
+    //         value: '/posts/',
+    //       },
+    //     },
+    //   },
+    //   orderBys: [
+    //     {
+    //       metric: { metricName: 'screenPageViews' },
+    //       desc: true,
+    //     },
+    //   ],
+    //   limit: 5,
+    // });
 
-  // 現在はモックデータを返す
+    // 実装後はここでAPIレスポンスを処理
+    console.log('Google Analytics Data API is enabled but not implemented yet');
+  }
+
+  // APIが有効でない場合はモックデータを返す
   return [
     { slug: 'react-hooks-guide', pageViews: 1234 },
     { slug: 'typescript-best-practices', pageViews: 987 },

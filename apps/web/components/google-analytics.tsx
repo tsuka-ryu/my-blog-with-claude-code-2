@@ -2,14 +2,14 @@
 
 import Script from 'next/script';
 
-// TODO: 本番環境用のGoogle Analytics測定IDに置き換えてください
-// Google Analytics管理画面から取得したIDを設定してください
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+import { env, isGoogleAnalyticsEnabled } from '../lib/env';
 
 export function GoogleAnalytics() {
-  if (!GA_MEASUREMENT_ID) {
+  if (!isGoogleAnalyticsEnabled) {
     return null;
   }
+
+  const GA_MEASUREMENT_ID = env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
   return (
     <>

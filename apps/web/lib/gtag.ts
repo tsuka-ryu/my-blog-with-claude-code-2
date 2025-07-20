@@ -1,10 +1,11 @@
-// TODO: 本番環境用のGoogle Analytics測定IDに置き換えてください
-export const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+import { env, isGoogleAnalyticsEnabled } from './env';
 
 // ページビューイベントを送信
 export const pageview = (url: string) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('config', GA_MEASUREMENT_ID, {
+  if (!isGoogleAnalyticsEnabled) return;
+
+  if (typeof window !== 'undefined' && window.gtag && env.NEXT_PUBLIC_GA_MEASUREMENT_ID) {
+    window.gtag('config', env.NEXT_PUBLIC_GA_MEASUREMENT_ID, {
       page_path: url,
     });
   }
@@ -22,6 +23,8 @@ export const event = ({
   label?: string;
   value?: number;
 }) => {
+  if (!isGoogleAnalyticsEnabled) return;
+
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', action, {
       event_category: category,

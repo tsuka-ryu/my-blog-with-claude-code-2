@@ -5,7 +5,7 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "env": ["NODE_ENV"],
+      "env": ["NODE_ENV", "NEXT_PUBLIC_GA_MEASUREMENT_ID", "GA_PROPERTY_ID", "GOOGLE_APPLICATION_CREDENTIALS", "NEXT_PUBLIC_SITE_URL"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
     "lint": {
@@ -16,18 +16,21 @@
         "oxlint.json",
         ".prettierrc",
         ".prettierignore"
-      ]
+      ],
+      "env": ["NEXT_PUBLIC_GA_MEASUREMENT_ID", "GA_PROPERTY_ID", "GOOGLE_APPLICATION_CREDENTIALS", "NEXT_PUBLIC_SITE_URL"]
     },
     "format": {
       "dependsOn": ["^format"],
       "inputs": ["$TURBO_DEFAULT$", ".prettierrc", ".prettierignore"]
     },
     "check-types": {
-      "dependsOn": ["^build", "^check-types"]
+      "dependsOn": ["^build", "^check-types"],
+      "env": ["NEXT_PUBLIC_GA_MEASUREMENT_ID", "GA_PROPERTY_ID", "GOOGLE_APPLICATION_CREDENTIALS", "NEXT_PUBLIC_SITE_URL"]
     },
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "env": ["NEXT_PUBLIC_GA_MEASUREMENT_ID", "GA_PROPERTY_ID", "GOOGLE_APPLICATION_CREDENTIALS", "NEXT_PUBLIC_SITE_URL"]
     },
     "storybook": {
       "cache": false,
