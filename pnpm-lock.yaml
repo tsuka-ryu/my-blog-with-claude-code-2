@@ -672,7 +672,7 @@ importers:
     dependencies:
       '@modelcontextprotocol/sdk':
         specifier: ^1.0.4
-        version: 1.15.1
+        version: 1.16.0
     devDependencies:
       '@types/node':
         specifier: ^22.0.0
@@ -2563,8 +2563,8 @@ packages:
       '@types/react': '>=16'
       react: '>=16'
 
-  '@modelcontextprotocol/sdk@1.15.1':
-    resolution: {integrity: sha512-W/XlN9c528yYn+9MQkVjxiTPgPxoxt+oczfjHBDsJx0+59+O7B75Zhsp0B16Xbwbz8ANISDajh6+V7nIcPMc5w==}
+  '@modelcontextprotocol/sdk@1.16.0':
+    resolution: {integrity: sha512-8ofX7gkZcLj9H9rSd50mCgm3SSF8C7XoclxJuLoV0Cz3rEQ1tv9MZRYYvJtm9n1BiEQQMzSmE/w2AEkNacLYfg==}
     engines: {node: '>=18'}
 
   '@mswjs/interceptors@0.39.2':
@@ -12829,7 +12829,7 @@ snapshots:
       '@types/react': 19.1.8
       react: 19.1.0
 
-  '@modelcontextprotocol/sdk@1.15.1':
+  '@modelcontextprotocol/sdk@1.16.0':
     dependencies:
       ajv: 6.12.6
       content-type: 1.0.5
@@ -14197,11 +14197,11 @@ snapshots:
       - utf-8-validate
       - vite
 
-  '@vitest/browser@2.1.9(@types/node@24.0.3)(typescript@5.8.3)(vite@5.4.19(@types/node@24.0.3)(terser@5.42.0))(vitest@2.1.9)(webdriverio@9.16.2)':
+  '@vitest/browser@2.1.9(@types/node@24.0.3)(typescript@5.8.3)(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(terser@5.42.0)(yaml@2.8.0))(vitest@2.1.9)(webdriverio@9.16.2)':
     dependencies:
       '@testing-library/dom': 10.4.0
       '@testing-library/user-event': 14.6.1(@testing-library/dom@10.4.0)
-      '@vitest/mocker': 2.1.9(msw@2.10.2(@types/node@24.0.3)(typescript@5.8.3))(vite@5.4.19(@types/node@24.0.3)(terser@5.42.0))
+      '@vitest/mocker': 2.1.9(msw@2.10.2(@types/node@24.0.3)(typescript@5.8.3))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(terser@5.42.0)(yaml@2.8.0))
       '@vitest/utils': 2.1.9
       magic-string: 0.30.17
       msw: 2.10.2(@types/node@24.0.3)(typescript@5.8.3)
@@ -14250,6 +14250,16 @@ snapshots:
     optionalDependencies:
       msw: 2.10.2(@types/node@24.0.3)(typescript@5.8.3)
       vite: 5.4.19(@types/node@24.0.3)(terser@5.42.0)
+
+  '@vitest/mocker@2.1.9(msw@2.10.2(@types/node@24.0.3)(typescript@5.8.3))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(terser@5.42.0)(yaml@2.8.0))':
+    dependencies:
+      '@vitest/spy': 2.1.9
+      estree-walker: 3.0.3
+      magic-string: 0.30.17
+    optionalDependencies:
+      msw: 2.10.2(@types/node@24.0.3)(typescript@5.8.3)
+      vite: 6.3.5(@types/node@24.0.3)(jiti@2.4.2)(terser@5.42.0)(yaml@2.8.0)
+    optional: true
 
   '@vitest/pretty-format@2.0.5':
     dependencies:
@@ -21491,7 +21501,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 24.0.3
-      '@vitest/browser': 2.1.9(@types/node@24.0.3)(typescript@5.8.3)(vite@5.4.19(@types/node@24.0.3)(terser@5.42.0))(vitest@2.1.9)(webdriverio@9.16.2)
+      '@vitest/browser': 2.1.9(@types/node@24.0.3)(typescript@5.8.3)(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(terser@5.42.0)(yaml@2.8.0))(vitest@2.1.9)(webdriverio@9.16.2)
       jsdom: 25.0.1
     transitivePeerDependencies:
       - less
