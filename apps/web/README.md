@@ -1,5 +1,20 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/create-next-app).
 
+## Environment Variables
+
+このプロジェクトでは以下の環境変数を使用します。`.env.example`を参考に`.env.local`ファイルを作成して設定してください。
+
+```bash
+cp .env.example .env.local
+```
+
+### 必要な環境変数
+
+- `NEXT_PUBLIC_GA_MEASUREMENT_ID`: Google Analytics測定ID（例: G-XXXXXXXXXX）
+- `GA_PROPERTY_ID`: Google Analytics Data APIのプロパティID（オプション）
+- `GOOGLE_APPLICATION_CREDENTIALS`: サービスアカウント認証情報JSONファイルへのパス（オプション）
+- `NEXT_PUBLIC_SITE_URL`: 本番環境のURL（デフォルト: https://localhost:3000）
+
 ## Getting Started
 
 First, run the development server:
