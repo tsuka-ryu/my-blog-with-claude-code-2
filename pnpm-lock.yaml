@@ -105,6 +105,12 @@ catalogs:
     eslint:
       specifier: ^9.29.0
       version: 9.31.0
+    eslint-config-prettier:
+      specifier: ^10.1.5
+      version: 10.1.8
+    eslint-plugin-prettier:
+      specifier: ^5.5.0
+      version: 5.5.3
     globals:
       specifier: ^16.2.0
       version: 16.2.0
@@ -218,7 +224,7 @@ importers:
         version: 10.1.8(eslint@9.31.0(jiti@2.4.2))
       eslint-plugin-oxlint:
         specifier: ^1.3.0
-        version: 1.6.0
+        version: 1.7.0
       eslint-plugin-prettier:
         specifier: 'catalog:'
         version: 5.5.3(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2))(prettier@3.6.0)
@@ -5332,8 +5338,8 @@ packages:
     resolution: {integrity: sha512-2tktqUAT+Q3hCAU0iSf4xAN1k9zOpjK5WO8104mB0rT/dGhOa09582HN5HlbxNbPRZ0THV7nLGvzugcNOSjzfA==}
     engines: {node: '>=6'}
 
-  eslint-plugin-oxlint@1.6.0:
-    resolution: {integrity: sha512-DH5p3sCf0nIAPscl3yGnBWXXraV0bdl66hpLxvfnabvg/GzpgXf+pOCWpGK3qDb0+AIUkh1R/7A8GkOXtlj0oA==}
+  eslint-plugin-oxlint@1.7.0:
+    resolution: {integrity: sha512-204qAoSNAOsDQOkbyfqQXBep04PN7fV7SLUlCeOVILF/NcXqD+w1JUtIaHxPvg1ipEBohaXOrR8x1Y2gYQUtZQ==}
 
   eslint-plugin-prettier@5.5.3:
     resolution: {integrity: sha512-NAdMYww51ehKfDyDhv59/eIItUVzU0Io9H2E8nHNGKEeeqlnci+1gCvrHib6EmZdf6GxF+LCV5K7UC65Ezvw7w==}
@@ -16054,7 +16060,7 @@ snapshots:
 
   eslint-plugin-only-warn@1.1.0: {}
 
-  eslint-plugin-oxlint@1.6.0:
+  eslint-plugin-oxlint@1.7.0:
     dependencies:
       jsonc-parser: 3.3.1
 
