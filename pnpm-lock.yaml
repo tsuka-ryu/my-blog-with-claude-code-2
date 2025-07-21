@@ -309,7 +309,7 @@ importers:
         version: 3.1.0(@types/react@19.1.8)(react@19.1.0)
       '@next/mdx':
         specifier: ^15.3.5
-        version: 15.3.5(@mdx-js/loader@3.1.0(acorn@8.15.0)(webpack@5.99.9(esbuild@0.25.5)))(@mdx-js/react@3.1.0(@types/react@19.1.8)(react@19.1.0))
+        version: 15.4.2(@mdx-js/loader@3.1.0(acorn@8.15.0)(webpack@5.99.9(esbuild@0.25.5)))(@mdx-js/react@3.1.0(@types/react@19.1.8)(react@19.1.0))
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -382,7 +382,7 @@ importers:
     devDependencies:
       '@next/bundle-analyzer':
         specifier: ^15.4.1
-        version: 15.4.1
+        version: 15.4.2
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
@@ -457,7 +457,7 @@ importers:
         version: 9.31.0
       '@next/eslint-plugin-next':
         specifier: ^15.3.0
-        version: 15.3.5
+        version: 15.4.2
       eslint:
         specifier: 'catalog:'
         version: 9.31.0(jiti@2.4.2)
@@ -2574,17 +2574,17 @@ packages:
   '@napi-rs/wasm-runtime@0.2.12':
     resolution: {integrity: sha512-ZVWUcfwY4E/yPitQJl481FjFo3K22D6qF0DuFH6Y/nbnE11GY5uguDxZMGXPQ8WQ0128MXQD7TnfHyK4oWoIJQ==}
 
-  '@next/bundle-analyzer@15.4.1':
-    resolution: {integrity: sha512-O5R3iPLR3/oQWFIXl+Mnd02IyhvWBterTlXcceIGw29QHWL/gjvyO0eIVEvrJPS7zzE6/NSu1TiSVgi8mxotlw==}
+  '@next/bundle-analyzer@15.4.2':
+    resolution: {integrity: sha512-kgjecwKDgJ50DZXjVllawD6MuTyxaREB5EUBKbG9NLBHjYu10O/OPL5JqKrBrYdQ9BNVxjGEQoDGcHB76ZjViQ==}
 
   '@next/env@15.3.3':
     resolution: {integrity: sha512-OdiMrzCl2Xi0VTjiQQUK0Xh7bJHnOuET2s+3V+Y40WJBAXrJeGA3f+I8MZJ/YQ3mVGi5XGR1L66oFlgqXhQ4Vw==}
 
-  '@next/eslint-plugin-next@15.3.5':
-    resolution: {integrity: sha512-BZwWPGfp9po/rAnJcwUBaM+yT/+yTWIkWdyDwc74G9jcfTrNrmsHe+hXHljV066YNdVs8cxROxX5IgMQGX190w==}
+  '@next/eslint-plugin-next@15.4.2':
+    resolution: {integrity: sha512-k0rjdWjXBY6tAOty1ckrMETE6Mx66d85NsgcAIdDp7/cXOsTJ93ywmbg3uUcpxX5TUHFEcCWI5mb8nPhwCe9jg==}
 
-  '@next/mdx@15.3.5':
-    resolution: {integrity: sha512-/2rRCgPKNp2ttQscU13auI+cYYACdPa80Okgi/1+NNJJeWn9yVxwGnqZc3SX30T889bZbLqcY4oUjqYGAygL4g==}
+  '@next/mdx@15.4.2':
+    resolution: {integrity: sha512-uh/QbquRl8dtzRDQBtf28ho4fJ37tO2phdN79olomG61ftyjKSazebEz1ri9Fi0mtwSrZTpjKGom7xiYJmwI9Q==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
       '@mdx-js/react': '>=0.15.0'
@@ -12862,7 +12862,7 @@ snapshots:
       '@tybys/wasm-util': 0.10.0
     optional: true
 
-  '@next/bundle-analyzer@15.4.1':
+  '@next/bundle-analyzer@15.4.2':
     dependencies:
       webpack-bundle-analyzer: 4.10.1
     transitivePeerDependencies:
@@ -12871,11 +12871,11 @@ snapshots:
 
   '@next/env@15.3.3': {}
 
-  '@next/eslint-plugin-next@15.3.5':
+  '@next/eslint-plugin-next@15.4.2':
     dependencies:
       fast-glob: 3.3.1
 
-  '@next/mdx@15.3.5(@mdx-js/loader@3.1.0(acorn@8.15.0)(webpack@5.99.9(esbuild@0.25.5)))(@mdx-js/react@3.1.0(@types/react@19.1.8)(react@19.1.0))':
+  '@next/mdx@15.4.2(@mdx-js/loader@3.1.0(acorn@8.15.0)(webpack@5.99.9(esbuild@0.25.5)))(@mdx-js/react@3.1.0(@types/react@19.1.8)(react@19.1.0))':
     dependencies:
       source-map: 0.7.4
     optionalDependencies:
@@ -20855,7 +20855,7 @@ snapshots:
   terser@5.42.0:
     dependencies:
       '@jridgewell/source-map': 0.3.6
-      acorn: 8.15.0
+      acorn: 8.14.1
       commander: 2.20.3
       source-map-support: 0.5.21
 
