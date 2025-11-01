@@ -1,0 +1,43 @@
+# Vercelデプロイ時に除外するファイル
+
+# ドキュメントサイト
+apps/docs/
+
+# 開発用ファイル
+*.md
+!README.md
+!apps/web/content/**/*.md
+
+# テストファイル
+**/*.test.*
+**/*.spec.*
+**/__tests__/
+**/test/
+
+# 設定ファイル（Vercelで不要）
+.vscode/
+.idea/
+*.log
+.DS_Store
+
+# 依存関係
+node_modules/
+.pnpm-store/
+
+# ビルド成果物（除外対象外もある）
+.next/
+dist/
+build/
+coverage/
+
+# 環境設定
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Storybookビルド
+storybook-static/
+
+# TypeScriptキャッシュ
+*.tsbuildinfo
